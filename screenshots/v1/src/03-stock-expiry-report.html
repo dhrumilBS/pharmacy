@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Stock Expiry Report</title><link rel="stylesheet" href="app.css">
+<style>
+body{--w:1600px;--h:900px}
+.filters{display:flex;align-items:flex-end;gap:12px;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:6px;background:#fafbfd}
+.filters label{display:block;font-size:12px;font-weight:600;margin-bottom:4px}
+.seg{display:inline-flex;border:1px solid var(--navy);border-radius:4px;overflow:hidden}.seg span{padding:6px 14px;font-weight:600;color:var(--navy)}.seg .on{background:var(--navy);color:#fff}
+.sum{display:flex;gap:12px;margin:12px 0}
+.sum div{flex:1;border:1px solid var(--line);border-radius:6px;padding:10px 14px}
+.sum small{color:#555;font-weight:600;font-size:11.5px;letter-spacing:.03em}.sum b{display:block;font-size:20px;margin-top:2px}
+tr.grp td{background:#eaf1fd!important;font-weight:600;color:var(--navy)}
+tr.sub td{background:#f6f8fb!important;font-weight:600}
+</style></head><body>
+<script src="nav.js" data-on="Reports"></script>
+<div class="page">
+  <div class="bar"><span class="title">Stock Expiry Report</span><span style="margin-left:auto" class="btn b-green">⇩ Excel</span><span class="btn b-red">⇩ PDF</span></div>
+  <div class="filters">
+    <div><label>Date From</label><div class="inp">13-10-2026</div></div>
+    <div><label>Filter Date</label><div class="inp">12-12-2026</div></div>
+    <div><label>Report</label><span class="seg"><span>Item Wise</span><span class="on">Supplier Wise</span></span></div>
+    <div><label>Search Item</label><div class="inp mute" style="min-width:200px">Search Item</div></div>
+    <div><label>Search Supplier</label><div class="inp mute" style="min-width:200px">Search Supplier</div></div>
+    <span class="btn b-blue">Filter Report</span>
+  </div>
+  <div class="sum">
+    <div><small>BATCHES EXPIRING</small><b>23</b></div>
+    <div><small>STOCK VALUE AT RISK (PTR)</small><b class="red">₹ 18,640</b></div>
+    <div><small>EXPIRING IN 30 DAYS</small><b>4 batches · ₹ 3,912</b></div>
+    <div><small>SUPPLIERS</small><b>5</b></div>
+  </div>
+  <table class="grid">
+    <thead><tr><th>Item Name</th><th>Batch No</th><th>Expiry Date</th><th>Days Left</th><th>Pack Size</th><th class="r">Stock Qty</th><th class="r">PTR</th><th class="r">Value</th><th>Invoice No</th></tr></thead>
+    <tbody>
+      <tr class="grp"><td colspan="9">Shree Krishna Pharma · 9 batches · ₹ 7,284</td></tr>
+      <tr><td class="b">AZITHRAL 500 TAB</td><td>AZ1189</td><td>10-11-2026</td><td><span class="tag t-red">⚠ 28 days</span></td><td>1×5</td><td class="r">14</td><td class="r">94.10</td><td class="r">1,317.40</td><td>SKP/2026/4412</td></tr>
+      <tr><td class="b">SHELCAL 500 TAB</td><td>SC7731</td><td>01-12-2026</td><td><span class="tag t-amber">49 days</span></td><td>1×15</td><td class="r">22</td><td class="r">88.50</td><td class="r">1,947.00</td><td>SKP/2026/4012</td></tr>
+      <tr><td class="b">CALPOL 250 SUSP</td><td>CP2207</td><td>06-12-2026</td><td><span class="tag t-amber">54 days</span></td><td>60 ml</td><td class="r">6</td><td class="r">36.80</td><td class="r">220.80</td><td>SKP/2026/3978</td></tr>
+      <tr><td class="b">CETZINE 10 TAB</td><td>CZ5510</td><td>08-12-2026</td><td><span class="tag t-amber">56 days</span></td><td>1×10</td><td class="r">31</td><td class="r">16.20</td><td class="r">502.20</td><td>SKP/2026/3910</td></tr>
+      <tr class="sub"><td colspan="7" class="r">Supplier total (showing 4 of 9)</td><td class="r">₹ 7,284.00</td><td></td></tr>
+      <tr class="grp"><td colspan="9">Mahavir Distributors · 6 batches · ₹ 5,416</td></tr>
+      <tr><td class="b">MONTAIR LC TAB</td><td>ML0388</td><td>27-11-2026</td><td><span class="tag t-amber">45 days</span></td><td>1×10</td><td class="r">9</td><td class="r">171.60</td><td class="r">1,544.40</td><td>MD-88214</td></tr>
+      <tr><td class="b">BECOSULES CAP</td><td>BC1145</td><td>10-12-2026</td><td><span class="tag t-amber">58 days</span></td><td>1×20</td><td class="r">11</td><td class="r">39.40</td><td class="r">433.40</td><td>MD-88102</td></tr>
+      <tr><td class="b">PANTOCID 40 TAB</td><td>PC0918</td><td>11-12-2026</td><td><span class="tag t-amber">59 days</span></td><td>1×15</td><td class="r">18</td><td class="r">121.30</td><td class="r">2,183.40</td><td>MD-87990</td></tr>
+      <tr class="sub"><td colspan="7" class="r">Supplier total (showing 3 of 6)</td><td class="r">₹ 5,416.00</td><td></td></tr>
+      <tr class="grp"><td colspan="9">Om Sai Medical Agency · 4 batches · ₹ 3,108</td></tr>
+      <tr><td class="b">AUGMENTIN 625 DUO TAB</td><td>AG3301</td><td>19-11-2026</td><td><span class="tag t-red">⚠ 37 days</span></td><td>1×10</td><td class="r">6</td><td class="r">188.20</td><td class="r">1,129.20</td><td>OSM/1187</td></tr>
+      <tr><td class="b">ZINCOVIT TAB</td><td>ZV7720</td><td>05-12-2026</td><td><span class="tag t-amber">53 days</span></td><td>1×15</td><td class="r">20</td><td class="r">98.90</td><td class="r">1,978.00</td><td>OSM/1162</td></tr>
+      <tr class="grp"><td colspan="9">+ 2 more suppliers · 4 batches · ₹ 2,832</td></tr>
+    </tbody>
+  </table>
+</div>
+</body></html>

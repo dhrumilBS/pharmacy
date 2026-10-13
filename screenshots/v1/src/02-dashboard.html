@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Dashboard</title><link rel="stylesheet" href="app.css">
+<style>
+body{--w:1600px;--h:1120px;background:var(--bg)}
+.head{display:flex;align-items:center;gap:10px;padding:12px 16px;background:#fff;border-bottom:1px solid var(--line)}
+.wrap{padding:14px 16px;display:grid;gap:14px}
+.r1{display:grid;grid-template-columns:480px 1fr;gap:14px}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+.kpi h4{margin:0;font-size:12px;font-weight:600;color:#555;letter-spacing:.03em}
+.kpi .v{font-size:22px;font-weight:700;margin-top:2px}
+.kpi small{color:var(--mute)}
+.r2{display:grid;grid-template-columns:1fr 1fr 1.15fr 1.15fr;gap:14px}
+.r3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.list{padding:6px 14px 10px}
+.li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.li:last-child{border-bottom:0}
+.li .s{font-size:11.5px;color:var(--mute)}
+.hb{height:8px;border-radius:4px;background:#e9eef6;margin-top:4px;overflow:hidden}.hb i{display:block;height:100%;border-radius:4px}
+.legend{display:flex;gap:16px;font-size:12px;color:#555}.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.mini-btn{border:1px solid var(--blue);color:var(--blue);border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;white-space:nowrap}
+</style></head><body>
+<script src="nav.js" data-on="Dashboard"></script>
+<div class="head">
+  <span class="title">⌂ MAIN BRANCH</span>
+  <span style="margin-left:auto" class="inp">01-10-2026 → 13-10-2026</span>
+  <span class="sel" style="min-width:160px">Select Stores</span><span class="sel" style="min-width:140px">Select User</span>
+  <span class="btn b-blue">⚲ Filters</span><span class="btn b-out">⇩ All in One Report</span>
+</div>
+<div class="wrap">
+  <div class="r1">
+    <div class="kpis">
+      <div class="kpi"><h4>SALES</h4><div class="v green">₹ 4,86,320</div><small>1,642 Invoices</small></div>
+      <div class="kpi"><h4>SALES RETURN</h4><div class="v red">₹ 6,410</div><small>18 Invoices</small></div>
+      <div class="kpi"><h4>PURCHASE</h4><div class="v red">₹ 3,72,980</div><small>64 Invoices</small></div>
+      <div class="kpi"><h4>PURCHASE RETURN</h4><div class="v green">₹ 9,850</div><small>6 Invoices</small></div>
+      <div class="kpi"><h4>PROFIT</h4><div class="v green">₹ 92,460</div><small>Sales profit · 19.0% margin</small></div>
+      <div class="kpi"><h4>EXPENSE</h4><div class="v red">₹ 18,200</div><small>12 Entries</small></div>
+    </div>
+    <div class="card">
+      <div class="card-h"><span>Sales vs Purchase vs Profit</span><span class="legend"><span><i style="background:#0d3b8e"></i>Sales</span><span><i style="background:#8fb3ef"></i>Purchase</span><span><i style="background:#2fa24a"></i>Profit</span><span class="sel" style="min-width:130px;padding:3px 8px">Last 12 Months</span></span></div>
+      <svg id="chart" width="1050" height="300" style="display:block;margin:6px 10px"></svg>
+    </div>
+  </div>
+
+  <div class="r2">
+    <div class="card"><div class="card-h">Payment Method Wise Collection</div>
+      <div class="list" id="pay"></div></div>
+    <div class="card"><div class="card-h">Overall Collection</div>
+      <div class="list">
+        <div class="li"><span>Sales (+)</span><b>₹ 4,86,320</b></div>
+        <div class="li"><span>Deposit (+)</span><b>₹ 12,000</b></div>
+        <div class="li"><span>Sales Return (-)</span><b class="red">₹ 6,410</b></div>
+        <div class="li"><span>Expense (-)</span><b class="red">₹ 18,200</b></div>
+        <div class="li"><span class="b">Total (=)</span><b class="navy" style="font-size:15px">₹ 4,73,710</b></div>
+      </div></div>
+    <div class="card"><div class="card-h"><span>Stock Expiry</span><span class="mute" style="font-weight:400;font-size:12px">Next 60 days</span></div>
+      <div class="list">
+        <div class="li"><div><div class="b">AZITHRAL 500 TAB</div><div class="s">Batch AZ1189 · 14 strips</div></div><span class="tag t-red">⚠ 28 days</span></div>
+        <div class="li"><div><div class="b">MONTAIR LC TAB</div><div class="s">Batch ML0388 · 9 strips</div></div><span class="tag t-amber">45 days</span></div>
+        <div class="li"><div><div class="b">SHELCAL 500 TAB</div><div class="s">Batch SC7731 · 22 strips</div></div><span class="tag t-amber">49 days</span></div>
+        <div class="li"><div><div class="b">CALPOL 250 SUSP</div><div class="s">Batch CP2207 · 6 bottles</div></div><span class="tag t-amber">54 days</span></div>
+        <div class="li"><div><div class="b">BECOSULES CAP</div><div class="s">Batch BC1145 · 11 strips</div></div><span class="tag t-amber">58 days</span></div>
+      </div></div>
+    <div class="card"><div class="card-h"><span>Stock Alert</span><span class="mute" style="font-weight:400;font-size:12px">Below min stock</span></div>
+      <div class="list">
+        <div class="li"><div><div class="b">TELMA 40 TAB</div><div class="s">Stock 8 · Min 30</div></div><span class="mini-btn">Add to shortbook</span></div>
+        <div class="li"><div><div class="b">GLYCOMET GP 1 TAB</div><div class="s">Stock 12 · Min 25</div></div><span class="tag t-green">Present in shortbook</span></div>
+        <div class="li"><div><div class="b">ECOSPRIN 75 TAB</div><div class="s">Stock 5 · Min 20</div></div><span class="mini-btn">Add to shortbook</span></div>
+        <div class="li"><div><div class="b">THYRONORM 50 TAB</div><div class="s">Stock 3 · Min 15</div></div><span class="mini-btn">Add to shortbook</span></div>
+        <div class="li"><div><div class="b">ROSUVAS 10 TAB</div><div class="s">Stock 6 · Min 20</div></div><span class="tag t-green">Present in shortbook</span></div>
+      </div></div>
+  </div>
+
+  <div class="r3">
+    <div class="card"><div class="card-h">Top Brands</div><div class="list" id="brands"></div></div>
+    <div class="card"><div class="card-h">Top Users</div>
+      <div class="list">
+        <div class="li"><div><div class="b">Priya Desai</div><div class="s">Counter 1 · 612 bills</div></div><b>₹ 1,84,210</b></div>
+        <div class="li"><div><div class="b">Arjun Mehta</div><div class="s">Counter 2 · 548 bills</div></div><b>₹ 1,61,940</b></div>
+        <div class="li"><div><div class="b">Neha Joshi</div><div class="s">Counter 1 · 482 bills</div></div><b>₹ 1,40,170</b></div>
+      </div></div>
+    <div class="card"><div class="card-h">Top Customers</div>
+      <div class="list">
+        <div class="li"><div><div class="b">Ramesh Patel</div><div class="s">14 visits</div></div><b>₹ 9,820</b></div>
+        <div class="li"><div><div class="b">Sunita Agarwal</div><div class="s">11 visits</div></div><b>₹ 8,140</b></div>
+        <div class="li"><div><div class="b">Mohammed Shaikh</div><div class="s">9 visits</div></div><b>₹ 6,905</b></div>
+      </div></div>
+  </div>
+</div>
+<script>
+// 12-month bars, values in ₹ lakh (dummy)
+var m=['Nov','Dec','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct'];
+var s=[9.4,10.2,10.8,9.6,10.9,11.3,11.8,10.6,11.1,11.9,12.4,4.9],p=[7.6,8.3,8.7,7.8,8.9,9.1,9.6,8.4,9.0,9.5,10.1,3.7],f=[1.8,1.9,2.1,1.8,2.1,2.2,2.3,2.0,2.1,2.3,2.4,0.9];
+var svg=document.getElementById('chart'),H=260,t0=10,max=14,x0=48,gw=82,out='';
+for(var g=0;g<=7;g++){var v=g*2,y=t0+H-(v/max)*H;out+='<line x1="'+x0+'" x2="1040" y1="'+y+'" y2="'+y+'" stroke="#eef1f5"/><text x="'+(x0-8)+'" y="'+(y+4)+'" font-size="11" fill="#8a94a6" text-anchor="end">'+v+'L</text>';}
+m.forEach(function(n,i){var bx=x0+14+i*gw;[[s,'#0d3b8e'],[p,'#8fb3ef'],[f,'#2fa24a']].forEach(function(d,j){var h=(d[0][i]/max)*H;out+='<rect x="'+(bx+j*20)+'" y="'+(t0+H-h)+'" width="16" height="'+h+'" rx="2" fill="'+d[1]+'"/>';});out+='<text x="'+(bx+28)+'" y="'+(t0+H+18)+'" font-size="11.5" fill="#555" text-anchor="middle">'+n+'</text>';});
+svg.innerHTML=out;
+// payment methods
+var pay=[['UPI',231880,'#0d3b8e'],['Cash',192400,'#2fa24a'],['Card',38640,'#8fb3ef'],['Credit',23400,'#c27803']],tot=486320,h='';
+pay.forEach(function(r){h+='<div class="li" style="display:block"><div style="display:flex;justify-content:space-between"><span>'+r[0]+'</span><b>₹ '+r[1].toLocaleString('en-IN')+'</b></div><div class="hb"><i style="width:'+(r[1]/tot*100)+'%;background:'+r[2]+'"></i></div></div>';});
+document.getElementById('pay').innerHTML=h;
+var br=[['Sun Pharma',58400],['Cipla',51250],['Mankind',43900],['Abbott',39120],['Alkem',31780]],bh='';
+br.forEach(function(r){bh+='<div class="li" style="display:block"><div style="display:flex;justify-content:space-between"><span>'+r[0]+'</span><b>₹ '+r[1].toLocaleString('en-IN')+'</b></div><div class="hb"><i style="width:'+(r[1]/60000*100)+'%;background:#1e63d6"></i></div></div>';});
+document.getElementById('brands').innerHTML=bh;
+</script>
+</body></html>

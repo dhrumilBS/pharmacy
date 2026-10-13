@@ -1,0 +1,41 @@
+/* v3 — "product shot" dashboard style (soft grey canvas, white rounded cards, black pill nav,
+   hatched charts, dot-matrix, gradient stat). Pharmacy software, dummy data only. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap");
+:root{
+  --ink:#0B0F19;--ink2:#3F4655;--mute:#8A909C;--line:#ECEEF2;--canvas:#F1F2F4;--card:#FFFFFF;
+  --blue:#2F5BFF;--blue2:#5B7CFF;--blue-lt:#E8EDFF;--pink:#E5418C;--pink-lt:#FCE4EF;--green:#22C55E;--green-lt:#DCFCE7;
+  --amber:#F59E0B;--red:#EF4444;--teal:#14B8A6;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--canvas);width:1440px;height:960px;overflow:hidden;-webkit-font-smoothing:antialiased;font-size:13px}
+svg.i{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* top nav */
+.nav{display:flex;align-items:center;gap:20px;padding:18px 28px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-.01em}
+.logo{width:30px;height:30px;border-radius:9px;background:var(--blue);display:grid;place-items:center;color:#fff}
+.pills{display:flex;gap:4px;background:#fff;border-radius:999px;padding:5px;margin-left:24px;box-shadow:0 1px 2px rgba(11,15,25,.05)}
+.pills span{padding:7px 14px;border-radius:999px;font-weight:500;color:var(--ink2)}
+.pills .on{background:var(--ink);color:#fff}
+.nav .r{margin-left:auto;display:flex;gap:10px;align-items:center}
+.circ{width:38px;height:38px;border-radius:50%;background:#fff;display:grid;place-items:center;color:var(--ink2);box-shadow:0 1px 2px rgba(11,15,25,.05)}
+.av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#FDBA74,#F472B6);display:grid;place-items:center;color:#fff;font-weight:700}
+
+/* title row */
+.title{display:flex;align-items:center;gap:14px;padding:6px 28px 18px}
+.title h1{font-size:44px;font-weight:600;letter-spacing:-.03em;margin:0}
+.chipbtn{display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:999px;padding:8px 14px;font-weight:500;color:var(--ink2);box-shadow:0 1px 2px rgba(11,15,25,.05)}
+.title .r{margin-left:auto;display:flex;gap:10px;align-items:center;color:var(--mute)}
+
+/* cards */
+.card{background:var(--card);border-radius:22px;padding:20px 22px;box-shadow:0 1px 2px rgba(11,15,25,.04),0 12px 30px -18px rgba(11,15,25,.18);position:relative;overflow:hidden}
+.card-h{display:flex;align-items:center;justify-content:space-between}
+.card-h h3{margin:0;font-size:16px;font-weight:600;letter-spacing:-.01em}
+.more{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--mute);font-weight:700;letter-spacing:1px}
+.big{font-size:44px;font-weight:600;letter-spacing:-.035em;line-height:1}
+.mute{color:var(--mute)}
+.mono{font-family:var(--mono)}
+.up{color:#16A34A;font-weight:600}
+.tag{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:3px 9px;font-size:11.5px;font-weight:600}

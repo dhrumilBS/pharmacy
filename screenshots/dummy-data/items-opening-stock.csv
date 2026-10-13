@@ -1,0 +1,25 @@
+Item Name,Generic Name,Item Category,Item Type,Company Name,Pack Size,HSN Code,GST %,Schedule Drug,Batch Number,Expiry Date,MRP,PTR,Sale Rate,Stock Qty,Min Stock,Max Stock,Supplier
+DOLO 650 TAB,Paracetamol 650 mg,Tablet,Medicine,Micro Labs,15,30049099,5,,DL4521,30-11-2026,30.60,22.10,30.60,45,40,150,Shree Krishna Pharma
+DOLO 650 TAB,Paracetamol 650 mg,Tablet,Medicine,Micro Labs,15,30049099,5,,DL4790,30-06-2028,30.60,22.10,30.60,55,40,150,Shree Krishna Pharma
+PAN-D CAP,Pantoprazole 40 mg + Domperidone 30 mg,Capsule,Medicine,Alkem,15,30049099,5,,PD2208,31-03-2027,199.00,143.60,199.00,18,10,40,Shree Krishna Pharma
+SHELCAL 500 TAB,Calcium 500 mg + Vitamin D3,Tablet,Medicine,Torrent,15,30045020,5,,SC7731,01-12-2026,112.40,88.50,112.40,22,20,80,Shree Krishna Pharma
+SHELCAL 500 TAB,Calcium 500 mg + Vitamin D3,Tablet,Medicine,Torrent,15,30045020,5,,SC8012,31-08-2027,112.40,84.90,112.40,60,20,80,Mahavir Distributors
+SHELCAL 500 TAB,Calcium 500 mg + Vitamin D3,Tablet,Medicine,Torrent,15,30045020,5,,SC8120,30-11-2027,115.80,86.70,115.80,40,20,80,Mahavir Distributors
+AZITHRAL 500 TAB,Azithromycin 500 mg,Tablet,Medicine,Alembic,5,30042019,5,,AZ1189,10-11-2026,119.50,94.10,119.50,14,10,40,Shree Krishna Pharma
+MONTAIR LC TAB,Montelukast 10 mg + Levocetirizine 5 mg,Tablet,Medicine,Cipla,10,30049099,5,,ML0388,27-11-2026,218.00,171.60,218.00,9,10,40,Mahavir Distributors
+ELECTRAL POWDER 21.8G,Oral rehydration salts,Powder,Medicine,FDC,1,30049099,5,,EL5530,30-06-2027,22.00,15.90,22.00,90,40,200,Mahavir Distributors
+CALPOL 250 SUSP,Paracetamol 250 mg/5 ml,Suspension,Medicine,GSK,1,30049099,5,,CP2207,06-12-2026,48.00,36.80,48.00,6,20,40,Shree Krishna Pharma
+BECOSULES CAP,Vitamin B-complex + Vitamin C,Capsule,Medicine,Pfizer,20,30045020,5,,BC1145,10-12-2026,52.00,39.40,52.00,11,10,40,Mahavir Distributors
+CETZINE 10 TAB,Cetirizine 10 mg,Tablet,Medicine,Dr. Reddy's,10,30049099,5,,CZ5510,08-12-2026,21.50,16.20,21.50,31,20,60,Shree Krishna Pharma
+PANTOCID 40 TAB,Pantoprazole 40 mg,Tablet,Medicine,Sun Pharma,15,30049099,5,,PC0918,11-12-2026,159.00,121.30,159.00,18,10,40,Mahavir Distributors
+AUGMENTIN 625 DUO TAB,Amoxicillin 500 mg + Clavulanic acid 125 mg,Tablet,Medicine,GSK,10,30042019,5,,AG3301,19-11-2026,248.00,188.20,248.00,6,10,30,Om Sai Medical Agency
+ZINCOVIT TAB,Multivitamin + Zinc,Tablet,Medicine,Apex,15,30045020,5,,ZV7720,05-12-2026,130.00,98.90,130.00,20,10,40,Om Sai Medical Agency
+TELMA 40 TAB,Telmisartan 40 mg,Tablet,Medicine,Glenmark,15,30049099,5,,TL6631,30-11-2027,228.00,166.40,228.00,8,30,80,Shree Krishna Pharma
+GLYCOMET GP 1 TAB,Metformin 500 mg + Glimepiride 1 mg,Tablet,Medicine,USV,15,30049099,5,,GG2045,31-08-2027,145.20,108.70,145.20,12,25,60,Shree Krishna Pharma
+ECOSPRIN 75 TAB,Aspirin 75 mg,Tablet,Medicine,USV,14,30049099,5,,EC9902,31-01-2028,5.65,4.05,5.65,5,20,60,Shree Krishna Pharma
+THYRONORM 50 TAB,Thyroxine 50 mcg,Tablet,Medicine,Abbott,100,30043990,5,,TN3318,31-03-2028,212.00,158.90,212.00,3,15,40,Om Sai Medical Agency
+ROSUVAS 10 TAB,Rosuvastatin 10 mg,Tablet,Medicine,Sun Pharma,15,30049099,5,,RS2219,30-09-2027,178.00,132.80,178.00,6,20,50,Mahavir Distributors
+AMLONG 5 TAB,Amlodipine 5 mg,Tablet,Medicine,Micro Labs,15,30049099,5,,AL4410,31-07-2027,78.00,58.30,78.00,10,20,50,Mahavir Distributors
+JANUMET 50/500 TAB,Sitagliptin 50 mg + Metformin 500 mg,Tablet,Medicine,MSD,15,30049099,5,,JM0912,31-05-2027,395.00,296.40,395.00,4,10,25,Om Sai Medical Agency
+ORS-L POWDER,Oral rehydration salts,Powder,Medicine,Cipla,1,30049099,5,,OR3305,31-12-2027,20.00,14.60,20.00,22,40,120,Mahavir Distributors
+CETAPHIL GENTLE CLEANSER 125ML,Skin cleanser,Liquid,Cosmetic,Galderma,1,34013090,18,,CT0710,31-05-2028,468.00,351.00,468.00,6,4,12,Shree Krishna Pharma

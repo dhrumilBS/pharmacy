@@ -1,0 +1,14 @@
+Type,Name,Phone,Detail,City
+Supplier,Shree Krishna Pharma,+91 90000 11001,GSTIN 24AAAAA0000A1Z5 (sample) · DL 20B/21B-SAMPLE-01 · credit 30 days,Ahmedabad
+Supplier,Mahavir Distributors,+91 90000 11002,GSTIN 24BBBBB0000B1Z5 (sample) · DL 20B/21B-SAMPLE-02 · credit 21 days,Ahmedabad
+Supplier,Om Sai Medical Agency,+91 90000 11003,GSTIN 24CCCCC0000C1Z5 (sample) · DL 20B/21B-SAMPLE-03 · credit 15 days,Gandhinagar
+Doctor,Dr. Kavita Shah,+91 90000 22001,General Physician,Ahmedabad
+Doctor,Dr. Rohan Iyer,+91 90000 22002,Pulmonologist,Ahmedabad
+Patient,Ramesh Patel,+91 90990 12345,UHID HR-104582 · 12 Shanti Nagar Society Navrangpura,Ahmedabad
+Patient,Sunita Agarwal,+91 90000 33002,UHID HR-104611,Ahmedabad
+Patient,Mohammed Shaikh,+91 90000 33003,UHID HR-104640,Ahmedabad
+Patient,Anita Verma,+91 90000 33004,UHID HR-104655,Ahmedabad
+Patient,Kiran Rao,+91 90000 33005,UHID HR-104672 · IPD Ward 3 · TPA,Ahmedabad
+User,Priya Desai,,Counter 1 · Sales role,
+User,Arjun Mehta,,Counter 2 · Sales role,
+User,Neha Joshi,,Counter 1 · Sales + Purchase role,

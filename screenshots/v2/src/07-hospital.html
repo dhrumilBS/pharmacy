@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Pharmacy tokens — v2</title><link rel="stylesheet" href="ui.css">
+<style>
+.work{flex:1;display:flex;flex-direction:column;gap:14px;padding:18px 22px;min-height:0}
+.head{display:flex;align-items:center;gap:10px}
+.head h1{font-size:20px}
+.head .sp{flex:1}
+.ctrs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ctr{padding:14px 16px;display:flex;align-items:center;gap:14px}
+.ctr.sel{border:2px solid var(--blue-600);box-shadow:0 0 0 4px var(--blue-50);padding:13px 15px}
+.tok{width:70px;height:62px;border-radius:12px;background:var(--navy-900);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none}
+.tok small{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#A9BED3;font-weight:600}
+.tok b{font-family:"Plus Jakarta Sans",Inter;font-size:24px;font-weight:800;line-height:1.1}
+.ctr .lbl{font-size:12px;color:var(--muted);font-weight:500;display:flex;align-items:center;gap:8px}
+.ctr .lbl .live{width:7px;height:7px;border-radius:50%;background:var(--teal-600)}
+.ctr .who{font-weight:700;color:var(--navy-950);font-size:14px;margin:3px 0 5px}
+.grid{flex:1;display:grid;grid-template-columns:400px 1fr;gap:18px;min-height:0}
+.wl{display:flex;flex-direction:column;min-height:0}
+.wl-h{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--border)}
+.wl-h h3{font-size:15px}
+.wr{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;padding:13px 16px;border-bottom:1px solid #EEF2F6}
+.wr .n{font-family:"Plus Jakarta Sans",Inter;font-weight:800;font-size:17px;color:var(--navy-800);background:var(--bg);border-radius:9px;text-align:center;padding:7px 0}
+.wr b{color:var(--navy-950);font-weight:600}
+.wr .gn{font-size:11.5px;color:var(--muted);margin-top:2px}
+.wr .w{font-size:12px;color:var(--text-2);text-align:right}
+.wl-f{margin-top:auto;padding:11px 16px;border-top:1px solid var(--border);color:var(--text-2);font-size:12.5px;display:flex;justify-content:space-between}
+.wl-f b{color:var(--navy-950)}
+.rx{display:flex;flex-direction:column;min-height:0}
+.rx-h{display:flex;align-items:center;gap:14px;padding:16px 18px;border-bottom:1px solid var(--border)}
+.av{width:46px;height:46px;border-radius:50%;background:var(--blue-100);color:var(--blue-700);display:grid;place-items:center;font-weight:700;font-size:15px}
+.rx-h .nm{font-size:16px;font-weight:700;color:var(--navy-950);display:flex;align-items:center;gap:8px}
+.rx-h .sub{color:var(--muted);font-size:12.5px;margin-top:2px}
+.rx-h .tk{margin-left:auto;text-align:right}
+.rx-h .tk b{display:block;font-family:"Plus Jakarta Sans",Inter;font-size:22px;font-weight:800;color:var(--navy-950)}
+table{width:100%;border-collapse:collapse}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;text-align:left;padding:9px 18px;border-bottom:1px solid var(--border)}
+td{padding:18px 18px;border-bottom:1px solid #EEF2F6;vertical-align:middle}
+td .nm{font-weight:600;color:var(--navy-950)}
+td .gn{font-size:11.5px;color:var(--muted)}
+.dose{font-family:"Plus Jakarta Sans",Inter;font-weight:700;color:var(--navy-800);background:var(--bg);border-radius:7px;padding:3px 8px;font-size:12.5px}
+.note{margin:14px 18px 0;display:flex;align-items:center;gap:10px;background:var(--teal-50);border:1px solid #99E6DD;border-radius:11px;padding:10px 12px;color:var(--teal-700);font-weight:600;font-size:12.5px}
+.rx-f{margin-top:auto;display:flex;align-items:center;gap:12px;padding:14px 18px;border-top:1px solid var(--border)}
+.rx-f .b-primary{padding:12px 26px;font-size:14.5px}
+.share{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-2)}
+.tg{width:30px;height:17px;border-radius:999px;background:var(--teal-600);position:relative}.tg::after{content:"";position:absolute;right:2px;top:2px;width:13px;height:13px;border-radius:50%;background:#fff}
+.role{font-size:11px;font-weight:500;color:var(--muted);margin-left:4px}
+.sec{padding:12px 16px 6px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+.db{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;padding:9px 16px;font-size:12.5px}
+.db .n2{font-weight:700;color:var(--muted);text-align:center;text-decoration:line-through}
+.db b{color:var(--navy-950);font-variant-numeric:tabular-nums}
+.bs{margin:14px 18px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.bs div{background:var(--bg);border-radius:9px;padding:9px 11px}
+.bs small{display:block;color:var(--muted);font-size:11px}
+.bs span{font-weight:600;color:var(--navy-900);font-size:12.5px}
+</style></head><body>
+<div class="app">
+  <nav class="rail">
+    <div class="mark" style="background:none"><svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true" style="display:block"><defs><linearGradient id="lmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#0F9F9A"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#lmg)"/><rect x="16.5" y="8" width="7" height="24" rx="3.5" fill="#fff"/><rect x="8" y="16.5" width="24" height="7" rx="3.5" fill="#fff"/><path d="M23.5 16.5h5a3.5 3.5 0 0 1 0 7h-5z" fill="#99F6E4"/></svg></div>
+    <a><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Home</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Sale</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Purchase</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg>Stock</a>
+    <a class="on"><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg>Patients</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/></svg>Reports</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M7 4h11M7 8.5h11M7 4c6 0 6 9 0 9h-1l8 7"/></svg>Accounts</a>
+    <span class="sp"></span>
+    <a><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>Settings</a>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="store"><span class="ico" style="border:0;background:var(--blue-50);color:var(--blue-700)"><svg class="i" viewBox="0 0 24 24"><path d="M4 10v10h16V10M3 10l2-6h14l2 6zM9 20v-6h6v6"/></svg></span><div>Shree Sai Medical Store<small>Main branch · Ahmedabad</small></div></div>
+      <div class="cmd"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search items, patients, bills…<span class="kbd" style="margin-left:auto">Ctrl K</span></div>
+      <div class="tb-right">
+        <span class="chip c-grey">Tue, 13 Oct · 7:42 pm</span>
+        <span class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></span>
+        <span class="me">PD</span>
+      </div>
+    </header>
+
+    <div class="work">
+      <div class="head">
+        <h1>Pharmacy tokens</h1><span class="chip c-blue">OPD + IPD</span><span class="chip c-teal">● Token board live on display</span>
+        <span class="sp"></span>
+        <span class="btn b-ghost">Call next</span>
+        <span class="btn b-ghost">+ Walk-in token</span>
+      </div>
+
+      <div class="ctrs">
+        <div class="card ctr sel"><div class="tok"><small>Token</small><b>041</b></div><div><div class="lbl"><span class="live"></span>Counter 1 · now serving</div><div class="who">Priya Desai <span class="role">Pharmacist</span></div><span class="chip c-blue">EMR prescription · OPD</span></div></div>
+        <div class="card ctr"><div class="tok"><small>Token</small><b>042</b></div><div><div class="lbl"><span class="live"></span>Counter 2 · now serving</div><div class="who">Arjun Mehta <span class="role">Pharmacist</span></div><span class="chip c-warn">IPD issue · Ward 3 · TPA</span></div></div>
+        <div class="card ctr"><div class="tok"><small>Token</small><b>043</b></div><div><div class="lbl"><span class="live"></span>Counter 3 · now serving</div><div class="who">Neha Joshi <span class="role">Pharmacist</span></div><span class="chip c-blue">EMR prescription · OPD</span></div></div>
+      </div>
+
+      <div class="grid">
+        <div class="card wl">
+          <div class="wl-h"><h3>Waiting</h3><span class="chip c-grey">5 tokens</span><span class="muted" style="margin-left:auto">Avg wait 6 min</span></div>
+          <div class="wr"><span class="n">044</span><div><b>Sunita Agarwal</b><div class="gn">EMR prescription · OPD</div></div><span class="w">2 min</span></div>
+          <div class="wr"><span class="n">045</span><div><b>Mohammed Shaikh</b><div class="gn">EMR prescription · OPD</div></div><span class="w">4 min</span></div>
+          <div class="wr"><span class="n">046</span><div><b>Anita Verma</b><div class="gn">EMR prescription · OPD</div></div><span class="w">6 min</span></div>
+          <div class="wr"><span class="n">047</span><div><b>Walk-in</b><div class="gn">Counter sale · no prescription</div></div><span class="w">8 min</span></div>
+          <div class="wr"><span class="n">048</span><div><b>Kiran Rao</b><div class="gn">Discharge medicines · IPD</div></div><span class="chip c-warn">Discharge</span></div>
+          <div class="sec">Recently billed</div>
+          <div class="db"><span class="n2">040</span><span class="muted">INV-26-04811 · Counter 2</span><b>₹312.00</b></div>
+          <div class="db"><span class="n2">039</span><span class="muted">INV-26-04810 · Counter 1</span><b>₹1,086.40</b></div>
+          <div class="db"><span class="n2">038</span><span class="muted">INV-26-04809 · Counter 3</span><b>₹248.00</b></div>
+          <div class="wl-f"><span>Served today <b>40</b></span><span>3 counters open</span></div>
+        </div>
+
+        <div class="card rx">
+          <div class="rx-h">
+            <span class="av">RP</span>
+            <div><div class="nm">Ramesh Patel <span class="chip c-teal">✓ ABHA linked</span></div><div class="sub">UHID HR-104582 · Dr. Kavita Shah · OPD · prescribed 7:31 pm</div></div>
+            <div class="tk"><span class="muted" style="font-size:12px">Token · Counter 1</span><b>041</b></div>
+          </div>
+          <table>
+            <thead><tr><th>Medicine (from EMR)</th><th>Dose</th><th>Duration</th><th class="num">Qty</th><th>Batch</th></tr></thead>
+            <tbody>
+              <tr><td><div class="nm">Azithral 500 Tab</div><div class="gn">Azithromycin 500 mg</div></td><td><span class="dose">1-0-0</span></td><td>3 days</td><td class="num">3 tab</td><td>AZ1189 <span class="chip c-warn">Nov 26</span></td></tr>
+              <tr><td><div class="nm">Dolo 650 Tab</div><div class="gn">Paracetamol 650 mg</div></td><td><span class="dose">SOS</span></td><td class="muted">As needed</td><td class="num">1 strip</td><td>DL4521 <span class="chip c-warn">Nov 26</span></td></tr>
+              <tr><td><div class="nm">Montair LC Tab</div><div class="gn">Montelukast + Levocetirizine</div></td><td><span class="dose">0-0-1</span></td><td>10 days</td><td class="num">10 tab</td><td>ML0388 <span class="chip c-warn">Nov 26</span></td></tr>
+              <tr><td><div class="nm">Shelcal 500 Tab</div><div class="gn">Calcium 500 mg + Vitamin D3</div></td><td><span class="dose">1-0-0</span></td><td>15 days</td><td class="num">15 tab</td><td>SC7731 <span class="chip c-grey">Dec 26</span></td></tr>
+            </tbody>
+          </table>
+          <div class="note"><svg class="i" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="m5 12 5 5 9-10"/></svg>Batches auto-picked by nearest expiry · stock available for all 4 items</div>
+          <div class="bs">
+            <div><small>Items</small><span>4 medicines</span></div>
+            <div><small>Bill amount (MRP)</small><span>₹480.50</span></div>
+            <div><small>Payment</small><span>UPI · paid at counter</span></div>
+            <div><small>Saved to patient record</small><span>UHID HR-104582</span></div>
+          </div>
+          <div class="rx-f">
+            <span class="share"><span class="tg"></span>Send bill to patient on WhatsApp</span>
+            <span class="btn b-ghost" style="margin-left:auto">Skip token</span>
+            <span class="btn b-primary">Bill this token</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

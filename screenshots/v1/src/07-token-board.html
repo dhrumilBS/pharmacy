@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Token Board</title><link rel="stylesheet" href="app.css">
+<style>
+body{--w:1600px;--h:900px;background:var(--bg)}
+.wrap{display:grid;grid-template-columns:1fr 440px;gap:14px;padding:14px 16px}
+.counters{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.ctr{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.ctr-h{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--navy);color:#fff;font-weight:600}
+.now{padding:14px;text-align:center;border-bottom:1px solid var(--line)}
+.now small{color:var(--mute);font-weight:600;letter-spacing:.05em;font-size:11px}
+.now .n{font-size:46px;font-weight:700;color:var(--navy);line-height:1.1}
+.q .li{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px dashed var(--line)}
+.q .li:last-child{border-bottom:0}
+.q .s{font-size:11.5px;color:var(--mute)}
+.stats{display:flex;gap:12px}
+.stats div{flex:1;background:#fff;border:1px solid var(--line);border-radius:6px;padding:10px 14px}
+.stats small{color:#555;font-weight:600;font-size:11.5px}.stats b{display:block;font-size:20px}
+.rx .row{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;border-bottom:1px solid var(--line)}
+.rx .s{font-size:11.5px;color:var(--mute)}
+</style></head><body>
+<script src="nav.js" data-on="Initialization"></script>
+<div class="wrap">
+  <div>
+    <div class="bar"><span class="title">Token Board · Pharmacy</span><span style="margin-left:auto" class="btn b-blue">＋ Generate Token</span><span class="btn b-out">⛶ Open display board</span></div>
+    <div class="stats" style="margin-top:12px">
+      <div><small>WAITING</small><b>7</b></div>
+      <div><small>BILLING NOW</small><b>3</b></div>
+      <div><small>DONE TODAY</small><b>118</b></div>
+      <div><small>AVG WAIT</small><b>6 min</b></div>
+    </div>
+    <div class="counters">
+      <div class="ctr"><div class="ctr-h"><span>Counter 1</span><span style="font-weight:400;font-size:12px">Priya Desai</span></div>
+        <div class="now"><small>NOW SERVING</small><div class="n">041</div><span class="tag t-blue">EMR prescription · OPD</span></div>
+        <div class="q"><div class="li"><div><div class="b">044 · Sunita Agarwal</div><div class="s">EMR · Dr. Kavita Shah</div></div><span class="tag t-amber">Waiting</span></div>
+          <div class="li"><div><div class="b">047 · Walk-in</div><div class="s">Manual prescription</div></div><span class="tag t-amber">Waiting</span></div></div></div>
+      <div class="ctr"><div class="ctr-h"><span>Counter 2</span><span style="font-weight:400;font-size:12px">Arjun Mehta</span></div>
+        <div class="now"><small>NOW SERVING</small><div class="n">042</div><span class="tag t-amber">IPD issue · Ward 3 · TPA</span></div>
+        <div class="q"><div class="li"><div><div class="b">045 · Mohammed Shaikh</div><div class="s">EMR · Dr. Rohan Iyer</div></div><span class="tag t-amber">Waiting</span></div>
+          <div class="li"><div><div class="b">048 · Kiran Rao</div><div class="s">Discharge medicines · IPD</div></div><span class="tag t-amber">Waiting</span></div></div></div>
+      <div class="ctr"><div class="ctr-h"><span>Counter 3</span><span style="font-weight:400;font-size:12px">Neha Joshi</span></div>
+        <div class="now"><small>NOW SERVING</small><div class="n">043</div><span class="tag t-blue">EMR prescription · OPD</span></div>
+        <div class="q"><div class="li"><div><div class="b">046 · Anita Verma</div><div class="s">EMR · Dr. Kavita Shah</div></div><span class="tag t-amber">Waiting</span></div>
+          <div class="li"><div><div class="b">040 · Rajesh Kumar</div><div class="s">Paid by UPI · ₹ 1,284</div></div><span class="tag t-green">✓ Done</span></div></div></div>
+    </div>
+  </div>
+
+  <div class="card rx">
+    <div class="card-h"><span>Token 041 · Ramesh Patel</span><span class="tag t-blue">EMR Prescription</span></div>
+    <div style="padding:10px 14px;border-bottom:1px solid var(--line);font-size:12px;color:#555">UHID HR-104582 · OPD · Dr. Kavita Shah · 13-10-2026 10:42</div>
+    <div class="row"><div><div class="b">AZITHRAL 500 TAB</div><div class="s">1-0-0 × 3 days · Batch AZ1189 (exp 11/26)</div></div><b>3 tab</b></div>
+    <div class="row"><div><div class="b">DOLO 650 TAB</div><div class="s">SOS · Batch DL4521 (exp 11/26)</div></div><b>10 tab</b></div>
+    <div class="row"><div><div class="b">MONTAIR LC TAB</div><div class="s">0-0-1 × 10 days · Batch ML0388 (exp 11/26)</div></div><b>10 tab</b></div>
+    <div class="row"><div><div class="b">SHELCAL 500 TAB</div><div class="s">1-0-0 × 15 days · Batch SC7731 (exp 12/26)</div></div><b>15 tab</b></div>
+    <div class="row"><div class="mute">All medicines in stock · batches auto-picked by nearest expiry</div></div>
+    <div style="padding:12px 14px;display:grid;gap:8px">
+      <span class="btn b-green" style="justify-content:center">✓ Bill this token</span>
+      <span class="btn b-ghost" style="justify-content:center">↻ Fetch this patient's EMR order again</span>
+    </div>
+  </div>
+</div>
+</body></html>

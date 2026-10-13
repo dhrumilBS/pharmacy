@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Purchase import — v3</title><link rel="stylesheet" href="style.css">
+<style>
+.r1{display:grid;grid-template-columns:1fr 360px;gap:18px;padding:0 28px}
+.fields{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:12px;margin-top:14px}
+.fields div{background:#F7F8FA;border-radius:14px;padding:11px 14px}
+.fields small{display:block;color:var(--mute);font-weight:500;font-size:11.5px}
+.fields b{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.seg{display:flex;gap:4px;background:#F4F5F7;border-radius:999px;padding:4px}
+.seg span{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:999px;font-weight:500;color:var(--ink2);font-size:12.5px}
+.seg .on{background:var(--ink);color:#fff;font-weight:600}
+.prog{display:flex;align-items:center;gap:16px;margin-top:18px}
+.ticks{display:flex;gap:3px;flex:1}
+.ticks i{flex:1;height:22px;border-radius:4px;background:var(--green)}
+.due{background:linear-gradient(150deg,#1E3A8A,#2F5BFF 70%,#60A5FA);color:#fff;display:flex;flex-direction:column}
+.due .tag{background:rgba(255,255,255,.18);color:#fff}
+.due .ln{display:flex;justify-content:space-between;padding:5px 0;color:#C7D2FE;font-weight:500}
+.due .ln b{color:#fff;font-weight:600}
+.map{margin:18px 28px 0;padding:16px 22px;display:flex;align-items:center;gap:14px}
+.chips{display:flex;flex-wrap:nowrap;gap:7px}
+.mc{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:999px;padding:4px 9px 4px 5px;background:#FAFBFC;font-weight:600;font-size:12.5px;white-space:nowrap}
+.mc .s{font-family:var(--mono);font-size:11px;font-weight:600;background:#fff;border:1px solid var(--line);border-radius:999px;padding:2px 8px;color:var(--ink2)}
+.mc .ok{color:var(--green);font-weight:700}
+.r3{display:grid;grid-template-columns:1fr 340px;gap:18px;padding:18px 28px 0}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+th{text-align:left;font-weight:500;color:var(--mute);font-size:12px;padding:9px 8px;border-bottom:1px solid var(--line)}
+td{padding:14px 8px;border-bottom:1px solid var(--line);color:var(--ink2);font-weight:500}
+.num{text-align:right}
+.it{color:var(--ink);font-weight:600}
+.fq{background:var(--green-lt);color:#15803D;border-radius:7px;padding:2px 7px;font-weight:600;font-size:12px}
+.mg{display:flex;align-items:center;gap:8px;justify-content:flex-end}
+.mg .b{width:60px;height:8px;border-radius:5px;background:#F1F2F4;overflow:hidden}.mg .b i{display:block;height:100%;background:var(--blue);border-radius:5px}
+.tot .ln{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--line);color:var(--ink2);font-weight:500}
+.tot .ln b{color:var(--ink);font-weight:600}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:12px;font-weight:700}
+</style></head><body>
+<header class="nav">
+  <div class="brand"><svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true" style="display:block"><defs><linearGradient id="lmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#0F9F9A"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#lmg)"/><rect x="16.5" y="8" width="7" height="24" rx="3.5" fill="#fff"/><rect x="8" y="16.5" width="24" height="7" rx="3.5" fill="#fff"/><path d="M23.5 16.5h5a3.5 3.5 0 0 1 0 7h-5z" fill="#99F6E4"/></svg></div>
+  <div class="pills"><span>Home</span><span>Sales</span><span class="on">Purchase</span><span>Stock</span><span>Patients</span><span>Accounts</span><span>Reports</span></div>
+  <div class="r"><span class="circ"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span><span class="circ"><svg class="i" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></span><span class="av">PD</span></div>
+</header>
+<div class="title">
+  <h1>Purchase entry</h1><span class="tag" style="background:var(--green-lt);color:#15803D;font-size:12.5px;padding:6px 12px">✓ Import complete</span>
+  <div class="r"><span class="chipbtn">Main branch ▾</span><span class="chipbtn">▦ Tue, 13 Oct 2026</span></div>
+</div>
+
+<div class="r1">
+  <div class="card" style="height:196px">
+    <div class="card-h"><h3>Distributor bill</h3><div class="seg"><span class="on"><svg class="i" viewBox="0 0 24 24" style="width:15px;height:15px"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></svg>CSV file</span><span><svg class="i" viewBox="0 0 24 24" style="width:15px;height:15px"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M7 12h10"/></svg>OCR scan</span></div></div>
+    <div class="fields">
+      <div><small>Supplier</small><b>Shree Krishna Pharma</b></div>
+      <div><small>Bill no.</small><b class="mono" style="font-size:14px">SKP/2026/4471</b></div>
+      <div><small>Bill date</small><b>13-10-2026</b></div>
+      <div><small>Terms</small><b>Credit · 30 days</b></div>
+    </div>
+    <div class="prog">
+      <span style="font-weight:600;white-space:nowrap"><span style="font-size:22px;letter-spacing:-.02em">38 / 38</span> <span class="mute" style="font-weight:500">rows imported</span></span>
+      <div class="ticks" id="ticks"></div>
+      <span class="mono mute" style="font-size:12px">skp_4471.csv</span>
+    </div>
+  </div>
+  <div class="card due" style="height:196px">
+    <span class="tag" style="align-self:flex-start">Supplier ledger</span>
+    <div style="margin-top:14px;color:#C7D2FE;font-weight:500">Payable on this bill</div>
+    <div style="font-size:36px;font-weight:700;letter-spacing:-.035em;line-height:1.1;margin-top:2px">₹55,512.50</div>
+    <div style="margin-top:auto">
+      <div class="ln"><span>Due date</span><b>12-11-2026</b></div>
+      <div class="ln"><span>Rate contract</span><b>✓ Rates match</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="card map">
+  <h3 style="margin:0;font-size:15px;font-weight:600;white-space:nowrap">Column mapping <span class="mute" style="font-weight:500;font-size:12.5px;display:block;margin-top:2px">Saved for this supplier</span></h3>
+  <div class="chips">
+    <span class="mc"><span class="s">Batch</span>→ Batch No <span class="ok">✓</span></span>
+    <span class="mc"><span class="s">Expiry</span>→ Expiry <span class="ok">✓</span></span>
+    <span class="mc"><span class="s">MRP</span>→ MRP <span class="ok">✓</span></span>
+    <span class="mc"><span class="s">PTR</span>→ PTR <span class="ok">✓</span></span>
+    <span class="mc"><span class="s">Free Qty</span>→ Free Qty <span class="ok">✓</span></span>
+    <span class="mc"><span class="s">Scheme %</span>→ Scheme % <span class="ok">✓</span></span>
+    <span class="mc"><span class="s">HSN</span>→ HSN <span class="ok">✓</span></span>
+    <span class="mc"><span class="s">GST %</span>→ GST % <span class="ok">✓</span></span>
+  </div>
+</div>
+
+<div class="r3">
+  <div class="card" style="height:480px">
+    <div class="card-h"><h3>Items <span class="mute" style="font-weight:500">· 38 rows</span></h3><span class="more">···</span></div>
+    <table>
+      <thead><tr><th>Item</th><th>Batch</th><th>Expiry</th><th class="num">Qty</th><th class="num">Free</th><th class="num">MRP</th><th class="num">PTR</th><th class="num">Margin</th></tr></thead>
+      <tbody>
+        <tr><td class="it">DOLO 650 TAB</td><td class="mono">DL4790</td><td class="mono">06/2028</td><td class="num">50</td><td class="num"><span class="fq">+5</span></td><td class="num">₹30.60</td><td class="num">₹22.10</td><td><div class="mg"><span class="b"><i style="width:63%"></i></span><b style="color:var(--ink)">31.3%</b></div></td></tr>
+        <tr><td class="it">PAN-D CAP</td><td class="mono">PD2390</td><td class="mono">09/2027</td><td class="num">20</td><td class="num"><span class="fq">+2</span></td><td class="num">₹199.00</td><td class="num">₹143.60</td><td><div class="mg"><span class="b"><i style="width:65%"></i></span><b style="color:var(--ink)">32.6%</b></div></td></tr>
+        <tr><td class="it">PANTOCID 40 TAB</td><td class="mono">PC1120</td><td class="mono">08/2028</td><td class="num">20</td><td class="num"><span class="fq">+2</span></td><td class="num">₹159.00</td><td class="num">₹121.30</td><td><div class="mg"><span class="b"><i style="width:47%"></i></span><b style="color:var(--ink)">23.7%</b></div></td></tr>
+        <tr><td class="it">SHELCAL 500 TAB</td><td class="mono">SC8240</td><td class="mono">02/2028</td><td class="num">30</td><td class="num mute">—</td><td class="num">₹112.40</td><td class="num">₹84.90</td><td><div class="mg"><span class="b"><i style="width:49%"></i></span><b style="color:var(--ink)">24.5%</b></div></td></tr>
+        <tr><td class="it">BECOSULES CAP</td><td class="mono">BC5512</td><td class="mono">03/2028</td><td class="num">30</td><td class="num"><span class="fq">+3</span></td><td class="num">₹54.00</td><td class="num">₹39.10</td><td><div class="mg"><span class="b"><i style="width:55%"></i></span><b style="color:var(--ink)">27.6%</b></div></td></tr>
+        <tr><td class="it">ZINCOVIT TAB</td><td class="mono">ZV2081</td><td class="mono">07/2027</td><td class="num">20</td><td class="num mute">—</td><td class="num">₹110.00</td><td class="num">₹82.50</td><td><div class="mg"><span class="b"><i style="width:50%"></i></span><b style="color:var(--ink)">25.0%</b></div></td></tr>
+        <tr><td colspan="8" style="border-bottom:none;color:var(--blue);font-weight:600">+ 32 more rows</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card tot" style="height:480px;display:flex;flex-direction:column">
+    <div class="card-h"><h3>Bill totals</h3><span class="more">···</span></div>
+    <div style="display:flex;align-items:flex-end;gap:10px;margin-top:14px"><div class="big">28.4%</div><span class="mute" style="font-weight:500;margin-bottom:4px">avg margin</span></div>
+    <svg id="bands" width="296" height="104" style="display:block;margin-top:14px"></svg>
+    <div style="margin-top:6px">
+      <div class="ln"><span>Taxable value</span><b>₹52,618.40</b></div>
+      <div class="ln"><span>GST</span><b>₹2,894.10</b></div>
+      <div class="ln" style="border-bottom:none"><span style="color:var(--ink);font-weight:600">Net amount</span><b style="font-size:17px">₹55,512.50</b></div>
+    </div>
+    <div style="margin-top:auto;display:grid;gap:8px">
+      <div class="btn" style="background:var(--blue);color:#fff">Save purchase</div>
+      <div class="btn" style="border:1px solid var(--line);color:var(--ink)"><svg class="i" viewBox="0 0 24 24"><path d="M4 6v12M8 6v12M11 6v12M15 6v12M18 6v12M20 6v12"/></svg>Print barcode labels</div>
+    </div>
+  </div>
+</div>
+<script>
+function el(t,a,txt){var e=document.createElementNS('http://www.w3.org/2000/svg',t);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e}
+(function(){var s=document.getElementById('bands'),b=[['<20%',3],['20–25',9],['25–30',12],['30–35',11],['>35%',3]],sel=2,bw=52,g=9,base=80,max=12;
+  var d=el('defs'),p=el('pattern',{id:'hb',width:6,height:6,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'});p.appendChild(el('rect',{width:6,height:6,fill:'#F3F6FF'}));p.appendChild(el('line',{x1:0,y1:0,x2:0,y2:6,stroke:'#9DB2FF','stroke-width':2}));d.appendChild(p);s.appendChild(d);
+  b.forEach(function(c,i){var h=c[1]/max*62,x=i*(bw+g)+2;s.appendChild(el('rect',{x:x,y:base-h,width:bw,height:h,rx:6,fill:i==sel?'#2F5BFF':'url(#hb)',stroke:i==sel?'none':'#9DB2FF','stroke-width':1}));
+    s.appendChild(el('text',{x:x+bw/2,y:base-h-6,'text-anchor':'middle','font-size':11,'font-weight':600,fill:i==sel?'#2F5BFF':'#3F4655'},c[1]));
+    s.appendChild(el('text',{x:x+bw/2,y:base+18,'text-anchor':'middle','font-size':10.5,fill:i==sel?'#0B0F19':'#8A909C','font-weight':i==sel?700:500},c[0]));});})();
+var t=document.getElementById('ticks');for(var i=0;i<38;i++){var e=document.createElement('i');t.appendChild(e);}
+</script>
+</body></html>

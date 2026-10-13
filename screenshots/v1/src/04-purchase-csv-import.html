@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Purchase – CSV import</title><link rel="stylesheet" href="app.css">
+<style>
+body{--w:1600px;--h:780px;display:flex;flex-direction:column;height:780px}
+.hdr{display:grid;grid-template-columns:260px 170px 170px 170px 1fr;gap:12px;padding:10px 16px;border-bottom:1px solid var(--line);align-items:end}
+.hdr label{display:block;font-size:12px;font-weight:600;margin-bottom:4px}
+.hdr .acts{display:flex;justify-content:flex-end;gap:8px}
+.body{flex:1;overflow:hidden;padding:10px 16px;position:relative}
+.toast{position:absolute;right:16px;bottom:16px;background:#fff;border:1px solid #b7e2c2;border-left:5px solid var(--green2);border-radius:6px;padding:10px 14px;box-shadow:0 10px 28px -12px rgba(0,0,0,.3);width:340px;z-index:2}
+.toast b{display:block;color:#1d7a33}
+.toast span{color:#555;font-size:12px}
+.note{display:flex;gap:16px;align-items:center;margin-bottom:8px;font-size:12px;color:#555}
+.foot{display:grid;grid-template-columns:repeat(6,1fr) 220px 220px;border-top:1px solid var(--line)}
+.foot div{padding:9px 10px;text-align:center;border-right:1px solid var(--line);font-size:11px;font-weight:600;color:#444}
+.foot div b{display:block;font-size:15px;color:#111;margin-top:2px}
+.foot .bb{display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff}
+</style></head><body>
+<script src="nav.js" data-on="Purchase"></script>
+<div class="hdr">
+  <div><label>Supplier *</label><div class="sel">Shree Krishna Pharma</div></div>
+  <div><label>Bill No *</label><div class="inp">SKP/2026/4471</div></div>
+  <div><label>Bill Date *</label><div class="inp">13-10-2026</div></div>
+  <div><label>Payment Method</label><div class="sel">Credit · 30 days</div></div>
+  <div class="acts"><span class="btn b-out">⇪ Import CSV</span><span class="btn b-out">▣ OCR Import</span><span class="btn b-navy">▢ Drafts</span><span class="btn b-red">✕ Clear Screen</span></div>
+</div>
+<div class="body">
+  <div class="toast"><b>✓ CSV File Data Added Successfully</b><span>38 of 38 rows imported · batch, expiry, MRP, PTR and GST filled</span></div>
+  <div class="note"><span class="tag t-blue">Imported from SKP_bill_4471.csv</span><span>Field mapping saved for this supplier</span></div>
+  <table class="grid">
+    <thead><tr><th>Sr</th><th>Item Name</th><th>HSN</th><th>Batch No</th><th>Expiry</th><th>Pack</th><th class="r">Qty</th><th class="r">Free</th><th class="r">MRP</th><th class="r">PTR</th><th class="r">Disc %</th><th class="r">Scheme %</th><th class="c">GST %</th><th class="r">Margin %</th><th class="r">Amount</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td class="b">DOLO 650 TAB</td><td>30049099</td><td>DL4790</td><td>06/2028</td><td>1×15</td><td class="r">50</td><td class="r">5</td><td class="r">30.60</td><td class="r">22.10</td><td class="r">0</td><td class="r">9.1</td><td class="c">5</td><td class="r">31.3</td><td class="r">1,105.00</td></tr>
+      <tr><td>2</td><td class="b">PAN-D CAP</td><td>30049099</td><td>PD2390</td><td>09/2027</td><td>1×15</td><td class="r">20</td><td class="r">2</td><td class="r">199.00</td><td class="r">143.60</td><td class="r">2</td><td class="r">9.1</td><td class="c">5</td><td class="r">32.6</td><td class="r">2,814.56</td></tr>
+      <tr><td>3</td><td class="b">SHELCAL 500 TAB</td><td>30045020</td><td>SC8240</td><td>02/2028</td><td>1×15</td><td class="r">30</td><td class="r">0</td><td class="r">112.40</td><td class="r">84.90</td><td class="r">0</td><td class="r">0</td><td class="c">5</td><td class="r">24.5</td><td class="r">2,547.00</td></tr>
+      <tr><td>4</td><td class="b">AZITHRAL 500 TAB</td><td>30042019</td><td>AZ1402</td><td>04/2028</td><td>1×5</td><td class="r">25</td><td class="r">0</td><td class="r">119.50</td><td class="r">90.20</td><td class="r">0</td><td class="r">0</td><td class="c">5</td><td class="r">24.5</td><td class="r">2,255.00</td></tr>
+      <tr><td>5</td><td class="b">TELMA 40 TAB</td><td>30049099</td><td>TL6631</td><td>11/2027</td><td>1×15</td><td class="r">30</td><td class="r">3</td><td class="r">228.00</td><td class="r">166.40</td><td class="r">0</td><td class="r">9.1</td><td class="c">5</td><td class="r">33.5</td><td class="r">4,992.00</td></tr>
+      <tr><td>6</td><td class="b">GLYCOMET GP 1 TAB</td><td>30049099</td><td>GG2045</td><td>08/2027</td><td>1×15</td><td class="r">25</td><td class="r">0</td><td class="r">145.20</td><td class="r">108.70</td><td class="r">0</td><td class="r">0</td><td class="c">5</td><td class="r">25.1</td><td class="r">2,717.50</td></tr>
+      <tr><td>7</td><td class="b">ECOSPRIN 75 TAB</td><td>30049099</td><td>EC9902</td><td>01/2028</td><td>1×14</td><td class="r">40</td><td class="r">4</td><td class="r">5.65</td><td class="r">4.05</td><td class="r">0</td><td class="r">9.1</td><td class="c">5</td><td class="r">34.7</td><td class="r">162.00</td></tr>
+      <tr><td>8</td><td class="b">THYRONORM 50 TAB</td><td>30043990</td><td>TN3318</td><td>03/2028</td><td>100 tab</td><td class="r">15</td><td class="r">0</td><td class="r">212.00</td><td class="r">158.90</td><td class="r">0</td><td class="r">0</td><td class="c">5</td><td class="r">25.0</td><td class="r">2,383.50</td></tr>
+      <tr><td>9</td><td class="b">ELECTRAL POWDER 21.8G</td><td>30049099</td><td>EL5871</td><td>12/2027</td><td>1 sachet</td><td class="r">100</td><td class="r">10</td><td class="r">22.00</td><td class="r">15.90</td><td class="r">0</td><td class="r">9.1</td><td class="c">5</td><td class="r">33.6</td><td class="r">1,590.00</td></tr>
+      <tr><td>10</td><td class="b">CETAPHIL GENTLE CLEANSER 125ML</td><td>34013090</td><td>CT0710</td><td>05/2028</td><td>125 ml</td><td class="r">6</td><td class="r">0</td><td class="r">468.00</td><td class="r">351.00</td><td class="r">0</td><td class="r">0</td><td class="c">18</td><td class="r">25.0</td><td class="r">2,106.00</td></tr>
+      <tr><td colspan="15" class="mute c">… 28 more rows</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="foot">
+  <div>TOTAL ITEMS<b>38</b></div><div>TOTAL QTY<b>812 + 61 free</b></div><div>TAXABLE<b>₹ 52,618.40</b></div><div>TOTAL GST<b>₹ 2,894.10</b></div><div>AVG MARGIN<b class="green">28.4%</b></div><div>NET AMOUNT<b class="navy">₹ 55,512.50</b></div>
+  <div class="bb" style="color:var(--navy);border:1.5px solid var(--navy)">▢ SAVE DRAFT</div>
+  <div class="bb" style="background:var(--green)">✓ SAVE PURCHASE</div>
+</div>
+</body></html>

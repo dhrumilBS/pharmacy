@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Sale – billing</title><link rel="stylesheet" href="app.css">
+<style>
+body{--w:1600px;--h:780px;display:flex;flex-direction:column;height:780px}
+.tool{display:flex;align-items:center;gap:10px;padding:8px 10px;border-bottom:1px solid var(--line)}
+.tool .sp{flex:1}
+.sub{display:flex;align-items:center;gap:12px;padding:6px 8px}
+.main{flex:1;display:grid;grid-template-columns:1fr 300px;min-height:0}
+.left{border-right:1px solid var(--line);position:relative;overflow:hidden}
+table.bill{width:100%;border-collapse:collapse;font-size:12.5px}
+table.bill th{background:#eef1f5;font-weight:600;text-align:left;padding:7px 6px;border:1px solid var(--line);white-space:nowrap}
+table.bill td{padding:6px 6px;border:1px solid var(--line);white-space:nowrap}
+table.bill .entry td{background:#f7f9fc}
+.box{border:1px solid var(--line2);border-radius:3px;padding:3px 6px;background:#fff;display:block}
+.box.focus{border-color:var(--blue);box-shadow:0 0 0 2px #cfe0fb}
+.meta{display:flex;gap:18px;padding:5px 8px;font-size:11.5px;color:#555;border-bottom:1px solid var(--line);background:#fafbfd}
+.meta b{color:var(--navy);font-weight:600}
+.act{display:flex;gap:4px}.act span{width:24px;height:22px;border-radius:3px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:12px}
+.pop{position:absolute;left:388px;top:122px;width:560px;background:#fff;border:1px solid var(--line2);border-radius:6px;box-shadow:0 14px 34px -10px rgba(13,59,142,.35);z-index:3;font-size:12.5px}
+.pop-h{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid var(--line);font-weight:600;color:var(--navy)}
+.pop table{width:100%;border-collapse:collapse}
+.pop th{font-size:11.5px;color:#555;font-weight:600;text-align:left;padding:6px 12px;background:#f6f8fb}
+.pop td{padding:8px 12px;border-top:1px solid var(--line)}
+.pop tr.pick td{background:#e9f7ee}.pop tr.pick td:first-child{box-shadow:inset 3px 0 0 var(--green2)}
+.side{padding:12px;overflow:hidden}
+.side .lbl{font-weight:600;font-size:12px;margin:10px 0 4px;color:#222}
+.side .inp{width:100%;min-width:0}
+.radio{display:flex;align-items:center;gap:6px}.radio i{width:14px;height:14px;border-radius:50%;border:2px solid var(--blue);display:inline-block}.radio i.on{box-shadow:inset 0 0 0 3px #fff;background:var(--blue)}
+.foot1{display:grid;grid-template-columns:180px 180px 1fr 1fr 360px 1fr;gap:10px;padding:8px 10px;border-top:1px solid var(--line);font-size:12px;color:#666}
+.foot1 .inp{margin-top:3px;color:var(--ink);min-width:0}
+.foot2{display:grid;grid-template-columns:repeat(6,1fr) 200px 200px 200px;border-top:1px solid var(--line)}
+.foot2 div{padding:8px 10px;text-align:center;border-right:1px solid var(--line);font-size:11px;font-weight:600;color:#444}
+.foot2 div b{display:block;font-size:15px;color:#111;margin-top:2px}
+.foot2 .bb{display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:600;color:#fff;border:0}
+</style></head><body>
+<script src="nav.js" data-on="Sale"></script>
+<div class="tool">
+  <span class="field">System Discount : <span class="toggle"><span>OFF</span><span class="on">ON</span></span></span>
+  <span class="sp"></span>
+  <span class="field">Sales on: <span class="sel">MRP</span></span><span>-</span><span class="inp" style="min-width:80px">0.00</span>
+  <span class="sel" style="min-width:140px">SALE</span>
+  <span class="btn b-green">☰ Patient List</span><span class="btn b-blue">▥ Sales Today</span><span class="btn b-blue">◉ Show List</span><span class="btn b-navy">▢ Drafts</span><span class="btn b-red">✕ Clear Screen</span>
+</div>
+<div class="main">
+  <div class="left">
+    <div class="sub">
+      <span class="field">Search By : <span class="sel">Custom</span></span>
+      <span class="field">Tax Type : <span class="sel" style="min-width:210px">RD (within state - SGST/CGST)</span></span>
+      <span class="btn b-out" style="padding:5px 12px">☰ Groups</span><span class="btn b-out" style="padding:5px 12px">＋ Add Group</span>
+      <span style="margin-left:auto" class="b">Sales On: <span class="mute">MRP - 0%</span></span>
+    </div>
+    <table class="bill">
+      <thead><tr><th>Sr</th><th style="width:230px">Item Name</th><th>Unit</th><th>Pack</th><th>BatchNo</th><th>Expiry</th><th>MRP</th><th>Qty</th><th>Disc</th><th>Base</th><th>GST(%)</th><th>Margin(%)</th><th>Amount</th><th>Loc.</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr class="entry"><td></td><td><span class="box focus">SHELCAL 500 TAB</span></td><td><span class="box">15</span></td><td><span class="box">15</span></td><td><span class="box focus">SC7731</span></td><td><span class="box">12/26</span></td><td><span class="box">112.40</span></td><td><span class="box">1</span></td><td><span class="box">0.00</span></td><td><span class="box">107.05</span></td><td><span class="box">5</span></td><td>21.8</td><td>112.40</td><td>C-04</td><td><div class="act"><span>✓</span><span>−</span></div></td></tr>
+      </tbody>
+    </table>
+    <div class="meta"><span>GENERIC: <b>Calcium 500 mg + Vitamin D3</b></span><span>CATEGORY: <b>Tablet</b></span><span>TYPE: <b>Medicine</b></span><span>LOCATION: <b>C-04</b></span><span>OLD MRP: <b>112.40</b></span><span>MRP DIFF: <b>0.00</b></span></div>
+    <table class="bill">
+      <tbody>
+        <tr><td>1</td><td style="width:230px" class="b">DOLO 650 TAB</td><td>30</td><td>15</td><td>DL4521</td><td>11/26</td><td class="r">30.60</td><td class="r">2</td><td class="r">0.00</td><td class="r">58.29</td><td class="c">5</td><td class="r">22.4</td><td class="r b">61.20</td><td>A-12</td><td><div class="act"><span>✎</span><span>−</span></div></td></tr>
+        <tr><td>2</td><td class="b">PAN-D CAP</td><td>15</td><td>15</td><td>PD2208</td><td>03/27</td><td class="r">199.00</td><td class="r">1</td><td class="r">0.00</td><td class="r">189.52</td><td class="c">5</td><td class="r">24.1</td><td class="r b">199.00</td><td>B-03</td><td><div class="act"><span>✎</span><span>−</span></div></td></tr>
+        <tr><td>3</td><td class="b">AZITHRAL 500 TAB</td><td>5</td><td>5</td><td>AZ1189</td><td>11/26</td><td class="r">119.50</td><td class="r">1</td><td class="r">5.98</td><td class="r">108.11</td><td class="c">5</td><td class="r">18.6</td><td class="r b">113.52</td><td>C-07</td><td><div class="act"><span>✎</span><span>−</span></div></td></tr>
+        <tr><td>4</td><td class="b">MONTAIR LC TAB</td><td>10</td><td>10</td><td>ML0388</td><td>11/26</td><td class="r">218.00</td><td class="r">1</td><td class="r">0.00</td><td class="r">207.62</td><td class="c">5</td><td class="r">21.0</td><td class="r b">218.00</td><td>B-11</td><td><div class="act"><span>✎</span><span>−</span></div></td></tr>
+        <tr><td>5</td><td class="b">ELECTRAL POWDER 21.8G</td><td>3</td><td>1</td><td>EL5530</td><td>06/27</td><td class="r">22.00</td><td class="r">3</td><td class="r">0.00</td><td class="r">62.86</td><td class="c">5</td><td class="r">19.5</td><td class="r b">66.00</td><td>D-02</td><td><div class="act"><span>✎</span><span>−</span></div></td></tr>
+      </tbody>
+    </table>
+
+    <div class="pop">
+      <div class="pop-h"><span>Choose batch · SHELCAL 500 TAB</span><span class="tag t-green">Nearest expiry selected first</span></div>
+      <table>
+        <thead><tr><th>Batch No</th><th>Expiry</th><th>MRP</th><th>Stock</th><th>Supplier</th><th></th></tr></thead>
+        <tbody>
+          <tr class="pick"><td class="b">SC7731</td><td>12/2026</td><td>112.40</td><td>22 strips</td><td>Shree Krishna Pharma</td><td><span class="tag t-green">✓ Selected</span></td></tr>
+          <tr><td class="b">SC8012</td><td>08/2027</td><td>112.40</td><td>60 strips</td><td>Mahavir Distributors</td><td></td></tr>
+          <tr><td class="b">SC8120</td><td>11/2027</td><td>115.80</td><td>40 strips</td><td>Mahavir Distributors</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <aside class="side">
+    <div class="card" style="padding:10px 12px">
+      <div style="display:flex;gap:16px;align-items:center"><b>Search Type :</b><span class="radio"><i class="on"></i>OPD</span><span class="radio"><i></i>IPD</span></div>
+      <div class="inp" style="margin-top:8px">HR-104582</div>
+    </div>
+    <div class="lbl">Title</div><div class="sel">Mr.</div>
+    <div class="lbl">Patient Name</div><div class="inp">Ramesh Patel</div>
+    <div class="lbl">Contact No.</div><div class="inp">🇮🇳 +91 90990 12345</div>
+    <div class="lbl">Doctor Name</div><div class="inp">Dr. Kavita Shah</div>
+    <div class="lbl">Address</div><div class="inp" style="height:52px;align-items:flex-start">12, Shanti Nagar Society, Navrangpura</div>
+    <div class="lbl">City</div><div class="inp">Ahmedabad</div>
+  </aside>
+</div>
+<div class="foot1">
+  <div>Invoice Date*<div class="inp">13/10/2026</div></div>
+  <div>Payment Method<div class="sel">UPI</div></div>
+  <div>Payment Description<div class="inp">UPI Ref 4417 8820 1193</div></div>
+  <div>Invoice Description<div class="inp mute">Enter Invoice Description</div></div>
+  <div>Additional Discount<div class="inp">0 <span class="navy b">%</span></div></div>
+  <div>(₹) Total Payable Amount<div class="inp b" style="background:#eef4ff;border-color:#bcd0f5;font-size:14px">657.72</div></div>
+</div>
+<div class="foot2">
+  <div>TOTAL GROSS<b>₹ 663.70</b></div><div>TOTAL DISC<b>₹ 5.98</b></div><div>TOTAL PROFIT<b>₹ 131.40</b></div><div>TOTAL MARGIN<b>20.0%</b></div><div>TOTAL GST<b>₹ 31.33</b></div><div>NET TOTAL<b class="navy">₹ 657.72</b></div>
+  <div class="bb" style="color:var(--navy);border:1.5px solid var(--navy)">▢ SAVE DRAFT</div>
+  <div class="bb" style="background:#1746a2">✓ DONE</div>
+  <div class="bb" style="background:var(--green)">⎙ SAVE &amp; PRINT</div>
+</div>
+</body></html>

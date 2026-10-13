@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Stock alert and short book — v2</title><link rel="stylesheet" href="ui.css">
+<style>
+.work{flex:1;display:grid;grid-template-columns:1fr 430px;gap:18px;padding:18px 22px;min-height:0}
+.col{display:flex;flex-direction:column;gap:14px;min-height:0}
+.head{display:flex;align-items:center;gap:10px}
+.head h1{font-size:20px}
+.head .sp{flex:1}
+.flt{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--border-2);border-radius:9px;padding:6px 11px;font-weight:600;font-size:12.5px;color:var(--navy-800)}
+.flt small{color:var(--muted);font-weight:500;font-size:12px}
+.al{flex:1;display:flex;flex-direction:column;min-height:0}
+.al-h{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--border)}
+.al-h h3{font-size:15px}
+table{width:100%;border-collapse:collapse}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;text-align:left;padding:9px 16px;border-bottom:1px solid var(--border)}
+td{padding:18px 16px;border-bottom:1px solid #EEF2F6;vertical-align:middle}
+td .nm{font-weight:600;color:var(--navy-950)}
+td .gn{font-size:11.5px;color:var(--muted)}
+.lv{display:flex;align-items:center;gap:10px}
+.lv .bar{width:130px;height:8px;border-radius:999px;background:#EEF2F6;overflow:hidden}
+.lv .bar i{display:block;height:100%;border-radius:999px}
+.lv span{font-variant-numeric:tabular-nums;white-space:nowrap}
+.lv b{color:var(--navy-950)}
+.in{display:inline-flex;align-items:center;gap:5px;color:var(--teal-700);font-weight:600;font-size:12px}
+.add{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--blue-600);color:var(--blue-700);background:var(--blue-50);border-radius:8px;padding:5px 10px;font-weight:600;font-size:12px}
+.al-f{margin-top:auto;display:flex;gap:22px;padding:11px 16px;border-top:1px solid var(--border);color:var(--text-2);font-size:12.5px}
+.al-f b{color:var(--navy-950)}
+.nm-card{padding:14px 16px;display:flex;align-items:center;gap:14px}
+.nm-card .ic{width:42px;height:42px;border-radius:11px;background:#EEF2F6;color:var(--text-2);display:grid;place-items:center}
+.nm-card small{display:block;color:var(--muted);font-size:12px}
+.nm-card b{font-family:"Plus Jakarta Sans",Inter;font-size:20px;font-weight:800;color:var(--navy-950)}
+.sb{flex:1;display:flex;flex-direction:column;min-height:0}
+.sb-h{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--border)}
+.sb-h h3{font-size:15px}
+.grp{padding:14px 16px;border-bottom:1px solid var(--border)}
+.grp-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.grp-h b{color:var(--navy-950);font-size:13px}
+.ln{display:grid;grid-template-columns:1fr 46px 76px;gap:8px;padding:4px 0;color:var(--text-2);font-variant-numeric:tabular-nums}
+.ln span:first-child{color:var(--text);font-weight:500}
+.ln span:nth-child(2),.ln span:nth-child(3){text-align:right}
+.st{display:flex;justify-content:space-between;margin-top:6px;padding-top:7px;border-top:1px dashed var(--border);font-size:12.5px;color:var(--text-2)}
+.st b{color:var(--navy-950)}
+.sb-f{margin-top:auto;padding:14px 16px;border-top:1px solid var(--border)}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.total span{font-weight:600;color:var(--navy-900)}
+.total b{font-family:"Plus Jakarta Sans",Inter;font-size:26px;font-weight:800;color:var(--navy-950)}
+.sb-f .b-primary{width:100%;padding:13px 0;font-size:14.5px}
+.tag{font-size:10.5px;font-weight:700;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:1px 8px;letter-spacing:.02em}
+.wa{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:12px;color:var(--text-2)}
+.tg{width:30px;height:17px;border-radius:999px;background:var(--teal-600);position:relative}.tg::after{content:"";position:absolute;right:2px;top:2px;width:13px;height:13px;border-radius:50%;background:#fff}
+.nmv .nm-card{padding:14px 16px}
+.nr{display:grid;grid-template-columns:1.4fr .7fr 1fr 110px;gap:10px;align-items:center;padding:10px 16px;border-top:1px solid #EEF2F6;color:var(--text-2)}
+.nr .nm{font-weight:600;color:var(--navy-950)}.nr b{text-align:right;color:var(--navy-950);font-variant-numeric:tabular-nums}
+.pend{margin:14px 16px 0;display:flex;align-items:center;gap:10px;justify-content:space-between;background:var(--warn-50);border:1px solid #F5D9A8;border-radius:11px;padding:11px 12px}
+.pend b{color:var(--navy-950);font-size:12.5px}
+.po{padding:14px 16px}.po h3{font-size:14px;margin-bottom:6px}
+.pr{display:grid;grid-template-columns:1fr auto 96px;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid #EEF2F6}.pr:last-child{border-bottom:0}
+.pr b{color:var(--navy-950);font-size:12.5px}.pr small{display:block;color:var(--muted);font-size:11.5px}.pr>span:nth-child(2){font-weight:600;font-variant-numeric:tabular-nums}.pr .chip{justify-content:center}
+</style></head><body>
+<div class="app">
+  <nav class="rail">
+    <div class="mark" style="background:none"><svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true" style="display:block"><defs><linearGradient id="lmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#0F9F9A"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#lmg)"/><rect x="16.5" y="8" width="7" height="24" rx="3.5" fill="#fff"/><rect x="8" y="16.5" width="24" height="7" rx="3.5" fill="#fff"/><path d="M23.5 16.5h5a3.5 3.5 0 0 1 0 7h-5z" fill="#99F6E4"/></svg></div>
+    <a><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Home</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Sale</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Purchase</a>
+    <a class="on"><svg class="i" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg>Stock</a>
+    <a><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg>Patients</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/></svg>Reports</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M7 4h11M7 8.5h11M7 4c6 0 6 9 0 9h-1l8 7"/></svg>Accounts</a>
+    <span class="sp"></span>
+    <a><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>Settings</a>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="store"><span class="ico" style="border:0;background:var(--blue-50);color:var(--blue-700)"><svg class="i" viewBox="0 0 24 24"><path d="M4 10v10h16V10M3 10l2-6h14l2 6zM9 20v-6h6v6"/></svg></span><div>Shree Sai Medical Store<small>Main branch · Ahmedabad</small></div></div>
+      <div class="cmd"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search items, patients, bills…<span class="kbd" style="margin-left:auto">Ctrl K</span></div>
+      <div class="tb-right">
+        <span class="chip c-grey">Tue, 13 Oct · 7:42 pm</span>
+        <span class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></span>
+        <span class="me">PD</span>
+      </div>
+    </header>
+
+    <div class="work">
+      <div class="col">
+        <div class="head">
+          <h1>Stock alert &amp; short book</h1>
+          <span class="flt"><small>Show</small> Below minimum ▾</span>
+          <span class="flt"><small>Supplier</small> All ▾</span>
+          <span class="sp"></span>
+          <span class="btn b-ghost"><svg class="i" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Export Excel</span>
+        </div>
+
+        <div class="card al">
+          <div class="al-h"><h3>Items below minimum stock</h3><span class="chip c-red">6 items</span><span class="muted" style="margin-left:auto">Minimum level set per item</span></div>
+          <table>
+            <thead><tr><th>Item</th><th>Stock / minimum</th><th>Last supplier</th><th class="num">Order qty</th><th>Short book</th></tr></thead>
+            <tbody>
+              <tr><td><div class="nm">THYRONORM 50 TAB</div><div class="gn">Thyroxine 50 mcg · bottle of 120</div></td><td><div class="lv"><div class="bar"><i style="width:20%;background:var(--danger)"></i></div><span><b>3</b> / 15</span></div></td><td>Om Sai Medical Agency</td><td class="num">15</td><td><span class="add">+ Add</span></td></tr>
+              <tr><td><div class="nm">ECOSPRIN 75 TAB</div><div class="gn">Aspirin 75 mg · strip of 14</div></td><td><div class="lv"><div class="bar"><i style="width:25%;background:var(--danger)"></i></div><span><b>5</b> / 20</span></div></td><td>Mahavir Distributors</td><td class="num">50</td><td><span class="in">✓ Added</span></td></tr>
+              <tr><td><div class="nm">TELMA 40 TAB</div><div class="gn">Telmisartan 40 mg · strip of 15</div></td><td><div class="lv"><div class="bar"><i style="width:26.7%;background:var(--danger)"></i></div><span><b>8</b> / 30</span></div></td><td>Shree Krishna Pharma</td><td class="num">30</td><td><span class="in">✓ Added</span></td></tr>
+              <tr><td><div class="nm">ROSUVAS 10 TAB</div><div class="gn">Rosuvastatin 10 mg · strip of 15</div></td><td><div class="lv"><div class="bar"><i style="width:30%;background:var(--danger)"></i></div><span><b>6</b> / 20</span></div></td><td>Om Sai Medical Agency</td><td class="num">20</td><td><span class="in">✓ Added</span></td></tr>
+              <tr><td><div class="nm">GLYCOMET GP 1 TAB</div><div class="gn">Metformin + Glimepiride · strip of 15</div></td><td><div class="lv"><div class="bar"><i style="width:48%;background:var(--warn)"></i></div><span><b>12</b> / 25</span></div></td><td>Mahavir Distributors</td><td class="num">25</td><td><span class="in">✓ Added</span></td></tr>
+              <tr><td><div class="nm">AMLONG 5 TAB</div><div class="gn">Amlodipine 5 mg · strip of 15</div></td><td><div class="lv"><div class="bar"><i style="width:50%;background:var(--warn)"></i></div><span><b>10</b> / 20</span></div></td><td>Mahavir Distributors</td><td class="num">20</td><td><span class="add">+ Add</span></td></tr>
+            </tbody>
+          </table>
+          <div class="al-f"><span>6 items below minimum</span><span>In short book <b>4</b></span><span style="margin-left:auto">Stock counted in strips</span></div>
+        </div>
+
+        <div class="card nmv">
+          <div class="nm-card">
+            <span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg></span>
+            <div><small>Non-moving stock · no sale in 90 days</small><b>47 items · ₹23,410</b></div>
+            <span class="btn b-ghost" style="margin-left:auto">View non-moving report</span>
+          </div>
+          <div class="nr"><span class="nm">VOLINI GEL 30 G</span><span>6 tubes</span><span class="muted">Last sold 02-06-2026</span><b>₹1,140.00</b></div>
+          <div class="nr"><span class="nm">CALPOL 250 SUSP 60 ML</span><span>9 bottles</span><span class="muted">Last sold 14-06-2026</span><b>₹612.00</b></div>
+          <div class="nr"><span class="nm">DIGENE GEL MINT 200 ML</span><span>7 bottles</span><span class="muted">Last sold 21-06-2026</span><b>₹1,036.00</b></div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card sb">
+          <div class="sb-h"><h3>Short book</h3><span class="chip c-blue">4 items · 3 suppliers</span></div>
+          <div class="grp">
+            <div class="grp-h"><b>Shree Krishna Pharma</b><span class="muted">1 item</span></div>
+            <div class="ln"><span>Telma 40 Tab</span><span>×30</span><span>@ ₹166.40</span></div>
+            <div class="st"><span>Supplier total</span><b>₹4,992.00</b></div>
+          </div>
+          <div class="grp">
+            <div class="grp-h"><b>Mahavir Distributors</b><span class="muted">2 items</span></div>
+            <div class="ln"><span>Ecosprin 75 Tab</span><span>×50</span><span>@ ₹4.20</span></div>
+            <div class="ln"><span>Glycomet GP 1 Tab</span><span>×25</span><span>@ ₹108.80</span></div>
+            <div class="st"><span>Supplier total</span><b>₹2,930.00</b></div>
+          </div>
+          <div class="grp">
+            <div class="grp-h"><b>Om Sai Medical Agency</b><span class="muted">1 item</span></div>
+            <div class="ln"><span>Rosuvas 10 Tab</span><span>×20</span><span>@ ₹132.30</span></div>
+            <div class="st"><span>Supplier total</span><b>₹2,646.00</b></div>
+          </div>
+          <div class="pend"><div><b>2 items not in short book yet</b><div class="muted" style="font-size:12px;margin-top:2px">Thyronorm 50 Tab · Amlong 5 Tab</div></div><span class="add">+ Add both</span></div>
+          <div class="sb-f">
+            <div class="total"><span>Estimated order value</span><b>₹10,568</b></div>
+            <span class="btn b-primary">Create purchase order <span class="tag">Advance plan</span></span>
+            <div class="wa"><span class="tg"></span>Send each PO to the supplier on WhatsApp</div>
+          </div>
+        </div>
+        <div class="card po">
+          <h3>Recent purchase orders</h3>
+          <div class="pr"><div><b>PO-26-0211</b><small>Mahavir Distributors · 10-10-2026</small></div><span>₹6,180.00</span><span class="chip c-teal">✓ Received</span></div>
+          <div class="pr"><div><b>PO-26-0210</b><small>Shree Krishna Pharma · 08-10-2026</small></div><span>₹9,420.00</span><span class="chip c-teal">✓ Received</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

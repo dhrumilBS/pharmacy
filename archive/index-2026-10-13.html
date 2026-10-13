@@ -1,0 +1,3890 @@
+<!doctype html>
+<html lang="en-IN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Healthray Pharmacy | Medical store billing, expiry &amp; stock software</title>
+  <meta name="description"
+    content="Healthray Pharmacy: billing software for Indian medical stores with batch-wise FEFO billing, stock expiry reports, CSV and OCR purchase import, and GST reports. Free Starter plan; paid plans from ₹4,999 a year.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+    rel="stylesheet">
+  <!--
+  Strategy source: PHARMACY-ICP-AND-UX-STRATEGY.md
+  Elements with data-confirm need product-owner sign-off before launch.
+  Open this page with ?review in the URL to outline them.
+-->
+  <style>
+    :root {
+      --navy-950: #081C2C;
+      --navy-900: #0D2A40;
+      --navy-800: #123B5D;
+      --navy-700: #174C75;
+      --navy-600: #1D6090;
+      --blue-700: #1D4ED8;
+      --blue-600: #2563EB;
+      --blue-500: #3B82F6;
+      --blue-100: #DBEAFE;
+      --blue-50: #EFF6FF;
+      --teal-700: #0F766E;
+      --teal-600: #0F9F9A;
+      --teal-500: #14B8A6;
+      --teal-100: #CCFBF1;
+      --teal-50: #F0FDFA;
+      --text: #172033;
+      --text-2: #475569;
+      --muted: #64748B;
+      --border: #E2E8F0;
+      --border-2: #CBD5E1;
+      --surface: #FFFFFF;
+      --bg: #F8FAFC;
+      --success: #15803D;
+      --warning: #B45309;
+      --danger: #DC2626;
+      --r-sm: 8px;
+      --r-md: 12px;
+      --r-lg: 16px;
+      --r-xl: 24px;
+      --shadow-sm: 0 1px 2px rgba(8, 28, 44, .06);
+      --shadow-md: 0 10px 30px -12px rgba(8, 28, 44, .18);
+      --shadow-lg: 0 30px 60px -24px rgba(8, 28, 44, .28);
+      --font-head: "Plus Jakarta Sans", Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font-body: Inter, "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.62;
+      color: var(--text);
+      background: var(--surface);
+      -webkit-font-smoothing: antialiased
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%
+    }
+
+    a {
+      color: var(--blue-700)
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--font-head);
+      color: var(--navy-950);
+      margin: 0;
+      line-height: 1.2;
+      letter-spacing: -.015em
+    }
+
+    p {
+      margin: 0
+    }
+
+    ul {
+      margin: 0;
+      padding: 0
+    }
+
+    button,
+    input,
+    select {
+      font: inherit
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--blue-600);
+      outline-offset: 2px;
+      border-radius: 4px
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0
+    }
+
+    .skip {
+      position: absolute;
+      left: 16px;
+      top: -60px;
+      background: var(--navy-900);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: var(--r-sm);
+      z-index: 2000
+    }
+
+    .skip:focus {
+      top: 12px
+    }
+
+    .container {
+      width: min(1200px, 100% - 48px);
+      margin-inline: auto
+    }
+
+    .section {
+      padding: 96px 0
+    }
+
+    .section-tight {
+      padding: 64px 0
+    }
+
+    .bg-soft {
+      background: var(--bg)
+    }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex: none
+    }
+
+    /* Eyebrow + headings */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--blue-700);
+      background: var(--blue-50);
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px
+    }
+
+    .eyebrow.light {
+      background: rgba(255, 255, 255, .1);
+      color: #BFDBFE
+    }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 48px
+    }
+
+    .section-head.center {
+      margin-inline: auto;
+      text-align: center
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 3.4vw, 40px)
+    }
+
+    .section-head p {
+      margin-top: 16px;
+      font-size: 18px;
+      color: var(--text-2)
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 12px 22px;
+      border-radius: var(--r-sm);
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: background .15s, border-color .15s, color .15s, transform .15s
+    }
+
+    .btn-primary {
+      background: var(--blue-600);
+      color: #fff
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-700)
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--navy-800);
+      border-color: var(--border-2)
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--navy-700);
+      color: var(--navy-950)
+    }
+
+    .btn-dark {
+      background: var(--navy-900);
+      color: #fff
+    }
+
+    .btn-light {
+      background: #fff;
+      color: var(--navy-900)
+    }
+
+    .btn-ghost-light {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255, 255, 255, .4)
+    }
+
+    .btn-ghost-light:hover {
+      border-color: #fff
+    }
+
+    .btn-sm {
+      min-height: 40px;
+      padding: 8px 16px;
+      font-size: 15px
+    }
+
+    .link-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--blue-700)
+    }
+
+    .link-arrow:hover {
+      text-decoration: underline
+    }
+
+    /* Sample tag */
+    .sample-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: #fff;
+      border: 1px dashed var(--border-2);
+      padding: 2px 8px;
+      border-radius: 999px
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, .96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border)
+    }
+
+    .nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      height: 72px
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--navy-900);
+      text-decoration: none;
+      white-space: nowrap
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: var(--blue-600);
+      display: grid;
+      place-items: center;
+      color: #fff
+    }
+
+    .brand-mark svg {
+      width: 20px;
+      height: 20px
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 8px 12px;
+      border-radius: var(--r-sm);
+      color: var(--text-2);
+      font-weight: 500;
+      font-size: 15px;
+      text-decoration: none
+    }
+
+    .nav-links a:hover {
+      color: var(--navy-950);
+      background: var(--bg)
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .nav-call {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--navy-800);
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      padding: 8px 6px
+    }
+
+    .nav-call:hover {
+      color: var(--blue-700)
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--r-sm);
+      border: 1px solid var(--border-2);
+      background: #fff;
+      color: var(--navy-900);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer
+    }
+
+    /* Hero */
+    .hero {
+      padding: 64px 0 72px;
+      background: #fff;
+      overflow: hidden
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 56px;
+      align-items: center
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 4.8vw, 56px);
+      line-height: 1.08;
+      letter-spacing: -.025em
+    }
+
+    .hero h1 span {
+      color: var(--blue-600)
+    }
+
+    .hero-lead {
+      margin-top: 20px;
+      font-size: 19px;
+      line-height: 1.6;
+      color: var(--text-2);
+      max-width: 560px
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px
+    }
+
+    .hero-assure {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      margin-top: 24px;
+      list-style: none
+    }
+
+    .hero-assure li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      color: var(--text-2);
+      font-weight: 500
+    }
+
+    .hero-assure .icon {
+      color: var(--teal-700);
+      width: 18px;
+      height: 18px
+    }
+
+    .hero-for {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--muted)
+    }
+
+    .hero-for strong {
+      color: var(--navy-800)
+    }
+
+    /* Billing mock */
+    .mock-wrap {
+      position: relative;
+      padding: 0 20px 100px 0
+    }
+
+    .mock {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      font-size: 13px
+    }
+
+    .mock-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 16px;
+      background: var(--navy-900);
+      color: #E2E8F0
+    }
+
+    .mock-bar b {
+      color: #fff;
+      font-weight: 600;
+      font-size: 13px
+    }
+
+    .mock-bar span {
+      font-size: 12px;
+      color: #9FB3C8
+    }
+
+    .mock-body {
+      padding: 16px
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1.5px solid var(--blue-600);
+      border-radius: var(--r-sm);
+      padding: 9px 12px;
+      color: var(--navy-950);
+      font-weight: 500;
+      box-shadow: 0 0 0 4px var(--blue-50)
+    }
+
+    .search-box .icon {
+      width: 16px;
+      height: 16px;
+      color: var(--blue-600)
+    }
+
+    .search-box kbd {
+      margin-left: auto
+    }
+
+    kbd {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--bg);
+      border: 1px solid var(--border-2);
+      border-bottom-width: 2px;
+      border-radius: 5px;
+      padding: 1px 6px;
+      color: var(--text-2)
+    }
+
+    .result {
+      margin-top: 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      overflow: hidden
+    }
+
+    .result-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 9px 12px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border)
+    }
+
+    .result-head b {
+      color: var(--navy-950)
+    }
+
+    .result-head small {
+      color: var(--muted)
+    }
+
+    .batch {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr .6fr auto;
+      gap: 8px;
+      align-items: center;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .batch:last-child {
+      border-bottom: 0
+    }
+
+    .batch.pick {
+      background: var(--teal-50);
+      box-shadow: inset 3px 0 0 var(--teal-600)
+    }
+
+    .batch .b-id {
+      font-weight: 600;
+      color: var(--navy-800)
+    }
+
+    .batch .b-exp {
+      color: var(--text-2)
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+      white-space: nowrap
+    }
+
+    .pill-teal {
+      background: var(--teal-100);
+      color: var(--teal-700)
+    }
+
+    .pill-warn {
+      background: #FEF3C7;
+      color: var(--warning)
+    }
+
+    .pill-blue {
+      background: var(--blue-100);
+      color: var(--blue-700)
+    }
+
+    .pill-red {
+      background: #FEE2E2;
+      color: #B91C1C
+    }
+
+    .pill .icon {
+      width: 12px;
+      height: 12px
+    }
+
+    .lines {
+      margin-top: 14px;
+      width: 100%;
+      border-collapse: collapse
+    }
+
+    .lines th {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--muted);
+      font-weight: 600;
+      text-align: left;
+      padding: 6px 4px;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .lines td {
+      padding: 7px 4px;
+      border-bottom: 1px dashed var(--border);
+      color: var(--text)
+    }
+
+    .lines .num {
+      text-align: right;
+      font-variant-numeric: tabular-nums
+    }
+
+    .bill-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 14px
+    }
+
+    .bill-total small {
+      display: block;
+      color: var(--muted);
+      font-size: 11px
+    }
+
+    .bill-total b {
+      font-family: var(--font-head);
+      font-size: 22px;
+      color: var(--navy-950)
+    }
+
+    .print-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-600);
+      color: #fff;
+      border-radius: var(--r-sm);
+      padding: 9px 14px;
+      font-weight: 600
+    }
+
+    .print-btn .icon {
+      width: 16px;
+      height: 16px
+    }
+
+    .float {
+      position: absolute;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      box-shadow: var(--shadow-md);
+      padding: 12px 14px;
+      font-size: 13px;
+      width: 236px
+    }
+
+    .float-expiry {
+      right: 0;
+      bottom: 0
+    }
+
+    .float-phone {
+      left: -28px;
+      bottom: 6px;
+      width: 200px
+    }
+
+    .float h4 {
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--navy-950);
+      font-family: var(--font-body);
+      font-weight: 600
+    }
+
+    .float h4 .icon {
+      width: 16px;
+      height: 16px
+    }
+
+    .float .big {
+      font-family: var(--font-head);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy-950);
+      margin-top: 4px
+    }
+
+    .float p {
+      color: var(--text-2);
+      font-size: 12px;
+      line-height: 1.45
+    }
+
+    .float .act {
+      display: inline-block;
+      margin-top: 6px;
+      font-weight: 600;
+      color: var(--blue-700);
+      font-size: 12px
+    }
+
+    .mock-note {
+      margin-bottom: 10px
+    }
+
+    /* Built-for strip */
+    .built-for {
+      border-block: 1px solid var(--border);
+      background: #fff
+    }
+
+    .built-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 0;
+      flex-wrap: wrap
+    }
+
+    .built-row>p {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .05em
+    }
+
+    .built-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 28px;
+      list-style: none
+    }
+
+    .built-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--navy-800)
+    }
+
+    .built-list .icon {
+      color: var(--blue-600)
+    }
+
+    /* Pains */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px
+    }
+
+    .pain {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column
+    }
+
+    .pain-q {
+      font-family: var(--font-head);
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--navy-950);
+      line-height: 1.35
+    }
+
+    .pain-q::before {
+      content: "\201C";
+      color: var(--blue-500);
+      margin-right: 2px
+    }
+
+    .pain-q::after {
+      content: "\201D";
+      color: var(--blue-500)
+    }
+
+    .pain-why {
+      margin-top: 10px;
+      color: var(--text-2);
+      font-size: 15px
+    }
+
+    .pain-fix {
+      margin-top: auto;
+      padding-top: 18px
+    }
+
+    .pain-fix div {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      font-size: 15px;
+      color: var(--navy-800);
+      font-weight: 500
+    }
+
+    .pain-fix .icon {
+      color: var(--teal-700);
+      margin-top: 2px
+    }
+
+    .pain-fix b {
+      color: var(--teal-700);
+      font-weight: 700
+    }
+
+    /* Estimator */
+    .estimator {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      background: #fff;
+      box-shadow: var(--shadow-md)
+    }
+
+    .est-inputs {
+      padding: 40px
+    }
+
+    .est-inputs h2 {
+      font-size: clamp(26px, 3vw, 34px)
+    }
+
+    .est-inputs>p {
+      margin-top: 12px;
+      color: var(--text-2)
+    }
+
+    .field {
+      margin-top: 28px
+    }
+
+    .field-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px
+    }
+
+    .field label {
+      font-weight: 600;
+      color: var(--navy-950)
+    }
+
+    .field output {
+      font-family: var(--font-head);
+      font-weight: 800;
+      color: var(--blue-700);
+      font-size: 18px;
+      font-variant-numeric: tabular-nums
+    }
+
+    .field small {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px
+    }
+
+    input[type=range] {
+      width: 100%;
+      margin-top: 12px;
+      accent-color: var(--blue-600);
+      height: 28px
+    }
+
+    .est-result {
+      background: var(--navy-900);
+      color: #C8D5E3;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center
+    }
+
+    .est-result .label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #9FB3C8;
+      text-transform: uppercase;
+      letter-spacing: .05em
+    }
+
+    .est-result .value {
+      font-family: var(--font-head);
+      font-weight: 800;
+      color: #fff;
+      font-size: clamp(36px, 5vw, 52px);
+      line-height: 1.1;
+      margin-top: 6px;
+      font-variant-numeric: tabular-nums
+    }
+
+    .est-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, .14)
+    }
+
+    .est-split b {
+      display: block;
+      font-family: var(--font-head);
+      color: #fff;
+      font-size: 22px;
+      font-variant-numeric: tabular-nums
+    }
+
+    .est-split span {
+      font-size: 14px
+    }
+
+    .est-result .note {
+      margin-top: 24px;
+      font-size: 13px;
+      color: #9FB3C8
+    }
+
+    .est-result .btn {
+      margin-top: 24px;
+      align-self: flex-start
+    }
+
+    /* Day timeline */
+    .day-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      counter-reset: day
+    }
+
+    .day {
+      position: relative;
+      padding: 24px;
+      border-radius: var(--r-lg);
+      background: #fff;
+      border: 1px solid var(--border)
+    }
+
+    .day-time {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue-700);
+      text-transform: uppercase;
+      letter-spacing: .05em
+    }
+
+    .day-time .icon {
+      width: 16px;
+      height: 16px
+    }
+
+    .day h3 {
+      font-size: 19px;
+      margin-top: 10px
+    }
+
+    .day p {
+      margin-top: 8px;
+      color: var(--text-2);
+      font-size: 15px
+    }
+
+    .day ul {
+      list-style: none;
+      margin-top: 14px;
+      display: grid;
+      gap: 8px
+    }
+
+    .day li {
+      display: flex;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--navy-800)
+    }
+
+    .day li .icon {
+      width: 16px;
+      height: 16px;
+      color: var(--teal-700);
+      margin-top: 3px
+    }
+
+    /* Feature tabs */
+    .tabs {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 32px;
+      align-items: start
+    }
+
+    .tablist {
+      display: grid;
+      gap: 6px
+    }
+
+    .tab {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      text-align: left;
+      padding: 14px 16px;
+      border-radius: var(--r-md);
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-2);
+      font-weight: 600;
+      cursor: pointer
+    }
+
+    .tab .icon {
+      color: var(--muted)
+    }
+
+    .tab:hover {
+      background: var(--bg);
+      color: var(--navy-950)
+    }
+
+    .tab[aria-selected=true] {
+      background: #fff;
+      border-color: var(--border);
+      box-shadow: var(--shadow-sm);
+      color: var(--navy-950)
+    }
+
+    .tab[aria-selected=true] .icon {
+      color: var(--blue-600)
+    }
+
+    .panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 36px
+    }
+
+    .panel[hidden] {
+      display: none
+    }
+
+    .panel h3 {
+      font-size: 26px
+    }
+
+    .panel>div>p {
+      margin-top: 12px;
+      color: var(--text-2)
+    }
+
+    .checks {
+      list-style: none;
+      margin-top: 20px;
+      display: grid;
+      gap: 12px
+    }
+
+    .checks li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start
+    }
+
+    .checks .icon {
+      color: var(--teal-700);
+      margin-top: 3px
+    }
+
+    .checks b {
+      color: var(--navy-950)
+    }
+
+    .mini {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 18px;
+      font-size: 13px
+    }
+
+    .mini-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px
+    }
+
+    .mini-head b {
+      color: var(--navy-950);
+      font-size: 14px
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      padding: 10px 12px;
+      margin-top: 8px
+    }
+
+    .row .t {
+      font-weight: 600;
+      color: var(--navy-950)
+    }
+
+    .row .s {
+      color: var(--muted);
+      font-size: 12px
+    }
+
+    .row .v {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      color: var(--navy-800);
+      white-space: nowrap
+    }
+
+    .bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      height: 120px;
+      padding: 8px 4px 0;
+      border-bottom: 1px solid var(--border-2)
+    }
+
+    .bars span {
+      flex: 1;
+      background: var(--blue-500);
+      border-radius: 4px 4px 0 0;
+      opacity: .85
+    }
+
+    .bars span:nth-child(6) {
+      background: var(--blue-700);
+      opacity: 1
+    }
+
+    .bar-labels {
+      display: flex;
+      gap: 8px;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 11px
+    }
+
+    .bar-labels span {
+      flex: 1;
+      text-align: center
+    }
+
+    /* Switching */
+    .switch-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 56px;
+      align-items: start
+    }
+
+    .switch-copy h2 {
+      font-size: clamp(28px, 3.4vw, 40px)
+    }
+
+    .switch-copy>p {
+      margin-top: 16px;
+      font-size: 18px;
+      color: var(--text-2)
+    }
+
+    .moved {
+      margin-top: 28px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 24px
+    }
+
+    .moved h3 {
+      font-size: 16px
+    }
+
+    .moved ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 16px;
+      margin-top: 14px
+    }
+
+    .moved li {
+      display: flex;
+      gap: 8px;
+      font-size: 15px;
+      color: var(--navy-800)
+    }
+
+    .moved .icon {
+      width: 18px;
+      height: 18px;
+      color: var(--teal-700);
+      margin-top: 2px
+    }
+
+    .from {
+      margin-top: 20px;
+      font-size: 15px;
+      color: var(--text-2)
+    }
+
+    .steps {
+      list-style: none;
+      display: grid;
+      gap: 0;
+      counter-reset: step
+    }
+
+    .step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 18px;
+      padding-bottom: 28px
+    }
+
+    .step:last-child {
+      padding-bottom: 0
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--blue-600);
+      color: #fff;
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 18px;
+      position: relative;
+      z-index: 1
+    }
+
+    .step::after {
+      content: "";
+      position: absolute;
+      left: 23px;
+      top: 48px;
+      bottom: 0;
+      width: 2px;
+      background: var(--blue-100)
+    }
+
+    .step:last-child::after {
+      display: none
+    }
+
+    .step h3 {
+      font-size: 19px;
+      padding-top: 10px
+    }
+
+    .step p {
+      margin-top: 6px;
+      color: var(--text-2)
+    }
+
+    .step .when {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--teal-700)
+    }
+
+    /* Solutions */
+    .sol-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px
+    }
+
+    .sol {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 28px;
+      background: #fff
+    }
+
+    .sol-ic {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--r-md);
+      background: var(--blue-50);
+      color: var(--blue-600);
+      display: grid;
+      place-items: center
+    }
+
+    .sol-ic .icon {
+      width: 24px;
+      height: 24px
+    }
+
+    .sol .who {
+      margin-top: 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted)
+    }
+
+    .sol h3 {
+      font-size: 22px;
+      margin-top: 4px
+    }
+
+    .sol>p {
+      margin-top: 10px;
+      color: var(--text-2)
+    }
+
+    .sol .checks {
+      margin-bottom: 24px
+    }
+
+    .sol .link-arrow {
+      margin-top: auto
+    }
+
+    .sol.featured {
+      border-color: var(--blue-600);
+      box-shadow: 0 0 0 1px var(--blue-600)
+    }
+
+    /* Checklist */
+    .check-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      background: #fff
+    }
+
+    .check-table th,
+    .check-table td {
+      padding: 18px 20px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .check-table tr:last-child td {
+      border-bottom: 0
+    }
+
+    .check-table thead th {
+      background: var(--navy-900);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600
+    }
+
+    .check-table td:first-child {
+      font-weight: 600;
+      color: var(--navy-950);
+      width: 30%
+    }
+
+    .check-table td:nth-child(2) {
+      color: var(--text-2);
+      width: 30%
+    }
+
+    .check-table td:last-child {
+      color: var(--navy-800)
+    }
+
+    .check-table td:last-child .icon {
+      display: inline;
+      vertical-align: -4px;
+      color: var(--teal-700);
+      margin-right: 6px
+    }
+
+    .check-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+      padding: 20px 24px;
+      border: 1px dashed var(--border-2);
+      border-radius: var(--r-lg)
+    }
+
+    .check-foot p {
+      color: var(--text-2)
+    }
+
+    .check-foot b {
+      color: var(--navy-950)
+    }
+
+    /* Support */
+    .support-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 56px;
+      align-items: center
+    }
+
+    .support-copy h2 {
+      font-size: clamp(28px, 3.4vw, 40px)
+    }
+
+    .support-copy>p {
+      margin-top: 16px;
+      font-size: 18px;
+      color: var(--text-2)
+    }
+
+    .support-copy .checks {
+      margin-top: 24px
+    }
+
+    .channels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px
+    }
+
+    .channel {
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 22px;
+      background: #fff
+    }
+
+    .channel .sol-ic {
+      width: 44px;
+      height: 44px
+    }
+
+    .channel h3 {
+      font-size: 17px;
+      margin-top: 14px
+    }
+
+    .channel p {
+      margin-top: 6px;
+      font-size: 15px;
+      color: var(--text-2)
+    }
+
+    /* Pricing */
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      align-items: stretch
+    }
+
+    .plan {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 28px;
+      background: #fff
+    }
+
+    .plan.featured {
+      border: 2px solid var(--blue-600);
+      position: relative
+    }
+
+    .plan .badge {
+      position: absolute;
+      top: -13px;
+      left: 28px;
+      background: var(--blue-600);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px
+    }
+
+    .plan h3 {
+      font-size: 20px
+    }
+
+    .plan .fit {
+      margin-top: 6px;
+      color: var(--text-2);
+      font-size: 15px
+    }
+
+    .plan .quote {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: var(--r-md);
+      background: var(--bg);
+      font-size: 15px;
+      color: var(--navy-800)
+    }
+
+    .plan .quote b {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 20px;
+      color: var(--navy-950)
+    }
+
+    .plan .checks {
+      margin-bottom: 28px
+    }
+
+    .plan .btn {
+      margin-top: auto
+    }
+
+    .no-surprise {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 28px;
+      justify-content: center;
+      list-style: none
+    }
+
+    .no-surprise li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      color: var(--navy-800)
+    }
+
+    .no-surprise .icon {
+      color: var(--teal-700)
+    }
+
+    /* FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 56px;
+      align-items: start
+    }
+
+    .faq-intro h2 {
+      font-size: clamp(28px, 3.4vw, 40px)
+    }
+
+    .faq-intro p {
+      margin-top: 16px;
+      color: var(--text-2);
+      font-size: 18px
+    }
+
+    .faq-intro .btn {
+      margin-top: 24px
+    }
+
+    .faq-list {
+      border-top: 1px solid var(--border)
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border)
+    }
+
+    .faq-item h3 {
+      font-size: 17px;
+      font-family: var(--font-body);
+      font-weight: 600
+    }
+
+    .faq-btn {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 0;
+      background: none;
+      border: 0;
+      text-align: left;
+      color: var(--navy-950);
+      font-weight: 600;
+      font-size: 17px;
+      cursor: pointer
+    }
+
+    .faq-btn .icon {
+      transition: transform .2s;
+      color: var(--blue-600)
+    }
+
+    .faq-btn[aria-expanded=true] .icon {
+      transform: rotate(45deg)
+    }
+
+    .faq-ans {
+      padding: 0 40px 20px 0;
+      color: var(--text-2)
+    }
+
+    .faq-ans[hidden] {
+      display: none
+    }
+
+    /* Final CTA */
+    .final {
+      background: var(--navy-900);
+      color: #C8D5E3;
+      padding: 96px 0
+    }
+
+    .final-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center
+    }
+
+    .final h2 {
+      color: #fff;
+      font-size: clamp(30px, 3.8vw, 44px)
+    }
+
+    .final-copy>p {
+      margin-top: 16px;
+      font-size: 18px
+    }
+
+    .next {
+      list-style: none;
+      margin-top: 28px;
+      padding: 0;
+      display: grid;
+      gap: 16px;
+      counter-reset: nx
+    }
+
+    .next li {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 12px;
+      align-items: start
+    }
+
+    .next li::before {
+      counter-increment: nx;
+      content: counter(nx);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255, 255, 255, .35);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px
+    }
+
+    .next b {
+      color: #fff;
+      display: block
+    }
+
+    .form-card {
+      background: #fff;
+      color: var(--text);
+      border-radius: var(--r-xl);
+      padding: 32px;
+      box-shadow: var(--shadow-lg)
+    }
+
+    .form-card h3 {
+      font-size: 22px
+    }
+
+    .form-card h3+p {
+      margin-top: 6px;
+      color: var(--text-2);
+      font-size: 15px
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px
+    }
+
+    .form-grid .full {
+      grid-column: 1/-1
+    }
+
+    .fld label {
+      display: block;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--navy-950);
+      margin-bottom: 6px
+    }
+
+    .fld input,
+    .fld select {
+      width: 100%;
+      min-height: 48px;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border-2);
+      border-radius: var(--r-sm);
+      background: #fff;
+      color: var(--text)
+    }
+
+    .fld input:focus,
+    .fld select:focus {
+      outline: none;
+      border-color: var(--blue-600);
+      box-shadow: 0 0 0 4px var(--blue-100)
+    }
+
+    .fld .err {
+      display: none;
+      color: var(--danger);
+      font-size: 13px;
+      margin-top: 4px
+    }
+
+    .fld.invalid input {
+      border-color: var(--danger)
+    }
+
+    .fld.invalid .err {
+      display: block
+    }
+
+    .form-card .btn {
+      width: 100%;
+      margin-top: 20px
+    }
+
+    .form-small {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center
+    }
+
+    .form-success {
+      text-align: center;
+      padding: 24px 0
+    }
+
+    .form-success .sol-ic {
+      margin: 0 auto;
+      background: var(--teal-50);
+      color: var(--teal-700)
+    }
+
+    .form-success h3 {
+      margin-top: 16px
+    }
+
+    .form-success p {
+      margin-top: 8px;
+      color: var(--text-2)
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--navy-950);
+      color: #B6C6D6;
+      padding: 64px 0 28px;
+      font-size: 15px
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr repeat(4, 1fr);
+      gap: 32px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, .12)
+    }
+
+    .footer-brand .brand {
+      color: #fff
+    }
+
+    .footer-brand p {
+      margin-top: 16px;
+      max-width: 300px;
+      line-height: 1.6
+    }
+
+    .contact-list {
+      list-style: none;
+      margin-top: 20px;
+      display: grid;
+      gap: 10px
+    }
+
+    .contact-list a,
+    .contact-list span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #E2E8F0;
+      text-decoration: none
+    }
+
+    .contact-list a:hover {
+      text-decoration: underline
+    }
+
+    .contact-list .icon {
+      width: 18px;
+      height: 18px;
+      color: #93C5FD
+    }
+
+    .site-footer h3 {
+      color: #fff;
+      font-size: 14px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em
+    }
+
+    .site-footer ul.links {
+      list-style: none;
+      margin-top: 16px;
+      display: grid;
+      gap: 10px
+    }
+
+    .site-footer ul.links a {
+      color: #B6C6D6;
+      text-decoration: none
+    }
+
+    .site-footer ul.links a:hover {
+      color: #fff;
+      text-decoration: underline
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 24px;
+      font-size: 14px
+    }
+
+    .footer-bottom nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px
+    }
+
+    .footer-bottom a {
+      color: #B6C6D6;
+      text-decoration: none
+    }
+
+    .footer-bottom a:hover {
+      color: #fff;
+      text-decoration: underline
+    }
+
+    /* Mobile sticky bar */
+    .mobile-bar {
+      display: none
+    }
+
+    /* Review mode */
+    .review [data-confirm] {
+      outline: 2px dashed var(--warning);
+      outline-offset: 3px;
+      position: relative
+    }
+
+    .review-banner {
+      display: none
+    }
+
+    .review .review-banner {
+      display: block;
+      background: #FEF3C7;
+      color: #78350F;
+      text-align: center;
+      font-size: 14px;
+      padding: 8px 16px;
+      font-weight: 600
+    }
+
+    /* Responsive */
+    @media (max-width:1100px) {
+      .nav-call span {
+        display: none
+      }
+
+      .price-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .hero-grid {
+        gap: 40px
+      }
+
+      .day-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .tabs {
+        grid-template-columns: 240px 1fr
+      }
+
+      .panel {
+        grid-template-columns: 1fr
+      }
+
+      .footer-top {
+        grid-template-columns: repeat(4, 1fr)
+      }
+
+      .footer-brand {
+        grid-column: 1/-1
+      }
+    }
+
+    @media (max-width:900px) {
+      .section {
+        padding: 72px 0
+      }
+
+      .menu-toggle {
+        display: inline-flex
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        padding: 8px 24px 16px;
+        box-shadow: var(--shadow-md)
+      }
+
+      .nav-links.open {
+        display: flex
+      }
+
+      .nav-links a {
+        padding: 14px 4px;
+        border-bottom: 1px solid var(--border);
+        border-radius: 0;
+        font-size: 16px
+      }
+
+      .nav-actions .btn-secondary {
+        display: none
+      }
+
+      .hero-grid,
+      .switch-grid,
+      .support-grid,
+      .faq-grid,
+      .final-grid,
+      .estimator {
+        grid-template-columns: 1fr
+      }
+
+      .mock-wrap {
+        max-width: 620px;
+        margin-inline: auto;
+        width: 100%
+      }
+
+      .float-phone {
+        left: 0
+      }
+
+      .pain-grid,
+      .sol-grid,
+      .price-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .tabs {
+        grid-template-columns: 1fr
+      }
+
+      .tablist {
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
+        overflow-x: auto;
+        padding-bottom: 6px;
+        scrollbar-width: thin
+      }
+
+      .tab {
+        white-space: nowrap
+      }
+
+      .check-table thead {
+        display: none
+      }
+
+      .check-table,
+      .check-table tbody,
+      .check-table tr,
+      .check-table td {
+        display: block;
+        width: 100% !important
+      }
+
+      .check-table tr {
+        border-bottom: 1px solid var(--border);
+        padding: 16px 20px
+      }
+
+      .check-table tr:last-child {
+        border-bottom: 0
+      }
+
+      .check-table td {
+        padding: 4px 0;
+        border: 0
+      }
+
+      .check-table td:nth-child(2) {
+        font-size: 15px
+      }
+
+      .check-table td:last-child {
+        margin-top: 8px
+      }
+    }
+
+    @media (max-width:767px) {
+      .float-phone {
+        display: none
+      }
+
+      .float-expiry {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: auto;
+        margin-top: 16px
+      }
+
+      .mock-wrap {
+        padding: 0
+      }
+    }
+
+    @media (max-width:600px) {
+      body {
+        padding-bottom: 72px
+      }
+
+      .container {
+        width: calc(100% - 32px)
+      }
+
+      .section {
+        padding: 64px 0
+      }
+
+      .hero {
+        padding: 40px 0 48px
+      }
+
+      .hero-lead {
+        font-size: 17px
+      }
+
+      .hero-ctas .btn {
+        flex: 1 1 100%
+      }
+
+      .nav-call,
+      .nav-actions .btn-primary {
+        display: none
+      }
+
+      .pain-grid,
+      .sol-grid,
+      .price-grid,
+      .day-grid,
+      .channels {
+        grid-template-columns: 1fr
+      }
+
+      .est-inputs,
+      .est-result {
+        padding: 28px 22px
+      }
+
+      .panel {
+        padding: 22px
+      }
+
+      .moved ul {
+        grid-template-columns: 1fr
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr
+      }
+
+      .form-card {
+        padding: 24px 20px
+      }
+
+      .batch {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 4px
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .mobile-bar {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1.4fr;
+        gap: 8px;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1100;
+        background: #fff;
+        border-top: 1px solid var(--border);
+        padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+        box-shadow: 0 -6px 20px rgba(8, 28, 44, .08)
+      }
+
+      .mobile-bar .btn {
+        min-height: 48px;
+        padding: 8px 10px;
+        font-size: 15px
+      }
+    }
+
+    @media (max-width:420px) {
+      .brand {
+        font-size: 16px
+      }
+
+      .brand-mark {
+        width: 30px;
+        height: 30px
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+
+      * {
+        transition: none !important;
+        animation: none !important
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-cross" viewBox="0 0 24 24">
+      <path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z" />
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="M20 6 9 17l-5-5" />
+    </symbol>
+    <symbol id="i-check-c" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" />
+      <path d="m8 12 3 3 5-6" />
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24">
+      <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" />
+    </symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24">
+      <path d="M4 20l1.4-4.2A8 8 0 1 1 8.6 19z" />
+      <path d="M9 10h6M9 13.5h4" />
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="7" />
+      <path d="m20 20-3.5-3.5" />
+    </symbol>
+    <symbol id="i-printer" viewBox="0 0 24 24">
+      <path d="M6 9V3h12v6M6 18H4v-7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7h-2" />
+      <path d="M6 14h12v7H6z" />
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" />
+    </symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24">
+      <path d="M12 3 2 20h20z" />
+      <path d="M12 10v4M12 17h.01" />
+    </symbol>
+    <symbol id="i-receipt" viewBox="0 0 24 24">
+      <path d="M6 3h12v18l-3-2-3 2-3-2-3 2z" />
+      <path d="M9 8h6M9 12h6M9 16h3" />
+    </symbol>
+    <symbol id="i-box" viewBox="0 0 24 24">
+      <path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z" />
+      <path d="m4 7.5 8 4.5 8-4.5M12 12v9" />
+    </symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24">
+      <path d="M3 6h11v10H3zM14 9h4l3 3v4h-7" />
+      <circle cx="7" cy="18" r="2" />
+      <circle cx="17" cy="18" r="2" />
+    </symbol>
+    <symbol id="i-rupee" viewBox="0 0 24 24">
+      <path d="M7 4h11M7 8.5h11M7 4c6 0 6 9 0 9h-1l8 7" />
+    </symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24">
+      <path d="M4 20V4M4 20h16" />
+      <path d="M8 16v-4M12 16V8M16 16v-6" />
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24">
+      <path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z" />
+      <path d="m9 12 2 2 4-4" />
+    </symbol>
+    <symbol id="i-store" viewBox="0 0 24 24">
+      <path d="M4 10v10h16V10M3 10l2-6h14l2 6zM9 20v-6h6v6" />
+    </symbol>
+    <symbol id="i-stores" viewBox="0 0 24 24">
+      <path d="M2 11v9h9v-9M1.5 11 3 7h7l1.5 4M13 11v9h9v-9M12.5 11 14 7h7l1.5 4" />
+    </symbol>
+    <symbol id="i-hospital" viewBox="0 0 24 24">
+      <path d="M4 21V5h16v16M2 21h20" />
+      <path d="M12 8v6M9 11h6M10 21v-3h4v3" />
+    </symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24">
+      <path d="M5 19c0-9 6-14 15-14 0 9-5 15-14 15" />
+      <path d="M5 19 13 11" />
+    </symbol>
+    <symbol id="i-file" viewBox="0 0 24 24">
+      <path d="M6 3h8l4 4v14H6z" />
+      <path d="M14 3v4h4M9 12h6M9 16h6" />
+    </symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24">
+      <path d="M12 15V4M7 9l5-5 5 5M4 15v5h16v-5" />
+    </symbol>
+    <symbol id="i-users" viewBox="0 0 24 24">
+      <circle cx="9" cy="8" r="3.5" />
+      <path d="M2.5 20a6.5 6.5 0 0 1 13 0" />
+      <path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6" />
+    </symbol>
+    <symbol id="i-headset" viewBox="0 0 24 24">
+      <path d="M4 14v-2a8 8 0 0 1 16 0v2" />
+      <path d="M4 14h3v6H5a1 1 0 0 1-1-1zM20 14h-3v6h2a1 1 0 0 0 1-1zM17 20c0 1-2 1.5-4 1.5" />
+    </symbol>
+    <symbol id="i-screen" viewBox="0 0 24 24">
+      <path d="M3 4h18v12H3zM8 20h8M12 16v4" />
+    </symbol>
+    <symbol id="i-play" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" />
+      <path d="m10 8 6 4-6 4z" />
+    </symbol>
+    <symbol id="i-mobile" viewBox="0 0 24 24">
+      <path d="M7 2h10v20H7zM11 18h2" />
+    </symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+    </symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24">
+      <path d="M20 14A8 8 0 1 1 10 4a6 6 0 0 0 10 10" />
+    </symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24">
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24">
+      <path d="M12 5v14M5 12h14" />
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <path d="M3 5h18v14H3z" />
+      <path d="m3 6 9 7 9-7" />
+    </symbol>
+    <symbol id="i-register" viewBox="0 0 24 24">
+      <path d="M5 3h12a2 2 0 0 1 2 2v16H7a2 2 0 0 1-2-2z" />
+      <path d="M5 17h14M9 7h6M9 11h6" />
+    </symbol>
+  </svg>
+
+  <a class="skip" href="#main">Skip to main content</a>
+  <div class="review-banner" role="note">Review mode: outlined items need product-owner confirmation before launch.
+  </div>
+
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="brand" href="#top" aria-label="Healthray Pharmacy home">
+        <span class="brand-mark"><svg class="icon" aria-hidden="true" style="fill:currentColor;stroke:none">
+            <use href="#i-cross" />
+          </svg></span>
+        Healthray Pharmacy
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#solutions">Who it’s for</a></li>
+          <li><a href="#switching">Switching</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a class="nav-call" href="https://pharmacy.healthray.com/login">Log in</a>
+        <a class="btn btn-secondary btn-sm" href="https://pharmacy.healthray.com/signup">Start free</a>
+        <a class="btn btn-primary btn-sm" href="#demo" data-cta="demo">Book a free demo</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links"
+          aria-label="Open menu"><svg class="icon" aria-hidden="true">
+            <use href="#i-menu" />
+          </svg></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO: answers "Is this for a store like mine, and what will it fix?" -->
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Pharmacy software for Indian medical stores</span>
+          <h1>Bill faster at the counter. <span>Stop losing money to expiry.</span></h1>
+          <p class="hero-lead">Batch-wise billing that picks the earliest-expiry batch, expiry and stock alerts,
+            distributor bills imported from CSV, and GST reports — in one system that runs in your web browser.
+            Start free, and upgrade when your store needs more.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#demo" data-cta="demo">Book a free demo <svg class="icon"
+                aria-hidden="true">
+                <use href="#i-arrow" />
+              </svg></a>
+            <a class="btn btn-secondary" href="https://pharmacy.healthray.com/signup">Start free — no payment</a>
+          </div>
+          <ul class="hero-assure">
+            <li><svg class="icon" aria-hidden="true">
+                <use href="#i-check-c" />
+              </svg>Free Starter plan, forever</li>
+            <li><svg class="icon" aria-hidden="true">
+                <use href="#i-check-c" />
+              </svg>Import your stock from a CSV file</li>
+            <li><svg class="icon" aria-hidden="true">
+                <use href="#i-check-c" />
+              </svg>Paid plans from ₹4,999 a year</li>
+          </ul>
+          <p class="hero-for">Made for <strong>single medical stores</strong>, <strong>pharmacy chains</strong> and
+            <strong>hospital pharmacies</strong>.</p>
+        </div>
+
+        <div class="mock-wrap" aria-label="Sample billing screen showing batch selection by expiry" role="img">
+          <span class="sample-tag mock-note">Sample screen · illustrative data</span>
+          <div class="mock" aria-hidden="true">
+            <div class="mock-bar"><b>Create sale · Counter 1</b><span>Rush hour · 7:42 pm</span></div>
+            <div class="mock-body">
+              <div class="search-box"><svg class="icon">
+                  <use href="#i-search" />
+                </svg>dolo 650<kbd>F2</kbd></div>
+              <div class="result">
+                <div class="result-head"><b>Dolo 650 Tablet · strip of 15</b><small>Paracetamol 650 mg</small></div>
+                <div class="batch pick"><span class="b-id">DL4521</span><span class="b-exp">Exp 11/2026</span><span>34
+                    strips</span><span class="pill pill-teal"><svg class="icon">
+                      <use href="#i-check" />
+                    </svg>Sell first</span></div>
+                <div class="batch"><span class="b-id">DL4710</span><span class="b-exp">Exp 04/2027</span><span>120
+                    strips</span><span class="pill pill-blue">Later</span></div>
+              </div>
+              <table class="lines">
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Batch</th>
+                    <th class="num">Qty</th>
+                    <th class="num">Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Dolo 650 Tab</td>
+                    <td>DL4521</td>
+                    <td class="num">2</td>
+                    <td class="num">₹61.20</td>
+                  </tr>
+                  <tr>
+                    <td>Pan-D Capsule</td>
+                    <td>PD2208</td>
+                    <td class="num">1</td>
+                    <td class="num">₹199.00</td>
+                  </tr>
+                  <tr>
+                    <td>ORS Electrolyte</td>
+                    <td>OR0915</td>
+                    <td class="num">3</td>
+                    <td class="num">₹126.00</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="bill-foot">
+                <div class="bill-total"><small>Total incl. GST</small><b>₹386.20</b></div>
+                <span class="print-btn"><svg class="icon">
+                    <use href="#i-printer" />
+                  </svg>Save &amp; print <kbd>Ctrl S</kbd></span>
+              </div>
+            </div>
+          </div>
+          <div class="float float-phone" aria-hidden="true">
+            <h4><svg class="icon" style="color:var(--blue-600)">
+                <use href="#i-chat" />
+              </svg>WhatsApp daily report</h4>
+            <div class="big">₹42,380</div>
+            <p>Today’s sales · 186 bills</p>
+          </div>
+          <div class="float float-expiry" aria-hidden="true">
+            <h4><svg class="icon" style="color:var(--warning)">
+                <use href="#i-alert" />
+              </svg>Stock expiry report</h4>
+            <div class="big">23 batches · ₹18,640</div>
+            <p>Next 60 days · supplier-wise</p>
+            <span class="act">Review list →</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUILT-FOR: self-identification, no fake logos -->
+    <section class="built-for" aria-label="Pharmacy types we serve">
+      <div class="container built-row">
+        <p>Built for</p>
+        <ul class="built-list">
+          <li><svg class="icon" aria-hidden="true">
+              <use href="#i-store" />
+            </svg>Retail medical stores</li>
+          <li><svg class="icon" aria-hidden="true">
+              <use href="#i-stores" />
+            </svg>Pharmacy chains</li>
+          <li><svg class="icon" aria-hidden="true">
+              <use href="#i-hospital" />
+            </svg>Hospital &amp; clinic pharmacies</li>
+          <li><svg class="icon" aria-hidden="true">
+              <use href="#i-truck" />
+            </svg>Stores with home delivery</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PAINS: "Do they understand my day?" -->
+    <section class="section bg-soft" id="problems">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">Sound familiar?</span>
+          <h2>Running a medical store is hard enough. Your software shouldn’t add to it.</h2>
+          <p>These are the problems that cost pharmacy owners money, time and sleep. Here’s how Healthray Pharmacy
+            handles each one.</p>
+        </div>
+        <div class="pain-grid">
+          <article class="pain">
+            <p class="pain-q">We found expired strips behind the new stock — again.</p>
+            <p class="pain-why">Money already paid to the distributor, now dead stock. And you only find out during a
+              shelf check.</p>
+            <div class="pain-fix">
+              <div><svg class="icon" aria-hidden="true">
+                  <use href="#i-check-c" />
+                </svg><span><b>Fix:</b> billing auto-selects the batch that expires first, and the stock expiry
+                  report shows what’s expiring, item-wise or supplier-wise.</span></div>
+            </div>
+          </article>
+          <article class="pain">
+            <p class="pain-q">Customers walk out while staff search for the medicine.</p>
+            <p class="pain-why">Evening rush, five people waiting, and the new staff member can’t find the item or
+              the right batch.</p>
+            <div class="pain-fix">
+              <div><svg class="icon" aria-hidden="true">
+                  <use href="#i-check-c" />
+                </svg><span><b>Fix:</b> search by brand or generic name, the batch fills in by itself, and keyboard
+                  shortcuts save the bill without the mouse.</span></div>
+            </div>
+          </article>
+          <article class="pain">
+            <p class="pain-q">Every night I sit typing distributor bills, line by line.</p>
+            <p class="pain-why">Batch, expiry, MRP, PTR, scheme, free quantity — forty lines a bill, every bill.</p>
+            <div class="pain-fix">
+              <div><svg class="icon" aria-hidden="true">
+                  <use href="#i-check-c" />
+                </svg><span><b>Fix:</b> import the bill as a CSV file, or scan it with OCR import. Margin, PTR and
+                  GST are worked out when you save.</span></div>
+            </div>
+          </article>
+          <article class="pain">
+            <p class="pain-q">The software says 5 boxes. The shelf has 2.</p>
+            <p class="pain-why">Wrong entries, missed returns, or worse. Either way, you stop trusting your stock
+              numbers.</p>
+            <div class="pain-fix">
+              <div><svg class="icon" aria-hidden="true">
+                  <use href="#i-check-c" />
+                </svg><span><b>Fix:</b> stock is tracked batch-wise, adjustments are recorded, and each user has their
+                  own login and role — so you can see who did what.</span></div>
+            </div>
+          </article>
+          <article class="pain">
+            <p class="pain-q">Month-end GST is a mess for me and my CA.</p>
+            <p class="pain-why">Wrong rates mean wrong invoices, and a weekend spent fixing entries.</p>
+            <div class="pain-fix">
+              <div><svg class="icon" aria-hidden="true">
+                  <use href="#i-check-c" />
+                </svg><span><b>Fix:</b> HSN codes and GST rates are applied on every bill from the item master, and
+                  the GST report is ready for your accountant.</span></div>
+            </div>
+          </article>
+          <article class="pain">
+            <p class="pain-q">I can’t leave the shop without worrying.</p>
+            <p class="pain-why">Sales, cash, credit customers, distributor dues — it’s all in the shop, or in a
+              notebook.</p>
+            <div class="pain-fix">
+              <div><svg class="icon" aria-hidden="true">
+                  <use href="#i-check-c" />
+                </svg><span><b>Fix:</b> get the daily report on WhatsApp, and log in from any browser to check
+                  collections, patient dues and supplier dues.</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESTIMATOR: loss-aversion, their own numbers -->
+    <section class="section" id="estimator" aria-labelledby="est-title">
+      <div class="container">
+        <div class="estimator">
+          <div class="est-inputs">
+            <span class="eyebrow">Expiry loss estimator</span>
+            <h2 id="est-title">How much is expiry costing your store?</h2>
+            <p>Move the sliders to match your store. Most owners have never put a number on this — it’s usually bigger
+              than expected.</p>
+            <div class="field">
+              <div class="field-top"><label for="purchase">Monthly purchase from distributors</label><output
+                  id="purchase-out" for="purchase">₹8,00,000</output></div>
+              <input type="range" id="purchase" min="100000" max="5000000" step="50000" value="800000">
+              <small>Roughly what you pay distributors in a month.</small>
+            </div>
+            <div class="field">
+              <div class="field-top"><label for="expiry">Stock that expires before it sells</label><output
+                  id="expiry-out" for="expiry">1.0%</output></div>
+              <input type="range" id="expiry" min="0.2" max="5" step="0.1" value="1">
+              <small>Your best guess. Include stock you couldn’t return in time.</small>
+            </div>
+          </div>
+          <div class="est-result" aria-live="polite">
+            <span class="label">Estimated expiry loss per year</span>
+            <span class="value" id="loss-year">₹96,000</span>
+            <div class="est-split">
+              <div><b id="loss-month">₹8,000</b><span>lost every month</span></div>
+              <div><b id="loss-half">₹48,000</b><span>a year back if you catch even half in time</span></div>
+            </div>
+            <p class="note">An estimate based only on the numbers you enter — not a promise of savings. Your actual
+              result depends on your stock, distributors and return terms.</p>
+            <a class="btn btn-light" href="#demo" data-cta="demo">See the expiry report in a demo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DAY: "How would it fit my routine?" -->
+    <section class="section bg-soft" id="day">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">A day at your pharmacy</span>
+          <h2>Built around how a medical store actually runs</h2>
+          <p>Not a generic shop billing app. Every screen follows the rhythm of your day.</p>
+        </div>
+        <div class="day-grid">
+          <article class="day">
+            <span class="day-time"><svg class="icon" aria-hidden="true">
+                <use href="#i-sun" />
+              </svg>Opening · 9 am</span>
+            <h3>Know what needs attention</h3>
+            <p>The dashboard shows what to deal with before the first customer arrives.</p>
+            <ul>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Stock expiring soon</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Stock alerts &amp; short book</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Supplier dues</li>
+            </ul>
+          </article>
+          <article class="day">
+            <span class="day-time"><svg class="icon" aria-hidden="true">
+                <use href="#i-users" />
+              </svg>Counter rush</span>
+            <h3>Bill in seconds</h3>
+            <p>Search, let the batch fill in, save and print.</p>
+            <ul>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Brand or generic name search</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Earliest-expiry batch auto-selected</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Cash, card, UPI or credit</li>
+            </ul>
+          </article>
+          <article class="day">
+            <span class="day-time"><svg class="icon" aria-hidden="true">
+                <use href="#i-truck" />
+              </svg>Distributor delivery</span>
+            <h3>Enter the bill once, correctly</h3>
+            <p>Stock, batch and expiry go in as the boxes come in.</p>
+            <ul>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>CSV or OCR bill import</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Scheme &amp; free quantity recorded</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>PTR &amp; margin auto-calculated</li>
+            </ul>
+          </article>
+          <article class="day">
+            <span class="day-time"><svg class="icon" aria-hidden="true">
+                <use href="#i-moon" />
+              </svg>Closing · 10 pm</span>
+            <h3>Close the day with confidence</h3>
+            <p>Collections that match what’s in the drawer.</p>
+            <ul>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Payment-method-wise collection</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Collection by staff member</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Daily report on WhatsApp</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES: "Does it have what I need?" -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Features</span>
+          <h2>Everything a medical store needs. Nothing it doesn’t.</h2>
+          <p>Pick a part of your business to see how it works. Some features depend on your plan — see
+            <a href="#pricing">pricing</a>.</p>
+        </div>
+        <div class="tabs">
+          <div class="tablist" role="tablist" aria-label="Product features">
+            <button class="tab" role="tab" id="tab-billing" aria-controls="panel-billing" aria-selected="true"><svg
+                class="icon" aria-hidden="true">
+                <use href="#i-receipt" />
+              </svg>Billing &amp; counter</button>
+            <button class="tab" role="tab" id="tab-expiry" aria-controls="panel-expiry" aria-selected="false"
+              tabindex="-1"><svg class="icon" aria-hidden="true">
+                <use href="#i-alert" />
+              </svg>Expiry &amp; batch tracking</button>
+            <button class="tab" role="tab" id="tab-stock" aria-controls="panel-stock" aria-selected="false"
+              tabindex="-1"><svg class="icon" aria-hidden="true">
+                <use href="#i-box" />
+              </svg>Stock &amp; reorder</button>
+            <button class="tab" role="tab" id="tab-purchase" aria-controls="panel-purchase" aria-selected="false"
+              tabindex="-1"><svg class="icon" aria-hidden="true">
+                <use href="#i-truck" />
+              </svg>Purchase &amp; suppliers</button>
+            <button class="tab" role="tab" id="tab-gst" aria-controls="panel-gst" aria-selected="false"
+              tabindex="-1"><svg class="icon" aria-hidden="true">
+                <use href="#i-rupee" />
+              </svg>GST &amp; accounts</button>
+            <button class="tab" role="tab" id="tab-patients" aria-controls="panel-patients" aria-selected="false"
+              tabindex="-1"><svg class="icon" aria-hidden="true">
+                <use href="#i-hospital" />
+              </svg>Patients &amp; hospital pharmacy</button>
+            <button class="tab" role="tab" id="tab-reports" aria-controls="panel-reports" aria-selected="false"
+              tabindex="-1"><svg class="icon" aria-hidden="true">
+                <use href="#i-chart" />
+              </svg>Reports &amp; control</button>
+          </div>
+
+          <div>
+            <div class="panel" role="tabpanel" id="panel-billing" aria-labelledby="tab-billing">
+              <div>
+                <h3>A counter screen built for the evening rush</h3>
+                <p>Search, pick, save, print — with step-by-step walkthroughs for new staff built into the app.</p>
+                <ul class="checks">
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Fast item search</b> — by brand or generic name, or with a barcode reader.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Batch auto-selection (FEFO)</b> — the earliest-expiry batch fills in first.</span>
+                  </li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Cash, card, UPI or credit</b> — with patient history and dues on the bill.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Print or share</b> — send the bill by WhatsApp, SMS or email (uses message
+                      credits).</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Bring customers back</b> — medicine reminders, loyalty cards and online orders for
+                      pick-up or delivery.</span></li>
+                </ul>
+              </div>
+              <div class="mini" aria-hidden="true">
+                <div class="mini-head"><b>Search: “pantoprazole”</b><span class="sample-tag">Sample</span></div>
+                <div class="row">
+                  <div>
+                    <div class="t">Pan 40 Tablet</div>
+                    <div class="s">Pantoprazole 40 mg · Batch PN2231</div>
+                  </div><span class="v">86 in stock</span>
+                </div>
+                <div class="row">
+                  <div>
+                    <div class="t">Pantocid 40 Tablet</div>
+                    <div class="s">Pantoprazole 40 mg · Batch PC0918</div>
+                  </div><span class="v">42 in stock</span>
+                </div>
+                <div class="row">
+                  <div>
+                    <div class="t">Pantop 40 Tablet</div>
+                    <div class="s">Pantoprazole 40 mg · Batch PT4470</div>
+                  </div><span class="pill pill-warn">Low · 6</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel" role="tabpanel" id="panel-expiry" aria-labelledby="tab-expiry" hidden>
+              <div>
+                <h3>Catch expiring stock while you can still act</h3>
+                <p>Every item is tracked by batch and expiry from the moment the purchase bill is saved.</p>
+                <ul class="checks">
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Stock expiry report</b> — filter by date, item-wise or supplier-wise.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>First-expiry-first-out billing</b> — older batches go out first.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Purchase returns &amp; credit notes</b> — send short-expiry stock back to the
+                      supplier, on record.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Stop expired sales</b> — a store setting controls whether expired items can be
+                      billed.</span></li>
+                </ul>
+              </div>
+              <div class="mini" aria-hidden="true">
+                <div class="mini-head"><b>Stock expiry report · next 60 days</b><span class="sample-tag">Sample</span>
+                </div>
+                <div class="row">
+                  <div>
+                    <div class="t">Azithral 500 · AZ1189</div>
+                    <div class="s">Exp 11/2026 · 14 strips</div>
+                  </div><span class="pill pill-red"><svg class="icon">
+                      <use href="#i-alert" />
+                    </svg>28 days</span>
+                </div>
+                <div class="row">
+                  <div>
+                    <div class="t">Montair LC · ML0422</div>
+                    <div class="s">Exp 12/2026 · 9 strips</div>
+                  </div><span class="pill pill-warn">45 days</span>
+                </div>
+                <div class="row">
+                  <div>
+                    <div class="t">Shelcal 500 · SC7731</div>
+                    <div class="s">Exp 12/2026 · 22 strips</div>
+                  </div><span class="pill pill-warn">58 days</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel" role="tabpanel" id="panel-stock" aria-labelledby="tab-stock" hidden>
+              <div>
+                <h3>Stock numbers you can finally trust</h3>
+                <p>Know what you have, what’s running low and what isn’t moving.</p>
+                <ul class="checks">
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Min and max stock per item</b> — stock alerts and a short book of what to
+                      order.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Purchase orders &amp; reorder processing</b> — turn the short book into an order
+                      (Advance plan).</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Non-moving items report</b> — see what’s blocking your money.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Barcode label printing</b> and recorded stock adjustments.</span></li>
+                </ul>
+              </div>
+              <div class="mini" aria-hidden="true">
+                <div class="mini-head"><b>Short book</b><span class="sample-tag">Sample</span></div>
+                <div class="row">
+                  <div>
+                    <div class="t">Telma 40 Tablet</div>
+                    <div class="s">Stock 8 · Min 30</div>
+                  </div><span class="v">Order 10</span>
+                </div>
+                <div class="row">
+                  <div>
+                    <div class="t">Glycomet GP 1</div>
+                    <div class="s">Stock 12 · Min 25</div>
+                  </div><span class="v">Order 6</span>
+                </div>
+                <div class="row">
+                  <div>
+                    <div class="t">Non-moving items</div>
+                    <div class="s">47 items</div>
+                  </div><span class="v">₹23,410</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel" role="tabpanel" id="panel-purchase" aria-labelledby="tab-purchase" hidden>
+              <div>
+                <h3>Distributor bills in, without the late nights</h3>
+                <p>Record purchases, schemes, returns and payments in one place.</p>
+                <ul class="checks">
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>CSV import</b> — map the distributor’s columns once, then import.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>OCR import</b> — scan a printed bill into a purchase entry (uses OCR
+                      credits).</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>PTR, margin and GST input</b> — calculated when you save; stock goes live
+                      instantly.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Supplier ledger &amp; dues</b> — plus supplier rate contracts on
+                      Enterprise.</span></li>
+                </ul>
+              </div>
+              <div class="mini" aria-hidden="true">
+                <div class="mini-head"><b>Purchase · Bill A-20931</b><span class="sample-tag">Sample</span></div>
+                <div class="row">
+                  <div>
+                    <div class="t">Imported from CSV</div>
+                    <div class="s">Batch, expiry, MRP, PTR, GST</div>
+                  </div><span class="pill pill-teal"><svg class="icon">
+                      <use href="#i-check" />
+                    </svg>38 / 38</span>
+                </div>
+                <div class="row">
+                  <div>
+                    <div class="t">Scheme &amp; free quantity</div>
+                    <div class="s">10 + 1 free · 3 items</div>
+                  </div><span class="v">Recorded</span>
+                </div>
+                <div class="row">
+                  <div>
+                    <div class="t">Supplier due</div>
+                    <div class="s">Credit period 30 days</div>
+                  </div><span class="v">₹48,210</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel" role="tabpanel" id="panel-gst" aria-labelledby="tab-gst" hidden>
+              <div>
+                <h3>GST-ready bills and clean accounts</h3>
+                <p>Stop fixing entries at month-end. Hand your accountant clean data.</p>
+                <ul class="checks">
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>HSN and GST rate on every line</b> — applied from the item master.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>GST report and bill-wise tax report</b> — export to Excel for your CA.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Tally XML export</b> — sales, purchases, returns and payments (Enterprise
+                      plan).</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Ledgers, vouchers &amp; expenses</b> — patient, supplier and account
+                      ledgers.</span></li>
+                </ul>
+              </div>
+              <div class="mini" aria-hidden="true">
+                <div class="mini-head"><b>GST report · September</b><span class="sample-tag">Sample</span></div>
+                <div class="row">
+                  <div>
+                    <div class="t">Sales (taxable)</div>
+                    <div class="s">4,812 invoices</div>
+                  </div><span class="v">₹11,48,320</span>
+                </div>
+                <div class="row">
+                  <div>
+                    <div class="t">Output GST</div>
+                    <div class="s">By rate &amp; HSN</div>
+                  </div><span class="v">₹61,904</span>
+                </div>
+                <div class="row">
+                  <div>
+                    <div class="t">Patient dues</div>
+                    <div class="s">38 customers</div>
+                  </div><span class="v">₹27,650</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel" role="tabpanel" id="panel-patients" aria-labelledby="tab-patients" hidden>
+              <div>
+                <h3>Built for hospital pharmacies too</h3>
+                <p>Healthray also makes hospital software, so the pharmacy handles patients, not just customers.</p>
+                <ul class="checks">
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>IPD and discharge billing</b> — with patient deposits, dues and ledgers.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Payer and TPA companies</b> — split TPA and non-TPA sales.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Prescriptions from Healthray EMR</b> — arrive at the counter as tokens, shown on a
+                      token board.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>ABDM integrated</b> — create or link a patient’s ABHA.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Departments, patient kits &amp; packages</b> — plus Schedule H / H1 item
+                      tagging.</span></li>
+                </ul>
+              </div>
+              <div class="mini" aria-hidden="true">
+                <div class="mini-head"><b>Token board · Pharmacy</b><span class="sample-tag">Sample</span></div>
+                <div class="row">
+                  <div>
+                    <div class="t">Token 041 · EMR prescription</div>
+                    <div class="s">4 medicines · Counter 2</div>
+                  </div><span class="pill pill-blue">Billing</span>
+                </div>
+                <div class="row">
+                  <div>
+                    <div class="t">Token 042 · IPD issue</div>
+                    <div class="s">Ward 3 · TPA patient</div>
+                  </div><span class="pill pill-warn">Waiting</span>
+                </div>
+                <div class="row">
+                  <div>
+                    <div class="t">Token 040</div>
+                    <div class="s">Paid by UPI</div>
+                  </div><span class="pill pill-teal"><svg class="icon">
+                      <use href="#i-check" />
+                    </svg>Done</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel" role="tabpanel" id="panel-reports" aria-labelledby="tab-reports" hidden>
+              <div>
+                <h3>See the business, control who does what</h3>
+                <p>Reports that answer real questions, and controls that protect your stock and cash.</p>
+                <ul class="checks">
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Margin, top-selling and collection reports</b> — plus an executive dashboard on
+                      Advance.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Daily report on WhatsApp</b> — the day’s numbers without visiting the
+                      shop.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Roles and privileges</b> — staff see only what they need to.</span></li>
+                  <li><svg class="icon" aria-hidden="true">
+                      <use href="#i-check-c" />
+                    </svg><span><b>Two-step login, IP whitelisting and activity report</b> — on the Advance
+                      plan.</span></li>
+                </ul>
+              </div>
+              <div class="mini" aria-hidden="true">
+                <div class="mini-head"><b>Sales · last 7 days</b><span class="sample-tag">Sample</span></div>
+                <div class="bars"><span style="height:55%"></span><span style="height:68%"></span><span
+                    style="height:60%"></span><span style="height:74%"></span><span style="height:66%"></span><span
+                    style="height:92%"></span><span style="height:80%"></span></div>
+                <div class="bar-labels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                </div>
+                <div class="row">
+                  <div>
+                    <div class="t">Sales profit</div>
+                    <div class="s">This week</div>
+                  </div><span class="v">19.4%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SWITCHING: the #1 objection -->
+    <section class="section bg-soft" id="switching">
+      <div class="container switch-grid">
+        <div class="switch-copy">
+          <span class="eyebrow">Switching made safe</span>
+          <h2>Change your software without stopping a single bill</h2>
+          <p>The biggest worry about switching is the first week. Your old system can keep running while you set up
+            Healthray Pharmacy on the free plan — switch over when you’re ready.</p>
+          <div class="moved">
+            <h3>What you can bring in from a CSV file</h3>
+            <ul>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Items with generic name &amp; HSN</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Opening stock with batch &amp; expiry</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>MRP, sale rate &amp; pack size</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Supplier for each stock line</li>
+            </ul>
+          </div>
+          <p class="from">Export from your current software, Excel or registers. A sample sheet is provided, and you
+            match your columns to ours before importing.</p>
+          <p class="from" data-confirm>Want help? Our team can review your file with you before you import.</p>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <div>
+              <h3>Create your store account</h3>
+              <p>Sign up with your store name and email, and verify with an OTP. The Starter plan is free.</p><span
+                class="when">A few minutes</span>
+            </div>
+          </li>
+          <li class="step">
+            <div>
+              <h3>Import your items and stock</h3>
+              <p>Upload a CSV of your items and opening stock. Errors are flagged line by line so you can fix them
+                before going live.</p><span class="when">Same day</span>
+            </div>
+          </li>
+          <li class="step">
+            <div>
+              <h3>Let your staff learn</h3>
+              <p>Built-in walkthroughs for sales, purchase and item master show each step on screen. Keyboard
+                shortcuts keep billing quick.</p><span class="when">A short session</span>
+            </div>
+          </li>
+          <li class="step">
+            <div>
+              <h3>Go live, then upgrade if you need to</h3>
+              <p>Run both systems side by side if you like. Move to Basic or Advance when you need unlimited bills
+                and more users — switch or cancel anytime.</p><span class="when">You choose the day</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- SOLUTIONS: "Will it grow with me?" -->
+    <section class="section" id="solutions">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">Who it’s for</span>
+          <h2>One store, a chain, or a hospital — it fits the way you work</h2>
+        </div>
+        <div class="sol-grid">
+          <article class="sol featured">
+            <div class="sol-ic"><svg class="icon" aria-hidden="true">
+                <use href="#i-store" />
+              </svg></div>
+            <p class="who">Basic or Advance plan</p>
+            <h3>Single medical store</h3>
+            <p>For the owner-pharmacist who wants faster billing, fewer expiry losses and less paperwork.</p>
+            <ul class="checks">
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Billing, expiry, purchase &amp; GST</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>3 to 10 users with roles</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Start free, upgrade anytime</li>
+            </ul>
+            <a class="link-arrow" href="https://pharmacy.healthray.com/signup">Start free for my store <svg
+                class="icon" aria-hidden="true">
+                <use href="#i-arrow" />
+              </svg></a>
+          </article>
+          <article class="sol">
+            <div class="sol-ic"><svg class="icon" aria-hidden="true">
+                <use href="#i-stores" />
+              </svg></div>
+            <p class="who">Enterprise plan</p>
+            <h3>Pharmacy chains</h3>
+            <p>For owners and operations heads who need every store to follow the same rules.</p>
+            <ul class="checks">
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Central administration &amp; linked outlets</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Stock transfers between stores</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Central &amp; multi-store reports</li>
+            </ul>
+            <a class="link-arrow" href="#demo" data-cta="quote">Talk to us about your chain <svg class="icon"
+                aria-hidden="true">
+                <use href="#i-arrow" />
+              </svg></a>
+          </article>
+          <article class="sol">
+            <div class="sol-ic"><svg class="icon" aria-hidden="true">
+                <use href="#i-hospital" />
+              </svg></div>
+            <p class="who">Hospitals &amp; clinics</p>
+            <h3>In-house pharmacy</h3>
+            <p>For hospitals and nursing homes that run a pharmacy for OPD and admitted patients.</p>
+            <ul class="checks">
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>IPD, discharge &amp; TPA billing</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Department stock transfers</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Works with Healthray EMR &amp; ABDM</li>
+            </ul>
+            <a class="link-arrow" href="#demo" data-cta="demo">Discuss your hospital pharmacy <svg class="icon"
+                aria-hidden="true">
+                <use href="#i-arrow" />
+              </svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHECKLIST: selection criteria, honest guide -->
+    <section class="section bg-soft" id="checklist">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Before you choose</span>
+          <h2>8 questions to ask any pharmacy software company</h2>
+          <p>Whoever you buy from, get clear answers to these. Here are ours.</p>
+        </div>
+        <table class="check-table">
+          <thead>
+            <tr>
+              <th scope="col">Ask this</th>
+              <th scope="col">Why it matters</th>
+              <th scope="col">Our answer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Can a new staff member bill on day one?</td>
+              <td>Staff change often. Training shouldn’t take weeks.</td>
+              <td><svg class="icon" aria-hidden="true">
+                  <use href="#i-check-c" />
+                </svg>Built-in walkthroughs show each step on screen, and shortcuts keep billing quick.</td>
+            </tr>
+            <tr>
+              <td>Does billing pick the earliest-expiry batch?</td>
+              <td>This is where most expiry losses start.</td>
+              <td><svg class="icon" aria-hidden="true">
+                  <use href="#i-check-c" />
+                </svg>Yes — batch auto-selection (FEFO), plus a stock expiry report.</td>
+            </tr>
+            <tr>
+              <td>How do I get my data in?</td>
+              <td>Re-typing thousands of items is not an option.</td>
+              <td><svg class="icon" aria-hidden="true">
+                  <use href="#i-check-c" />
+                </svg>Import items and opening stock from CSV, with column matching and line-by-line error checks.</td>
+            </tr>
+            <tr data-confirm>
+              <td>What happens when the internet goes down?</td>
+              <td>The counter can’t stop in the evening rush.</td>
+              <td><svg class="icon" aria-hidden="true">
+                  <use href="#i-check-c" />
+                </svg>It runs in your web browser. [Confirm offline behaviour before publishing.]</td>
+            </tr>
+            <tr>
+              <td>What will I pay in year two?</td>
+              <td>Low first-year prices and costly renewals are common.</td>
+              <td><svg class="icon" aria-hidden="true">
+                  <use href="#i-check-c" />
+                </svg>Prices are published on this page. Pay for 1, 3 or 5 years; switch or cancel anytime.</td>
+            </tr>
+            <tr data-confirm>
+              <td>Who do I call when billing stops?</td>
+              <td>Support hours should match shop hours.</td>
+              <td><svg class="icon" aria-hidden="true">
+                  <use href="#i-check-c" />
+                </svg>Call support on +91 89808 80819 or raise a ticket at the help centre.</td>
+            </tr>
+            <tr data-confirm>
+              <td>Can I take my data with me if I leave?</td>
+              <td>It’s your business record, not the vendor’s.</td>
+              <td><svg class="icon" aria-hidden="true">
+                  <use href="#i-check-c" />
+                </svg>Item lists and reports export to CSV or Excel. [Confirm full data export.]</td>
+            </tr>
+            <tr>
+              <td>Will it work with my printer and scanner?</td>
+              <td>New hardware is an unplanned cost.</td>
+              <td><svg class="icon" aria-hidden="true">
+                  <use href="#i-check-c" />
+                </svg>Thermal and A4/A5 bill formats, barcode label printing, and USB barcode readers.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="check-foot">
+          <p><b>Comparing a few options?</b> Get this checklist as a one-page PDF to use in every demo.</p>
+          <a class="btn btn-secondary" href="#demo" data-cta="checklist" data-confirm><svg class="icon"
+              aria-hidden="true">
+              <use href="#i-file" />
+            </svg>Send me the checklist</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUPPORT: "Who helps me when it breaks?" -->
+    <section class="section" id="support">
+      <div class="container support-grid">
+        <div class="support-copy">
+          <span class="eyebrow">Support</span>
+          <h2>Real people who understand pharmacies</h2>
+          <p>When something goes wrong at the counter, you need an answer fast — from people who build software for
+            pharmacies and hospitals every day.</p>
+          <ul class="checks">
+            <li><svg class="icon" aria-hidden="true">
+                <use href="#i-check-c" />
+              </svg><span><b>Phone support</b> on +91 89808 80819</span></li>
+            <li><svg class="icon" aria-hidden="true">
+                <use href="#i-check-c" />
+              </svg><span><b>Priority support</b> on the Enterprise plan</span></li>
+            <li data-confirm><svg class="icon" aria-hidden="true">
+                <use href="#i-check-c" />
+              </svg><span><b>Support hours and languages</b> — [confirm before publishing]</span></li>
+          </ul>
+        </div>
+        <div class="channels">
+          <article class="channel">
+            <div class="sol-ic"><svg class="icon" aria-hidden="true">
+                <use href="#i-headset" />
+              </svg></div>
+            <h3>Phone</h3>
+            <p>Call <a href="tel:+918980880819">+91 89808 80819</a> and talk it through.</p>
+          </article>
+          <article class="channel">
+            <div class="sol-ic"><svg class="icon" aria-hidden="true">
+                <use href="#i-chat" />
+              </svg></div>
+            <h3>Help centre</h3>
+            <p>Raise and track a ticket at <a href="https://support.healthray.com">support.healthray.com</a>.</p>
+          </article>
+          <article class="channel">
+            <div class="sol-ic"><svg class="icon" aria-hidden="true">
+                <use href="#i-play" />
+              </svg></div>
+            <h3>In-app walkthroughs</h3>
+            <p>Step-by-step guides for sales, purchase, items and accounts, inside the app.</p>
+          </article>
+          <article class="channel">
+            <div class="sol-ic"><svg class="icon" aria-hidden="true">
+                <use href="#i-screen" />
+              </svg></div>
+            <h3>Keyboard shortcuts</h3>
+            <p>A shortcuts panel in the app shows the keys for every screen.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING: transparency (source: pharmacyapi.healthray.com/api/subscription/pricing/public) -->
+    <section class="section bg-soft" id="pricing">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">Pricing</span>
+          <h2>Simple yearly plans. Prices on the page.</h2>
+          <p>Start free. Upgrade when you need unlimited bills, more users or more stores.</p>
+        </div>
+        <div class="price-grid">
+          <article class="plan">
+            <h3>Starter</h3>
+            <p class="fit">Try it on one counter</p>
+            <div class="quote"><b>Free</b>Forever</div>
+            <ul class="checks">
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>10 sales bills a month</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>1 user</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Core sales &amp; purchase</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>CSV import &amp; basic reports</li>
+            </ul>
+            <a class="btn btn-secondary" href="https://pharmacy.healthray.com/signup">Start free</a>
+          </article>
+          <article class="plan">
+            <h3>Basic</h3>
+            <p class="fit">A single store getting started</p>
+            <div class="quote"><b>₹4,999 / year</b>About ₹417 a month</div>
+            <ul class="checks">
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Unlimited bills</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>3 users with role management</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>GST, margin &amp; non-moving reports</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Label print &amp; medicine reminders</li>
+            </ul>
+            <a class="btn btn-secondary" href="https://pharmacy.healthray.com/signup">Choose Basic</a>
+          </article>
+          <article class="plan featured">
+            <span class="badge">Most popular</span>
+            <h3>Advance</h3>
+            <p class="fit">A busy store with more staff</p>
+            <div class="quote"><b>₹9,999 / year</b>About ₹833 a month</div>
+            <ul class="checks">
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Everything in Basic, 10 users</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Purchase orders &amp; reorder processing</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Executive dashboard &amp; analytics</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Two-step login &amp; IP whitelisting</li>
+            </ul>
+            <a class="btn btn-primary" href="https://pharmacy.healthray.com/signup">Choose Advance</a>
+          </article>
+          <article class="plan">
+            <h3>Enterprise</h3>
+            <p class="fit">Chains and multi-store groups</p>
+            <div class="quote"><b>Custom</b>Priced for your stores</div>
+            <ul class="checks">
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Everything in Advance</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Multi-store management</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Unlimited users, Tally XML export</li>
+              <li><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" />
+                </svg>Priority support</li>
+            </ul>
+            <a class="btn btn-secondary" href="#demo" data-cta="quote">Talk to us</a>
+          </article>
+        </div>
+        <ul class="no-surprise">
+          <li><svg class="icon" aria-hidden="true">
+              <use href="#i-shield" />
+            </svg>Prices in ₹, exclusive of 18% GST</li>
+          <li><svg class="icon" aria-hidden="true">
+              <use href="#i-shield" />
+            </svg>Pay for 1, 3 or 5 years</li>
+          <li><svg class="icon" aria-hidden="true">
+              <use href="#i-shield" />
+            </svg>Switch or cancel anytime</li>
+          <li><svg class="icon" aria-hidden="true">
+              <use href="#i-shield" />
+            </svg>Starter plan free forever</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container faq-grid">
+        <div class="faq-intro">
+          <span class="eyebrow">FAQ</span>
+          <h2>Questions pharmacy owners ask us</h2>
+          <p>Don’t see yours? Call us — you’ll get a straight answer.</p>
+          <a class="btn btn-secondary" href="tel:+918980880819"><svg class="icon" aria-hidden="true">
+              <use href="#i-phone" />
+            </svg>Call +91 89808 80819</a>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3><button class="faq-btn" aria-expanded="false" aria-controls="faq-1" id="faq-b1">Is there really a free
+                plan?<svg class="icon" aria-hidden="true">
+                  <use href="#i-plus" />
+                </svg></button></h3>
+            <div class="faq-ans" id="faq-1" role="region" aria-labelledby="faq-b1" hidden>
+              <p>Yes. The Starter plan is free forever, for one user, with 10 sales bills and 25 purchase bills a month.
+                It’s enough to set up your items and try billing. When you need unlimited bills, move to Basic or
+                Advance.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-btn" aria-expanded="false" aria-controls="faq-2" id="faq-b2">Will my billing stop
+                while we switch?<svg class="icon" aria-hidden="true">
+                  <use href="#i-plus" />
+                </svg></button></h3>
+            <div class="faq-ans" id="faq-2" role="region" aria-labelledby="faq-b2" hidden>
+              <p>No. Keep your current software running while you set up Healthray Pharmacy and import your items and
+                stock. Go live on the day you choose.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-btn" aria-expanded="false" aria-controls="faq-3" id="faq-b3">Can I bring over data
+                from my current software?<svg class="icon" aria-hidden="true">
+                  <use href="#i-plus" />
+                </svg></button></h3>
+            <div class="faq-ans" id="faq-3" role="region" aria-labelledby="faq-b3" hidden>
+              <p>Yes, through CSV import. Export your items and stock from your current software or Excel, match your
+                columns to ours using the sample sheet, and import. Rows with errors are flagged so you can fix them.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-confirm>
+            <h3><button class="faq-btn" aria-expanded="false" aria-controls="faq-4" id="faq-b4">What if the internet
+                goes down?<svg class="icon" aria-hidden="true">
+                  <use href="#i-plus" />
+                </svg></button></h3>
+            <div class="faq-ans" id="faq-4" role="region" aria-labelledby="faq-b4" hidden>
+              <p>Healthray Pharmacy runs in your web browser. [To confirm with the product team: describe exactly how
+                billing behaves offline. Do not publish until confirmed.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-btn" aria-expanded="false" aria-controls="faq-5" id="faq-b5">Can I export to
+                Tally?<svg class="icon" aria-hidden="true">
+                  <use href="#i-plus" />
+                </svg></button></h3>
+            <div class="faq-ans" id="faq-5" role="region" aria-labelledby="faq-b5" hidden>
+              <p>Tally XML export is part of the Enterprise plan. On Basic and Advance, the GST report and other reports
+                export to Excel for your accountant.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-btn" aria-expanded="false" aria-controls="faq-6" id="faq-b6">Does it handle
+                Schedule H and H1 medicines?<svg class="icon" aria-hidden="true">
+                  <use href="#i-plus" />
+                </svg></button></h3>
+            <div class="faq-ans" id="faq-6" role="region" aria-labelledby="faq-b6" hidden>
+              <p>Items can be tagged as Schedule H or H1 in the item master, and bills can carry patient and doctor
+                details. <span data-confirm>[Confirm whether a dedicated H1 register report is available.]</span>
+                Your licence obligations stay with your pharmacy — check current rules with your compliance adviser.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-btn" aria-expanded="false" aria-controls="faq-7" id="faq-b7">Does it work with my
+                printer and barcode scanner?<svg class="icon" aria-hidden="true">
+                  <use href="#i-plus" />
+                </svg></button></h3>
+            <div class="faq-ans" id="faq-7" role="region" aria-labelledby="faq-b7" hidden>
+              <p>Bills print in thermal and A4/A5 formats, and you can print barcode labels for your stock. USB barcode
+                readers work for item entry. Tell us your models during the demo and we’ll check them.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-btn" aria-expanded="false" aria-controls="faq-8" id="faq-b8">Is my login
+                secure?<svg class="icon" aria-hidden="true">
+                  <use href="#i-plus" />
+                </svg></button></h3>
+            <div class="faq-ans" id="faq-8" role="region" aria-labelledby="faq-b8" hidden>
+              <p>Every user has their own login and role. On Advance and above you can turn on two-step OTP login,
+                limit access to your store’s IP addresses, and force-logout a user.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-btn" aria-expanded="false" aria-controls="faq-9" id="faq-b9">Can I use it for more
+                than one store?<svg class="icon" aria-hidden="true">
+                  <use href="#i-plus" />
+                </svg></button></h3>
+            <div class="faq-ans" id="faq-9" role="region" aria-labelledby="faq-b9" hidden>
+              <p>Yes, on the Enterprise plan: central administration with linked outlets, stock transfers between
+                stores, and central and multi-store reports.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA + FORM -->
+    <section class="final" id="demo" aria-labelledby="demo-title">
+      <div class="container final-grid">
+        <div class="final-copy">
+          <span class="eyebrow light">Free demo</span>
+          <h2 id="demo-title">See it working with medicines from your own shelf</h2>
+          <p>A short demo on a call, at a time that suits you. No pressure, no obligation. Prefer to try it yourself?
+            <a href="https://pharmacy.healthray.com/signup" style="color:#fff">Start free on the Starter plan</a>.</p>
+          <ol class="next" data-confirm>
+            <li>
+              <div><b>We call you within one working day</b>To understand your store and current software.</div>
+            </li>
+            <li>
+              <div><b>You see your own items in the demo</b>Billing, expiry report and purchase entry — the way you’d
+                use them.</div>
+            </li>
+            <li>
+              <div><b>You pick the right plan</b>From the free Starter plan to Enterprise for chains.</div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="form-card">
+          <form id="demo-form" novalidate>
+            <h3>Book your free demo</h3>
+            <p>Tell us about your store and we’ll call you.</p>
+            <div class="form-grid">
+              <div class="fld"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name"
+                  required><span class="err">Please enter your name.</span></div>
+              <div class="fld"><label for="f-phone">Mobile number</label><input id="f-phone" name="phone" type="tel"
+                  inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile" required
+                  pattern="[6-9][0-9]{9}"><span class="err">Please enter a 10-digit mobile number.</span></div>
+              <div class="fld"><label for="f-store">Store or hospital name</label><input id="f-store" name="store"
+                  autocomplete="organization" required><span class="err">Please enter your store name.</span></div>
+              <div class="fld"><label for="f-city">City</label><input id="f-city" name="city"
+                  autocomplete="address-level2" required><span class="err">Please enter your city.</span></div>
+              <div class="fld full"><label for="f-current">What do you use today?</label>
+                <select id="f-current" name="current">
+                  <option value="">Select one</option>
+                  <option>Desktop pharmacy software</option>
+                  <option>General billing app</option>
+                  <option>Excel or paper registers</option>
+                  <option>Hospital software</option>
+                  <option>Opening a new store</option>
+                </select>
+              </div>
+              <div class="fld full"><label for="f-want">I’d like to</label>
+                <select id="f-want" name="want">
+                  <option value="demo">Book a free demo</option>
+                  <option value="quote">Get Enterprise pricing for my stores</option>
+                  <option value="checklist">Get the buyer’s checklist</option>
+                </select>
+              </div>
+            </div>
+            <button class="btn btn-primary" type="submit"><span id="submit-label">Book my free demo</span> <svg
+                class="icon" aria-hidden="true">
+                <use href="#i-arrow" />
+              </svg></button>
+            <p class="form-small" data-confirm>We’ll only use your details to contact you about this request. See our
+              <a href="#privacy">privacy policy</a>.</p>
+          </form>
+          <div class="form-success" id="form-success" hidden tabindex="-1">
+            <div class="sol-ic"><svg class="icon" aria-hidden="true">
+                <use href="#i-check" />
+              </svg></div>
+            <h3>Thank you — we’ll call you soon</h3>
+            <p>Prototype only: nothing was sent.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="brand" href="#top"><span class="brand-mark"><svg class="icon" aria-hidden="true"
+                style="fill:currentColor;stroke:none">
+                <use href="#i-cross" />
+              </svg></span>Healthray Pharmacy</a>
+          <p>Billing, expiry, stock, purchase and GST software for Indian medical stores, pharmacy chains and hospital
+            pharmacies. From Healthray.</p>
+          <ul class="contact-list">
+            <li><a href="tel:+918980880819"><svg class="icon" aria-hidden="true">
+                  <use href="#i-phone" />
+                </svg>+91 89808 80819</a></li>
+            <li><a href="https://support.healthray.com"><svg class="icon" aria-hidden="true">
+                  <use href="#i-headset" />
+                </svg>Help centre</a></li>
+            <li><a href="https://healthray.com/contact/"><svg class="icon" aria-hidden="true">
+                  <use href="#i-mail" />
+                </svg>Contact Healthray</a></li>
+          </ul>
+        </div>
+        <nav aria-labelledby="ft-product">
+          <h3 id="ft-product">Product</h3>
+          <ul class="links">
+            <li><a href="#features">Billing &amp; counter</a></li>
+            <li><a href="#features">Expiry &amp; batch tracking</a></li>
+            <li><a href="#features">Stock &amp; reorder</a></li>
+            <li><a href="#features">Purchase &amp; suppliers</a></li>
+            <li><a href="#features">GST &amp; accounts</a></li>
+            <li><a href="#features">Hospital pharmacy</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="ft-solutions">
+          <h3 id="ft-solutions">Solutions</h3>
+          <ul class="links">
+            <li><a href="#solutions">Single medical store</a></li>
+            <li><a href="#solutions">Pharmacy chains</a></li>
+            <li><a href="#solutions">Hospital &amp; clinic pharmacy</a></li>
+            <li><a href="#features">Online orders &amp; delivery</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="ft-guides">
+          <h3 id="ft-guides">Switching &amp; guides</h3>
+          <ul class="links">
+            <li><a href="#switching">Switching from other software</a></li>
+            <li><a href="#switching">CSV data import</a></li>
+            <li><a href="#checklist">Buyer’s checklist</a></li>
+            <li><a href="#estimator">Expiry loss estimator</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="ft-company">
+          <h3 id="ft-company">Account &amp; help</h3>
+          <ul class="links">
+            <li><a href="https://pharmacy.healthray.com/login">Log in</a></li>
+            <li><a href="https://pharmacy.healthray.com/signup">Sign up free</a></li>
+            <li><a href="https://support.healthray.com">Help centre</a></li>
+            <li><a href="https://healthray.com/">About Healthray</a></li>
+            <li><a href="https://healthray.com/contact/">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Healthray. Draft website — not yet published.</span>
+        <nav aria-label="Legal" data-confirm>
+          <a href="#privacy" id="privacy">Privacy policy</a>
+          <a href="#terms">Terms</a>
+          <a href="#refunds">Refund policy</a>
+          <a href="#security">Data &amp; security</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-bar" aria-label="Quick contact">
+    <a class="btn btn-secondary" href="tel:+918980880819"><svg class="icon" aria-hidden="true">
+        <use href="#i-phone" />
+      </svg>Call</a>
+    <a class="btn btn-secondary" href="https://pharmacy.healthray.com/signup">Start free</a>
+    <a class="btn btn-primary" href="#demo" data-cta="demo">Book demo</a>
+  </div>
+
+  <script>
+    (function () {
+      // Review mode: ?review outlines unconfirmed claims
+      if (/[?&]review\b/.test(location.search)) document.documentElement.classList.add('review');
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Mobile menu
+      var toggle = document.querySelector('.menu-toggle'), links = document.getElementById('nav-links');
+      function setMenu(open) {
+        links.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open);
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      }
+      toggle.addEventListener('click', function () { setMenu(!links.classList.contains('open')); });
+      links.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && links.classList.contains('open')) { setMenu(false); toggle.focus(); }
+      });
+
+      // Estimator (Indian number format)
+      var inr = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 });
+      var p = document.getElementById('purchase'), x = document.getElementById('expiry');
+      function calc() {
+        var monthly = +p.value * (+x.value / 100);
+        document.getElementById('purchase-out').textContent = inr.format(+p.value);
+        document.getElementById('expiry-out').textContent = (+x.value).toFixed(1) + '%';
+        document.getElementById('loss-month').textContent = inr.format(monthly);
+        document.getElementById('loss-year').textContent = inr.format(monthly * 12);
+        document.getElementById('loss-half').textContent = inr.format(monthly * 6);
+      }
+      p.addEventListener('input', calc); x.addEventListener('input', calc); calc();
+
+      // Feature tabs (WAI-ARIA tabs pattern, manual arrow-key navigation)
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('[role=tab]'));
+      function select(tab, focus) {
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.setAttribute('aria-selected', on);
+          t.tabIndex = on ? 0 : -1;
+          document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+        });
+        if (focus) tab.focus();
+      }
+      tabs.forEach(function (t, i) {
+        t.addEventListener('click', function () { select(t); });
+        t.addEventListener('keydown', function (e) {
+          var n = null;
+          if (e.key === 'ArrowDown' || e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+          if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+          if (e.key === 'Home') n = tabs[0];
+          if (e.key === 'End') n = tabs[tabs.length - 1];
+          if (n) { e.preventDefault(); select(n, true); }
+        });
+      });
+
+      // FAQ accordion
+      document.querySelectorAll('.faq-btn').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var open = b.getAttribute('aria-expanded') === 'true';
+          b.setAttribute('aria-expanded', !open);
+          document.getElementById(b.getAttribute('aria-controls')).hidden = open;
+        });
+      });
+
+      // CTA intent -> preselect form option
+      var want = document.getElementById('f-want');
+      document.querySelectorAll('[data-cta]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          var v = a.getAttribute('data-cta');
+          if (want.querySelector('option[value="' + v + '"]')) want.value = v;
+          syncLabel();
+        });
+      });
+
+      // Submit label follows the chosen intent
+      var labels = { demo: 'Book my free demo', quote: 'Get Enterprise pricing', checklist: 'Send me the checklist' };
+      function syncLabel() { document.getElementById('submit-label').textContent = labels[want.value]; }
+      want.addEventListener('change', syncLabel);
+
+      // Demo form: local validation only — nothing is transmitted
+      var form = document.getElementById('demo-form');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var first = null;
+        form.querySelectorAll('input[required]').forEach(function (inp) {
+          var ok = inp.value.trim() !== '' && (!inp.pattern || new RegExp('^' + inp.pattern + '$').test(inp.value.replace(/\D/g, '').slice(-10)));
+          inp.closest('.fld').classList.toggle('invalid', !ok);
+          inp.setAttribute('aria-invalid', !ok);
+          if (!ok && !first) first = inp;
+        });
+        if (first) { first.focus(); return; }
+        form.hidden = true;
+        var s = document.getElementById('form-success');
+        s.hidden = false; s.focus();
+      });
+    })();
+  </script>
+</body>
+
+</html>

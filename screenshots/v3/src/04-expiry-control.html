@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Expiry control — v3</title><link rel="stylesheet" href="style.css">
+<style>
+.row1{display:grid;grid-template-columns:400px 1fr;gap:18px;padding:0 28px}
+.risk{background:radial-gradient(110% 80% at 100% 0%,#FDBA74 0%,transparent 55%),linear-gradient(140deg,#E5418C,#F472B6 60%,#FB923C);color:#fff;display:flex;flex-direction:column}
+.risk .tag{background:rgba(255,255,255,.22);color:#fff}
+.risk .amt{font-size:60px;font-weight:700;letter-spacing:-.045em;line-height:1;margin-top:22px}
+.risk .sub{font-size:15px;font-weight:500;opacity:.95;margin-top:10px}
+.risk .sp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:auto}
+.risk .sp div{background:rgba(255,255,255,.18);border-radius:14px;padding:12px 14px}
+.risk .sp small{display:block;font-weight:500;opacity:.9}
+.risk .sp b{font-size:20px;letter-spacing:-.02em}
+.legend{display:flex;align-items:center;gap:6px;color:var(--mute);font-weight:500;font-size:12px}
+.legend i{width:14px;height:14px;border-radius:4px;display:inline-block}
+.list{margin:18px 28px 0;padding:16px 22px 6px}
+.seg{display:flex;gap:4px;background:#F4F5F7;border-radius:999px;padding:4px}
+.seg span{padding:6px 12px;border-radius:999px;font-weight:500;color:var(--ink2);font-size:12.5px}
+.seg .on{background:#fff;color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(11,15,25,.08)}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:9px 16px;font-weight:600}
+.btn.pri{background:var(--blue);color:#fff}.btn.sec{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.sup{display:flex;align-items:center;gap:14px;padding:9px 4px;border-top:1px solid var(--line)}
+.sup .lg{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-weight:700;color:#fff}
+.sup .nm{font-weight:600;font-size:14px;width:250px}
+.sup .nm small{display:block;color:var(--mute);font-weight:500;font-size:12px;margin-top:2px}
+.sup .share{flex:1;height:8px;border-radius:6px;background:#F4F5F7;overflow:hidden}.sup .share i{display:block;height:100%;background:var(--pink);border-radius:6px}
+.sup .v{width:120px;text-align:right;font-weight:600;font-size:15px}
+.chev{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--mute)}
+.inner{background:#FAFBFC;border:1px solid var(--line);border-radius:16px;margin:0 0 8px 50px;padding:2px 14px}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-weight:500;color:var(--mute);font-size:12px;padding:7px 8px;border-bottom:1px solid var(--line)}
+td{padding:8px 8px;border-bottom:1px solid var(--line);color:var(--ink2);font-weight:500}
+tr:last-child td{border-bottom:none}
+.num{text-align:right}
+.chk{width:16px;height:16px;border-radius:5px;background:var(--blue);display:inline-grid;place-items:center;color:#fff;font-size:11px;font-weight:700;vertical-align:-3px}
+.days{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 9px;font-weight:600;font-size:12px}
+.d1{background:#FEE2E2;color:#B91C1C}.d2{background:#FEF3C7;color:#B45309}
+</style></head><body>
+<header class="nav">
+  <div class="brand"><svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true" style="display:block"><defs><linearGradient id="lmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#0F9F9A"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#lmg)"/><rect x="16.5" y="8" width="7" height="24" rx="3.5" fill="#fff"/><rect x="8" y="16.5" width="24" height="7" rx="3.5" fill="#fff"/><path d="M23.5 16.5h5a3.5 3.5 0 0 1 0 7h-5z" fill="#99F6E4"/></svg></div>
+  <div class="pills"><span>Home</span><span>Sales</span><span>Purchase</span><span class="on">Stock</span><span>Patients</span><span>Accounts</span><span>Reports</span></div>
+  <div class="r"><span class="circ"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span><span class="circ"><svg class="i" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></span><span class="av">PD</span></div>
+</header>
+<div class="title">
+  <h1>Expiry</h1><span class="chipbtn">Main branch ▾</span>
+  <div class="r"><span>Window</span><span class="chipbtn">Next 60 days ▾</span><span class="chipbtn">▦ From Tue, 13 Oct 2026</span></div>
+</div>
+
+<div class="row1">
+  <div class="card risk" style="height:272px">
+    <span class="tag" style="align-self:flex-start">Stock at risk</span>
+    <div class="amt">₹18,640</div>
+    <div class="sub">23 batches expire in the next 60 days</div>
+    <div class="sp"><div><small>Next 30 days</small><b>₹3,912</b> <span style="opacity:.85">· 4</span></div><div><small>31–60 days</small><b>₹14,728</b> <span style="opacity:.85">· 19</span></div></div>
+  </div>
+  <div class="card" style="height:272px">
+    <div class="card-h"><h3>Expiry calendar <span class="mute" style="font-weight:500">· value expiring per day</span></h3>
+      <div class="legend">Less <i style="background:#F4F5F7"></i><i style="background:#FBD5E5"></i><i style="background:#F7A1C6"></i><i style="background:#EE6AA6"></i><i style="background:#E5418C"></i> More
+        <span style="margin-left:12px;display:inline-flex;align-items:center;gap:6px"><i style="background:repeating-linear-gradient(45deg,#E9ECF2 0 2px,#fff 2px 5px);border:1px solid #E1E4EA"></i>Beyond window</span></div></div>
+    <svg id="cal" width="900" height="208" style="display:block;margin-top:6px"></svg>
+  </div>
+</div>
+
+<div class="card list">
+  <div class="card-h" style="margin-bottom:10px"><div style="display:flex;align-items:center;gap:14px"><h3>Expiring batches</h3><div class="seg"><span>Item-wise</span><span class="on">Supplier-wise</span></div></div>
+    <div style="display:flex;gap:10px"><span class="btn sec"><svg class="i" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Export</span><span class="btn pri"><svg class="i" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg>Purchase return · 3 selected</span></div></div>
+
+  <div class="sup"><span class="lg" style="background:#2F5BFF">SK</span><div class="nm">Shree Krishna Pharma<small>9 batches</small></div><div class="share"><i style="width:39%"></i></div><div class="v">₹7,284</div><span class="chev">▴</span></div>
+  <div class="inner">
+    <table>
+      <thead><tr><th style="width:30px"></th><th>Item</th><th>Batch</th><th>Expiry</th><th>Days left</th><th class="num">Stock</th><th class="num">Value (PTR)</th></tr></thead>
+      <tbody>
+        <tr><td><span class="chk">✓</span></td><td style="color:var(--ink);font-weight:600">AZITHRAL 500 TAB</td><td class="mono">AZ1189</td><td class="mono">10-11-2026</td><td><span class="days d1">28 days</span></td><td class="num">14 strips</td><td class="num" style="color:var(--ink);font-weight:600">₹1,317.40</td></tr>
+        <tr><td><span class="chk">✓</span></td><td style="color:var(--ink);font-weight:600">MONTAIR LC TAB</td><td class="mono">ML0388</td><td class="mono">27-11-2026</td><td><span class="days d2">45 days</span></td><td class="num">10 strips</td><td class="num" style="color:var(--ink);font-weight:600">₹1,544.40</td></tr>
+        <tr><td><span class="chk">✓</span></td><td style="color:var(--ink);font-weight:600">SHELCAL 500 TAB</td><td class="mono">SC7731</td><td class="mono">01-12-2026</td><td><span class="days d2">49 days</span></td><td class="num">22 strips</td><td class="num" style="color:var(--ink);font-weight:600">₹1,947.00</td></tr>
+        <tr><td></td><td colspan="6" style="color:var(--blue);font-weight:600">+ 6 more batches · ₹2,475.20</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="sup"><span class="lg" style="background:#8B5CF6">MD</span><div class="nm">Mahavir Distributors<small>6 batches</small></div><div class="share"><i style="width:29%"></i></div><div class="v">₹5,416</div><span class="chev">▾</span></div>
+  <div class="sup"><span class="lg" style="background:#F59E0B">OS</span><div class="nm">Om Sai Medical Agency<small>4 batches</small></div><div class="share"><i style="width:16.7%"></i></div><div class="v">₹3,108</div><span class="chev">▾</span></div>
+  <div class="sup"><span class="lg" style="background:#CBD0D8">+2</span><div class="nm">2 more suppliers<small>4 batches</small></div><div class="share"><i style="width:15.2%"></i></div><div class="v">₹2,832</div><span class="chev">▾</span></div>
+</div>
+
+<script>
+function el(t,a,txt){var e=document.createElementNS('http://www.w3.org/2000/svg',t);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e}
+(function(){
+  var s=document.getElementById('cal'),x0=40,y0=30,cw=62,ch=20,gx=4,gy=5;
+  // expiring value (₹) by day offset from Tue 13 Oct 2026
+  var v={6:812.6,15:1048,21:734,28:1317.4,31:520,33:880,34:640,36:1120,38:460,40:710,41:980,43:560,45:1544.4,47:690,49:1947,50:830,52:420,53:610,55:1050,56:380,58:740,59:590,60:56.6,
+         63:1420,64:2210,66:980,68:3120,70:1640,71:2480,73:1890,75:2760,77:1310,78:2050,80:3360,82:1740,84:2120,86:1220,88:2000};
+  var col=function(x){return x>1500?'#E5418C':x>1000?'#EE6AA6':x>600?'#F7A1C6':'#FBD5E5'};
+  var d=el('defs'),p=el('pattern',{id:'hh',width:5,height:5,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'});
+  p.appendChild(el('rect',{width:5,height:5,fill:'#fff'}));p.appendChild(el('line',{x1:0,y1:0,x2:0,y2:5,stroke:'#E3E6EC','stroke-width':2}));d.appendChild(p);s.appendChild(d);
+  ['Tue','','Thu','','Sat','','Mon'].forEach(function(t,r){if(t)s.appendChild(el('text',{x:0,y:y0+r*(ch+gy)+14,'font-size':11,fill:'#8A909C'},t));});
+  var start=new Date(2026,9,13),mon=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],lastM=-1;
+  for(var i=0;i<91;i++){var dt=new Date(start.getTime()+i*864e5),c=Math.floor(i/7),r=i%7,x=x0+c*(cw+gx),y=y0+r*(ch+gy);
+    if(dt.getMonth()!=lastM){lastM=dt.getMonth();s.appendChild(el('text',{x:x+2,y:18,'font-size':12,'font-weight':600,fill:'#3F4655'},mon[lastM]+' '+dt.getDate()));}
+    var val=v[i],out=i>60;
+    s.appendChild(el('rect',{x:x,y:y,width:cw,height:ch,rx:6,fill:out?(val?'url(#hh)':'#FAFBFC'):(val?col(val):'#F4F5F7'),stroke:out?'#ECEEF2':'none'}));
+    if(i==0)s.appendChild(el('rect',{x:x-1.5,y:y-1.5,width:cw+3,height:ch+3,rx:7,fill:'none',stroke:'#0B0F19','stroke-width':1.5}));
+  }
+  // tooltip on 10 Nov (offset 28 -> col 4,row 0)
+  var tx=x0+4*(cw+gx),ty=y0;s.appendChild(el('rect',{x:tx-1.5,y:ty-1.5,width:cw+3,height:ch+3,rx:7,fill:'none',stroke:'#E5418C','stroke-width':2}));
+  var bxx=tx+cw+10,byy=ty+30;
+  s.appendChild(el('rect',{x:bxx,y:byy,width:262,height:54,rx:12,fill:'#0B0F19'}));
+  s.appendChild(el('text',{x:bxx+14,y:byy+21,'font-size':11,fill:'#A3A9B6'},'Tue, 10 Nov · 28 days left'));
+  var t=el('text',{x:bxx+14,y:byy+41,'font-size':13,fill:'#fff','font-weight':600});t.innerHTML='₹1,317.40 <tspan fill="#A3A9B6" font-weight="500">· Azithral 500 · AZ1189</tspan>';s.appendChild(t);
+})();
+</script>
+</body></html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>GST and accounts — v3</title><link rel="stylesheet" href="style.css">
+<style>
+.g{display:grid;grid-template-columns:1fr 392px;gap:18px;padding:0 28px}
+.split{display:flex;align-items:center;gap:30px}
+.lg{display:grid;gap:14px;flex:1}
+.lg .r{display:flex;align-items:center;gap:10px;font-weight:500;color:var(--ink2)}
+.lg i{width:12px;height:12px;border-radius:4px}
+.lg b{margin-left:auto;color:var(--ink);font-weight:600}
+.lg small{color:var(--mute);width:48px;text-align:right}
+.gst{background:radial-gradient(100% 80% at 100% 0%,#5EEAD4 0%,transparent 55%),linear-gradient(150deg,#0F766E,#14B8A6 55%,#2F5BFF);color:#fff;display:flex;flex-direction:column}
+.gst .tag{background:rgba(255,255,255,.2);color:#fff}
+.gst .two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:auto}
+.gst .two div{background:rgba(255,255,255,.16);border-radius:14px;padding:12px 14px}
+.gst .two small{display:block;opacity:.88;font-weight:500}
+.gst .two b{font-size:18px;letter-spacing:-.01em}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+th{text-align:left;font-weight:500;color:var(--mute);font-size:12px;padding:9px 10px;border-bottom:1px solid var(--line)}
+td{padding:15px 10px;border-bottom:1px solid var(--line);color:var(--ink2);font-weight:500}
+.num{text-align:right}
+.rt{display:inline-block;border-radius:999px;padding:2px 9px;font-size:12px;font-weight:600}
+.r5{background:var(--blue-lt);color:var(--blue)}.r18{background:var(--pink-lt);color:#BE185D}.r0{background:var(--green-lt);color:#15803D}
+tfoot td{border-bottom:none;color:var(--ink);font-weight:700;border-top:1.5px solid var(--ink);padding-top:12px}
+.col{display:flex;flex-direction:column;gap:18px}
+.exp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.exp span{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:12px 8px;font-weight:700}
+.led{display:flex;align-items:center;gap:14px}
+.led .ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center}
+.led .v{margin-left:auto;text-align:right}
+.led .v b{display:block;font-size:24px;font-weight:600;letter-spacing:-.02em}
+.mini{height:6px;border-radius:4px;background:#F1F2F4;margin-top:14px;overflow:hidden;display:flex;gap:2px}
+</style></head><body>
+<header class="nav">
+  <div class="brand"><svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true" style="display:block"><defs><linearGradient id="lmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#0F9F9A"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#lmg)"/><rect x="16.5" y="8" width="7" height="24" rx="3.5" fill="#fff"/><rect x="8" y="16.5" width="24" height="7" rx="3.5" fill="#fff"/><path d="M23.5 16.5h5a3.5 3.5 0 0 1 0 7h-5z" fill="#99F6E4"/></svg></div>
+  <div class="pills"><span>Home</span><span>Sales</span><span>Purchase</span><span>Stock</span><span>Patients</span><span class="on">Accounts</span><span>Reports</span></div>
+  <div class="r"><span class="circ"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span><span class="circ"><svg class="i" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></span><span class="av">PD</span></div>
+</header>
+<div class="title">
+  <h1>GST summary</h1><span class="chipbtn">Main branch ▾</span>
+  <div class="r"><span class="chipbtn">▦ September 2026 ▾</span><span class="chipbtn">Sales register ▾</span></div>
+</div>
+
+<div class="g">
+  <div class="card" style="height:300px">
+    <div class="card-h"><h3>Taxable value by GST rate</h3><span class="more">···</span></div>
+    <div class="split">
+      <div style="width:250px">
+        <div class="big" style="margin-top:22px">₹11,48,320</div>
+        <div class="mute" style="margin-top:8px">taxable value · <b style="color:var(--ink)">4,812</b> invoices</div>
+      </div>
+      <svg id="donut" width="210" height="210" style="margin-top:14px"></svg>
+      <div class="lg" style="margin-top:14px">
+        <div class="r"><i style="background:#2F5BFF"></i>5% GST<b>₹10,92,480</b><small>95.1%</small></div>
+        <div class="r"><i style="background:#E5418C"></i>18% GST<b>₹40,440</b><small>3.5%</small></div>
+        <div class="r"><i style="background:#22C55E"></i>0% (exempt)<b>₹15,400</b><small>1.3%</small></div>
+      </div>
+    </div>
+  </div>
+  <div class="card gst" style="height:300px">
+    <span class="tag" style="align-self:flex-start">Output GST · Sep 2026</span>
+    <div style="font-size:52px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-top:30px">₹61,903.20</div>
+    <div style="margin-top:8px;font-weight:500;opacity:.92">total GST on 4,812 invoices</div>
+    <div class="two"><div><small>CGST</small><b>₹30,951.60</b></div><div><small>SGST</small><b>₹30,951.60</b></div></div>
+  </div>
+</div>
+
+<div class="g" style="margin-top:18px">
+  <div class="card" style="height:472px">
+    <div class="card-h"><h3>HSN-wise summary</h3><span class="mute" style="font-weight:500">6 HSN codes</span></div>
+    <table>
+      <thead><tr><th>HSN</th><th>Description</th><th>Rate</th><th class="num">Taxable value</th><th class="num">GST</th></tr></thead>
+      <tbody>
+        <tr><td class="mono" style="color:var(--ink)">30049099</td><td>Medicaments</td><td><span class="rt r5">5%</span></td><td class="num">₹8,64,210.00</td><td class="num" style="color:var(--ink);font-weight:600">₹43,210.50</td></tr>
+        <tr><td class="mono" style="color:var(--ink)">30042019</td><td>Antibiotics</td><td><span class="rt r5">5%</span></td><td class="num">₹1,12,600.00</td><td class="num" style="color:var(--ink);font-weight:600">₹5,630.00</td></tr>
+        <tr><td class="mono" style="color:var(--ink)">30045020</td><td>Vitamins</td><td><span class="rt r5">5%</span></td><td class="num">₹88,140.00</td><td class="num" style="color:var(--ink);font-weight:600">₹4,407.00</td></tr>
+        <tr><td class="mono" style="color:var(--ink)">30043990</td><td>Hormones</td><td><span class="rt r5">5%</span></td><td class="num">₹27,530.00</td><td class="num" style="color:var(--ink);font-weight:600">₹1,376.50</td></tr>
+        <tr><td class="mono" style="color:var(--ink)">34013090</td><td>Skin care</td><td><span class="rt r18">18%</span></td><td class="num">₹40,440.00</td><td class="num" style="color:var(--ink);font-weight:600">₹7,279.20</td></tr>
+        <tr><td class="mono" style="color:var(--ink)">30066010</td><td>Contraceptives</td><td><span class="rt r0">0%</span></td><td class="num">₹15,400.00</td><td class="num" style="color:var(--ink);font-weight:600">₹0.00</td></tr>
+      </tbody>
+      <tfoot><tr><td>Total</td><td></td><td></td><td class="num">₹11,48,320.00</td><td class="num">₹61,903.20</td></tr></tfoot>
+    </table>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-h"><h3>Export</h3><span class="mute" style="font-weight:500">HSN + invoice register</span></div>
+      <div class="exp">
+        <span style="background:#F0FDF4;color:#15803D;border:1px solid #BBF7D0"><svg class="i" viewBox="0 0 24 24"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4M9 11l5 6M14 11l-5 6"/></svg>Excel</span>
+        <span style="background:var(--ink);color:#fff">Tally XML <span class="tag" style="background:linear-gradient(90deg,#F472B6,#8B5CF6);color:#fff">Enterprise</span></span>
+      </div>
+    </div>
+    <div class="card" style="flex:1">
+      <div class="led"><span class="ic" style="background:var(--pink-lt);color:#BE185D"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
+        <div><div style="font-weight:600;font-size:15px">Patient dues</div><div class="mute" style="margin-top:2px">38 customers · 30 Sep</div></div>
+        <div class="v"><b>₹27,650</b><span class="mute" style="font-size:12px">receivable</span></div></div>
+      <div class="mini"><i style="width:46%;background:#E5418C"></i><i style="width:32%;background:#F7A1C6"></i><i style="width:22%;background:#FBD5E5"></i></div>
+      <div style="display:flex;justify-content:space-between;margin-top:8px;color:var(--mute);font-size:12px;font-weight:500"><span>0–30 days</span><span>31–60</span><span>60+ days</span></div>
+    </div>
+    <div class="card" style="flex:1">
+      <div class="led"><span class="ic" style="background:var(--blue-lt);color:var(--blue)"><svg class="i" viewBox="0 0 24 24"><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>
+        <div><div style="font-weight:600;font-size:15px">Supplier dues</div><div class="mute" style="margin-top:2px">as of 30 Sep 2026</div></div>
+        <div class="v"><b>₹48,210</b><span class="mute" style="font-size:12px">payable</span></div></div>
+      <div class="mini"><i style="width:58%;background:#2F5BFF"></i><i style="width:30%;background:#9DB2FF"></i><i style="width:12%;background:#D6DEFF"></i></div>
+      <div style="display:flex;justify-content:space-between;margin-top:8px;color:var(--mute);font-size:12px;font-weight:500"><span>Not yet due</span><span>Due this week</span><span>Overdue</span></div>
+    </div>
+  </div>
+</div>
+<script>
+function el(t,a,txt){var e=document.createElementNS('http://www.w3.org/2000/svg',t);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e}
+(function(){
+  var s=document.getElementById('donut'),cx=105,cy=105,R=92,r=62,v=[[1092480,'#2F5BFF'],[40440,'#E5418C'],[15400,'#22C55E']],tot=1148320,a0=-Math.PI/2,gap=.03;
+  function arc(a1,a2){var p=function(rr,a){return [cx+rr*Math.cos(a),cy+rr*Math.sin(a)]},l=(a2-a1)>Math.PI?1:0,A=p(R,a1),B=p(R,a2),C=p(r,a2),D=p(r,a1);
+    return 'M'+A+' A'+R+' '+R+' 0 '+l+' 1 '+B+' L'+C+' A'+r+' '+r+' 0 '+l+' 0 '+D+' Z'}
+  v.forEach(function(x){var a=x[0]/tot*Math.PI*2,sweep=Math.max(a-gap,.02);s.appendChild(el('path',{d:arc(a0+gap/2,a0+gap/2+sweep),fill:x[1]}));a0+=a;});
+  s.appendChild(el('text',{x:cx,y:cy-2,'text-anchor':'middle','font-size':26,'font-weight':700,fill:'#0B0F19','letter-spacing':'-0.5'},'95%'));
+  s.appendChild(el('text',{x:cx,y:cy+18,'text-anchor':'middle','font-size':11.5,fill:'#8A909C','font-weight':500},'at 5% GST'));
+})();
+</script>
+</body></html>

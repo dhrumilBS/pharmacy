@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Stock Alert & Short Book</title><link rel="stylesheet" href="app.css">
+<style>
+body{--w:1600px;--h:900px}
+.cols{display:grid;grid-template-columns:1fr 400px;gap:14px;margin-top:12px}
+.filters{display:flex;gap:12px;align-items:flex-end;padding:12px;border:1px solid var(--line);border-radius:6px;background:#fafbfd;margin-top:12px}
+.filters label{display:block;font-size:12px;font-weight:600;margin-bottom:4px}
+.lvl{height:6px;border-radius:3px;background:#edf0f5;width:90px;overflow:hidden;display:inline-block;vertical-align:middle;margin-right:6px}.lvl i{display:block;height:100%}
+.mini-btn{border:1px solid var(--blue);color:var(--blue);border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;white-space:nowrap}
+.sb .li{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid var(--line)}
+.sb .s{font-size:11.5px;color:var(--mute)}
+.qty{border:1px solid var(--line2);border-radius:4px;padding:2px 10px;font-weight:600}
+</style></head><body>
+<script src="nav.js" data-on="Reports"></script>
+<div class="page">
+  <div class="bar"><span class="title">Stock Alert Report</span><span style="margin-left:auto" class="btn b-green">⇩ Excel</span></div>
+  <div class="filters">
+    <div><label>Stock Qty</label><div class="sel">Less Than</div></div>
+    <div><label>Value</label><div class="inp" style="min-width:90px">Min Stock</div></div>
+    <div><label>Search Item</label><div class="inp mute" style="min-width:220px">Search Item</div></div>
+    <div><label>Supplier</label><div class="sel" style="min-width:200px">All suppliers</div></div>
+    <span class="btn b-blue">Filter Report</span>
+  </div>
+  <div class="cols">
+    <table class="grid">
+      <thead><tr><th>Product Name</th><th>Stock Level</th><th class="r">Stock Qty</th><th class="r">Min</th><th class="r">Max</th><th>Last Supplier</th><th class="r">Landing Price</th><th class="r">Scheme %</th><th></th></tr></thead>
+      <tbody>
+        <tr><td class="b">THYRONORM 50 TAB</td><td><span class="lvl"><i style="width:20%;background:#e03131"></i></span><span class="tag t-red">Low</span></td><td class="r">3</td><td class="r">15</td><td class="r">40</td><td>Om Sai Medical Agency</td><td class="r">158.90</td><td class="r">0</td><td><span class="mini-btn">Add to shortbook</span></td></tr>
+        <tr><td class="b">ECOSPRIN 75 TAB</td><td><span class="lvl"><i style="width:25%;background:#e03131"></i></span><span class="tag t-red">Low</span></td><td class="r">5</td><td class="r">20</td><td class="r">60</td><td>Shree Krishna Pharma</td><td class="r">4.05</td><td class="r">9.1</td><td><span class="tag t-green">In shortbook</span></td></tr>
+        <tr><td class="b">TELMA 40 TAB</td><td><span class="lvl"><i style="width:27%;background:#e03131"></i></span><span class="tag t-red">Low</span></td><td class="r">8</td><td class="r">30</td><td class="r">80</td><td>Shree Krishna Pharma</td><td class="r">166.40</td><td class="r">9.1</td><td><span class="tag t-green">In shortbook</span></td></tr>
+        <tr><td class="b">ROSUVAS 10 TAB</td><td><span class="lvl"><i style="width:30%;background:#c27803"></i></span><span class="tag t-amber">Reorder</span></td><td class="r">6</td><td class="r">20</td><td class="r">50</td><td>Mahavir Distributors</td><td class="r">132.80</td><td class="r">0</td><td><span class="tag t-green">In shortbook</span></td></tr>
+        <tr><td class="b">GLYCOMET GP 1 TAB</td><td><span class="lvl"><i style="width:48%;background:#c27803"></i></span><span class="tag t-amber">Reorder</span></td><td class="r">12</td><td class="r">25</td><td class="r">60</td><td>Shree Krishna Pharma</td><td class="r">108.70</td><td class="r">0</td><td><span class="tag t-green">In shortbook</span></td></tr>
+        <tr><td class="b">AMLONG 5 TAB</td><td><span class="lvl"><i style="width:50%;background:#c27803"></i></span><span class="tag t-amber">Reorder</span></td><td class="r">10</td><td class="r">20</td><td class="r">50</td><td>Mahavir Distributors</td><td class="r">58.30</td><td class="r">0</td><td><span class="mini-btn">Add to shortbook</span></td></tr>
+        <tr><td class="b">JANUMET 50/500 TAB</td><td><span class="lvl"><i style="width:40%;background:#c27803"></i></span><span class="tag t-amber">Reorder</span></td><td class="r">4</td><td class="r">10</td><td class="r">25</td><td>Om Sai Medical Agency</td><td class="r">296.40</td><td class="r">0</td><td><span class="mini-btn">Add to shortbook</span></td></tr>
+        <tr><td class="b">CALPOL 250 SUSP</td><td><span class="lvl"><i style="width:45%;background:#c27803"></i></span><span class="tag t-amber">Reorder</span></td><td class="r">9</td><td class="r">20</td><td class="r">40</td><td>Shree Krishna Pharma</td><td class="r">36.80</td><td class="r">0</td><td><span class="mini-btn">Add to shortbook</span></td></tr>
+        <tr><td class="b">ORS-L POWDER</td><td><span class="lvl"><i style="width:55%;background:#c27803"></i></span><span class="tag t-amber">Reorder</span></td><td class="r">22</td><td class="r">40</td><td class="r">120</td><td>Mahavir Distributors</td><td class="r">14.60</td><td class="r">9.1</td><td><span class="mini-btn">Add to shortbook</span></td></tr>
+      </tbody>
+    </table>
+    <div class="card sb">
+      <div class="card-h"><span>Short Book</span><span class="tag t-blue">4 items</span></div>
+      <div class="li"><div><div class="b">TELMA 40 TAB</div><div class="s">Shree Krishna Pharma</div></div><span class="qty">30</span></div>
+      <div class="li"><div><div class="b">ECOSPRIN 75 TAB</div><div class="s">Shree Krishna Pharma</div></div><span class="qty">50</span></div>
+      <div class="li"><div><div class="b">GLYCOMET GP 1 TAB</div><div class="s">Shree Krishna Pharma</div></div><span class="qty">25</span></div>
+      <div class="li"><div><div class="b">ROSUVAS 10 TAB</div><div class="s">Mahavir Distributors</div></div><span class="qty">20</span></div>
+      <div style="padding:12px 14px;display:grid;gap:8px">
+        <div class="mute" style="font-size:12px">Estimated order value <b class="navy" style="font-size:14px">₹ 10,568</b></div>
+        <span class="btn b-blue" style="justify-content:center">Create Purchase Order</span>
+        <span class="btn b-ghost" style="justify-content:center">⇩ Download short book</span>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Counter billing — v2</title><link rel="stylesheet" href="ui.css">
+<style>
+.work{flex:1;display:grid;grid-template-columns:1fr 372px;gap:18px;padding:18px 22px;min-height:0}
+.col{display:flex;flex-direction:column;gap:14px;min-height:0}
+.head{display:flex;align-items:center;gap:10px}
+.head h1{font-size:20px}
+.head .sp{flex:1}
+/* search */
+.search{padding:14px}
+.s-input{display:flex;align-items:center;gap:10px;border:2px solid var(--blue-600);border-radius:11px;padding:10px 12px;box-shadow:0 0 0 4px var(--blue-50);font-size:15px;font-weight:500;color:var(--navy-950)}
+.s-input .caret{width:2px;height:18px;background:var(--blue-600);margin-left:-8px}
+.s-input .kbd{margin-left:auto}
+.hit{margin-top:12px;border:1px solid var(--border);border-radius:11px;overflow:hidden}
+.hit-h{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#FAFBFD;border-bottom:1px solid var(--border)}
+.hit-h b{font-size:14px;color:var(--navy-950)}
+.hit-h small{color:var(--muted);font-size:12px;display:block;margin-top:1px}
+.bt{display:grid;grid-template-columns:22px 110px 120px 100px 1fr auto;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--border)}
+.bt:last-child{border-bottom:0}
+.bt.pick{background:var(--teal-50)}
+.radio{width:16px;height:16px;border-radius:50%;border:2px solid var(--border-2)}
+.pick .radio{border-color:var(--teal-600);box-shadow:inset 0 0 0 3px #fff;background:var(--teal-600)}
+.bt .id{font-weight:600;color:var(--navy-800)}
+/* cart */
+.cart{flex:1;display:flex;flex-direction:column;min-height:0}
+.cart-h{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border)}
+.cart-h h3{font-size:15px}
+table{width:100%;border-collapse:collapse}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;text-align:left;padding:9px 16px;border-bottom:1px solid var(--border)}
+td{padding:9px 16px;border-bottom:1px solid #EEF2F6;vertical-align:middle}
+td .nm{font-weight:600;color:var(--navy-950)}
+td .gn{font-size:11.5px;color:var(--muted)}
+.step{display:inline-flex;align-items:center;border:1px solid var(--border-2);border-radius:8px;overflow:hidden}
+.step span{width:26px;height:26px;display:grid;place-items:center;color:var(--text-2)}
+.step b{min-width:30px;text-align:center;border-inline:1px solid var(--border-2);line-height:26px}
+.cart-f{margin-top:auto;display:flex;gap:22px;padding:11px 16px;border-top:1px solid var(--border);color:var(--text-2);font-size:12.5px}
+.cart-f b{color:var(--navy-950)}
+/* right */
+.pane{padding:16px}
+.pane h3{font-size:14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.seg{display:inline-flex;background:var(--bg);border:1px solid var(--border);border-radius:9px;padding:3px}
+.seg span{padding:4px 12px;border-radius:7px;font-weight:600;font-size:12px;color:var(--muted)}
+.seg .on{background:#fff;color:var(--navy-900);box-shadow:0 1px 2px rgba(8,28,44,.12)}
+.who{display:flex;gap:12px;align-items:center}
+.av{width:42px;height:42px;border-radius:50%;background:var(--blue-100);color:var(--blue-700);display:grid;place-items:center;font-weight:700}
+.who b{font-size:14.5px;color:var(--navy-950)}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.kv div{background:var(--bg);border-radius:9px;padding:8px 10px}
+.kv small{display:block;color:var(--muted);font-size:11px}
+.kv span{font-weight:600;color:var(--navy-900)}
+.pay{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.pay span{border:1px solid var(--border-2);border-radius:9px;padding:8px 0;text-align:center;font-weight:600;color:var(--text-2)}
+.pay .on{border:2px solid var(--blue-600);color:var(--blue-700);background:var(--blue-50)}
+.ref{margin-top:10px;border:1px solid var(--border);border-radius:9px;padding:8px 10px;color:var(--text-2)}
+.line{display:flex;justify-content:space-between;padding:5px 0;color:var(--text-2)}
+.line b{color:var(--navy-950);font-weight:600}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed var(--border-2);margin-top:8px;padding-top:10px}
+.total span{font-weight:600;color:var(--navy-900)}
+.total b{font-family:"Plus Jakarta Sans",Inter;font-size:28px;font-weight:800;color:var(--navy-950)}
+.acts{display:grid;grid-template-columns:1fr 1.6fr;gap:10px;margin-top:14px}
+.acts .b-primary{padding:13px 0;font-size:14.5px}
+.share{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:12px;color:var(--text-2)}
+.tg{width:30px;height:17px;border-radius:999px;background:var(--teal-600);position:relative}.tg::after{content:"";position:absolute;right:2px;top:2px;width:13px;height:13px;border-radius:50%;background:#fff}
+</style></head><body>
+<div class="app">
+  <nav class="rail">
+    <div class="mark" style="background:none"><svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true" style="display:block"><defs><linearGradient id="lmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#0F9F9A"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#lmg)"/><rect x="16.5" y="8" width="7" height="24" rx="3.5" fill="#fff"/><rect x="8" y="16.5" width="24" height="7" rx="3.5" fill="#fff"/><path d="M23.5 16.5h5a3.5 3.5 0 0 1 0 7h-5z" fill="#99F6E4"/></svg></div>
+    <a><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Home</a>
+    <a class="on"><svg class="i" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Sale</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Purchase</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg>Stock</a>
+    <a><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg>Patients</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/></svg>Reports</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M7 4h11M7 8.5h11M7 4c6 0 6 9 0 9h-1l8 7"/></svg>Accounts</a>
+    <span class="sp"></span>
+    <a><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>Settings</a>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="store"><span class="ico" style="border:0;background:var(--blue-50);color:var(--blue-700)"><svg class="i" viewBox="0 0 24 24"><path d="M4 10v10h16V10M3 10l2-6h14l2 6zM9 20v-6h6v6"/></svg></span><div>Shree Sai Medical Store<small>Main branch · Ahmedabad</small></div></div>
+      <div class="cmd"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search items, patients, bills…<span class="kbd" style="margin-left:auto">Ctrl K</span></div>
+      <div class="tb-right">
+        <span class="chip c-grey">Tue, 13 Oct · 7:42 pm</span>
+        <span class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></span>
+        <span class="me">PD</span>
+      </div>
+    </header>
+
+    <div class="work">
+      <div class="col">
+        <div class="head">
+          <h1>New sale</h1><span class="chip c-grey">INV-26-04812</span><span class="chip c-blue">Counter 1 · Priya</span>
+          <span class="sp"></span>
+          <span class="btn b-ghost">Drafts <span class="chip c-grey" style="padding:1px 7px">2</span></span>
+          <span class="btn b-ghost">Today’s sales</span>
+        </div>
+
+        <div class="card search">
+          <div class="s-input"><svg class="i" viewBox="0 0 24 24" style="color:var(--blue-600)"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>shelcal 500<span class="caret"></span><span class="kbd">F2</span></div>
+          <div class="hit">
+            <div class="hit-h"><div><b>SHELCAL 500 TAB</b><small>Calcium 500 mg + Vitamin D3 · Strip of 15 · GST 5%</small></div><span class="chip c-teal">✓ Nearest expiry picked first</span></div>
+            <div class="bt pick"><span class="radio"></span><span class="id">SC7731</span><span>Exp Dec 2026</span><span>22 strips</span><span class="muted">Shree Krishna Pharma</span><b class="num">₹112.40</b></div>
+            <div class="bt"><span class="radio"></span><span class="id">SC8012</span><span>Exp Aug 2027</span><span>60 strips</span><span class="muted">Mahavir Distributors</span><b class="num">₹112.40</b></div>
+            <div class="bt"><span class="radio"></span><span class="id">SC8120</span><span>Exp Nov 2027</span><span>40 strips</span><span class="muted">Mahavir Distributors</span><b class="num">₹115.80</b></div>
+          </div>
+        </div>
+
+        <div class="card cart">
+          <div class="cart-h"><h3>Bill items</h3><span class="muted">Sales on MRP · GST included</span></div>
+          <table>
+            <thead><tr><th>Item</th><th>Batch</th><th>Qty</th><th class="num">MRP</th><th class="num">Disc</th><th class="num">Amount</th></tr></thead>
+            <tbody>
+              <tr><td><div class="nm">Dolo 650 Tab</div><div class="gn">Paracetamol 650 mg</div></td><td>DL4521 <span class="chip c-warn">Nov 26</span></td><td><span class="step"><span>−</span><b>2</b><span>+</span></span></td><td class="num">30.60</td><td class="num muted">—</td><td class="num"><b>61.20</b></td></tr>
+              <tr><td><div class="nm">Pan-D Cap</div><div class="gn">Pantoprazole + Domperidone</div></td><td>PD2208 <span class="chip c-grey">Mar 27</span></td><td><span class="step"><span>−</span><b>1</b><span>+</span></span></td><td class="num">199.00</td><td class="num muted">—</td><td class="num"><b>199.00</b></td></tr>
+              <tr><td><div class="nm">Azithral 500 Tab</div><div class="gn">Azithromycin 500 mg</div></td><td>AZ1189 <span class="chip c-warn">Nov 26</span></td><td><span class="step"><span>−</span><b>1</b><span>+</span></span></td><td class="num">119.50</td><td class="num">5.98</td><td class="num"><b>113.52</b></td></tr>
+              <tr><td><div class="nm">Montair LC Tab</div><div class="gn">Montelukast + Levocetirizine</div></td><td>ML0388 <span class="chip c-warn">Nov 26</span></td><td><span class="step"><span>−</span><b>1</b><span>+</span></span></td><td class="num">218.00</td><td class="num muted">—</td><td class="num"><b>218.00</b></td></tr>
+              <tr><td><div class="nm">Electral Powder 21.8 g</div><div class="gn">Oral rehydration salts</div></td><td>EL5530 <span class="chip c-grey">Jun 27</span></td><td><span class="step"><span>−</span><b>3</b><span>+</span></span></td><td class="num">22.00</td><td class="num muted">—</td><td class="num"><b>66.00</b></td></tr>
+            </tbody>
+          </table>
+          <div class="cart-f"><span>5 items</span><span>Profit <b>₹131.40</b></span><span>Margin <b>20.0%</b></span><span style="margin-left:auto">Shortcuts: <span class="kbd">F2</span> search · <span class="kbd">Ctrl S</span> save</span></div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card pane">
+          <h3>Patient <span class="seg"><span class="on">OPD</span><span>IPD</span></span></h3>
+          <div class="who"><span class="av">RP</span><div><b>Ramesh Patel</b><div class="muted">UHID HR-104582 · +91 90990 12345</div></div></div>
+          <div class="kv">
+            <div><small>Doctor</small><span>Dr. Kavita Shah</span></div>
+            <div><small>History</small><span>14 visits · no dues</span></div>
+          </div>
+        </div>
+        <div class="card pane">
+          <h3>Payment</h3>
+          <div class="pay"><span>Cash</span><span class="on">UPI</span><span>Card</span><span>Credit</span></div>
+          <div class="ref">UPI ref 4417 8820 1193</div>
+        </div>
+        <div class="card pane">
+          <h3>Summary</h3>
+          <div class="line"><span>Gross</span><b>₹663.70</b></div>
+          <div class="line"><span>Discount</span><b>− ₹5.98</b></div>
+          <div class="line"><span>GST included (5%)</span><b>₹31.33</b></div>
+          <div class="total"><span>Total payable</span><b>₹657.72</b></div>
+          <div class="acts"><span class="btn b-ghost">Save draft</span><span class="btn b-primary">Save &amp; print <span class="kbd" style="background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.35)">Ctrl S</span></span></div>
+          <div class="share"><span class="tg"></span>Also send bill on WhatsApp</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>GST Report</title><link rel="stylesheet" href="app.css">
+<style>
+body{--w:1600px;--h:900px}
+.filters{display:flex;gap:12px;align-items:flex-end;padding:12px;border:1px solid var(--line);border-radius:6px;background:#fafbfd;margin-top:12px}
+.filters label{display:block;font-size:12px;font-weight:600;margin-bottom:4px}
+.tabs{display:flex;gap:4px;margin:14px 0 0;border-bottom:1px solid var(--line)}
+.tabs span{padding:8px 16px;font-weight:600;color:#555;border-bottom:2px solid transparent}
+.tabs .on{color:var(--navy);border-bottom-color:var(--navy)}
+.sum{display:flex;gap:12px;margin:12px 0}
+.sum div{flex:1;border:1px solid var(--line);border-radius:6px;padding:10px 14px}
+.sum small{color:#555;font-weight:600;font-size:11.5px;letter-spacing:.03em}.sum b{display:block;font-size:20px;margin-top:2px}
+.two{display:grid;grid-template-columns:1fr 1.25fr;gap:14px}
+h3{font-size:14px;margin:0 0 8px;color:#111}
+tr.tot td{background:#eaf1fd!important;font-weight:700;color:var(--navy)}
+</style></head><body>
+<script src="nav.js" data-on="Reports"></script>
+<div class="page">
+  <div class="bar"><span class="title">GST Report</span><span style="margin-left:auto" class="btn b-green">⇩ Excel</span><span class="btn b-red">⇩ PDF</span></div>
+  <div class="filters">
+    <div><label>Date From</label><div class="inp">01-09-2026</div></div>
+    <div><label>Date To</label><div class="inp">30-09-2026</div></div>
+    <div><label>Store</label><div class="sel" style="min-width:180px">Main Branch</div></div>
+    <span class="btn b-blue">Filter Report</span>
+  </div>
+  <div class="tabs"><span class="on">Sales</span><span>Sales Return</span><span>Purchase</span><span>Purchase Return</span></div>
+  <div class="sum">
+    <div><small>INVOICES</small><b>4,812</b></div>
+    <div><small>TAXABLE VALUE</small><b>₹ 11,48,320.00</b></div>
+    <div><small>CGST</small><b>₹ 30,951.60</b></div>
+    <div><small>SGST</small><b>₹ 30,951.60</b></div>
+    <div><small>TOTAL GST</small><b class="navy">₹ 61,903.20</b></div>
+  </div>
+  <div class="two">
+    <div>
+      <h3>Rate-wise summary</h3>
+      <table class="grid">
+        <thead><tr><th>GST %</th><th class="r">Taxable</th><th class="r">CGST</th><th class="r">SGST</th><th class="r">IGST</th><th class="r">Total GST</th></tr></thead>
+        <tbody>
+          <tr><td>0%</td><td class="r">15,400.00</td><td class="r">0.00</td><td class="r">0.00</td><td class="r">0.00</td><td class="r">0.00</td></tr>
+          <tr><td>5%</td><td class="r">10,92,480.00</td><td class="r">27,312.00</td><td class="r">27,312.00</td><td class="r">0.00</td><td class="r">54,624.00</td></tr>
+          <tr><td>18%</td><td class="r">40,440.00</td><td class="r">3,639.60</td><td class="r">3,639.60</td><td class="r">0.00</td><td class="r">7,279.20</td></tr>
+          <tr class="tot"><td>Total</td><td class="r">11,48,320.00</td><td class="r">30,951.60</td><td class="r">30,951.60</td><td class="r">0.00</td><td class="r">61,903.20</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>HSN-wise summary</h3>
+      <table class="grid">
+        <thead><tr><th>HSN</th><th>Description</th><th class="c">GST %</th><th class="r">Qty</th><th class="r">Taxable</th><th class="r">Total GST</th></tr></thead>
+        <tbody>
+          <tr><td>30049099</td><td>Medicaments, other</td><td class="c">5</td><td class="r">18,420</td><td class="r">8,64,210.00</td><td class="r">43,210.50</td></tr>
+          <tr><td>30042019</td><td>Antibiotics</td><td class="c">5</td><td class="r">1,940</td><td class="r">1,12,600.00</td><td class="r">5,630.00</td></tr>
+          <tr><td>30045020</td><td>Vitamins &amp; supplements</td><td class="c">5</td><td class="r">1,212</td><td class="r">88,140.00</td><td class="r">4,407.00</td></tr>
+          <tr><td>30043990</td><td>Hormone preparations</td><td class="c">5</td><td class="r">286</td><td class="r">27,530.00</td><td class="r">1,376.50</td></tr>
+          <tr><td>34013090</td><td>Skin care</td><td class="c">18</td><td class="r">132</td><td class="r">40,440.00</td><td class="r">7,279.20</td></tr>
+          <tr><td>30066010</td><td>Contraceptives</td><td class="c">0</td><td class="r">410</td><td class="r">15,400.00</td><td class="r">0.00</td></tr>
+          <tr class="tot"><td colspan="4">Total</td><td class="r">11,48,320.00</td><td class="r">61,903.20</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body></html>

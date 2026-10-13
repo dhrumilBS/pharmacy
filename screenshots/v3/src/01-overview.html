@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Overview — v3</title><link rel="stylesheet" href="style.css">
+<style>
+.grid{display:grid;grid-template-columns:1fr 372px;gap:18px;padding:0 28px}
+.bottom{display:grid;grid-template-columns:340px 1fr 300px;gap:18px;padding:18px 28px 0}
+.chart-card{height:470px}
+.filter{position:absolute;left:22px;right:22px;bottom:18px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;
+  box-shadow:0 18px 30px -18px rgba(11,15,25,.25);display:flex;align-items:center;gap:10px}
+.filter .lbl{display:flex;align-items:center;gap:8px;color:var(--blue);font-weight:600}
+.fchip{border:1px solid var(--line);border-radius:999px;padding:5px 11px;color:var(--ink2);font-weight:500;background:#FAFBFC}
+.fchip b{color:var(--ink);font-weight:600}
+.go{margin-left:auto;background:var(--ink);color:#fff;border-radius:999px;padding:8px 14px;font-weight:600}
+.pay{margin-top:22px;display:grid;gap:16px}
+.pay .row{display:flex;justify-content:space-between;color:var(--ink2);font-weight:500}
+.pay .row b{color:var(--ink);font-weight:600}
+.bar{height:10px;border-radius:6px;background:#F1F2F4;margin-top:7px;overflow:hidden}.bar i{display:block;height:100%;border-radius:6px}
+.split{display:flex;gap:12px;margin-top:22px;padding-top:18px;border-top:1px dashed var(--line)}
+.split div{flex:1;background:#F7F8FA;border-radius:14px;padding:12px}
+.split small{display:block;color:var(--mute);font-weight:500}
+.split b{font-size:20px;letter-spacing:-.02em}
+.grad{background:radial-gradient(120% 90% at 100% 0%,#FDBA74 0%,transparent 55%),radial-gradient(90% 90% at 0% 100%,#60A5FA 0%,transparent 60%),linear-gradient(135deg,#F472B6,#8B5CF6 55%,#3B82F6);color:#fff}
+.grad .tag{background:rgba(255,255,255,.22);color:#fff}
+</style></head><body>
+<header class="nav">
+  <div class="brand"><svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true" style="display:block"><defs><linearGradient id="lmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#0F9F9A"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#lmg)"/><rect x="16.5" y="8" width="7" height="24" rx="3.5" fill="#fff"/><rect x="8" y="16.5" width="24" height="7" rx="3.5" fill="#fff"/><path d="M23.5 16.5h5a3.5 3.5 0 0 1 0 7h-5z" fill="#99F6E4"/></svg></div>
+  <div class="pills"><span class="on">Home</span><span>Sales</span><span>Purchase</span><span>Stock</span><span>Patients</span><span>Accounts</span><span>Reports</span></div>
+  <div class="r"><span class="circ"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span><span class="circ"><svg class="i" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></span><span class="av">PD</span></div>
+</header>
+<div class="title">
+  <h1>Overview</h1><span class="chipbtn">Main branch ▾</span>
+  <div class="r"><span class="chipbtn">▦ Oct 01 – Oct 13 ▾</span><span>compared to</span><span class="chipbtn">▦ Sep 01 – Sep 13 ▾</span></div>
+</div>
+
+<div class="grid">
+  <div class="card chart-card">
+    <div class="card-h"><h3>Stock value by days to expiry</h3><span class="more">···</span></div>
+    <svg id="steps" width="960" height="330" style="display:block;margin-top:8px"></svg>
+    <div class="filter">
+      <span class="lbl"><svg class="i" viewBox="0 0 24 24"><path d="M4 5h16l-6 8v5l-4 2v-7z"/></svg>Filters</span>
+      <span class="fchip">Window <b>Next 60 days</b></span><span class="fchip">Supplier <b>All</b></span><span class="fchip">View <b>Supplier-wise</b></span>
+      <span class="go">Open expiry report →</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h"><h3>Net sales</h3><span class="more">···</span></div>
+    <div class="big" style="margin-top:18px">₹4,86,320</div>
+    <div class="mute" style="margin-top:8px">1,642 bills · <span class="up">↑ 9.4%</span> vs last period</div>
+    <div class="pay">
+      <div><div class="row"><span>UPI</span><b>₹2,31,880</b></div><div class="bar"><i style="width:48%;background:var(--blue)"></i></div></div>
+      <div><div class="row"><span>Cash</span><b>₹1,92,400</b></div><div class="bar"><i style="width:40%;background:var(--green)"></i></div></div>
+      <div><div class="row"><span>Card</span><b>₹38,640</b></div><div class="bar"><i style="width:8%;background:var(--amber)"></i></div></div>
+      <div><div class="row"><span>Credit (udhaar)</span><b>₹23,400</b></div><div class="bar"><i style="width:5%;background:var(--pink)"></i></div></div>
+    </div>
+    <div class="split"><div><small>Profit</small><b>₹92,460</b></div><div><small>Margin</small><b>19.0%</b></div></div>
+  </div>
+</div>
+
+<div class="bottom">
+  <div class="card" style="height:290px">
+    <div class="card-h"><h3>Daily margin</h3><span class="more">···</span></div>
+    <svg id="margin" width="296" height="210" style="display:block;margin-top:14px"></svg>
+  </div>
+  <div class="card" style="height:290px">
+    <div class="card-h"><h3>Bills</h3><span class="more">···</span></div>
+    <div style="display:flex;gap:26px;align-items:flex-end;margin-top:16px">
+      <div><div class="big">1,642</div><div class="mute" style="margin-top:8px">avg 126 a day</div></div>
+      <svg id="dots" width="420" height="200"></svg>
+      <div style="margin-left:auto;text-align:right"><div class="mute">vs last period</div><div style="font-size:22px;font-weight:600;letter-spacing:-.02em;margin-top:4px">+141</div></div>
+    </div>
+  </div>
+  <div class="card grad" style="height:290px">
+    <span class="tag">Collections</span>
+    <div style="font-size:84px;font-weight:700;letter-spacing:-.05em;line-height:1;margin-top:58px">48%</div>
+    <div style="margin-top:10px;font-weight:500;opacity:.92;font-size:14px">of this period’s collections came in by UPI</div>
+  </div>
+</div>
+
+<script>
+function el(t,a,txt){var e=document.createElementNS('http://www.w3.org/2000/svg',t);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e}
+/* ---- Step chart: stock value by days to expiry (₹) ---- */
+(function(){
+  var s=document.getElementById('steps'),W=960,H=330,x0=46,top=78,bot=300,max=125000,cols=[
+    ['6–12 months',118400,'₹1.18L'],['3–6 months',61500,'₹61.5K'],['61–90 days',28300,'₹28.3K'],['31–60 days',14728,'₹14.7K'],['Next 30 days',3912,'₹3.9K']],sel=3;
+  var cw=(W-x0)/cols.length,y=function(v){return bot-(v/max)*(bot-top)};
+  var d=el('defs');
+  var p=el('pattern',{id:'hatch',width:7,height:7,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'});p.appendChild(el('rect',{width:7,height:7,fill:'#F3F6FF'}));p.appendChild(el('line',{x1:0,y1:0,x2:0,y2:7,stroke:'#9DB2FF','stroke-width':2.2}));d.appendChild(p);
+  var g=el('linearGradient',{id:'sel',x1:0,y1:0,x2:0,y2:1});g.appendChild(el('stop',{offset:0,'stop-color':'#2F5BFF'}));g.appendChild(el('stop',{offset:1,'stop-color':'#A9BBFF'}));d.appendChild(g);
+  s.appendChild(d);
+  [0,25000,50000,75000,100000,125000].forEach(function(v){var yy=y(v);s.appendChild(el('line',{x1:x0,x2:W,y1:yy,y2:yy,stroke:'#EEF0F4'}));s.appendChild(el('text',{x:x0-10,y:yy+4,'text-anchor':'end','font-size':11,fill:'#8A909C'},v?('₹'+v/1000+'K'):'0'));});
+  // stepped path
+  var path='M'+x0+' '+bot,slope=26;
+  cols.forEach(function(c,i){var xa=x0+i*cw,xb=xa+cw,yy=y(c[1]);path+=' L'+(i?xa+slope:xa)+' '+yy+' L'+(xb)+' '+yy;});
+  path+=' L'+W+' '+bot+' Z';
+  s.appendChild(el('path',{d:path,fill:'url(#hatch)'}));
+  var line='';cols.forEach(function(c,i){var xa=x0+i*cw,xb=xa+cw,yy=y(c[1]);line+=(i?' L':'M')+(i?xa+slope:xa)+' '+yy+' L'+xb+' '+yy;});
+  s.appendChild(el('path',{d:line,fill:'none',stroke:'#2F5BFF','stroke-width':2}));
+  // selected column
+  var xa=x0+sel*cw,yy=y(cols[sel][1]);
+  s.appendChild(el('rect',{x:xa+slope,y:yy,width:cw-slope,height:bot-yy,fill:'url(#sel)',rx:3}));
+  s.appendChild(el('rect',{x:xa,y:top-62,width:cw,height:bot-top+62,fill:'rgba(47,91,255,.05)',rx:10}));
+  // headers
+  cols.forEach(function(c,i){var xx=x0+i*cw+14;s.appendChild(el('text',{x:xx,y:28,'font-size':12,fill:i==sel?'#0B0F19':'#8A909C','font-weight':500},c[0]));
+    s.appendChild(el('text',{x:xx,y:58,'font-size':24,'font-weight':600,'letter-spacing':'-0.5',fill:i==sel?'#0B0F19':'#B4B9C3'},c[2]));
+    if(i)s.appendChild(el('line',{x1:x0+i*cw,x2:x0+i*cw,y1:8,y2:bot,stroke:'#EEF0F4','stroke-dasharray':'3 4'}));});
+  // tooltip
+  var tx=xa-150,ty=yy-62;
+  s.appendChild(el('rect',{x:tx,y:ty,width:300,height:36,rx:10,fill:'#fff',stroke:'#E5E8EE'}));
+  var t=el('text',{x:tx+14,y:ty+23,'font-size':12.5,fill:'#3F4655'});
+  t.innerHTML='<tspan font-weight="700" fill="#0B0F19">₹14,728</tspan> · 19 batches · <tspan font-weight="700" fill="#0B0F19">5</tspan> suppliers';
+  s.appendChild(t);
+  s.appendChild(el('circle',{cx:xa+slope+(cw-slope)/2,cy:yy,r:5,fill:'#fff',stroke:'#2F5BFF','stroke-width':2.5}));
+})();
+/* ---- Daily margin histogram ---- */
+(function(){
+  var s=document.getElementById('margin'),v=[18.2,19.1,18.6,19.4,20.1,18.8,19.0,18.4,19.6,20.3,21.4,19.2,18.9],W=296,H=210,b=180,min=16,max=22,bw=W/v.length;
+  [16,18,20,22].forEach(function(m){var yy=b-((m-min)/(max-min))*150;s.appendChild(el('line',{x1:0,x2:W,y1:yy,y2:yy,stroke:'#F2F3F6'}));});
+  v.forEach(function(m,i){var h=((m-min)/(max-min))*150,x=i*bw+3;
+    for(var k=0;k<h;k+=6){s.appendChild(el('rect',{x:x,y:b-k-4,width:bw-6,height:4,rx:1.2,fill:i==10?'#E5418C':'#F7B6D2'}));}
+    s.appendChild(el('text',{x:x+(bw-6)/2,y:b+20,'text-anchor':'middle','font-size':10.5,fill:'#8A909C'},i+1));});
+  var x=10*bw+3+(bw-6)/2,yy=b-((21.4-min)/(max-min))*150-14;
+  s.appendChild(el('rect',{x:x-26,y:yy-24,width:52,height:22,rx:11,fill:'#fff',stroke:'#F2C1D7'}));
+  s.appendChild(el('text',{x:x,y:yy-9,'text-anchor':'middle','font-size':12,'font-weight':700,fill:'#E5418C'},'21.4%'));
+})();
+/* ---- Bills dot-matrix (1 dot ≈ 15 bills) ---- */
+(function(){
+  var s=document.getElementById('dots'),v=[118,124,131,109,121,142,96,117,128,133,162,129,132],days=['T','F','S','S','M','T','W','T','F','S','S','M','T'],cw=420/13,b=168;
+  v.forEach(function(n,i){var c=Math.round(n/15),cx=i*cw+cw/2;
+    for(var k=0;k<c;k++){s.appendChild(el('circle',{cx:cx,cy:b-k*11.5,r:4.4,fill:i==10?'#16A34A':(k<c-2?'#86EFAC':'#BBF7D0')}));}
+    s.appendChild(el('text',{x:cx,y:b+22,'text-anchor':'middle','font-size':10.5,fill:i==10?'#0B0F19':'#8A909C','font-weight':i==10?700:400},days[i]));});
+  var cx=10*cw+cw/2,top=b-(Math.round(162/15)-1)*11.5-12;
+  s.appendChild(el('rect',{x:cx-40,y:top-22,width:80,height:22,rx:11,fill:'#0B0F19'}));
+  s.appendChild(el('text',{x:cx,y:top-7,'text-anchor':'middle','font-size':11.5,'font-weight':600,fill:'#fff'},'Peak · 162'));
+})();
+</script>
+</body></html>

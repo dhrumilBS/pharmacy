@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Stock expiry — v2</title><link rel="stylesheet" href="ui.css">
+<style>
+.work{flex:1;display:flex;flex-direction:column;gap:14px;padding:18px 22px;min-height:0}
+.head{display:flex;align-items:center;gap:10px}
+.head h1{font-size:20px}
+.head .sp{flex:1}
+.flt{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--border-2);border-radius:9px;padding:6px 11px;font-weight:600;font-size:12.5px;color:var(--navy-800)}
+.flt small{color:var(--muted);font-weight:500;font-size:12px}
+.sums{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:14px}
+.sm{padding:14px 16px;display:flex;align-items:center;gap:14px}
+.sm .ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center}
+.sm small{display:block;color:var(--muted);font-size:12px;font-weight:500}
+.sm b{font-family:"Plus Jakarta Sans",Inter;font-size:22px;font-weight:800;color:var(--navy-950)}
+.sm .ct{color:var(--text-2);font-size:12.5px;margin-left:6px}
+.tl{padding:14px 18px 12px}
+.tl h3{font-size:14px;display:flex;align-items:center;gap:10px}
+.tl h3 .lg{margin-left:auto;display:flex;gap:14px;font-family:Inter;font-weight:500;font-size:12px;color:var(--text-2)}
+.tl .lg span{display:flex;align-items:center;gap:6px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+#strip{width:100%;height:96px;display:block;margin-top:6px}
+.tbl{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column}
+.tf{margin-top:auto;display:flex;align-items:center;gap:18px;padding:12px 16px;border-top:1px solid var(--border);background:var(--blue-50);border-radius:0 0 14px 14px;color:var(--text-2)}
+.tf b{color:var(--navy-950)}
+.tbl-h{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border)}
+.tbl-h h3{font-size:15px}
+table{width:100%;border-collapse:collapse}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;text-align:left;padding:8px 16px;border-bottom:1px solid var(--border)}
+td{padding:9px 16px;border-bottom:1px solid #EEF2F6;vertical-align:middle}
+tr.grp td{background:#FAFBFD;padding:10px 16px}
+tr.grp b{color:var(--navy-950);font-size:13px}
+.nm{font-weight:600;color:var(--navy-950)}
+.more td{color:var(--blue-700);font-weight:600;font-size:12px}
+.cb{width:16px;height:16px;border-radius:4px;border:1.5px solid var(--border-2);display:inline-grid;place-items:center;vertical-align:middle}
+.cb.on{background:var(--blue-600);border-color:var(--blue-600);color:#fff;font-size:11px;font-weight:700}
+.car{display:inline-block;width:16px;color:var(--muted)}
+</style></head><body>
+<div class="app">
+  <nav class="rail">
+    <div class="mark" style="background:none"><svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true" style="display:block"><defs><linearGradient id="lmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#0F9F9A"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#lmg)"/><rect x="16.5" y="8" width="7" height="24" rx="3.5" fill="#fff"/><rect x="8" y="16.5" width="24" height="7" rx="3.5" fill="#fff"/><path d="M23.5 16.5h5a3.5 3.5 0 0 1 0 7h-5z" fill="#99F6E4"/></svg></div>
+    <a><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Home</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Sale</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Purchase</a>
+    <a class="on"><svg class="i" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg>Stock</a>
+    <a><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg>Patients</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/></svg>Reports</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M7 4h11M7 8.5h11M7 4c6 0 6 9 0 9h-1l8 7"/></svg>Accounts</a>
+    <span class="sp"></span>
+    <a><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>Settings</a>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="store"><span class="ico" style="border:0;background:var(--blue-50);color:var(--blue-700)"><svg class="i" viewBox="0 0 24 24"><path d="M4 10v10h16V10M3 10l2-6h14l2 6zM9 20v-6h6v6"/></svg></span><div>Shree Sai Medical Store<small>Main branch · Ahmedabad</small></div></div>
+      <div class="cmd"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search items, patients, bills…<span class="kbd" style="margin-left:auto">Ctrl K</span></div>
+      <div class="tb-right">
+        <span class="chip c-grey">Tue, 13 Oct · 7:42 pm</span>
+        <span class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></span>
+        <span class="me">PD</span>
+      </div>
+    </header>
+
+    <div class="work">
+      <div class="head">
+        <h1>Stock expiry</h1>
+        <span class="flt"><svg class="i" viewBox="0 0 24 24" style="width:15px;height:15px"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Next 60 days <small>13 Oct – 12 Dec</small> ▾</span>
+        <span class="flt"><small>Group by</small> Supplier-wise ▾</span>
+        <span class="flt"><small>Stock</small> All batches ▾</span>
+        <span class="sp"></span>
+        <span class="btn b-ghost"><svg class="i" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Export Excel</span>
+        <span class="btn b-primary"><svg class="i" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg>Purchase return <span class="chip" style="background:rgba(255,255,255,.2);color:#fff;padding:1px 7px">3 selected</span></span>
+      </div>
+
+      <div class="sums">
+        <div class="card sm"><span class="ic" style="background:var(--danger-50);color:#B91C1C"><svg class="i" viewBox="0 0 24 24"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17h.01"/></svg></span><div><small>Value at risk · next 60 days</small><b>₹18,640</b><span class="ct">23 batches</span></div></div>
+        <div class="card sm"><span class="ic" style="background:var(--warn-50);color:var(--warn)"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><small>Next 30 days</small><b>₹3,912</b><span class="ct">4 batches</span></div></div>
+        <div class="card sm"><span class="ic" style="background:var(--blue-50);color:var(--blue-700)"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><div><small>31–60 days</small><b>₹14,728</b><span class="ct">19 batches</span></div></div>
+      </div>
+
+      <div class="card tl">
+        <h3>Expiry timeline <span class="muted" style="font-family:Inter;font-weight:500;font-size:12px">Each dot is a batch</span>
+          <span class="lg"><span><i class="dot" style="background:var(--warn)"></i>Within 30 days</span><span><i class="dot" style="background:var(--blue-600)"></i>31–60 days</span></span></h3>
+        <svg id="strip"></svg>
+      </div>
+
+      <div class="card tbl">
+        <div class="tbl-h"><h3>Supplier-wise expiry</h3><span class="muted">Return to supplier before expiry</span></div>
+        <table>
+          <thead><tr><th style="width:44px"></th><th>Item</th><th>Batch</th><th>Expiry</th><th>Days left</th><th class="num">Qty</th><th class="num">Value (PTR)</th></tr></thead>
+          <tbody>
+            <tr class="grp"><td><span class="car">▾</span></td><td colspan="4"><b>Shree Krishna Pharma</b> <span class="muted">· 9 batches</span></td><td></td><td class="num"><b>₹7,284</b></td></tr>
+            <tr><td><span class="cb on">✓</span></td><td class="nm">AZITHRAL 500 TAB</td><td>AZ1189</td><td>10-11-2026</td><td><span class="chip c-warn">28 days</span></td><td class="num">14 strips</td><td class="num">₹1,317.40</td></tr>
+            <tr><td><span class="cb on">✓</span></td><td class="nm">SHELCAL 500 TAB</td><td>SC7731</td><td>01-12-2026</td><td><span class="chip c-blue">49 days</span></td><td class="num">22 strips</td><td class="num">₹1,947.00</td></tr>
+            <tr class="more"><td></td><td colspan="6">+ 7 more batches</td></tr>
+            <tr class="grp"><td><span class="car">▾</span></td><td colspan="4"><b>Mahavir Distributors</b> <span class="muted">· 6 batches</span></td><td></td><td class="num"><b>₹5,416</b></td></tr>
+            <tr><td><span class="cb on">✓</span></td><td class="nm">MONTAIR LC TAB</td><td>ML0388</td><td>27-11-2026</td><td><span class="chip c-blue">45 days</span></td><td class="num">10 strips</td><td class="num">₹1,544.40</td></tr>
+            <tr class="more"><td></td><td colspan="6">+ 5 more batches</td></tr>
+            <tr class="grp"><td><span class="car">▸</span></td><td colspan="4"><b>Om Sai Medical Agency</b> <span class="muted">· 4 batches</span></td><td></td><td class="num"><b>₹3,108</b></td></tr>
+            <tr class="grp"><td><span class="car">▸</span></td><td colspan="4"><b>+2 more suppliers</b> <span class="muted">· 4 batches</span></td><td></td><td class="num"><b>₹2,832</b></td></tr>
+          </tbody>
+        </table>
+        <div class="tf"><span class="cb on">✓</span><span><b>3 batches selected</b> · 2 suppliers</span><span>Return value <b>₹4,808.80</b></span><span style="margin-left:auto">One purchase return per supplier</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('strip'),r=el.getBoundingClientRect(),W=r.width,H=r.height;el.setAttribute('viewBox','0 0 '+W+' '+H);
+  var L=8,R=W-8,y=50,o='';function x(d){return L+(R-L)*d/60}
+  o+='<rect x="'+L+'" y="'+(y-14)+'" width="'+(x(30)-L)+'" height="28" rx="8" fill="#FFF7E6"/>';
+  o+='<rect x="'+x(30)+'" y="'+(y-14)+'" width="'+(R-x(30))+'" height="28" rx="8" fill="#EFF6FF"/>';
+  var ticks=[[0,'Today · 13 Oct'],[15,'28 Oct'],[30,'12 Nov'],[45,'27 Nov'],[60,'12 Dec']];
+  ticks.forEach(function(t,i){var xx=x(t[0]);o+='<line x1="'+xx+'" x2="'+xx+'" y1="'+(y+16)+'" y2="'+(y+22)+'" stroke="#CBD5E1"/><text x="'+xx+'" y="'+(y+38)+'" font-size="11.5" fill="#64748B" font-family="Inter" text-anchor="'+(i==0?'start':i==4?'end':'middle')+'">'+t[1]+'</text>';});
+  var d=[9,17,24,28,33,34,36,38,39,41,43,45,46,47,49,50,52,54,55,56,57,58,59];
+  d.forEach(function(v,i){var c=v<=30?'#B45309':'#2563EB',yy=y+((i%2)?-5:5);o+='<circle cx="'+x(v)+'" cy="'+yy+'" r="5.5" fill="'+c+'" stroke="#fff" stroke-width="1.5"/>';});
+  [[28,'AZ1189'],[45,'ML0388'],[49,'SC7731']].forEach(function(l){var xx=x(l[0]);o+='<line x1="'+xx+'" x2="'+xx+'" y1="'+(y-12)+'" y2="'+(y-26)+'" stroke="#475569"/><text x="'+xx+'" y="'+(y-31)+'" text-anchor="middle" font-size="11.5" font-weight="600" fill="#172033" font-family="Inter">'+l[1]+'</text>';});
+  el.innerHTML=o;
+})();
+</script>
+</body></html>

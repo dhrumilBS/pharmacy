@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Counter billing — v3</title><link rel="stylesheet" href="style.css">
+<style>
+.wrap{display:grid;grid-template-columns:1fr 384px;gap:18px;padding:0 28px;height:790px}
+.flexc{display:flex;flex-direction:column}
+.keys{margin-top:auto;display:flex;align-items:center;gap:18px;background:#F7F8FA;border-radius:14px;padding:12px 16px;color:var(--ink2);font-weight:500}
+.keys span{display:flex;align-items:center;gap:7px}
+.col{display:flex;flex-direction:column;gap:18px}
+.search{display:flex;align-items:center;gap:14px;border:2px solid var(--blue);border-radius:18px;padding:14px 18px;box-shadow:0 0 0 5px rgba(47,91,255,.10)}
+.search .q{font-size:24px;font-weight:600;letter-spacing:-.02em}
+.search .q:after{content:"";display:inline-block;width:2px;height:24px;background:var(--blue);margin-left:3px;vertical-align:-4px}
+.kbd{font-family:var(--mono);font-size:11.5px;font-weight:600;border:1px solid #DADDE3;border-bottom-width:2px;border-radius:7px;padding:3px 7px;color:var(--ink2);background:#fff}
+.hint{display:flex;align-items:center;gap:8px;margin:16px 2px 12px;color:var(--ink2);font-weight:500}
+.hint b{color:var(--ink)}
+.batches{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:12px}
+.bt{border:1px solid var(--line);border-radius:16px;padding:14px 16px;background:#FAFBFC}
+.bt .no{font-family:var(--mono);font-weight:600;font-size:14px}
+.bt .row{display:flex;justify-content:space-between;align-items:center}
+.bt .meta{display:flex;gap:16px;margin-top:10px;color:var(--mute);font-weight:500}
+.bt .meta b{display:block;color:var(--ink);font-size:15px;font-weight:600;margin-top:2px}
+.bt.sel{background:var(--blue-lt);border:2px solid var(--blue)}
+.radio{width:18px;height:18px;border-radius:50%;border:2px solid #CDD2DA}
+.sel .radio{border:5px solid var(--blue);background:#fff}
+.fefo{background:var(--blue);color:#fff}
+table{width:100%;border-collapse:collapse;margin-top:8px}
+th{text-align:left;font-weight:500;color:var(--mute);font-size:12px;padding:8px 10px;border-bottom:1px solid var(--line)}
+td{padding:15px 10px;border-bottom:1px solid var(--line);color:var(--ink2);font-weight:500}
+tr:last-child td{border-bottom:none}
+.num{text-align:right}
+.it b{color:var(--ink);font-weight:600;display:block}
+.it small{color:var(--mute);font-size:11.5px}
+.qty{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:3px 4px}
+.qty i{font-style:normal;width:22px;height:22px;border-radius:50%;background:#F4F5F7;display:grid;place-items:center;color:var(--ink2);font-weight:600}
+.qty span{min-width:12px;text-align:center;color:var(--ink);font-weight:600}
+.disc{color:#B45309;background:#FEF3C7;border-radius:8px;padding:2px 7px;font-weight:600;font-size:12px}
+.pat{display:flex;gap:14px;align-items:center}
+.pat .a{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#60A5FA,#2F5BFF);color:#fff;display:grid;place-items:center;font-weight:700;font-size:17px}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.kv div{background:#F7F8FA;border-radius:12px;padding:10px 12px}
+.kv small{display:block;color:var(--mute);font-weight:500;font-size:11.5px}
+.kv b{font-weight:600;font-size:13.5px}
+.pays{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.pays span{border:1px solid var(--line);border-radius:12px;padding:10px 0;text-align:center;font-weight:600;color:var(--ink2)}
+.pays .on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tot{background:var(--ink);color:#fff}
+.tot .ln{display:flex;justify-content:space-between;padding:6px 0;color:#B4B9C3;font-weight:500}
+.tot .ln b{color:#fff;font-weight:600}
+.tot .grand{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px dashed rgba(255,255,255,.18);padding-top:18px}
+.save{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--blue);color:#fff;border-radius:14px;padding:14px;font-weight:700;font-size:15px;margin-top:16px}
+.save .kbd{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.3);color:#fff}
+.chipsum{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px;margin-top:18px}
+.chipsum div{background:rgba(255,255,255,.07);border-radius:12px;padding:10px 12px}
+.chipsum small{display:block;color:#8A909C;font-weight:500;font-size:11.5px}
+.chipsum b{display:block;margin-top:3px;font-size:15px;font-weight:600}
+.tog{display:flex;align-items:center;gap:10px;margin-top:14px;color:#D6D9E0;font-weight:500}
+.sw{width:38px;height:22px;border-radius:999px;background:var(--green);position:relative}
+.sw:after{content:"";position:absolute;right:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#fff}
+</style></head><body>
+<header class="nav">
+  <div class="brand"><svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true" style="display:block"><defs><linearGradient id="lmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#0F9F9A"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#lmg)"/><rect x="16.5" y="8" width="7" height="24" rx="3.5" fill="#fff"/><rect x="8" y="16.5" width="24" height="7" rx="3.5" fill="#fff"/><path d="M23.5 16.5h5a3.5 3.5 0 0 1 0 7h-5z" fill="#99F6E4"/></svg></div>
+  <div class="pills"><span>Home</span><span class="on">Sales</span><span>Purchase</span><span>Stock</span><span>Patients</span><span>Accounts</span><span>Reports</span></div>
+  <div class="r"><span class="circ"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span><span class="circ"><svg class="i" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></span><span class="av">PD</span></div>
+</header>
+<div class="title">
+  <h1>New bill</h1><span class="chipbtn mono">INV-26-08931</span>
+  <div class="r"><span class="chipbtn">Counter 1 · Priya Desai</span><span class="chipbtn">▦ Tue, 13 Oct 2026 · 11:42</span></div>
+</div>
+
+<div class="wrap">
+  <div class="col">
+    <div class="card" style="padding:20px 22px 22px">
+      <div class="search">
+        <svg class="i" viewBox="0 0 24 24" style="width:24px;height:24px;color:var(--blue)"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <span class="q">shelcal 500</span>
+        <span style="margin-left:auto;display:flex;gap:8px;align-items:center;color:var(--mute);font-weight:500">Brand, generic name or barcode <span class="kbd">F2</span></span>
+      </div>
+      <div class="hint"><b>SHELCAL 500 TAB</b> · Calcium + Vitamin D3 · strip of 15 · MRP ₹112.40 <span style="margin-left:auto" class="mute">3 batches in stock · 122 strips</span></div>
+      <div class="batches">
+        <div class="bt sel">
+          <div class="row"><span class="no">SC7731</span><span class="radio"></span></div>
+          <div class="meta"><div>Expiry<b>Dec 2026</b></div><div>Stock<b>22 strips</b></div></div>
+          <div style="margin-top:12px"><span class="tag fefo">✓ Nearest expiry · sell first</span></div>
+        </div>
+        <div class="bt">
+          <div class="row"><span class="no">SC8012</span><span class="radio"></span></div>
+          <div class="meta"><div>Expiry<b>Aug 2027</b></div><div>Stock<b>60 strips</b></div></div>
+        </div>
+        <div class="bt">
+          <div class="row"><span class="no">SC8120</span><span class="radio"></span></div>
+          <div class="meta"><div>Expiry<b>Nov 2027</b></div><div>Stock<b>40 strips</b></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card flexc" style="flex:1">
+      <div class="card-h"><h3>Cart <span class="mute" style="font-weight:500">· 5 items</span></h3><span class="mute" style="font-weight:500">Batches auto-picked by nearest expiry</span></div>
+      <table>
+        <thead><tr><th>Medicine</th><th>Batch</th><th>Expiry</th><th>Qty</th><th class="num">MRP</th><th class="num">Discount</th><th class="num">Amount</th></tr></thead>
+        <tbody>
+          <tr><td class="it"><b>Dolo 650 Tab</b><small>Paracetamol 650 mg</small></td><td class="mono">DL4521</td><td>Nov 26</td><td><span class="qty"><i>−</i><span>2</span><i>+</i></span></td><td class="num">₹30.60</td><td class="num mute">—</td><td class="num" style="color:var(--ink);font-weight:600">₹61.20</td></tr>
+          <tr><td class="it"><b>Pan-D Cap</b><small>Pantoprazole + Domperidone</small></td><td class="mono">PD2208</td><td>Mar 27</td><td><span class="qty"><i>−</i><span>1</span><i>+</i></span></td><td class="num">₹199.00</td><td class="num mute">—</td><td class="num" style="color:var(--ink);font-weight:600">₹199.00</td></tr>
+          <tr><td class="it"><b>Azithral 500 Tab</b><small>Azithromycin 500 mg</small></td><td class="mono">AZ1189</td><td>Nov 26</td><td><span class="qty"><i>−</i><span>1</span><i>+</i></span></td><td class="num">₹119.50</td><td class="num"><span class="disc">−₹5.98</span></td><td class="num" style="color:var(--ink);font-weight:600">₹113.52</td></tr>
+          <tr><td class="it"><b>Montair LC Tab</b><small>Montelukast + Levocetirizine</small></td><td class="mono">ML0388</td><td>Nov 26</td><td><span class="qty"><i>−</i><span>1</span><i>+</i></span></td><td class="num">₹218.00</td><td class="num mute">—</td><td class="num" style="color:var(--ink);font-weight:600">₹218.00</td></tr>
+          <tr><td class="it"><b>Electral Powder</b><small>ORS sachet 21.8 g</small></td><td class="mono">EL5530</td><td>Jun 27</td><td><span class="qty"><i>−</i><span>3</span><i>+</i></span></td><td class="num">₹22.00</td><td class="num mute">—</td><td class="num" style="color:var(--ink);font-weight:600">₹66.00</td></tr>
+        </tbody>
+      </table>
+      <div class="keys"><span><span class="kbd">F2</span>Search / scan barcode</span><span><span class="kbd">F3</span>Change batch</span><span><span class="kbd">F4</span>Patient</span><span style="margin-left:auto"><span class="kbd">Ctrl S</span>Save &amp; print</span></div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <div class="card-h"><h3>Patient</h3><span class="tag" style="background:var(--green-lt);color:#15803D">OPD</span></div>
+      <div class="pat" style="margin-top:16px"><span class="a">RP</span><div><div style="font-size:18px;font-weight:600;letter-spacing:-.01em">Ramesh Patel</div><div class="mute mono" style="margin-top:3px;font-size:12px">UHID HR-104582</div></div></div>
+      <div class="kv"><div><small>Doctor</small><b>Dr. Kavita Shah</b></div><div><small>Previous dues</small><b>₹0.00</b></div></div>
+    </div>
+    <div class="card">
+      <div class="card-h"><h3>Payment</h3><span class="mute" style="font-weight:500">Select mode</span></div>
+      <div class="pays"><span>Cash</span><span class="on">UPI</span><span>Card</span><span>Credit</span></div>
+    </div>
+    <div class="card tot flexc" style="flex:1">
+      <div class="mute" style="color:#8A909C;font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">Bill summary</div>
+      <div class="ln"><span>Gross (5 items)</span><b>₹663.70</b></div>
+      <div class="ln"><span>Discount</span><b>−₹5.98</b></div>
+      <div class="ln"><span>GST (incl.)</span><b>₹31.33</b></div>
+      <div class="chipsum">
+        <div><small>Items/qty</small><b>5 · 8</b></div>
+        <div><small>Loyalty pts</small><b>+65</b></div>
+        <div><small>Received (UPI)</small><b>₹657.72</b></div>
+      </div>
+      <div class="grand" style="margin-top:auto"><span style="color:#B4B9C3;font-weight:500">Total payable</span><span style="font-size:40px;font-weight:600;letter-spacing:-.03em;line-height:1">₹657.72</span></div>
+      <div class="save">Save &amp; print <span class="kbd">Ctrl S</span></div>
+      <div class="tog"><span class="sw"></span>Send bill on WhatsApp</div>
+    </div>
+  </div>
+</div>
+</body></html>
