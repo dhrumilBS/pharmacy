@@ -124,7 +124,7 @@ Hero image: `v3/03-counter-billing.png` or `v3/01-overview.png` (pick after revi
 |---|---|---|
 | 1 | Hero | Pain-led H1 + one-line fix, demo + start-free CTAs, the feature's v3 screen |
 | 2 | The problem in their words | 3 short counter-level scenarios |
-| 3 | How it works | 3–4 steps with cropped product fragments (micro-UI style from `concepts/`) |
+| 3 | How it works | 3–4 steps with cropped product fragments (micro-UI style, as in the product screens) |
 | 4 | Capabilities | 6–8 confirmed sub-features, each with a **plan badge** (Starter / Basic / Advance / Enterprise) |
 | 5 | Related features | 3 cards linking to sibling feature pages (internal links) |
 | 6 | Proof | Testimonial slot (only verified quotes) or the relevant calculator |

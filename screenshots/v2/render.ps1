@@ -1,5 +1,4 @@
-# v2: renders src/*.html (app screens, 1440x900) to v2/<name>.png,
-# then graphics/src/*.html (website graphics) to graphics/<name>.png. All at 2x, headless Edge.
+# v2: renders src/*.html (app screens, 1440x900) to v2/<name>.png at 2x, headless Edge.
 # Usage:  .\screenshots\v2\render.ps1 [-Only <name prefix>]
 param([string]$Only = '')
 
@@ -7,8 +6,8 @@ $edge = "${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe"
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $prof = Join-Path $env:TEMP 'hr-shot-profile-v2'
 
-# Canvas sizes (CSS px). Screens default 1440x900, graphics default 1600x1000.
-$sizes = @{ 'hero-showcase' = '1600,1000' }
+# Canvas sizes (CSS px). Screens default to 1440x900; add an entry here to override one.
+$sizes = @{}
 
 function Render($dir, $outDir, $default) {
   Get-ChildItem $dir -Filter *.html -ErrorAction SilentlyContinue | Where-Object { $_.BaseName -like "$Only*" } | ForEach-Object {
@@ -23,4 +22,3 @@ function Render($dir, $outDir, $default) {
 }
 
 Render (Join-Path $root 'src') $root '1440,900'
-Render (Join-Path $root 'graphics\src') (Join-Path $root 'graphics') '1600,1000'

@@ -1,7 +1,6 @@
 # Converts rendered product screens into sharp web JPGs for the site (assets/img/), in two sizes so the
 # browser picks one and resamples once (see img_tag() in partials/config.php):
 #   screenshots/v2/<name>.png          -> assets/img/v2-<name>.jpg (1440 px) + v2-<name>@2x.jpg (2880 px)
-#   screenshots/v2/graphics/<name>.png -> assets/img/<name>.jpg    (1600 px) + <name>@2x.jpg    (3200 px)
 # Sources are rendered at 2x, so the @2x files are full resolution with no resampling.
 # Quality 92: UI text blurs and rings at lower JPEG quality.
 # Usage: .\scripts\export-images.ps1
@@ -37,7 +36,4 @@ function ExportPair($src, $base, $width) {
 
 Get-ChildItem (Join-Path $root 'screenshots\v2') -Filter *.png | ForEach-Object {
   ExportPair $_.FullName ('v2-' + $_.BaseName) 1440
-}
-Get-ChildItem (Join-Path $root 'screenshots\v2\graphics') -Filter *.png | ForEach-Object {
-  ExportPair $_.FullName $_.BaseName 1600
 }

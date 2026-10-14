@@ -106,6 +106,14 @@ function img_tag(string $name, int $w, int $h, string $alt, string $sizes, strin
 }
 
 /**
+ * Product screen as a vector SVG (assets/img/screens/<name>.svg, built by scripts/make-svg-screens.*).
+ * Stays sharp at any size or pixel density, so no srcset. Same width/height as the JPG it replaces.
+ */
+function svg_img(string $name, int $w, int $h, string $alt, string $extra = 'loading="lazy"'): string {
+  return '<img src="' . asset("img/screens/$name.svg") . '" width="' . $w . '" height="' . $h . '" alt="' . e($alt) . '" decoding="async" ' . $extra . '>';
+}
+
+/**
  * Decorative barcode as crisp inline SVG. Bars are derived from $text, so the same text always draws the
  * same barcode. Visual only (not a scannable symbology); always aria-hidden.
  */
