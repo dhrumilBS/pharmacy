@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/partials/config.php';
 $title       = page_title('Privacy notice');
-$description = 'How our pharmacy software collects, uses, shares and protects store, staff, patient and payment information, and the rights you have under Indian law.';
+$description = 'How our pharmacy software collects, uses, shares and protects store, staff, patient and payment information, and the rights you may have under the privacy laws that apply to you.';
 $page_key    = 'privacy';
 $noindex     = true; // draft until legal sign-off
 require __DIR__ . '/partials/head.php';
@@ -24,14 +24,15 @@ $sections = [
    <li>We collect what we need to run your pharmacy account, bill your subscription and answer your enquiries.</li>
    <li>Patient records you enter belong to your pharmacy. We store and process them only so the service works for you.</li>
    <li>We do not sell or rent personal information, and we do not use patient records for advertising.</li>
-   <li>You can see, correct and export your records, and you can contact our Grievance Officer if something goes wrong.</li>
+   <li>You can see, correct and export your records, and you can contact us, or our grievance contact, if something goes wrong.</li>
   </ul>
   <p>The rest of this notice explains each point in detail.</p>
 HTML],
 
  ['who', 'Who we are', <<<HTML
   <p>The pharmacy software and this website are provided by <b>{$company}</b>, {$address} ("we", "us", "our").</p>
-  <p>This notice is an electronic record under the Information Technology Act, 2000 and the rules made under it. It is published to meet the disclosure requirements of the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011 ("SPDI Rules") and to give the notice required by the Digital Personal Data Protection Act, 2023 ("DPDP Act") and its rules, as they apply to us.</p>
+  <p>This notice is written to meet the notice and transparency requirements of the applicable data protection and privacy laws in the countries where we operate and where our customers and their patients are located. Examples of laws that may apply include the GDPR and UK GDPR, the CCPA/CPRA, and India’s DPDP Act. Naming a law here does not mean that we have confirmed compliance with it.</p>
+  <p>[Counsel to confirm which regimes apply and our role (controller or processor) in each market.]</p>
 HTML],
 
  ['scope', 'What this notice covers', <<<HTML
@@ -56,28 +57,28 @@ HTML],
   <tr><td>Website enquiries</td><td>Name, mobile number, store name, city, current software and what you would like (demo, trial, quote or checklist)</td><td>Forms on this website [the form currently sends nothing; update this row when it goes live]</td></tr>
   <tr><td>Support conversations</td><td>Call notes, WhatsApp and email messages, screenshots you share</td><td>You, when you contact support</td></tr>
   </tbody></table>
-  <p><b>Sensitive information.</b> Passwords, financial information, and health information such as prescriptions and medicine history are treated as sensitive personal data under the SPDI Rules. We apply the stricter handling described in this notice to them.</p>
-  <p><b>What we do not ask for.</b> We do not need Aadhaar numbers, card numbers or bank passwords to run the service. Please do not enter them in free-text fields.</p>
+  <p><b>Sensitive information.</b> Passwords, financial information, and health information such as prescriptions and medicine history are treated as sensitive or special-category data under many privacy laws. We apply the stricter handling described in this notice to them.</p>
+  <p><b>What we do not ask for.</b> We do not need national ID numbers, card numbers or bank passwords to run the service. Please do not enter them in free-text fields.</p>
 HTML],
 
  ['roles', 'Your pharmacy’s role and ours', <<<HTML
   <p>Two kinds of personal data pass through the service, and responsibility differs:</p>
   <table><thead><tr><th>Data</th><th>Who decides why and how it is used</th><th>Our role</th></tr></thead><tbody>
-   <tr><td>Your account, staff logins, billing and enquiries</td><td>Us</td><td>Data fiduciary: we are responsible to you directly under this notice</td></tr>
-   <tr><td>Patient and customer records your pharmacy enters or receives</td><td>Your pharmacy</td><td>Data processor: we process it only on your pharmacy’s instructions, to run the service</td></tr>
+   <tr><td>Your account, staff logins, billing and enquiries</td><td>Us</td><td>Controller (data fiduciary): we are responsible to you directly under this notice</td></tr>
+   <tr><td>Patient and customer records your pharmacy enters or receives</td><td>Your pharmacy</td><td>Processor (service provider): we process it only on your pharmacy’s instructions, to run the service</td></tr>
   </tbody></table>
-  <p>For patient records, your pharmacy is responsible for telling patients what it collects, having a valid reason or consent, and answering their requests. We help your pharmacy do this. [Confirm the data fiduciary / data processor roles with counsel under the DPDP Act, 2023 and its rules, and whether a separate data processing agreement will be offered.]</p>
+  <p>For patient records, your pharmacy is responsible for telling patients what it collects, having a valid reason or consent, and answering their requests. We help your pharmacy do this. [Counsel to confirm which regimes apply and our role (controller or processor) in each market, and whether a separate data processing agreement will be offered.]</p>
 HTML],
 
  ['purposes', 'How we use information, and why', <<<HTML
-  <table><thead><tr><th>Purpose</th><th>Basis under Indian law</th></tr></thead><tbody>
-   <tr><td>Create and run your account: billing, stock, purchase, reports, and the features of your plan</td><td>Your consent and the contract you accept when you sign up</td></tr>
+  <table><thead><tr><th>Purpose</th><th>Basis, where the law requires one</th></tr></thead><tbody>
+   <tr><td>Create and run your account: billing, stock, purchase, reports, and the features of your plan</td><td>Contract: the terms you accept when you sign up (and consent where the law requires it)</td></tr>
    <tr><td>Send messages you trigger: bills and daily reports on WhatsApp, SMS or email, and medicine reminders</td><td>Your instruction (for patient messages, your pharmacy’s basis)</td></tr>
-   <tr><td>Keep accounts secure: OTP login, IP whitelisting, activity logs, fraud and misuse prevention</td><td>Legitimate use for the service you asked for, and our legal security duties</td></tr>
-   <tr><td>Answer support requests and fix problems</td><td>Your consent, given when you contact us</td></tr>
-   <tr><td>Bill your subscription, issue GST invoices and keep accounts</td><td>Legal obligations under tax and company law</td></tr>
-   <tr><td>Reply to website enquiries and arrange demos</td><td>Your consent, given when you submit the form</td></tr>
-   <tr><td>Tell you about product updates, offers and events</td><td>Your separate consent, which you can withdraw at any time [confirm whether marketing messages will be sent]</td></tr>
+   <tr><td>Keep accounts secure: OTP login, IP whitelisting, activity logs, fraud and misuse prevention</td><td>Legitimate interests in keeping the service safe, and our legal security duties</td></tr>
+   <tr><td>Answer support requests and fix problems</td><td>Legitimate interests in helping you, or your consent when you contact us</td></tr>
+   <tr><td>Bill your subscription, issue GST invoices and keep accounts</td><td>Contract, and legal obligations under tax and accounting law</td></tr>
+   <tr><td>Reply to website enquiries and arrange demos</td><td>Legitimate interests in replying to your request, or your consent when you submit the form</td></tr>
+   <tr><td>Tell you about product updates, offers and events</td><td>Your separate consent where the law requires it, which you can withdraw at any time [confirm whether marketing messages will be sent]</td></tr>
    <tr><td>Improve the product using aggregated usage patterns that do not identify patients</td><td>[Confirm basis with counsel]</td></tr>
    <tr><td>Respond to lawful requests from courts, regulators or police</td><td>Legal obligation</td></tr>
   </tbody></table>
@@ -101,30 +102,30 @@ HTML],
 HTML],
 
  ['transfers', 'Where information is stored', <<<HTML
-  <p>Your data is stored at [hosting location, for example data centres in India]. Some service providers, such as email or messaging platforms, may process data outside India. Where that happens, we transfer data only to countries not restricted by the Government of India under the DPDP Act, and under contracts that require equal protection. [Confirm hosting region and any cross-border processing.]</p>
+  <p>Your data is stored in [hosting location]. Some service providers, such as email or messaging platforms, may process data in other countries. Where data is transferred across borders, we do so only where the law allows it and under safeguards that require an equal level of protection. [Confirm hosting region(s) and transfer mechanism, e.g. standard contractual clauses.]</p>
 HTML],
 
  ['retention', 'How long we keep it', <<<HTML
   <table><thead><tr><th>Data</th><th>How long</th></tr></thead><tbody>
    <tr><td>Store account and business records</td><td>While your account is active, and [period] after it closes so you can export them, unless you ask us to delete them sooner</td></tr>
    <tr><td>Patient records</td><td>As instructed by your pharmacy, and deleted or returned when your account closes, after [period]</td></tr>
-   <tr><td>Security and activity logs</td><td>[period; note that CERT-In directions require some system logs to be kept for 180 days in India]</td></tr>
-   <tr><td>Invoices and payment records</td><td>For the period required by tax and accounting law [confirm, for example 8 years]</td></tr>
+   <tr><td>Security and activity logs</td><td>[period; confirm any minimum log-keeping duties under applicable law]</td></tr>
+   <tr><td>Invoices and payment records</td><td>For the period required by tax and accounting law [confirm period by country]</td></tr>
    <tr><td>Website enquiries</td><td>[period, for example 12 months after the last contact] unless you become a customer</td></tr>
    <tr><td>Backups</td><td>Deleted on a rolling cycle of [period]</td></tr>
   </tbody></table>
-  <p>Your pharmacy may have its own duty to keep records for longer, for example under drug or GST law. Export a copy before you close your account.</p>
+  <p>Your pharmacy may have its own duty to keep records for longer, for example under drug-dispensing or tax law. Export a copy before you close your account.</p>
 HTML],
 
  ['security', 'How we protect it', <<<HTML
-  <p>We use reasonable security practices proportionate to the sensitivity of pharmacy data, in line with the SPDI Rules. These include:</p>
+  <p>We use reasonable security practices proportionate to the sensitivity of pharmacy data and in line with applicable law. These include:</p>
   <ul>
    <li>Access over HTTPS, and encryption of data at rest [confirm with engineering].</li>
    <li>Individual logins, roles and privileges, force logout, two-step OTP login and IP whitelisting.</li>
    <li>An activity report showing who did what, and from which IP address.</li>
    <li>Limited staff access to customer data, only for support and on a need-to-know basis [confirm].</li>
   </ul>
-  <p>No system is completely secure. If a breach affects your personal data, we will tell you and the authorities as the law requires. See <a href="{$u_sec}">Data &amp; security</a> for details.</p>
+  <p>No system is completely secure. If a breach affects your personal data, we will notify affected customers and regulators within the time required by applicable law [confirm timelines with counsel]. See <a href="{$u_sec}">Data &amp; security</a> for details.</p>
 HTML],
 
  ['children', 'Children’s data', <<<HTML
@@ -141,21 +142,23 @@ HTML],
 HTML],
 
  ['rights', 'Your rights', <<<HTML
-  <p>Under the DPDP Act and SPDI Rules, you have the right to:</p>
+  <p>Depending on where you live, you may have the right to access, correct, delete, port, restrict or object to the use of your personal data, to withdraw consent, and to complain to your local data protection authority. In practice this can include the right to:</p>
   <ul>
-   <li>Get a summary of the personal data we process about you and who we have shared it with.</li>
+   <li>Get a copy or summary of the personal data we process about you and who we have shared it with.</li>
    <li>Have inaccurate or incomplete data corrected or updated.</li>
    <li>Have your data erased when it is no longer needed, unless the law requires us to keep it.</li>
+   <li>Receive your data in a portable format, and ask us to restrict or stop certain uses.</li>
    <li>Withdraw consent at any time. This affects future processing only, and some features may stop working.</li>
-   <li>Have a grievance addressed by us, and then escalate it to the Data Protection Board of India.</li>
-   <li>Nominate someone to act for you if you die or become unable to act.</li>
+   <li>Have a grievance addressed by us, and then complain to your local data protection authority.</li>
+   <li>Where your law allows, nominate someone to act for you if you die or become unable to act.</li>
   </ul>
+  <p>[Counsel to confirm which rights we will offer in each market.]</p>
   <h3>How to make a request</h3>
   <ul>
    <li><b>Store owners and staff</b>: update most account and business details directly in the app, and export reports to Excel or CSV. For anything else, email [privacy contact email] from your registered email address.</li>
    <li><b>Patients</b>: please contact the pharmacy that holds your record first, because the pharmacy decides how it is used. If you contact us, we will pass your request to the pharmacy and help it respond.</li>
   </ul>
-  <p>We may need to verify your identity before acting on a request. We reply within [number] days [confirm against the timelines in the DPDP Rules].</p>
+  <p>We may need to verify your identity before acting on a request. We reply within [number] days [confirm against the timelines in applicable law].</p>
 HTML],
 
  ['grievance', 'Grievance Officer', <<<HTML
@@ -166,7 +169,7 @@ HTML],
    <li>Post: {$company}, {$address}</li>
    <li>Hours: [working days and hours]</li>
   </ul>
-  <p>We acknowledge complaints within [number] working days and aim to resolve them within one month, as the SPDI Rules require, or sooner where the DPDP Rules set a shorter period [confirm timelines with counsel]. If you are not satisfied with our response, you may complain to the Data Protection Board of India once that route is available to you.</p>
+  <p>We acknowledge complaints within [number] working days and aim to resolve them within the time required by applicable law [confirm timelines with counsel]. If you are not satisfied with our response, you may complain to your local data protection authority.</p>
 HTML],
 
  ['cookies', 'Cookies', <<<HTML

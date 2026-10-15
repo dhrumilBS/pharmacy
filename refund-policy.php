@@ -61,8 +61,8 @@ HTML],
   <p>If you are charged twice for the same invoice, or money is deducted but the payment fails, tell us with the payment reference. We will refund the extra or failed amount to the original payment method once our payment gateway confirms it [confirm timeline, for example within 7 working days].</p>
 HTML],
 
- ['gst', 'GST on refunds', <<<HTML
-  <p>Where a refund is approved, the GST charged on the refunded amount is adjusted as GST law requires, usually through a credit note issued to you. [Confirm with the finance team.]</p>
+ ['gst', 'Taxes on refunds', <<<HTML
+  <p>Where a refund is approved, any tax charged on the refunded amount (such as GST, VAT or sales tax) is adjusted as the tax rules that apply require, usually through a credit note issued to you. [Confirm with the finance team, per market.]</p>
 HTML],
 
  ['how', 'How to request a refund', <<<HTML
@@ -72,6 +72,7 @@ HTML],
    <li>We confirm the decision within [number] working days.</li>
    <li>Approved refunds are paid to the original payment method within [number] working days. Your bank may take a few more days to show it.</li>
   </ol>
+  <p>Mandatory consumer or statutory rights in your country are not affected by this policy. [Counsel to confirm.]</p>
   <p>Please contact us before raising a chargeback with your bank. It is usually faster, and a chargeback may pause your account while it is reviewed [confirm].</p>
 HTML],
 

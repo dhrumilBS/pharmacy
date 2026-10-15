@@ -1,4 +1,5 @@
 """Convert the Campton OTFs in font/campton/ into subset WOFF2 webfonts in assets/fonts/campton/.
+font/ is git-ignored (source OTFs are local only); only the WOFF2 output is committed.
 
 Only the weights the site uses are converted. Glyphs are subset to Latin + Latin-1 + general punctuation,
 plus the symbols the site prints (₹, arrows, ✓, ×, ·) to keep files small. Characters missing from Campton

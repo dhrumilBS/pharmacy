@@ -70,7 +70,7 @@ HTML],
 
  ['infra', 'Hosting and backups', <<<HTML
   <ul>
-   <li>Hosting: [provider and location, for example data stored in India].</li>
+   <li>Hosting: [Hosting provider and region(s), and whether customers can choose a region.]</li>
    <li>Backups: [frequency, how long backups are kept, and whether they are stored in a separate location].</li>
    <li>Recovery: [how restores are tested, and target recovery time].</li>
    <li>Availability: [any uptime commitment, if one will be offered].</li>
@@ -95,11 +95,13 @@ HTML],
 HTML],
 
  ['incidents', 'Incident response and breach notification', <<<HTML
-  <p>Indian law sets clear duties when a security incident happens:</p>
+  <p>Security-incident handling follows the notification duties of the laws that apply in each market where we operate and where your customers are. These may include:</p>
   <ul>
-   <li><b>CERT-In.</b> Under the CERT-In directions of April 2022, service providers must report certain cyber security incidents to CERT-In within 6 hours of noticing them, and keep relevant system logs for 180 days within India.</li>
-   <li><b>DPDP Act, 2023.</b> A personal data breach must be reported to the Data Protection Board of India and to each affected person, in the form and time set by the DPDP Rules.</li>
+   <li><b>GDPR and UK GDPR.</b> May include notifying the supervisory authority within 72 hours of becoming aware of a personal data breach, and affected people where the risk is high.</li>
+   <li><b>US state breach laws.</b> May include notifying affected residents and, in some states, a state regulator.</li>
+   <li><b>India (CERT-In and DPDP Act).</b> May include reporting certain incidents to CERT-In and personal data breaches to the Data Protection Board of India and affected people.</li>
   </ul>
+  <p>[Counsel to confirm which duties apply and our reporting timelines.]</p>
   <p>Our process: [confirm with engineering and counsel: who leads incident response, how incidents are contained and investigated, how and how quickly affected stores are told, and how we support stores with their own notification duties for patient data].</p>
   <p>If you notice something wrong, such as logins you don’t recognise, call support on {$support} straight away.</p>
 HTML],

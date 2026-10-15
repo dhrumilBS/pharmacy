@@ -4,32 +4,34 @@
  * Scrolls continuously (CSS, home.css .trust-track) and never pauses: no hover/focus pause, and it keeps moving
  * under prefers-reduced-motion. Owner decision; it conflicts with WCAG 2.2.2 (Pause, Stop, Hide), revisit before launch.
  *
- * PLACEHOLDERS: invented businesses so the layout can be reviewed (built by scripts/make-trusted-logos.ps1).
- * Replace each SVG with the real customer's single-colour logo (with written permission), update the list
- * below, and keep the real business name in 'alt'. The whole strip is data-confirm.
+ * HOW TO SWAP IN REAL LOGOS (no code change): put each customer's single-colour logo (SVG preferred, or PNG/WebP;
+ * with their written permission) in assets/img/trusted/ and delete the placeholder files. The strip lists every
+ * image in that folder in filename order, and builds the alt text from the filename:
+ *   "green-cross-pharmacy.svg" -> alt "Green Cross Pharmacy logo". Name files after the real business.
+ * Logos render 40px tall. The current files are INVENTED placeholders (made by scripts/make-trusted-logos.ps1), and
+ * the whole strip stays data-confirm until they are replaced.
  */
-$trusted = [
-  // [file in assets/img/trusted, business name for alt text]
-  ['sanjivani-medicos',  'Sanjivani Medicos'],
-  ['kaveri-pharma',      'Kaveri Pharma'],
-  ['arogya-chemists',    'Arogya Chemists'],
-  ['nilgiri-healthcare', 'Nilgiri Healthcare'],
-  ['vardhan-pharma',     'Vardhan Pharma Distributors'],
-  ['lifeline-pharmacy',  'Lifeline Pharmacy'],
-  ['shree-ram-medical',  'Shree Ram Medical Hall'],
-  ['medisetu',           'Medisetu'],
-  ['dhanvantari-drug',   'Dhanvantari Drug House'],
-  ['pragati-medical',    'Pragati Medical Stores'],
-];
+$trusted = [];
+foreach (glob(__DIR__ . '/../assets/img/trusted/*.{svg,png,webp,jpg,jpeg}', GLOB_BRACE) ?: [] as $path) {
+  $file = basename($path);
+  $name = ucwords(trim(preg_replace('/[-_]+/', ' ', pathinfo($file, PATHINFO_FILENAME))));
+  if (preg_match('/\.svg$/i', $file)) {
+    $w = preg_match('/\bwidth=[\'"](\d+)/', (string) @file_get_contents($path, false, null, 0, 600), $m) ? (int) $m[1] : 160;
+  } else {
+    $size = @getimagesize($path);
+    $w = $size ? (int) round($size[0] * 40 / max(1, $size[1])) : 160;   // keep the aspect ratio at 40px tall
+  }
+  $trusted[] = [$file, $name, $w];
+}
+sort($trusted);
 $logo_row = function (bool $copy) use ($trusted) {
-  foreach ($trusted as [$file, $name]) {
-    $path = __DIR__ . '/../assets/img/trusted/' . $file . '.svg';
-    $w = preg_match("/width='(\d+)'/", (string) @file_get_contents($path), $m) ? (int) $m[1] : 200;
+  foreach ($trusted as [$file, $name, $w]) {
     // The duplicate row (for the seamless loop) is hidden from assistive tech and has empty alt text
-    echo '<li><img src="' . asset('img/trusted/' . $file . '.svg') . '" width="' . $w . '" height="40" loading="lazy" decoding="async" alt="'
+    echo '<li><img src="' . asset('img/trusted/' . rawurlencode($file)) . '" width="' . $w . '" height="40" loading="lazy" decoding="async" alt="'
        . ($copy ? '' : e($name) . ' logo') . '"></li>';
   }
 };
+if (!$trusted) return;   // nothing to show: hide the whole strip rather than render an empty band
 ?>
 <section class="trust" aria-labelledby="trust-t" data-confirm>
   <div class="container trust-head">

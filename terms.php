@@ -23,7 +23,7 @@ $sections = [
  ['agreement', 'The agreement', <<<HTML
   <p>These terms are an agreement between <b>{$company}</b>, {$address} ("we", "us") and the business that creates an account or signs an order form ("you"). The person who accepts them confirms that they are at least 18 and authorised to bind that business.</p>
   <p>You accept these terms by creating an account, ticking the acceptance box at sign-up, paying for a plan, or using the service. If you do not agree, please do not use the service.</p>
-  <p>These terms are an electronic record under the Information Technology Act, 2000 and do not need a physical or digital signature. If you sign a separate order form or Enterprise agreement with us, that document prevails where it conflicts with these terms.</p>
+  <p>These terms are an electronic agreement and do not need a physical signature [Counsel to confirm electronic acceptance wording for each market]. If you sign a separate order form or Enterprise agreement with us, that document prevails where it conflicts with these terms.</p>
 HTML],
 
  ['definitions', 'Words we use', <<<HTML
@@ -48,14 +48,14 @@ HTML],
 HTML],
 
  ['plans', 'Plans, prices and credits', <<<HTML
-  <table><thead><tr><th>Plan</th><th>Price (excl. GST)</th><th>Users</th><th>Bill limits</th></tr></thead><tbody>
+  <table><thead><tr><th>Plan</th><th>Price (excl. taxes)</th><th>Users</th><th>Bill limits</th></tr></thead><tbody>
    <tr><td>Starter</td><td>Free</td><td>1</td><td>10 sales bills and 25 purchase bills a month</td></tr>
-   <tr><td>Basic</td><td>₹4,999 a year</td><td>3</td><td>Unlimited</td></tr>
-   <tr><td>Advance</td><td>₹9,999 a year</td><td>10</td><td>Unlimited</td></tr>
+   <tr><td>Basic</td><td>Yearly price on the <a href="{$u_price}">pricing page</a></td><td>3</td><td>Unlimited</td></tr>
+   <tr><td>Advance</td><td>Yearly price on the <a href="{$u_price}">pricing page</a></td><td>10</td><td>Unlimited</td></tr>
    <tr><td>Enterprise</td><td>Custom quote</td><td>As agreed</td><td>Unlimited, multi-store</td></tr>
   </tbody></table>
   <ul>
-   <li>Prices are in rupees (₹) and exclude GST, currently 18%, which is added to your invoice.</li>
+   <li>Prices are shown in the currency displayed on the pricing page or at checkout and exclude applicable taxes (such as GST, VAT or sales tax), which are added to your invoice where required. [Confirm currencies offered and tax handling per market.]</li>
    <li>Paid plans are bought for a 1-, 3- or 5-year term and paid in advance.</li>
    <li>The features in each plan are those shown on the <a href="{$u_price}">pricing page</a> and in the app when you subscribe. Tally XML export is part of Enterprise.</li>
    <li>Messages and OCR imports use credits. Included credits vary by plan, and you can buy more as add-ons. [Confirm whether unused credits expire or carry over.]</li>
@@ -66,7 +66,7 @@ HTML],
  ['billing', 'Payment, renewal and plan changes', <<<HTML
   <ul>
    <li>Payments are made online through our payment gateway. Its own terms apply to the payment itself.</li>
-   <li>We issue a GST invoice for every payment. Give us your GSTIN before payment if you want to claim input tax credit.</li>
+   <li>We issue an invoice for every payment. Give us your tax registration details before payment if you want them shown on the invoice, where your local tax rules allow you to claim tax credit [confirm per market].</li>
    <li>You can switch plans or cancel at any time. [Confirm how upgrades are charged, for example pro-rated for the rest of the term, and how downgrades take effect.]</li>
    <li>Renewal: [confirm whether plans renew automatically or must be renewed manually, and what reminders we send].</li>
    <li>If a paid plan ends without renewal, [confirm what happens, for example a move to Starter limits with records kept read-only for a set period].</li>
@@ -81,8 +81,8 @@ HTML],
  ['use', 'Acceptable use', <<<HTML
   <p>Use the service only for the lawful business of a pharmacy, clinic, hospital or similar healthcare provider. You must not:</p>
   <ul>
-   <li>Use it to sell or record medicines in breach of drug laws, or to keep false bills or records.</li>
-   <li>Send messages that the recipient has not agreed to receive, or that break telecom (TRAI) rules on commercial communication or WhatsApp’s policies.</li>
+   <li>Use it to sell or record medicines in breach of the medicines laws that apply to you, or to keep false bills or records.</li>
+   <li>Send messages that the recipient has not agreed to receive, or that break the telecom, marketing and messaging rules that apply in your country or the messaging provider’s policies.</li>
    <li>Try to access other customers’ data, test our security without permission, or bypass plan limits.</li>
    <li>Copy, resell, frame or reverse-engineer the software, or use automated tools that overload it.</li>
    <li>Upload malware, or content you have no right to use.</li>
@@ -103,15 +103,15 @@ HTML],
   <p>The software helps you keep records. It does not replace a registered pharmacist’s judgement, and it does not guarantee that your business meets the law. You remain responsible for:</p>
   <ul>
    <li>Dispensing decisions, checking prescriptions, and the medicines you sell.</li>
-   <li>Your drug licences and their conditions, and record-keeping duties under the Drugs and Cosmetics Act, 1940 and the Drugs Rules, 1945, including Schedule H and H1 records.</li>
-   <li>Narcotic and psychotropic substances rules, where they apply to you.</li>
-   <li>GST registration, the HSN codes and rates you apply, your invoices, returns and e-invoicing where required.</li>
-   <li>Checking reports before you file or rely on them. Features such as FEFO batch selection, expiry alerts and GST reports depend on the data you enter.</li>
+   <li>Complying with the pharmacy, medicines, tax and record-keeping laws that apply to your business in your country, including your licences and their conditions and any controlled-substance or prescription-only record duties.</li>
+   <li>Your tax registration, the tax codes and rates you apply, your invoices and returns, and e-invoicing where required.</li>
+   <li>Clinical decisions. The software gives no clinical advice; anything it shows, such as alerts or tags on items, supports your own checks and does not replace them.</li>
+   <li>Checking reports before you file or rely on them. Features such as FEFO batch selection, expiry alerts and tax reports depend on the data you enter. The software helps keep records but does not guarantee compliance.</li>
   </ul>
 HTML],
 
  ['third', 'Third-party services', <<<HTML
-  <p>Some features rely on services run by others: WhatsApp, SMS and email providers for messages, our payment gateway for payments, ABDM for ABHA linking, and hospital systems you connect. Their terms and availability are outside our control. We are not responsible for their outages, rejected messages, or changes to their rules, but we will help you where we can.</p>
+  <p>Some features rely on services run by others: WhatsApp, SMS and email providers for messages, our payment gateway for payments, national health-record integrations where offered, and hospital systems you connect. Their terms and availability are outside our control. We are not responsible for their outages, rejected messages, or changes to their rules, but we will help you where we can.</p>
 HTML],
 
  ['service', 'Availability and support', <<<HTML
@@ -158,11 +158,11 @@ HTML],
 HTML],
 
  ['exit', 'Getting your data when you leave', <<<HTML
-  <p>For [number] days after your account closes, you can log in to export your records [confirm the full-account export format and process]. After that period we delete customer data from live systems, and from backups within [period], unless the law requires us to keep it. Remember that you may have to keep certain records for longer under drug and GST law, so export before you close.</p>
+  <p>For [number] days after your account closes, you can log in to export your records [confirm the full-account export format and process]. After that period we delete customer data from live systems, and from backups within [period], unless the law requires us to keep it. Remember that you may have to keep certain records for longer under medicines and tax laws, so export before you close.</p>
 HTML],
 
  ['law', 'Governing law and disputes', <<<HTML
-  <p>These terms are governed by the laws of India. Please contact us first so we can try to resolve any dispute within [30] days. If it cannot be resolved, the courts at [city, e.g. courts at Surat, Gujarat] will have exclusive jurisdiction. [Counsel to decide whether to use arbitration under the Arbitration and Conciliation Act, 1996 instead, and if so the seat and language.]</p>
+  <p>These terms are governed by the laws of [governing law and jurisdiction, to be set by counsel]. Please contact us first so we can try to resolve any dispute within [30] days. [Counsel to decide dispute resolution: courts, or arbitration, and the seat and language.]</p>
 HTML],
 
  ['general', 'General', <<<HTML
