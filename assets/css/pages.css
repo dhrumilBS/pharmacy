@@ -4,9 +4,9 @@
 .term-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .term-bar > span{font-weight:600;color:var(--navy-950)}
 .term-bar small{color:var(--muted);font-size:14px}
-.term-seg{display:inline-flex;background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:4px}
+.term-seg{display:inline-flex;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:4px}
 .term-seg input{position:absolute;opacity:0;pointer-events:none}
-.term-seg span{display:inline-block;padding:7px 16px;border-radius:999px;font-weight:600;font-size:14px;color:var(--text-2);cursor:pointer}
+.term-seg span{display:inline-block;padding:7px 16px;border-radius:7px;font-weight:600;font-size:14px;color:var(--text-2);cursor:pointer}
 .term-seg input:checked + span{background:#fff;color:var(--navy-950);box-shadow:var(--shadow-sm)}
 .term-seg input:focus-visible + span{outline:3px solid var(--blue-600);outline-offset:2px}
 .term-total{display:block}
@@ -43,9 +43,11 @@
 .pc-small{min-width:0}
 
 /* FAQ page */
-.faq-cats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
-.faq-cats a{border:1px solid var(--border-2);border-radius:999px;padding:7px 14px;font-weight:500;font-size:14px;color:var(--text-2);text-decoration:none;background:#fff}
-.faq-cats a:hover{border-color:var(--blue-600);color:var(--blue-700)}
+/* Topic links: a plain index line with separators, not pills */
+.faq-cats{display:flex;flex-wrap:wrap;gap:6px 0;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--border);font-size:15px}
+.faq-cats a{font-weight:500;color:var(--blue-700);text-decoration:none}
+.faq-cats a:not(:last-child)::after{content:"·";margin:0 12px;color:var(--border-2)}
+.faq-cats a:hover{text-decoration:underline}
 .faq-block{margin-top:40px;scroll-margin-top:96px}
 .faq-block:first-of-type{margin-top:0}
 .faq-block > h2{font-size:22px;margin-bottom:6px}
