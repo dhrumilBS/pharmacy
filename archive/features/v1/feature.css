@@ -1,0 +1,155 @@
+/* Feature pages (partials/feature-page.php): billing, expiry, inventory, purchase.
+   Written to feel like a well-kept register or a spec sheet: ruled lines, a real table, plain numbers and
+   written labels. Small radii (8–12px), no gradient capsules, no pills, no hover tilts. Brand tokens only. */
+
+/* ---------- Top: CTAs, reassurance, screen ---------- */
+.fp-top { padding-top: 4px; }
+.fp-ctas { margin-top: 0; }
+.fp-assure { margin-top: 18px; }
+.fp-assure .icon { stroke-width: 2.5; }
+.fp-shot { margin-top: 36px; border-radius: var(--r-md); }
+
+/* ---------- Scenes: a diary of moments (time · what happened · what it cost) ---------- */
+.fp-diary { margin: 0; padding: 0; list-style: none; border-top: 1.5px solid var(--navy-900); }
+.fp-diary li { display: grid; grid-template-columns: 200px minmax(0, 1fr) 280px; gap: 32px; align-items: baseline; padding: 24px 0; border-bottom: 1px solid var(--border-2); }
+.fp-when { font-size: 14px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+.fp-diary h3 { font-size: 19px; }
+.fp-diary div p { margin-top: 6px; max-width: 60ch; color: var(--text-2); }
+.fp-cost { font-size: 15px; color: var(--navy-900); }
+.fp-cost span { display: block; margin-bottom: 2px; font: 600 12px var(--font-eyebrow); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+/* ---------- Leak register: heading + worked example, then the table ---------- */
+.lr-head { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: start; margin-bottom: 28px; }
+.lr-head.has-example { grid-template-columns: minmax(0, 1fr) 360px; }
+.lr-head .section-head { margin-bottom: 0; }
+
+/* Worked example: the sum written out, like on the back of a bill book */
+.lr-math { padding: 18px 20px 16px; border: 1px solid var(--border-2); border-radius: var(--r-md); background: #fff; }
+.lr-math-k { font: 600 11.5px var(--font-eyebrow); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.lr-math h3 { margin-top: 4px; font-size: 17px; }
+.lr-math dl { margin: 10px 0 0; }
+.lr-math dl div { display: flex; justify-content: space-between; gap: 16px; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 14.5px; }
+.lr-math dt { color: var(--text-2); }
+.lr-math dd { margin: 0; font-weight: 600; color: var(--navy-950); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.lr-math dd i { margin-right: 4px; font-style: normal; font-weight: 500; color: var(--muted); }
+.lr-math .lr-total { align-items: baseline; margin-top: 2px; padding-top: 10px; border-top: 2px solid var(--navy-900); border-bottom: 0; }
+.lr-math .lr-total dt { font-weight: 600; color: var(--navy-950); }
+.lr-math .lr-total dd { font: 700 22px var(--font-head); }
+.lr-note { margin-top: 6px; font-size: 13px; color: var(--muted); }
+
+/* The register itself */
+.lr-wrap { overflow-x: auto; border: 1px solid var(--border-2); border-radius: var(--r-md); background: #fff; }
+.lr { width: 100%; border-collapse: collapse; font-size: 15px; }
+.lr thead th { padding: 12px 18px; border-bottom: 1.5px solid var(--navy-900); text-align: left; font: 600 12px var(--font-eyebrow); letter-spacing: .08em; text-transform: uppercase; color: var(--navy-800); background: var(--bg); }
+.lr td, .lr tbody th { padding: 16px 18px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+.lr tbody tr:last-child > * { border-bottom: 0; }
+.lr tbody tr:hover > * { background: var(--bg); }
+.lr tbody th { width: 38%; font-weight: 400; }
+.lr tbody th b { display: block; font-weight: 600; color: var(--navy-950); }
+.lr tbody th span { display: block; margin-top: 3px; color: var(--text-2); }
+.lr-n { width: 56px; color: var(--muted); font-variant-numeric: tabular-nums; }
+td.lr-n { font-weight: 600; }
+.lr-fix { color: var(--navy-900); }
+.lr-fix b { color: var(--navy-950); }
+.lr-p { width: 150px; white-space: nowrap; }
+td.lr-p { font-size: 14px; font-weight: 600; color: var(--navy-800); }
+.lr-dash { color: var(--border-2); }
+.lr-foot { margin-top: 14px; font-size: 14px; color: var(--muted); }
+.fp-est { margin-top: 48px; }
+
+/* ---------- How it works: a process strip, numbered in words ---------- */
+.fp-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; margin: 0; padding: 0; list-style: none; }
+.fp-steps li { display: flex; flex-direction: column; padding-top: 16px; border-top: 2px solid var(--blue-600); }
+.fp-steps li + li { border-top-color: var(--border-2); }
+.fp-step-k { font: 600 12px var(--font-eyebrow); letter-spacing: .08em; text-transform: uppercase; color: var(--blue-700); }
+.fp-steps h3 { margin-top: 8px; font-size: 18px; }
+.fp-steps li > p:not(.fp-step-k):not(.fp-step-meta) { margin-top: 6px; font-size: 15px; color: var(--text-2); }
+.fp-step-meta { margin-top: auto; padding-top: 12px; font-size: 13.5px; color: var(--muted); }
+.fp-keys { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 15px; color: var(--text-2); }
+.fp-keys > span:first-child { font-weight: 600; color: var(--navy-950); }
+.fp-keys kbd { padding: 2px 7px; border: 1px solid var(--border-2); border-bottom-width: 2px; border-radius: 4px; background: #fff; font: 600 13px var(--font-body); color: var(--navy-950); }
+
+/* ---------- Capabilities: a ruled spec grid ---------- */
+.fp-caps-sec { padding-top: 0; }
+.fp-spec { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--border-2); border-left: 1px solid var(--border); }
+.fp-spec li { display: flex; flex-direction: column; padding: 22px 24px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.fp-spec h3 { display: flex; align-items: center; gap: 10px; font-size: 17px; }
+.fp-spec h3 .icon { flex: none; width: 20px; height: 20px; color: var(--blue-600); }
+.fp-spec li > p { margin-top: 6px; font-size: 15px; color: var(--text-2); }
+.fp-spec .fp-spec-plan { margin-top: auto; padding-top: 12px; font-size: 13.5px; color: var(--muted); }
+.fp-spec .fp-spec-plan b { font-weight: 600; color: var(--navy-800); }
+
+/* ---------- Practical guide ---------- */
+.fp-guide { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
+.fp-guide-copy { position: sticky; top: 96px; }
+.fp-guide-copy h2 { font-size: clamp(26px, 3vw, 36px); }
+.fp-guide-copy > p:not(.meta-line) { margin-top: 14px; font-size: 17px; color: var(--text-2); }
+.fp-guide-list { margin: 0; padding: 0; list-style: none; counter-reset: g; border-top: 1.5px solid var(--navy-900); }
+.fp-guide-list li { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 8px; padding: 18px 0; border-bottom: 1px solid var(--border-2); counter-increment: g; }
+.fp-guide-list li::before { content: counter(g) "."; grid-row: span 2; font: 700 17px var(--font-head); color: var(--blue-700); font-variant-numeric: tabular-nums; }
+.fp-guide-list h3 { font-size: 17px; }
+.fp-guide-list p { margin-top: 4px; font-size: 15px; color: var(--text-2); }
+
+/* ---------- Proof: a checklist sheet the visitor brings to the demo ---------- */
+.fp-proof { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 56px; align-items: start; }
+.fp-proof-copy h2 { font-size: clamp(26px, 3vw, 36px); }
+.fp-proof-copy p { margin-top: 14px; font-size: 17px; color: var(--text-2); }
+.fp-proof-copy .btn { margin-top: 24px; }
+.fp-sheet { border: 1px solid var(--border-2); border-radius: var(--r-md); background: #fff; }
+.fp-sheet-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 14px 20px; border-bottom: 1.5px solid var(--navy-900); }
+.fp-sheet-h b { font-size: 16px; color: var(--navy-950); }
+.fp-sheet-h span { font-size: 13.5px; color: var(--muted); }
+.fp-sheet ol { margin: 0; padding: 4px 20px; list-style: none; }
+.fp-sheet li { display: flex; align-items: flex-start; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--border); font-size: 15.5px; color: var(--navy-900); }
+.fp-sheet li:last-child { border-bottom: 0; }
+.fp-box { flex: none; width: 18px; height: 18px; margin-top: 2px; border: 1.5px solid var(--navy-800); border-radius: 3px; }
+
+/* ---------- Related: a plain link row ---------- */
+.fp-rel-sec { border-top: 1px solid var(--border); }
+.fp-rel-h { font-size: 20px; }
+.fp-related { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 32px; margin: 16px 0 0; padding: 0; list-style: none; }
+.fp-related a { display: block; padding: 14px 0; border-top: 1px solid var(--border-2); color: inherit; text-decoration: none; }
+.fp-related b { display: flex; align-items: center; gap: 6px; font-size: 16px; color: var(--blue-700); }
+.fp-related b .icon { width: 16px; height: 16px; transition: transform .15s; }
+.fp-related span { display: block; margin-top: 4px; font-size: 14px; color: var(--text-2); }
+.fp-related a:hover b { text-decoration: underline; }
+.fp-related a:hover b .icon { transform: translateX(3px); }
+@media (prefers-reduced-motion: reduce) { .fp-related b .icon { transition: none; } }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .fp-diary li { grid-template-columns: 150px minmax(0, 1fr) 220px; gap: 24px; }
+  .lr-head.has-example { grid-template-columns: minmax(0, 1fr) 320px; }
+  .fp-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 32px; }
+  .fp-steps li + li { border-top-color: var(--border-2); }
+  .fp-related { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .fp-diary li { grid-template-columns: 1fr; gap: 6px; }
+  .fp-cost { margin-top: 6px; }
+  .lr-head.has-example { grid-template-columns: 1fr; gap: 24px; }
+  .lr-math { max-width: 460px; }
+  .fp-spec { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fp-guide, .fp-proof { grid-template-columns: 1fr; gap: 28px; }
+  .fp-guide-copy { position: static; }
+}
+/* Register on small screens: each row becomes a block, the plan written as a label */
+@media (max-width: 767px) {
+  .lr thead { display: none; }
+  .lr, .lr tbody, .lr tr, .lr td, .lr tbody th { display: block; width: auto; }
+  .lr tr { position: relative; padding: 14px 16px 14px 52px; border-bottom: 1px solid var(--border); }
+  .lr tbody tr:last-child { border-bottom: 0; }
+  .lr td, .lr tbody th { padding: 0; border: 0; }
+  .lr td.lr-n { position: absolute; left: 16px; top: 15px; width: auto; }
+  .lr td.lr-fix { margin-top: 8px; }
+  .lr td.lr-p { margin-top: 6px; white-space: normal; }
+  .lr td.lr-p::before { content: attr(data-label) ": "; font-weight: 400; color: var(--muted); }
+  .lr tbody tr:hover > * { background: none; }
+}
+@media (max-width: 600px) {
+  .fp-shot { margin-top: 24px; }
+  .fp-steps, .fp-spec, .fp-related { grid-template-columns: 1fr; }
+  .fp-spec li { padding: 18px 16px; }
+  .fp-sheet ol { padding: 4px 16px; }
+  .fp-sheet-h { flex-direction: column; gap: 2px; padding: 12px 16px; }
+}
