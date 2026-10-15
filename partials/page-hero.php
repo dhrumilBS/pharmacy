@@ -1,7 +1,12 @@
 <?php
-/** Inner-page hero with breadcrumb. Set $hero = ['crumb' => 'About', 'h1' => '...', 'lead' => '...', 'eyebrow' => optional, 'meta' => optional]. */
+/**
+ * Inner-page hero with breadcrumb. Set $hero = ['crumb' => 'About', 'h1' => '...', 'lead' => '...', 'eyebrow' => optional, 'meta' => optional].
+ * Background pattern (.page-hero.ph2 in layout.css) follows HERO_PATTERN in config.php; a page can override it
+ * with 'pattern' => true or false.
+ */
+$ph_pattern = (bool) ($hero['pattern'] ?? HERO_PATTERN);
 ?>
-<section class="page-hero">
+<section class="page-hero<?= $ph_pattern ? ' ph2' : '' ?>">
   <div class="container">
     <ol class="crumbs" aria-label="Breadcrumb">
       <li><a href="<?= url('home') ?>">Home</a></li>

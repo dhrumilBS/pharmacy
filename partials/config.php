@@ -35,6 +35,10 @@ const PRICING_API   = 'https://pharmacyapi.healthray.com/api/subscription/pricin
 const PRICING_TTL   = 300;   // seconds a fetched copy is reused before asking the API again
 const PRICING_RETRY = 60;    // if the API is down, seconds before trying it again (last good copy is shown meanwhile)
 
+// Inner-page hero background pattern (faint blister-pack dots, .page-hero.ph2 in layout.css).
+// true = on for every inner page, false = off everywhere. A page can still override with $hero['pattern'] = true/false.
+const HERO_PATTERN = true;
+
 /** Brand-aware title: "Page | Brand" once BRAND is set, otherwise just "Page". */
 function page_title(string $t): string { return BRAND ? $t . ' | ' . BRAND : $t; }
 

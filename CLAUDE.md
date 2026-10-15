@@ -32,7 +32,7 @@ The design-variant review is finished and the switcher, `variants.js`, `variants
 | `BRAND-NAME-OPTIONS.md` | Brand-name shortlist (Kapstik, MedLekha, DawaSahi, …) with conflict and domain checks. Indicative only; needs registrar and trademark checks |
 | `partials/config.php` | **Single source of truth:** contacts, real links, `PAGES` registry, and the `NAV_*` menus used by both header and footer |
 | `partials/head.php`, `header.php`, `footer.php` | Shared head, header (mega-menus) and footer (CTA band, 5 columns, mobile bar, scripts) |
-| `partials/page-hero.php`, `legal-layout.php`, `demo-form.php`, `sprite.php` | Inner-page hero, legal page layout (TOC + prose), demo form, SVG icon sprite |
+| `partials/page-hero.php`, `legal-layout.php`, `demo-form.php`, `sprite.php` | Inner-page hero (faint blister-pack background pattern, on/off for all inner pages with `HERO_PATTERN` in `config.php`, per-page override `$hero['pattern']`), legal page layout (TOC + prose), demo form, SVG icon sprite |
 | `assets/css/site.css` | Base tokens and components (extracted from the archived single-file page) |
 | `assets/css/layout.css` | Header, mega-menus, footer, CTA band, home hero, inner pages, legal prose |
 | `assets/js/site.js` | All behaviour: menus, tabs, FAQ, estimator, form. One IIFE; every block checks its elements exist |

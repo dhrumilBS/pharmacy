@@ -221,3 +221,21 @@ h1, h2 { font-family: var(--font-display); }
   h1 { overflow-wrap: break-word; }
   img, svg, video { max-width: 100%; }
 }
+
+/* ---------- Inner-page hero: blister-pack background pattern (.ph2; on/off via HERO_PATTERN in config.php) ----------
+   Hero layout, spacing and gradient stay as before; only a very light pattern is added on the right that echoes the
+   logo mark: rounded cells of four dots, every third cell's top-left dot teal (the nearest-expiry pick).
+   Data-URI colours = --border (#E2E8F0), --border-2 (#CBD5E1), --teal-500 (#14B8A6). */
+.page-hero.ph2 { position: relative; overflow: hidden; }
+.page-hero.ph2::before {
+  content: ""; position: absolute; inset: 0 0 0 auto; width: 50%; pointer-events: none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='168' height='168'%3E%3Ccircle cx='77' cy='77' r='5' fill='%2314B8A6'/%3E%3C/svg%3E") 0 0 / 168px 168px,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Crect x='4.5' y='4.5' width='47' height='47' rx='13' fill='none' stroke='%23E2E8F0'/%3E%3Cg fill='%23CBD5E1'%3E%3Ccircle cx='21' cy='21' r='5'/%3E%3Ccircle cx='35' cy='21' r='5'/%3E%3Ccircle cx='21' cy='35' r='5'/%3E%3Ccircle cx='35' cy='35' r='5'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 90% at 100% 25%, #000 5%, transparent 70%);
+          mask-image: radial-gradient(ellipse 80% 90% at 100% 25%, #000 5%, transparent 70%);
+  opacity: .4;
+}
+.page-hero.ph2 .container { position: relative; }
+@media (max-width: 900px) { .page-hero.ph2::before { width: 70%; opacity: .3; } }
+@media (max-width: 600px) { .page-hero.ph2::before { width: 100%; opacity: .2; } }
