@@ -147,3 +147,46 @@ function pricing_compare_text(): string {
   if ($s['paid']) $out[] = pricing_join(array_map(fn($p) => inr($p['price']), $s['paid']), 'or') . ' a year, published';
   return implode('; ', $out);
 }
+
+/**
+ * Lowest plan (by sort_order) that includes a feature, looked up live by the API's unique_name
+ * (e.g. 'feat_purchase_order'). Null when the API doesn't list the feature or no plan includes it.
+ */
+function feature_plan(string $unique): ?array {
+  static $idx = null;
+  if ($idx === null) {
+    $d = pricing_data(); $idx = [];
+    $byId = array_column($d['features'], 'unique_name', 'id');
+    foreach ($d['statuses'] as $st) if (isset($byId[$st['pricing_feature_id']])) $idx[$byId[$st['pricing_feature_id']]][] = (int) $st['plan_template_id'];
+  }
+  if (empty($idx[$unique])) return null;
+  foreach (pricing_plans() as $id => $p) if (in_array((int) $id, $idx[$unique], true)) return $p;   // plans are in sort_order
+  return null;
+}
+
+/** Plan badge text for a feature: "Every plan", "Basic and up", "Enterprise". Null when not mapped. */
+function feature_plan_label(string $unique): ?string {
+  $p = feature_plan($unique);
+  if (!$p) return null;
+  $plans = pricing_plans();
+  $first = reset($plans); $last = end($plans);
+  if ((int) $p['id'] === (int) $first['id']) return 'Every plan';
+  if ((int) $p['id'] === (int) $last['id']) return $p['name'];
+  return $p['name'] . ' and up';
+}
+
+/** Users per plan as prose, live from the API: "Starter 1, Basic 3, Advance 10 and Enterprise unlimited". */
+function plan_users_text(): string {
+  return pricing_join(array_map(fn($p) => $p['name'] . ' ' . ($p['user_limit'] ?? 'unlimited'), array_values(pricing_plans())));
+}
+
+/** Included message credits per plan, live from the API: "Starter 10 WhatsApp, 10 SMS and 10 email; Basic …".
+    Free plans first, custom plans included. Wording stays neutral on the period (pricing page flags it [confirm]). */
+function plan_credits_text(): string {
+  $out = [];
+  foreach (pricing_plans() as $p) {
+    $m = $p['message_service'] ?? [];
+    $out[] = $p['name'] . ' ' . pricing_join([(int) ($m['whatsapp'] ?? 0) . ' WhatsApp', (int) ($m['sms'] ?? 0) . ' SMS', (int) ($m['email'] ?? 0) . ' email']);
+  }
+  return implode('; ', $out);
+}
