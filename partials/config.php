@@ -29,6 +29,12 @@ const SITE = [
   'social'        => [],                             // add brand social profiles when they exist
 ];
 
+// Live pricing (partials/pricing-data.php). The pricing page, FAQ and switch page read plans from this API,
+// so price or plan changes in the backend appear on the site automatically. Link/data source only; never print it.
+const PRICING_API   = 'https://pharmacyapi.healthray.com/api/subscription/pricing/public';
+const PRICING_TTL   = 300;   // seconds a fetched copy is reused before asking the API again
+const PRICING_RETRY = 60;    // if the API is down, seconds before trying it again (last good copy is shown meanwhile)
+
 /** Brand-aware title: "Page | Brand" once BRAND is set, otherwise just "Page". */
 function page_title(string $t): string { return BRAND ? $t . ' | ' . BRAND : $t; }
 

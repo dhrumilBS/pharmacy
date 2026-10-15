@@ -10,3 +10,6 @@ desktop.ini
 # Campton source fonts (OTF) stay on disk only: a commercial typeface must not be published in a public repo.
 # Only the subset WOFF2 web files in assets/fonts/ are tracked (see scripts/make-webfonts.py).
 font/
+
+# Live pricing API cache (partials/pricing-data.php); rebuilt automatically
+partials/data/cache/

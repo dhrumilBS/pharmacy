@@ -1,26 +1,48 @@
 <?php
 require_once __DIR__ . '/partials/config.php';
-$title       = page_title('Pricing: pharmacy software plans from free to Enterprise');
-$description = 'Simple yearly plans for medical stores: Starter free forever, Basic ₹4,999/year, Advance ₹9,999/year, Enterprise for chains. Prices exclude 18% GST. Compare every feature.';
-$page_key    = 'pricing';
-$extra_js    = ['js/pricing.js'];
-$extra_css   = ['css/pages.css'];
+require_once __DIR__ . '/partials/pricing-data.php';
 
-/* Plan data: snapshot of the app's public pricing API (partials/data/pricing.json, refreshed 13 Oct 2026).
-   Refresh with: curl -s <pricing API in CLAUDE.md> -o partials/data/pricing.json */
-$data   = json_decode(file_get_contents(__DIR__ . '/partials/data/pricing.json'), true);
-$order  = [1, 3, 2, 5];                                    // Starter, Basic, Advance, Enterprise
-$plans  = array_column($data['plans'], null, 'id');
+/* Plan data comes live from the app's public pricing API (see partials/pricing-data.php): prices, plan names,
+   highlights, terms, discounts, features and per-plan statuses update here when the backend changes them. */
+$data   = pricing_data();
+$plans  = pricing_plans();                                 // keyed by id, in the backend's sort_order
+$order  = array_keys($plans);
 $status = [];
 foreach ($data['statuses'] as $st) $status[$st['plan_template_id']][$st['pricing_feature_id']] = $st;
 $features = $data['features'];
 usort($features, fn($a, $b) => [$a['group_id'], $a['sort_order']] <=> [$b['group_id'], $b['sort_order']]);
 $groups = array_column($data['groups'], 'name', 'id');
+$terms  = $data['terms'];
+usort($terms, fn($a, $b) => (int) $a['years'] <=> (int) $b['years']);
+/* "Who it's for" lines by plan id; a plan added later in the backend falls back to its API description. */
 $fit = [1 => 'Try it on one counter', 3 => 'A single store getting started', 2 => 'A busy store with more staff', 5 => 'Chains and hospital pharmacies'];
+
+/* Meta description built from the live prices */
+$bits = [];
+foreach ($plans as $p) {
+  $bits[] = $p['is_custom'] ? $p['name'] . ' for chains' : ($p['price'] > 0 ? $p['name'] . ' ' . inr($p['price']) . '/year' : $p['name'] . ' free forever');
+}
+$title       = page_title('Pricing: pharmacy software plans from free to Enterprise');
+$description = 'Simple yearly plans for medical stores: ' . implode(', ', $bits) . '. Prices exclude 18% GST. Compare every feature.';
+$page_key    = 'pricing';
+$extra_js    = ['js/pricing.js'];
+$extra_css   = ['css/pages.css'];
+
+/* Free plan limits for the FAQ */
+$free = null;
+foreach ($plans as $p) if (!$p['is_custom'] && $p['price'] <= 0) { $free = $p; break; }
+$freeLimits = $free ? plan_bill_limits((int) $free['id']) : ['sales' => null, 'purchase' => null];
 
 /* Friendlier labels for a few API feature names */
 $label = ['Draft' => 'Save bills as draft', 'Bill Limit' => 'Bills per month', 'MRD' => 'MRD (medical records)', '2FA' => 'Two-step login (OTP)',
           'Non Moving Item' => 'Non-moving items report', 'Top Selling Item' => 'Top-selling items report', 'Lock Invoices' => 'Lock invoices'];
+
+/* Term line under a price. Same rule as assets/js/pricing.js: yearly price × years, less the term's discount. */
+function term_total(int $price, array $term): string {
+  $years = max(1, (int) $term['years']);
+  $total = $price * $years * (1 - (float) ($term['discount_percent'] ?? 0) / 100);
+  return $years === 1 ? 'About ' . inr($total / 12) . ' a month' : 'Billed ' . inr($total) . ' for ' . $years . ' years';
+}
 
 function cell(?array $st): string {
   if (!$st) return '<span class="pc-no" aria-label="Not included">—</span>';
@@ -43,8 +65,8 @@ $hero = ['crumb' => 'Pricing', 'eyebrow' => 'Pricing',
     <div class="term-bar">
       <span>Pay for</span>
       <div class="term-seg" role="radiogroup" aria-label="Billing term">
-        <?php foreach ($data['terms'] as $i => $t): ?>
-          <label><input type="radio" name="term" value="<?= (int) $t['years'] ?>"<?= $i === 0 ? ' checked' : '' ?>><span><?= e($t['label']) ?></span></label>
+        <?php foreach ($terms as $i => $t): $off = (float) ($t['discount_percent'] ?? 0); ?>
+          <label><input type="radio" name="term" value="<?= (int) $t['years'] ?>" data-discount="<?= $off ?>"<?= $i === 0 ? ' checked' : '' ?>><span><?= e($t['label']) ?><?= $off > 0 ? ' · save ' . e((string) $off) . '%' : '' ?></span></label>
         <?php endforeach; ?>
       </div>
       <small>Prices in ₹, exclusive of 18% GST · switch or cancel anytime</small>
@@ -55,11 +77,11 @@ $hero = ['crumb' => 'Pricing', 'eyebrow' => 'Pricing',
         <article class="plan<?= $p['is_popular'] ? ' featured' : '' ?>">
           <?php if ($p['is_popular']): ?><span class="badge">Most popular</span><?php endif; ?>
           <h2 style="font-size:20px"><?= e($p['name']) ?></h2>
-          <p class="fit"><?= e($fit[$id]) ?></p>
+          <p class="fit"><?= e($fit[$id] ?? (string) ($p['description'] ?? '')) ?></p>
           <div class="quote">
             <?php if ($p['is_custom']): ?><b>Custom</b>Priced for your stores
             <?php elseif (!$paid): ?><b>Free</b>Forever
-            <?php else: ?><b><?= inr($p['price']) ?> / year</b><span class="term-total" data-price="<?= (int) $p['price'] ?>">About <?= inr($p['price'] / 12) ?> a month</span>
+            <?php else: ?><b><?= inr($p['price']) ?> / year</b><span class="term-total" data-price="<?= (int) $p['price'] ?>"><?= e(term_total((int) $p['price'], $terms[0])) ?></span>
             <?php endif; ?>
           </div>
           <ul class="checks">
@@ -80,21 +102,41 @@ $hero = ['crumb' => 'Pricing', 'eyebrow' => 'Pricing',
   <div class="container">
     <div class="section-head"><span class="eyebrow">Compare plans</span><h2>Every feature, plan by plan</h2>
       <p>Taken from the plan settings in the app. Features marked “uses credits” send messages or scan bills using credits.</p></div>
+    <?php
+    /* Group features into collapsible sections (skip rows no plan includes; users get their own row on top). */
+    $sections = [];
+    foreach ($features as $f) {
+      $inAny = false; foreach ($order as $id) if (!empty($status[$id][$f['id']])) $inAny = true;
+      if (!$inAny || $f['unique_name'] === 'feat_user_limit') continue;
+      $sections[$f['group_id']][] = $f;
+    }
+    ?>
+    <div class="pc-tools"><button type="button" class="pc-all" aria-expanded="true" hidden>Collapse all</button></div>
     <div class="pc-wrap" tabindex="0" role="region" aria-label="Plan comparison table, scrolls sideways on small screens">
-      <table class="pc">
+      <table class="pc" data-collapse>
         <thead><tr><th scope="col">Feature</th><?php foreach ($order as $id): ?><th scope="col"><?= e($plans[$id]['name']) ?></th><?php endforeach; ?></tr></thead>
         <tbody>
           <tr><th scope="row">Users</th><?php foreach ($order as $id): ?><td><span class="pc-val"><?= $plans[$id]['user_limit'] ?? 'Unlimited' ?></span></td><?php endforeach; ?></tr>
-          <?php $cur = null; foreach ($features as $f):
-            $inAny = false; foreach ($order as $id) if (!empty($status[$id][$f['id']])) $inAny = true;
-            if (!$inAny || $f['unique_name'] === 'feat_user_limit') continue;   // skip rows no plan includes; users shown above
-            if ($cur !== $f['group_id']): $cur = $f['group_id']; ?>
-              <tr class="pc-group"><th colspan="5" scope="colgroup"><?= e($groups[$cur]) ?></th></tr>
-            <?php endif; ?>
-            <tr><th scope="row"><?= e($label[$f['name']] ?? $f['name']) ?></th>
-              <?php foreach ($order as $id): ?><td><?= cell($status[$id][$f['id']] ?? null) ?></td><?php endforeach; ?></tr>
-          <?php endforeach; ?>
         </tbody>
+        <?php foreach ($sections as $gid => $rows): $sid = 'pcg-' . (int) $gid; $n = count($rows); ?>
+          <tbody class="pc-head-row">
+            <tr class="pc-group">
+              <th scope="rowgroup"><button type="button" class="pc-toggle" aria-expanded="true" aria-controls="<?= $sid ?>">
+                <svg class="icon" aria-hidden="true"><use href="#i-chev"/></svg><?= e($groups[$gid] ?? 'Other') ?>
+                <span class="pc-count"><?= $n ?> feature<?= $n === 1 ? '' : 's' ?></span></button></th>
+              <?php foreach ($order as $id):
+                $has = 0; foreach ($rows as $f) if (!empty($status[$id][$f['id']])) $has++; ?>
+                <td><span class="pc-sum" aria-label="<?= $has ?> of <?= $n ?> included in <?= e($plans[$id]['name']) ?>"><?= $has ?>/<?= $n ?></span></td>
+              <?php endforeach; ?>
+            </tr>
+          </tbody>
+          <tbody id="<?= $sid ?>" class="pc-rows">
+            <?php foreach ($rows as $f): ?>
+              <tr><th scope="row"><?= e($label[$f['name']] ?? $f['name']) ?></th>
+                <?php foreach ($order as $id): ?><td><?= cell($status[$id][$f['id']] ?? null) ?></td><?php endforeach; ?></tr>
+            <?php endforeach; ?>
+          </tbody>
+        <?php endforeach; ?>
       </table>
     </div>
   </div>
@@ -128,8 +170,10 @@ $hero = ['crumb' => 'Pricing', 'eyebrow' => 'Pricing',
     <div class="faq-list">
       <?php $qs = [
         ['Is GST included in the price?', 'No. Prices are in rupees (₹) and exclude GST, currently 18%, which is added at checkout.'],
-        ['What happens when I reach the Starter limit?', 'Starter includes 10 sales bills and 25 purchase bills a month for one user. When you need more, upgrade to Basic or Advance for unlimited bills.'],
-        ['Can I pay for more than one year?', 'Yes. Paid plans can be bought for 1, 3 or 5 years.'],
+        ...($free && $freeLimits['sales'] !== null ? [['What happens when I reach the ' . $free['name'] . ' limit?',
+          $free['name'] . ' includes ' . $freeLimits['sales'] . ' sales bills' . ($freeLimits['purchase'] !== null ? ' and ' . $freeLimits['purchase'] . ' purchase bills' : '')
+          . ' a month for ' . ((int) ($free['user_limit'] ?? 1) === 1 ? 'one user' : (int) $free['user_limit'] . ' users') . '. When you need more, upgrade to a paid plan for unlimited bills.']] : []),
+        ['Can I pay for more than one year?', 'Yes. Paid plans can be bought for ' . pricing_terms_text() . '.'],
         ['Can I change or cancel my plan?', 'Yes, you can switch or cancel anytime. Refunds are covered by our refund policy.'],
         ['How is Enterprise priced?', 'Enterprise is quoted for your stores: multi-store management, unlimited users and bills, Tally XML export and priority support. Book a call and we’ll send a quote.'],
         ['Do you charge for setup or importing data?', 'Importing your items and opening stock from a CSV file is built into the app on every plan. [Confirm whether any assisted setup is charged.]'],

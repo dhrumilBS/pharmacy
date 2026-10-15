@@ -5,10 +5,17 @@ $description = 'Straight answers on the free plan, switching from your current s
 $page_key    = 'faq';
 $extra_css   = ['css/pages.css'];
 
+/* Plan names, prices and limits come from the live pricing API (partials/pricing-data.php). */
+require_once __DIR__ . '/partials/pricing-data.php';
+$starter       = pricing_plan(1);
+$starterLimits = plan_bill_limits(1);
+
 /* [question, answer HTML, confirmed?] — unconfirmed answers are flagged in ?review mode and left out of FAQ schema. */
 $faq = [
   'start' => ['Getting started', [
-    ['Is there really a free plan?', 'Yes. The Starter plan is free forever for one user, with 10 sales bills and 25 purchase bills a month: enough to set up your items and try billing. Upgrade to Basic or Advance when you need unlimited bills.', true],
+    ['Is there really a free plan?', 'Yes. The ' . e($starter['name'] ?? 'Starter') . ' plan is free forever for ' . ((int) ($starter['user_limit'] ?? 1) === 1 ? 'one user' : (int) $starter['user_limit'] . ' users')
+      . ($starterLimits['sales'] !== null ? ', with ' . $starterLimits['sales'] . ' sales bills' . ($starterLimits['purchase'] !== null ? ' and ' . $starterLimits['purchase'] . ' purchase bills' : '') . ' a month' : '')
+      . ': enough to set up your items and try billing. Upgrade to a paid plan when you need unlimited bills.', true],
     ['Do I need to install anything?', 'No. It runs in your web browser. You sign up with your store name and email, verify with an OTP, and log in from any computer.', true],
     ['How long does setup take?', 'Most of the work is done once: import your items and opening stock from a CSV file, add suppliers and staff, then start billing. Built-in walkthroughs show each step.', true],
   ]],
@@ -49,7 +56,7 @@ $faq = [
     ['Can I take my data with me if I leave?', 'Reports, item lists and ledgers export to Excel or CSV. [Confirm the full-account export process.]', false],
   ]],
   'plans' => ['Plans & payment', [
-    ['How much does it cost?', 'Starter is free. Basic is ₹4,999 a year and Advance is ₹9,999 a year, plus 18% GST. Enterprise for chains is quoted. See the <a href="' . url('pricing') . '">pricing page</a>.', true],
+    ['How much does it cost?', e(pricing_cost_text()) . ' See the <a href="' . url('pricing') . '">pricing page</a>.', true],
     ['Can I cancel anytime?', 'Yes, you can switch or cancel anytime. Refunds are covered by our <a href="' . url('refund') . '">refund policy</a>.', true],
     ['Can I use it for more than one store?', 'Yes, on Enterprise: central administration with linked outlets, stock transfers between stores, and central and multi-store reports.', true],
   ]],

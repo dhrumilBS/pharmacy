@@ -4,6 +4,7 @@ $title       = page_title('Switching from your current pharmacy software');
 $description = 'Change pharmacy software without stopping a single bill: set up free, import items and opening stock from CSV, train staff with in-app walkthroughs, and go live on your day.';
 $page_key    = 'switch';
 $extra_css   = ['css/pages.css'];
+require_once __DIR__ . '/partials/pricing-data.php';   // live plan prices for the comparison table
 require __DIR__ . '/partials/head.php';
 require __DIR__ . '/partials/header.php';
 $hero = ['crumb' => 'Switching', 'eyebrow' => 'Switching from other software',
@@ -85,7 +86,7 @@ $cols = ['Item name', 'Generic name', 'Item category', 'Sub-category', 'Item typ
         <tr><td>Nearest-expiry batch at billing</td><td>Varies by package</td><td>Usually no batch tracking</td><td>Batch auto-selected by nearest expiry (FEFO)</td></tr>
         <tr><td>Where it runs</td><td>One PC in the store</td><td>Phone or browser</td><td>Any web browser; log in from anywhere</td></tr>
         <tr><td>Distributor bill entry</td><td>Often typed line by line</td><td>Manual entry</td><td>CSV import or OCR scan</td></tr>
-        <tr><td>Pricing</td><td>Licence plus yearly AMC, often by quote</td><td>Low monthly fee</td><td>Free Starter; ₹4,999 or ₹9,999 a year, published</td></tr>
+        <tr><td>Pricing</td><td>Licence plus yearly AMC, often by quote</td><td>Low monthly fee</td><td><?= e(pricing_compare_text()) ?></td></tr>
         <tr><td>Hospital pharmacy (IPD, TPA, EMR)</td><td>Separate modules, if any</td><td>Not covered</td><td>Built in, plus ABDM</td></tr>
         <tr><td>Staff controls</td><td>Varies</td><td>Basic</td><td>Roles, two-step login, IP whitelisting (Advance)</td></tr>
       </tbody>

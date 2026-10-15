@@ -18,8 +18,24 @@
 .pc thead th{position:sticky;top:0;background:var(--navy-900);color:#fff;font-weight:600;font-size:14px}
 .pc thead th:first-child,.pc tbody th{text-align:left}
 .pc tbody th{font-weight:500;color:var(--navy-950)}
-.pc tr:last-child td,.pc tr:last-child th{border-bottom:0}
-.pc .pc-group th{background:var(--bg);font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding:10px 16px}
+.pc tbody:last-child tr:last-child td,.pc tbody:last-child tr:last-child th{border-bottom:0}
+.pc .pc-group th,.pc .pc-group td{background:var(--bg);padding:10px 16px}
+.pc .pc-group th{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+/* Collapsible feature groups (pricing.js): the group row is a toggle, its rows live in the next <tbody> */
+.pc-tools{display:flex;justify-content:flex-end;margin-bottom:10px}
+.pc-tools [hidden]{display:none}
+.pc-all{padding:6px 12px;border:0;border-radius:var(--r-sm);background:none;color:var(--blue-700);font:600 14px var(--font-body);cursor:pointer}
+.pc-all:hover{background:#fff;text-decoration:underline}
+.pc-toggle{display:flex;align-items:center;gap:8px;width:100%;padding:0;border:0;background:none;color:inherit;font:inherit;letter-spacing:inherit;text-transform:inherit;text-align:left;cursor:pointer}
+.pc-toggle:hover{color:var(--navy-950)}
+.pc-toggle .icon{flex:none;width:16px;height:16px;color:var(--blue-600);transition:transform .2s}
+.pc-toggle[aria-expanded=false] .icon{transform:rotate(-90deg)}
+.pc-count{margin-left:4px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--muted)}
+.pc-sum{font-size:13px;font-weight:600;color:var(--text-2);font-variant-numeric:tabular-nums}
+.pc-rows[hidden]{display:none}
+.pc .pc-group{cursor:pointer}
+.pc .pc-group:hover th,.pc .pc-group:hover td{background:var(--blue-50)}
+@media (prefers-reduced-motion:reduce){.pc-toggle .icon{transition:none}}
 .pc-yes{color:var(--teal-700);font-weight:700;font-size:17px}
 .pc-no{color:var(--border-2)}
 .pc-val{font-weight:600;color:var(--navy-900)}
