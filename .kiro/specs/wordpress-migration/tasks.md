@@ -90,7 +90,7 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - `wordpress/tools/test/format.test.mjs`: `rx_inr()` examples (`0`, `999`, `1000`, `100000`, `1092480`), `rx_barcode_svg()` equal to the PHP site's `barcode_svg()` output for sample texts (run from a temp copy of `config.php`), and `rx_legal_mark()` examples
     - _Requirements: 2.6, 5.3_
 
-- [ ] 3. Theme files: templates and parts (Requirement 3)
+- [x] 3. Theme files: templates and parts (Requirement 3)
   - [x] 3.1 Write `header.php` and `footer.php`
     - `header.php`:
       - Doctype, `<html <?php language_attributes(); ?>>`, charset and viewport meta, `wp_head()`
@@ -135,7 +135,7 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - `templates/switch.php`, `templates/faq.php`, `templates/about.php`, `templates/contact.php`, `templates/support.php` and `templates/demo.php`, each with the same sections and markup as its PHP file
     - Contact and demo use `demo-form`; demo ends with `get_footer( null, [ 'hide_cta' => true ] )`
     - _Requirements: 3.5, 5.1_
-  - [~] 3.8 Write `page.php`, `index.php` and `404.php`
+  - [x] 3.8 Write `page.php`, `index.php` and `404.php`
     - `page.php` and `index.php`: `page-hero` + `the_content()`
     - `404.php`: `page-hero`-style heading, a short message and links to home, features, pricing and the blog through `rx_url()`, in the design system
     - _Requirements: 3.4_
@@ -237,12 +237,12 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - `rx_brand`, `rx_site`, `rx_tel`, `rx_url`, `rx_link`, `rx_plan`, `rx_free_plan`, `rx_cost_text`, `rx_compare_text`, `rx_terms_text`, `rx_users_text`, `rx_credits_text` and `rx_if`, with the attributes in design §6
     - Each reads `rx_pricing_data()` once and returns '' (or `fallback`) when pricing is null
     - _Requirements: 6.3, 6.8, 8.3, 8.4_
-  - [ ]* 7.9 Write example tests for the shortcodes
+  - [x]* 7.9 Write example tests for the shortcodes
     - `wordpress/tools/test/php/wp-shortcodes.php` + `wordpress/tools/test/shortcodes.test.mjs`
     - Each shortcode with the snapshot fixture equals the matching core helper. `[rx_link]` and `[rx_tel]` markup is correct. Unregistered `[placeholder]` text is left unchanged
     - _Requirements: 6.8_
 
-- [ ] 8. Blog (Requirement 7)
+- [x] 8. Blog (Requirement 7)
   - [x] 8.1 Implement the pure blog helpers in `inc/core/blog.php`
     - `rx_safe_post_slug( string $slug, array $topics ): string` appends `-guide` to a topic key
     - `rx_blog_toc( string $html ): array` returns `[ html, toc ]`, using the same regex and slug rule as `blog_end()` (de-duplicating with `-2`, `-3`, and `section` when empty)
@@ -265,10 +265,10 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - `parts/blog-cover.php` and `parts/blog-card.php`, with variants `card`, `feature` and `row`, same markup as `blog_cover()`/`blog_card()`. Topic pills link to `/blog/{topic}/`
     - `parts/blog-layouts.php` renders the 11 `body` layouts with the markup of `bk_*()`
     - _Requirements: 3.6, 6.5, 7.1_
-  - [~] 8.6 Write `home.php` (blog hub and topic views)
+  - [x] 8.6 Write `home.php` (blog hub and topic views)
     - Hero (topic views change crumb, parent link and h1), topic links with counts and `aria-current`, featured guide + Start here only without a topic, grid with the "Latest guides"/"N guides" heading and empty message, tools strip
     - _Requirements: 3.3, 7.1, 7.2_
-  - [~] 8.7 Write `single.php`
+  - [x] 8.7 Write `single.php`
     - Progress bar, hero, meta bar with topic link, author, dates and read time, copy link (`data-copy` = root-relative permalink), cover, aside TOC + demo box from `rx_blog_toc()`, article layouts, byline, FAQ (`bq%d`), Keep reading (same topic first, then newest, 3 cards)
     - _Requirements: 3.3, 7.3_
   - [ ]* 8.8 Write example tests for blog routes

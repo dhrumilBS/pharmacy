@@ -317,6 +317,16 @@
         "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
         "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
         "timestamp": 1792141216230
+      },
+      {
+        "executionId": "5a5428f6-d360-41ca-8cae-06444160a82a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792154469233
+      },
+      {
+        "executionId": "5a5428f6-d360-41ca-8cae-06444160a82a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792155329670
       }
     ],
     "4.1 Implement `Rx_Mega_Walker` in `inc/nav.php`": [
@@ -698,6 +708,16 @@
         "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
         "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
         "timestamp": 1792141218856
+      },
+      {
+        "executionId": "5a5428f6-d360-41ca-8cae-06444160a82a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792154469918
+      },
+      {
+        "executionId": "5a5428f6-d360-41ca-8cae-06444160a82a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792155331555
       }
     ],
     "8.7 Write `single.php`": [
@@ -705,6 +725,16 @@
         "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
         "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
         "timestamp": 1792141218990
+      },
+      {
+        "executionId": "5a5428f6-d360-41ca-8cae-06444160a82a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792154471171
+      },
+      {
+        "executionId": "5a5428f6-d360-41ca-8cae-06444160a82a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792155332272
       }
     ],
     "9.1 Implement the pure pricing core in `inc/core/pricing.php`": [
@@ -1051,6 +1081,37 @@
         "executionId": "5a5428f6-d360-41ca-8cae-06444160a82a",
         "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
         "timestamp": 1792153053470
+      }
+    ],
+    "7.9 Write example tests for the shortcodes": [
+      {
+        "executionId": "5a5428f6-d360-41ca-8cae-06444160a82a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792154462034
+      },
+      {
+        "executionId": "5a5428f6-d360-41ca-8cae-06444160a82a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792154471611
+      },
+      {
+        "executionId": "5a5428f6-d360-41ca-8cae-06444160a82a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792155330433
+      }
+    ],
+    "3. Theme files: templates and parts (Requirement 3)": [
+      {
+        "executionId": "5a5428f6-d360-41ca-8cae-06444160a82a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792155330002
+      }
+    ],
+    "8. Blog (Requirement 7)": [
+      {
+        "executionId": "5a5428f6-d360-41ca-8cae-06444160a82a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792155332532
       }
     ]
   }
