@@ -11,10 +11,10 @@
  * - FAQ: the free-plan limit answer is wrapped in [rx_if cond="free_sales_limit"]
  *   and the terms answer in [rx_if cond="pricing"], so they render empty (and
  *   faq-list skips them) when the data isn't there, as today's array spread does.
- * - seo.desc is the fallback used when pricing is null: the live description
- *   (today's text with every plan and its yearly price) is built by a
- *   wpseo_metadesc filter from rx_pricing_meta_bits() (task 14.1). No price
- *   is written here.
+ * - No seo.desc: pricing.php builds its description from the live plans and
+ *   prices, and the theme's wpseo_metadesc filter builds it the same way from
+ *   rx_pricing_meta_bits() (task 14.1). Because 'seo' is set without 'desc',
+ *   the import removes any stored Yoast description. No price is written here.
  * - Plan names that pricing.php writes as literal text ("Enterprise" in the
  *   title and the FAQ) stay literal, as on the PHP_Site.
  *
@@ -32,7 +32,6 @@ return array(
 	'template' => 'templates/pricing.php',
 	'seo'      => array(
 		'title'   => 'Pricing: pharmacy software plans from free to Enterprise %%sep%% %%sitename%%',
-		'desc'    => 'Simple yearly plans for medical stores. Prices exclude 18% GST. Compare every feature.',
 		'noindex' => false,
 	),
 	'fields'   => array(
