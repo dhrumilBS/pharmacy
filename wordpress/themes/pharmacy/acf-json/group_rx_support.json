@@ -1,0 +1,788 @@
+{
+    "key": "group_rx_support",
+    "title": "Support page",
+    "fields": [
+        {
+            "key": "field_rx_support_tab_hero",
+            "label": "Hero",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_support_hero",
+            "label": "Hero",
+            "name": "hero",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_support_hero_crumb",
+                    "label": "Breadcrumb label",
+                    "name": "crumb",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Last breadcrumb item. Empty uses the page title.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_support_hero_parent",
+                    "label": "Parent breadcrumb",
+                    "name": "parent",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Optional middle crumb shown as plain text, for example Company or Resources.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_support_hero_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "34",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_support_hero_h1",
+                    "label": "Heading (h1)",
+                    "name": "h1",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Empty uses the page title.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_support_hero_lead",
+                    "label": "Lead",
+                    "name": "lead",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Plain text. Shortcodes such as [rx_free_plan field=\"name\"] or [rx_site key=\"address\"] work.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_rx_support_hero_meta",
+                    "label": "Meta line",
+                    "name": "meta",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Optional small line under the lead.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_support_hero_pattern",
+                    "label": "Background pattern",
+                    "name": "pattern",
+                    "aria-label": "",
+                    "type": "button_group",
+                    "instructions": "Blister-pack dots behind the hero. Site setting follows Site settings → Layout.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "inherit": "Site setting",
+                        "on": "On",
+                        "off": "Off"
+                    },
+                    "default_value": "inherit",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "layout": "horizontal"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_support_tab_channels",
+            "label": "Channels",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_support_channels",
+            "label": "Support channels",
+            "name": "channels",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add channel",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_support_channels_icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "i-alert": "Alert",
+                        "i-arrow": "Arrow",
+                        "i-box": "Box",
+                        "i-calendar": "Calendar",
+                        "i-chart": "Chart",
+                        "i-chat": "Chat",
+                        "i-check": "Check",
+                        "i-check-c": "Check in circle",
+                        "i-chev": "Chevron",
+                        "i-clock": "Clock",
+                        "i-cross": "Medical cross",
+                        "i-facebook": "Facebook",
+                        "i-file": "File",
+                        "i-headset": "Headset",
+                        "i-hospital": "Hospital",
+                        "i-instagram": "Instagram",
+                        "i-leaf": "Leaf",
+                        "i-linkedin": "LinkedIn",
+                        "i-lock": "Lock",
+                        "i-mail": "Mail",
+                        "i-menu": "Menu",
+                        "i-mobile": "Mobile",
+                        "i-moon": "Moon",
+                        "i-phone": "Phone",
+                        "i-pin": "Map pin",
+                        "i-play": "Play",
+                        "i-plus": "Plus",
+                        "i-printer": "Printer",
+                        "i-receipt": "Receipt",
+                        "i-register": "Register",
+                        "i-return": "Return",
+                        "i-rupee": "Rupee",
+                        "i-scan": "Barcode scan",
+                        "i-screen": "Screen",
+                        "i-search": "Search",
+                        "i-shield": "Shield",
+                        "i-store": "Store",
+                        "i-stores": "Stores",
+                        "i-sun": "Sun",
+                        "i-truck": "Truck",
+                        "i-upload": "Upload",
+                        "i-users": "Users",
+                        "i-x": "Close",
+                        "i-xsocial": "X (social)",
+                        "i-youtube": "YouTube"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_rx_support_channels"
+                },
+                {
+                    "key": "field_rx_support_channels_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "75",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_support_channels"
+                },
+                {
+                    "key": "field_rx_support_channels_html",
+                    "label": "Text (HTML)",
+                    "name": "html",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "HTML allowed. Live values go in as shortcodes, for example [rx_link key=\"pricing\"]pricing page[/rx_link], [rx_tel key=\"sales\"] or [rx_plan feat=\"feat_x\"].",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_rx_support_channels"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_support_note_html",
+            "label": "Note under the channels (HTML)",
+            "name": "note_html",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "HTML allowed. Live values go in as shortcodes, for example [rx_link key=\"pricing\"]pricing page[/rx_link], [rx_tel key=\"sales\"] or [rx_plan feat=\"feat_x\"].",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_rx_support_note_confirmed",
+            "label": "Note confirmed",
+            "name": "note_confirmed",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Switch off to flag the note for review (data-confirm).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No"
+        },
+        {
+            "key": "field_rx_support_tab_start",
+            "label": "Getting started",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_support_start_head",
+            "label": "Getting started heading",
+            "name": "start_head",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_support_start_head_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_support_start_head_title",
+                    "label": "Heading",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_support_start_head_intro",
+                    "label": "Intro",
+                    "name": "intro",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Plain text. Shortcodes such as [rx_free_plan field=\"name\"] or [rx_site key=\"address\"] work.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_rx_support_cta_free",
+            "label": "Start free button label",
+            "name": "cta_free",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_support_cta_login",
+            "label": "Log in button label",
+            "name": "cta_login",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_support_start_steps",
+            "label": "Steps",
+            "name": "start_steps",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add step",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_support_start_steps_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_support_start_steps"
+                },
+                {
+                    "key": "field_rx_support_start_steps_html",
+                    "label": "Text (HTML)",
+                    "name": "html",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "HTML allowed. Live values go in as shortcodes, for example [rx_link key=\"pricing\"]pricing page[/rx_link], [rx_tel key=\"sales\"] or [rx_plan feat=\"feat_x\"].",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_rx_support_start_steps"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_support_tab_topics",
+            "label": "Popular topics",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_support_topics_head",
+            "label": "Topics heading",
+            "name": "topics_head",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_support_topics_head_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_support_topics_head_title",
+                    "label": "Heading",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_support_topics_head_intro",
+                    "label": "Intro",
+                    "name": "intro",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Plain text. Shortcodes such as [rx_free_plan field=\"name\"] or [rx_site key=\"address\"] work.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_rx_support_topics",
+            "label": "Topics",
+            "name": "topics",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Each card links to the help centre.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add topic",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_support_topics_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_support_topics"
+                },
+                {
+                    "key": "field_rx_support_topics_text",
+                    "label": "Text",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_support_topics"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates/support.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Copy for templates/support.php (from support.php). Phone numbers and help centre, sign-up and log-in links come from Site settings.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1792142461
+}

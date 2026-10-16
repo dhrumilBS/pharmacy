@@ -1,0 +1,2116 @@
+{
+    "key": "group_rx_feature",
+    "title": "Feature page",
+    "fields": [
+        {
+            "key": "field_rx_feature_tab_hero",
+            "label": "Hero",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_feature_hero",
+            "label": "Page hero",
+            "name": "hero",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_feature_hero_crumb",
+                    "label": "Breadcrumb label",
+                    "name": "crumb",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Last breadcrumb item, for example Billing & counter.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_hero_parent",
+                    "label": "Breadcrumb parent",
+                    "name": "parent",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Middle breadcrumb item (plain text), for example Features.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_hero_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Small label above the heading. Optional.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_hero_h1",
+                    "label": "Heading (H1)",
+                    "name": "h1",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Empty uses the page title.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_hero_lead",
+                    "label": "Lead",
+                    "name": "lead",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_rx_feature_hero_meta",
+                    "label": "Meta line",
+                    "name": "meta",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Small line under the lead, for example Last updated: [date]. Optional.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_hero_pattern",
+                    "label": "Background pattern",
+                    "name": "pattern",
+                    "aria-label": "",
+                    "type": "button_group",
+                    "instructions": "Faint blister-pack dots behind the hero. \"Site setting\" uses the inner-page hero pattern switch in Site settings.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "inherit": "Site setting",
+                        "on": "On",
+                        "off": "Off"
+                    },
+                    "default_value": "inherit",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "layout": "horizontal"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_feature_tab_top",
+            "label": "Buttons & screen",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_feature_cta_demo",
+            "label": "Demo button label",
+            "name": "cta_demo",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Empty shows \"Book a free demo\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "Book a free demo",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_feature_cta_free",
+            "label": "Start free button label",
+            "name": "cta_free",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Empty shows \"Start free\". Links to the app sign-up URL.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "Start free",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_feature_assure",
+            "label": "Reassurance lines",
+            "name": "assure",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Check-marked lines under the buttons. Shortcodes keep plan names live.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add line",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_feature_assure_text",
+                    "label": "Line",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_feature_assure"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_feature_screen",
+            "label": "Product screen",
+            "name": "screen",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Sample screen under the buttons (theme file in assets/img/screens/).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "v2-01-counter-billing": "Counter billing",
+                "v2-02-dashboard": "Dashboard",
+                "v2-03-expiry": "Expiry",
+                "v2-04-purchase-import": "Purchase import",
+                "v2-05-reorder": "Reorder",
+                "v2-06-gst": "GST",
+                "v2-07-hospital": "Hospital",
+                "v2-08-retention": "Retention",
+                "v2-09-security": "Security",
+                "v2-10-initial-import": "Initial import"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_rx_feature_screen_alt",
+            "label": "Screen alt text",
+            "name": "screen_alt",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "\"Sample screen: \" is added in front.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_feature_tab_scenes",
+            "label": "Scenes",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_feature_scenes_head",
+            "label": "Section heading",
+            "name": "scenes_head",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_feature_scenes_head_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_scenes_head_title",
+                    "label": "Heading",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_scenes_head_intro",
+                    "label": "Intro",
+                    "name": "intro",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Optional.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_rx_feature_scenes",
+            "label": "Scenes",
+            "name": "scenes",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_rx_feature_scenes_title",
+            "button_label": "Add scene",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_feature_scenes_time",
+                    "label": "When",
+                    "name": "time",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "For example 7:45 pm, five people waiting.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_feature_scenes"
+                },
+                {
+                    "key": "field_rx_feature_scenes_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_feature_scenes"
+                },
+                {
+                    "key": "field_rx_feature_scenes_text",
+                    "label": "Text",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_rx_feature_scenes"
+                },
+                {
+                    "key": "field_rx_feature_scenes_cost",
+                    "label": "Cost",
+                    "name": "cost",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Shown after \"Cost\". The first letter is capitalised.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_feature_scenes"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_feature_tab_leaks",
+            "label": "Leak register",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_feature_leaks_head",
+            "label": "Section heading",
+            "name": "leaks_head",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_feature_leaks_head_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_leaks_head_title",
+                    "label": "Heading",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_leaks_head_intro",
+                    "label": "Intro",
+                    "name": "intro",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Optional.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_rx_feature_leaks",
+            "label": "Leaks",
+            "name": "leaks",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_rx_feature_leaks_leak",
+            "button_label": "Add leak",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_feature_leaks_leak",
+                    "label": "Leak",
+                    "name": "leak",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Card heading.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_feature_leaks"
+                },
+                {
+                    "key": "field_rx_feature_leaks_how",
+                    "label": "How it happens",
+                    "name": "how",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_rx_feature_leaks"
+                },
+                {
+                    "key": "field_rx_feature_leaks_plug_html",
+                    "label": "How it’s plugged",
+                    "name": "plug_html",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "HTML allowed (for example bold text and links). Shortcodes such as [rx_plan] and [rx_link] keep live values live.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_rx_feature_leaks"
+                },
+                {
+                    "key": "field_rx_feature_leaks_feat",
+                    "label": "Feature (API)",
+                    "name": "feat",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Pricing API feature unique_name, for example feat_csv_import. The plan name then comes live from the API.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_feature_leaks"
+                },
+                {
+                    "key": "field_rx_feature_leaks_plan",
+                    "label": "Plan (fixed text)",
+                    "name": "plan",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Fixed plan text, used when Feature is empty or not listed by the API, for example Every plan. Both empty shows \"Plan: not listed separately\".",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_feature_leaks"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_feature_leaks_example",
+            "label": "Worked example",
+            "name": "leaks_example",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "Last card of the register. Illustrative numbers, kept as text.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_feature_leaks_example_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Empty shows the demo card (\"Go through these with your own stock\") instead of a worked example.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_leaks_example_lines",
+                    "label": "Lines",
+                    "name": "lines",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Auto puts × before every line except the first.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Add line",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_rx_feature_leaks_example_lines_label",
+                            "label": "Label",
+                            "name": "label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_rx_feature_leaks_example_lines"
+                        },
+                        {
+                            "key": "field_rx_feature_leaks_example_lines_value",
+                            "label": "Value",
+                            "name": "value",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "30",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_rx_feature_leaks_example_lines"
+                        },
+                        {
+                            "key": "field_rx_feature_leaks_example_lines_op",
+                            "label": "Operator",
+                            "name": "op",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "auto": "Auto (× after the first line)",
+                                "none": "None",
+                                "×": "×",
+                                "+": "+",
+                                "−": "−",
+                                "÷": "÷",
+                                "=": "="
+                            },
+                            "default_value": "auto",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "parent_repeater": "field_rx_feature_leaks_example_lines"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_rx_feature_leaks_example_result_label",
+                    "label": "Result label",
+                    "name": "result_label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_leaks_example_result_value",
+                    "label": "Result value",
+                    "name": "result_value",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_leaks_example_note",
+                    "label": "Note",
+                    "name": "note",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_rx_feature_leaks_estimator",
+            "label": "Expiry loss estimator",
+            "name": "leaks_estimator",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Also loads the estimator styles on this page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Show the expiry loss estimator under the register",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_rx_feature_tab_steps",
+            "label": "How it works",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_feature_steps_head",
+            "label": "Section heading",
+            "name": "steps_head",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_feature_steps_head_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_steps_head_title",
+                    "label": "Heading",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_steps_head_intro",
+                    "label": "Intro",
+                    "name": "intro",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Optional.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_rx_feature_steps",
+            "label": "Steps",
+            "name": "steps",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_rx_feature_steps_title",
+            "button_label": "Add step",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_feature_steps_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_feature_steps"
+                },
+                {
+                    "key": "field_rx_feature_steps_html",
+                    "label": "Text",
+                    "name": "html",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "HTML allowed (for example bold text and links). Shortcodes such as [rx_plan] and [rx_link] keep live values live.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_rx_feature_steps"
+                },
+                {
+                    "key": "field_rx_feature_steps_meta",
+                    "label": "Meta line",
+                    "name": "meta",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Small line under the step. Optional.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_feature_steps"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_feature_keys",
+            "label": "Shortcut keys",
+            "name": "keys",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Shown as a \"Shortcuts:\" line under the steps. Optional.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add shortcut",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_feature_keys_key",
+                    "label": "Keys",
+                    "name": "key",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Join keys with +, for example Ctrl + S.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_feature_keys"
+                },
+                {
+                    "key": "field_rx_feature_keys_what",
+                    "label": "What it does",
+                    "name": "what",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_feature_keys"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_feature_tab_caps",
+            "label": "Capabilities",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_feature_caps_head",
+            "label": "Section heading",
+            "name": "caps_head",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_feature_caps_head_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_caps_head_title",
+                    "label": "Heading",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_caps_head_intro",
+                    "label": "Intro",
+                    "name": "intro",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "\" Plans come from the current plan comparison.\" is added after the intro.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_rx_feature_caps",
+            "label": "Capabilities",
+            "name": "caps",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_rx_feature_caps_title",
+            "button_label": "Add capability",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_feature_caps_icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "i-alert": "Alert",
+                        "i-arrow": "Arrow",
+                        "i-box": "Box",
+                        "i-calendar": "Calendar",
+                        "i-chart": "Chart",
+                        "i-chat": "Chat",
+                        "i-check": "Check",
+                        "i-check-c": "Check in circle",
+                        "i-chev": "Chevron",
+                        "i-clock": "Clock",
+                        "i-cross": "Medical cross",
+                        "i-file": "File",
+                        "i-headset": "Headset",
+                        "i-hospital": "Hospital",
+                        "i-leaf": "Leaf",
+                        "i-lock": "Lock",
+                        "i-mail": "Mail",
+                        "i-menu": "Menu",
+                        "i-mobile": "Mobile",
+                        "i-moon": "Moon",
+                        "i-phone": "Phone",
+                        "i-pin": "Map pin",
+                        "i-play": "Play",
+                        "i-plus": "Plus",
+                        "i-printer": "Printer",
+                        "i-receipt": "Receipt",
+                        "i-register": "Register",
+                        "i-return": "Return",
+                        "i-rupee": "Rupee",
+                        "i-scan": "Barcode scan",
+                        "i-screen": "Screen",
+                        "i-search": "Search",
+                        "i-shield": "Shield",
+                        "i-store": "Store",
+                        "i-stores": "Stores",
+                        "i-sun": "Sun",
+                        "i-truck": "Truck",
+                        "i-upload": "Upload",
+                        "i-users": "Users",
+                        "i-x": "Close (x)",
+                        "i-linkedin": "LinkedIn",
+                        "i-youtube": "YouTube",
+                        "i-instagram": "Instagram",
+                        "i-facebook": "Facebook",
+                        "i-xsocial": "X (social)"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 1,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_rx_feature_caps"
+                },
+                {
+                    "key": "field_rx_feature_caps_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_feature_caps"
+                },
+                {
+                    "key": "field_rx_feature_caps_html",
+                    "label": "Text",
+                    "name": "html",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "HTML allowed (for example bold text and links). Shortcodes such as [rx_plan] and [rx_link] keep live values live.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_rx_feature_caps"
+                },
+                {
+                    "key": "field_rx_feature_caps_feat",
+                    "label": "Feature (API)",
+                    "name": "feat",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Pricing API feature unique_name, for example feat_csv_import. The plan name then comes live from the API.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_feature_caps"
+                },
+                {
+                    "key": "field_rx_feature_caps_plan",
+                    "label": "Plan (fixed text)",
+                    "name": "plan",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Fixed plan text, used when Feature is empty or not listed by the API, for example Every plan. Both empty shows no plan line.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_feature_caps"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_feature_tab_guide",
+            "label": "Guide",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_feature_guide_head",
+            "label": "Section heading",
+            "name": "guide_head",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_feature_guide_head_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_guide_head_title",
+                    "label": "Heading",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_guide_head_intro",
+                    "label": "Intro",
+                    "name": "intro",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Optional.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_rx_feature_guide",
+            "label": "Guide items",
+            "name": "guide",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_rx_feature_guide_title",
+            "button_label": "Add item",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_feature_guide_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_feature_guide"
+                },
+                {
+                    "key": "field_rx_feature_guide_html",
+                    "label": "Text",
+                    "name": "html",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "HTML allowed (for example bold text and links). Shortcodes such as [rx_plan] and [rx_link] keep live values live.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_rx_feature_guide"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_feature_guide_note",
+            "label": "Guide note",
+            "name": "guide_note",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small line under the intro. Optional.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_feature_tab_proof",
+            "label": "Check it yourself",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_feature_proof_head",
+            "label": "Section heading",
+            "name": "proof_head",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_feature_proof_head_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_proof_head_title",
+                    "label": "Heading",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_feature_proof_head_intro",
+                    "label": "Intro",
+                    "name": "intro",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Optional.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_rx_feature_proof",
+            "label": "Demo checklist",
+            "name": "proof",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "The item count is shown on the checklist automatically.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add item",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_feature_proof_text",
+                    "label": "Item",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_feature_proof"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_feature_tab_related",
+            "label": "Related",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_feature_related",
+            "label": "Related feature pages",
+            "name": "related",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Shown in the order chosen. Labels and descriptions come from the Features menu. A \"Switching from other software\" link is always added last.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "billing": "Billing & counter",
+                "expiry": "Expiry & batch",
+                "inventory": "Stock & reorder",
+                "purchase": "Purchase & suppliers",
+                "reports": "Reports & dashboard",
+                "gst": "GST & accounts",
+                "retention": "Customer retention",
+                "security": "Security & roles"
+            },
+            "default_value": [],
+            "return_format": "value",
+            "multiple": 1,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_rx_feature_related_title",
+            "label": "Related row heading",
+            "name": "related_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Empty shows \"Also at the counter\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "Also at the counter",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_feature_tab_faq",
+            "label": "FAQ",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_feature_faq_title",
+            "label": "FAQ heading",
+            "name": "faq_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Empty shows \"Asked at the counter\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "Asked at the counter",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_feature_faq",
+            "label": "Questions",
+            "name": "faq",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_rx_feature_faq_q",
+            "button_label": "Add question",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_feature_faq_q",
+                    "label": "Question",
+                    "name": "q",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_feature_faq"
+                },
+                {
+                    "key": "field_rx_feature_faq_a_html",
+                    "label": "Answer",
+                    "name": "a_html",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "HTML allowed (for example bold text and links). Shortcodes such as [rx_plan] and [rx_link] keep live values live.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_rx_feature_faq"
+                },
+                {
+                    "key": "field_rx_feature_faq_confirmed",
+                    "label": "Confirmed",
+                    "name": "confirmed",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Off marks the item for review (?review) and keeps it out of the FAQ schema.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "Answer is confirmed",
+                    "default_value": 1,
+                    "allow_in_bindings": 0,
+                    "ui": 1,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "parent_repeater": "field_rx_feature_faq"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates/feature.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Every section of a feature page: hero, buttons and screen, scenes, leak register, steps, capabilities, guide, demo checklist, related pages and FAQ (replaces the $fp array of features/*.php).",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1792142124
+}

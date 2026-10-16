@@ -1,0 +1,714 @@
+{
+    "key": "group_rx_settings",
+    "title": "Site settings",
+    "fields": [
+        {
+            "key": "field_rx_settings_tab_contacts",
+            "label": "Contacts",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_settings_sales_phone",
+            "label": "Sales phone",
+            "name": "sales_phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shown on the site, for example +91 98765 43210.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_settings_sales_tel",
+            "label": "Sales tel: link",
+            "name": "sales_tel",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Number used in tel: links, no spaces, for example +919876543210.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_settings_support_phone",
+            "label": "Support phone",
+            "name": "support_phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shown on the site.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_settings_support_tel",
+            "label": "Support tel: link",
+            "name": "support_tel",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Number used in tel: links, no spaces.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_settings_email",
+            "label": "Email",
+            "name": "email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "Leave empty to hide the email link in the footer.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_settings_company",
+            "label": "Company legal name",
+            "name": "company",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shown on the legal pages only.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_settings_address",
+            "label": "Office address",
+            "name": "address",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_settings_map_query",
+            "label": "Map search text",
+            "name": "map_query",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Text searched on Google Maps for the contact page map link.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_settings_tab_links",
+            "label": "Links",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_settings_app_login",
+            "label": "App log-in URL",
+            "name": "app_login",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Used as a link target only, never shown as text.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_rx_settings_app_signup",
+            "label": "App sign-up URL",
+            "name": "app_signup",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Used by every Start free button. Link target only.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_rx_settings_help_url",
+            "label": "Help centre URL",
+            "name": "help_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Link target only.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_rx_settings_calendly",
+            "label": "Calendly URL",
+            "name": "calendly",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Link target only.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_rx_settings_tab_social",
+            "label": "Social",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_settings_social",
+            "label": "Social profiles",
+            "name": "social",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Shown as icons in the footer. Leave empty to hide the row.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 5,
+            "collapsed": "",
+            "button_label": "Add profile",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_settings_social_network",
+                    "label": "Network",
+                    "name": "network",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "LinkedIn": "LinkedIn",
+                        "YouTube": "YouTube",
+                        "Instagram": "Instagram",
+                        "Facebook": "Facebook",
+                        "X": "X"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_rx_settings_social"
+                },
+                {
+                    "key": "field_rx_settings_social_url",
+                    "label": "Profile URL",
+                    "name": "url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_rx_settings_social"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_settings_tab_layout",
+            "label": "Layout",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_settings_hero_pattern",
+            "label": "Inner-page hero pattern",
+            "name": "hero_pattern",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Faint blister-pack dots behind every inner-page hero. A page can still switch it on or off in its own hero settings.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Show the pattern",
+            "default_value": 1,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ui_on_text": "On",
+            "ui_off_text": "Off"
+        },
+        {
+            "key": "field_rx_settings_footer_blurb",
+            "label": "Footer blurb",
+            "name": "footer_blurb",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Line under the logo in the footer.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_rx_settings_footer_note",
+            "label": "Footer note",
+            "name": "footer_note",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Text after \"© {year} {brand}.\" in the footer bottom row.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_settings_cta_title",
+            "label": "CTA band title",
+            "name": "cta_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Closing band above the footer (hidden on home and demo).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_settings_cta_text",
+            "label": "CTA band text",
+            "name": "cta_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Shortcodes such as [rx_free_plan field=\"name\"] keep plan names live.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_rx_settings_promo_image",
+            "label": "Features menu promo image",
+            "name": "promo_image",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Image in the Features mega menu panel (theme file in assets/img/).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "v2-01-counter-billing": "Counter billing",
+                "v2-02-dashboard": "Dashboard",
+                "v2-03-expiry": "Expiry",
+                "v2-04-purchase-import": "Purchase import",
+                "v2-05-reorder": "Reorder",
+                "v2-06-gst": "GST",
+                "v2-07-hospital": "Hospital"
+            },
+            "default_value": "v2-02-dashboard",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_rx_settings_promo_alt",
+            "label": "Promo image alt text",
+            "name": "promo_alt",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_settings_promo_title",
+            "label": "Promo title",
+            "name": "promo_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_settings_promo_text",
+            "label": "Promo text",
+            "name": "promo_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_rx_settings_promo_link_label",
+            "label": "Promo link label",
+            "name": "promo_link_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Links to the Features page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_settings_tab_pricing",
+            "label": "Pricing",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_settings_pricing_api",
+            "label": "Pricing API URL",
+            "name": "pricing_api",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Read-only endpoint for plans and prices. Data source only, never shown on the site. Leave empty to use the saved copy and snapshot only.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_rx_settings_pricing_ttl",
+            "label": "Cache time",
+            "name": "pricing_ttl",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Seconds a fetched copy is reused before asking the API again.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 300,
+            "min": 1,
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "seconds"
+        },
+        {
+            "key": "field_rx_settings_pricing_retry",
+            "label": "Retry time",
+            "name": "pricing_retry",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "If the API is down, seconds before trying it again. The last good copy is shown meanwhile.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 60,
+            "min": 1,
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "seconds"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "rx-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Contacts, links, social profiles, layout copy and pricing API settings (replaces partials/config.php).",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1792141378
+}

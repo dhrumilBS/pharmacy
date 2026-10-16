@@ -1,0 +1,390 @@
+{
+    "key": "group_rx_faq",
+    "title": "FAQ page",
+    "fields": [
+        {
+            "key": "field_rx_faq_tab_hero",
+            "label": "Hero",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_faq_hero",
+            "label": "Hero",
+            "name": "hero",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_faq_hero_crumb",
+                    "label": "Breadcrumb label",
+                    "name": "crumb",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Last breadcrumb item. Empty uses the page title.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_faq_hero_parent",
+                    "label": "Parent breadcrumb",
+                    "name": "parent",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Optional middle crumb shown as plain text, for example Company or Resources.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_faq_hero_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "34",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_faq_hero_h1",
+                    "label": "Heading (h1)",
+                    "name": "h1",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Empty uses the page title.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_faq_hero_lead",
+                    "label": "Lead",
+                    "name": "lead",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Plain text. Shortcodes such as [rx_free_plan field=\"name\"] or [rx_site key=\"address\"] work.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_rx_faq_hero_meta",
+                    "label": "Meta line",
+                    "name": "meta",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Optional small line under the lead.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_faq_hero_pattern",
+                    "label": "Background pattern",
+                    "name": "pattern",
+                    "aria-label": "",
+                    "type": "button_group",
+                    "instructions": "Blister-pack dots behind the hero. Site setting follows Site settings → Layout.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "inherit": "Site setting",
+                        "on": "On",
+                        "off": "Off"
+                    },
+                    "default_value": "inherit",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "layout": "horizontal"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_faq_tab_topics",
+            "label": "Topics",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_faq_topics",
+            "label": "Topics",
+            "name": "topics",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add topic",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_faq_topics_slug",
+                    "label": "Anchor",
+                    "name": "slug",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Lower-case id used in the jump link, for example switch.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_faq_topics"
+                },
+                {
+                    "key": "field_rx_faq_topics_name",
+                    "label": "Topic name",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_faq_topics"
+                },
+                {
+                    "key": "field_rx_faq_topics_questions",
+                    "label": "Questions",
+                    "name": "questions",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Add question",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_rx_faq_topics_questions_q",
+                            "label": "Question",
+                            "name": "q",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Shortcodes work. An item whose question or answer renders empty is skipped.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_rx_faq_topics_questions"
+                        },
+                        {
+                            "key": "field_rx_faq_topics_questions_a_html",
+                            "label": "Answer (HTML)",
+                            "name": "a_html",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "HTML allowed. Live values go in as shortcodes, for example [rx_link key=\"pricing\"]pricing page[/rx_link], [rx_tel key=\"sales\"] or [rx_plan feat=\"feat_x\"].",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "rows": 3,
+                            "placeholder": "",
+                            "new_lines": "",
+                            "parent_repeater": "field_rx_faq_topics_questions"
+                        },
+                        {
+                            "key": "field_rx_faq_topics_questions_confirmed",
+                            "label": "Confirmed",
+                            "name": "confirmed",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Switch off to flag this item for review (data-confirm). Unconfirmed FAQ answers stay out of FAQ schema.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 1,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ui_on_text": "Yes",
+                            "ui_off_text": "No",
+                            "parent_repeater": "field_rx_faq_topics_questions"
+                        }
+                    ],
+                    "parent_repeater": "field_rx_faq_topics"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates/faq.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Copy for templates/faq.php (from faq.php). Each topic becomes a jump link and a block; confirmed answers go into FAQ schema.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1792142461
+}

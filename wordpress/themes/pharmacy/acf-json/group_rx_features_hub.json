@@ -1,0 +1,1273 @@
+{
+    "key": "group_rx_features_hub",
+    "title": "Features hub page",
+    "fields": [
+        {
+            "key": "field_rx_features_hub_tab_hero",
+            "label": "Hero",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_features_hub_hero",
+            "label": "Hero",
+            "name": "hero",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_features_hub_hero_crumb",
+                    "label": "Breadcrumb label",
+                    "name": "crumb",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Last breadcrumb item. Empty uses the page title.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_features_hub_hero_parent",
+                    "label": "Parent breadcrumb",
+                    "name": "parent",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Optional middle crumb shown as plain text, for example Company or Resources.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_features_hub_hero_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "34",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_features_hub_hero_h1",
+                    "label": "Heading (h1)",
+                    "name": "h1",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Empty uses the page title.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_features_hub_hero_lead",
+                    "label": "Lead",
+                    "name": "lead",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Plain text. Shortcodes such as [rx_free_plan field=\"name\"] or [rx_site key=\"address\"] work.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_rx_features_hub_hero_meta",
+                    "label": "Meta line",
+                    "name": "meta",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Optional small line under the lead.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_features_hub_hero_pattern",
+                    "label": "Background pattern",
+                    "name": "pattern",
+                    "aria-label": "",
+                    "type": "button_group",
+                    "instructions": "Blister-pack dots behind the hero. Site setting follows Site settings → Layout.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "inherit": "Site setting",
+                        "on": "On",
+                        "off": "Off"
+                    },
+                    "default_value": "inherit",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "layout": "horizontal"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_features_hub_tab_top",
+            "label": "Buttons",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_features_hub_cta_demo",
+            "label": "Demo button label",
+            "name": "cta_demo",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_features_hub_cta_free",
+            "label": "Start free button label",
+            "name": "cta_free",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_features_hub_assure",
+            "label": "Reassurance lines",
+            "name": "assure",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Check-marked lines under the buttons. A line that renders empty (for example a free-plan line when there is no free plan) is skipped.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add line",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_features_hub_assure_html",
+                    "label": "Line (HTML)",
+                    "name": "html",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "HTML allowed. Live values go in as shortcodes, for example [rx_link key=\"pricing\"]pricing page[/rx_link], [rx_tel key=\"sales\"] or [rx_plan feat=\"feat_x\"].",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 1,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_rx_features_hub_assure"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_features_hub_tab_index",
+            "label": "Problem index",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_features_hub_index_head",
+            "label": "Problem index heading",
+            "name": "index_head",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_features_hub_index_head_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_features_hub_index_head_title",
+                    "label": "Heading",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_features_hub_index_head_intro",
+                    "label": "Intro",
+                    "name": "intro",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Plain text. Shortcodes such as [rx_free_plan field=\"name\"] or [rx_site key=\"address\"] work.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_rx_features_hub_index",
+            "label": "Problems",
+            "name": "index",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add problem",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_features_hub_index_pain",
+                    "label": "Problem, in the owner’s words",
+                    "name": "pain",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_features_hub_index"
+                },
+                {
+                    "key": "field_rx_features_hub_index_page_key",
+                    "label": "Opens page",
+                    "name": "page_key",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "billing": "Billing & counter",
+                        "expiry": "Expiry & batch",
+                        "inventory": "Stock & reorder",
+                        "purchase": "Purchase & suppliers",
+                        "reports": "Reports & dashboard",
+                        "gst": "GST & accounts",
+                        "retention": "Customer retention",
+                        "security": "Security & roles"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_rx_features_hub_index"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_features_hub_tab_modules",
+            "label": "Module groups",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_features_hub_group_intros",
+            "label": "Group intros",
+            "name": "group_intros",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "The heading of each group is the menu group name.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add group intro",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_features_hub_group_intros_group",
+                    "label": "Menu group",
+                    "name": "group",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Exactly as in the Features menu, for example Run the counter.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_features_hub_group_intros"
+                },
+                {
+                    "key": "field_rx_features_hub_group_intros_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_features_hub_group_intros"
+                },
+                {
+                    "key": "field_rx_features_hub_group_intros_intro",
+                    "label": "Intro",
+                    "name": "intro",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Plain text. Shortcodes such as [rx_free_plan field=\"name\"] or [rx_site key=\"address\"] work.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_rx_features_hub_group_intros"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_features_hub_points",
+            "label": "What each page covers",
+            "name": "points",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Point lists on each module card. The plan line is printed only when known.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add page",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_features_hub_points_page_key",
+                    "label": "Feature page",
+                    "name": "page_key",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "billing": "Billing & counter",
+                        "expiry": "Expiry & batch",
+                        "inventory": "Stock & reorder",
+                        "purchase": "Purchase & suppliers",
+                        "reports": "Reports & dashboard",
+                        "gst": "GST & accounts",
+                        "retention": "Customer retention",
+                        "security": "Security & roles"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_rx_features_hub_points"
+                },
+                {
+                    "key": "field_rx_features_hub_points_items",
+                    "label": "Points",
+                    "name": "items",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Add point",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_rx_features_hub_points_items_text",
+                            "label": "Point",
+                            "name": "text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_rx_features_hub_points_items"
+                        },
+                        {
+                            "key": "field_rx_features_hub_points_items_feat",
+                            "label": "Feature",
+                            "name": "feat",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Pricing API unique_name, for example feat_bill_sharing. The plan label then comes live from the API.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_rx_features_hub_points_items"
+                        },
+                        {
+                            "key": "field_rx_features_hub_points_items_plan",
+                            "label": "Fixed plan text",
+                            "name": "plan",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Fixed plan text used when Feature is empty, for example Every plan.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_rx_features_hub_points_items"
+                        }
+                    ],
+                    "parent_repeater": "field_rx_features_hub_points"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_features_hub_tab_hospital",
+            "label": "Hospital & chains",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_features_hub_hospital_head",
+            "label": "Hospital & chains heading",
+            "name": "hospital_head",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_features_hub_hospital_head_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_features_hub_hospital_head_title",
+                    "label": "Heading",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_features_hub_hospital_head_intro",
+                    "label": "Intro",
+                    "name": "intro",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Plain text. Shortcodes such as [rx_free_plan field=\"name\"] or [rx_site key=\"address\"] work.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_rx_features_hub_hospital_points",
+            "label": "Points",
+            "name": "hospital_points",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add point",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_features_hub_hospital_points_html",
+                    "label": "Point (HTML)",
+                    "name": "html",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "HTML allowed. Live values go in as shortcodes, for example [rx_link key=\"pricing\"]pricing page[/rx_link], [rx_tel key=\"sales\"] or [rx_plan feat=\"feat_x\"].",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_rx_features_hub_hospital_points"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_features_hub_hospital_links",
+            "label": "Links",
+            "name": "hospital_links",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add link",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_features_hub_hospital_links_label",
+                    "label": "Label",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_features_hub_hospital_links"
+                },
+                {
+                    "key": "field_rx_features_hub_hospital_links_link_key",
+                    "label": "Page key",
+                    "name": "link_key",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Page key for rx_url(), for example hospital or chain.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_features_hub_hospital_links"
+                }
+            ]
+        },
+        {
+            "key": "field_rx_features_hub_hospital_screen",
+            "label": "Screen",
+            "name": "hospital_screen",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Product screen (theme file in assets/img/screens/, sharp SVG).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "v2-01-counter-billing": "Counter billing",
+                "v2-02-dashboard": "Dashboard",
+                "v2-03-expiry": "Expiry",
+                "v2-04-purchase-import": "Purchase import",
+                "v2-05-reorder": "Reorder",
+                "v2-06-gst": "GST",
+                "v2-07-hospital": "Hospital",
+                "v2-08-retention": "Retention",
+                "v2-09-security": "Security",
+                "v2-10-initial-import": "Initial import"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_rx_features_hub_hospital_screen_alt",
+            "label": "Screen alt text",
+            "name": "hospital_screen_alt",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Full alt text, for example Sample screen: …",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_features_hub_tab_plans",
+            "label": "Plans",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_features_hub_plans_head",
+            "label": "Plans heading",
+            "name": "plans_head",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_features_hub_plans_head_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_features_hub_plans_head_title",
+                    "label": "Heading",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_features_hub_plans_head_intro",
+                    "label": "Intro",
+                    "name": "intro",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Plain text. Shortcodes such as [rx_free_plan field=\"name\"] or [rx_site key=\"address\"] work.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_rx_features_hub_plans_foot_html",
+            "label": "Line under the plans table (HTML)",
+            "name": "plans_foot_html",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "HTML allowed. Live values go in as shortcodes, for example [rx_link key=\"pricing\"]pricing page[/rx_link], [rx_tel key=\"sales\"] or [rx_plan feat=\"feat_x\"].",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_rx_features_hub_tab_faq",
+            "label": "FAQ",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_features_hub_faq_title",
+            "label": "FAQ heading",
+            "name": "faq_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_features_hub_faq",
+            "label": "Questions",
+            "name": "faq",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add question",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_features_hub_faq_q",
+                    "label": "Question",
+                    "name": "q",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Shortcodes work. An item whose question or answer renders empty is skipped.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_features_hub_faq"
+                },
+                {
+                    "key": "field_rx_features_hub_faq_a_html",
+                    "label": "Answer (HTML)",
+                    "name": "a_html",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "HTML allowed. Live values go in as shortcodes, for example [rx_link key=\"pricing\"]pricing page[/rx_link], [rx_tel key=\"sales\"] or [rx_plan feat=\"feat_x\"].",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_rx_features_hub_faq"
+                },
+                {
+                    "key": "field_rx_features_hub_faq_confirmed",
+                    "label": "Confirmed",
+                    "name": "confirmed",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Switch off to flag this item for review (data-confirm). Unconfirmed FAQ answers stay out of FAQ schema.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 1,
+                    "allow_in_bindings": 0,
+                    "ui": 1,
+                    "ui_on_text": "Yes",
+                    "ui_off_text": "No",
+                    "parent_repeater": "field_rx_features_hub_faq"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates/features-hub.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Copy for templates/features-hub.php (from features/index.php). Module names, blurbs and icons come from the primary menu; plan lines and the plans table come live from the pricing API.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1792142461
+}

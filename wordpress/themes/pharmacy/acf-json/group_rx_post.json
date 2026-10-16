@@ -1,0 +1,1677 @@
+{
+    "key": "group_rx_post",
+    "title": "Post details",
+    "fields": [
+        {
+            "key": "field_rx_post_tab_summary",
+            "label": "Summary",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_post_dek",
+            "label": "Summary line",
+            "name": "dek",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "One or two sentences under the title, on cards and in the post hero. Plain text.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 3,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_rx_post_topic",
+            "label": "Topic",
+            "name": "topic",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Sets the topic pill and the /blog/{topic}/ view the post appears in.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "expiry": "Expiry & stock",
+                "purchase": "Purchase",
+                "switching": "Switching",
+                "staff": "Counter & staff",
+                "buying": "Buying guides"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_rx_post_read_time",
+            "label": "Read time",
+            "name": "read_time",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 1,
+            "max": 60,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "min read"
+        },
+        {
+            "key": "field_rx_post_featured",
+            "label": "Featured",
+            "name": "featured",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "The newest featured post is shown at the top of the blog hub.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "Feature this guide on the blog hub",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No"
+        },
+        {
+            "key": "field_rx_post_updated",
+            "label": "Updated",
+            "name": "updated",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "Optional. Shown as \"Updated …\" in the meta bar and the byline.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "j M Y",
+            "return_format": "Y-m-d",
+            "first_day": 1,
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_rx_post_tab_cover",
+            "label": "Cover",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_post_cover_screen",
+            "label": "Cover screen",
+            "name": "cover_screen",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Product screen shown, cropped, on the card and the post cover.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "v2-01-counter-billing": "Counter billing",
+                "v2-02-dashboard": "Dashboard",
+                "v2-03-expiry": "Expiry",
+                "v2-04-purchase-import": "Purchase import",
+                "v2-05-reorder": "Reorder",
+                "v2-06-gst": "GST",
+                "v2-07-hospital": "Hospital",
+                "v2-08-retention": "Retention",
+                "v2-09-security": "Security",
+                "v2-10-initial-import": "Initial import"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_rx_post_cover_zoom",
+            "label": "Cover zoom",
+            "name": "cover_zoom",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "1.3 shows the screen just right of the side rail.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1.3,
+            "min": 1,
+            "max": 3,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 0.05,
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_post_cover_focus",
+            "label": "Cover focus point",
+            "name": "cover_focus",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "CSS position the zoom centres on, for example 24% 33%.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "24% 33%",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_post_tab_article",
+            "label": "Article",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_post_body",
+            "label": "Article",
+            "name": "body",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "The article, block by block. Each Heading becomes an entry in the \"On this page\" list.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_rx_post_body_text": {
+                    "key": "layout_rx_post_body_text",
+                    "name": "text",
+                    "label": "Text",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_rx_post_body_text_html",
+                            "label": "Text",
+                            "name": "html",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "Paragraphs and lists as HTML (p, ul, ol, b, i, a). HTML allowed. Shortcodes such as [rx_link key=\"pricing\"]…[/rx_link] or [rx_plan feat=\"…\"] keep links and plan names live.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "rows": 8,
+                            "placeholder": "",
+                            "new_lines": "",
+                            "parent_layout": "layout_rx_post_body_text"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_rx_post_body_heading": {
+                    "key": "layout_rx_post_body_heading",
+                    "name": "heading",
+                    "label": "Heading",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_rx_post_body_heading_text",
+                            "label": "Heading",
+                            "name": "text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Section heading (H2). Each heading becomes an entry in the \"On this page\" list.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_layout": "layout_rx_post_body_heading"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_rx_post_body_takeaways": {
+                    "key": "layout_rx_post_body_takeaways",
+                    "name": "takeaways",
+                    "label": "In short (takeaways)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_rx_post_body_takeaways_items",
+                            "label": "Points",
+                            "name": "items",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "The \"In short\" box at the top of the article.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "table",
+                            "pagination": 0,
+                            "min": 1,
+                            "max": 0,
+                            "collapsed": "",
+                            "button_label": "Add point",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_rx_post_body_takeaways_items_html",
+                                    "label": "Point",
+                                    "name": "html",
+                                    "aria-label": "",
+                                    "type": "textarea",
+                                    "instructions": "HTML allowed.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "rows": 2,
+                                    "placeholder": "",
+                                    "new_lines": "",
+                                    "parent_repeater": "field_rx_post_body_takeaways_items"
+                                }
+                            ],
+                            "parent_layout": "layout_rx_post_body_takeaways"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_rx_post_body_note": {
+                    "key": "layout_rx_post_body_note",
+                    "name": "note",
+                    "label": "Note",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_rx_post_body_note_kind",
+                            "label": "Kind",
+                            "name": "kind",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Sets the label and icon.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "30",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "tip": "Tip",
+                                "note": "Note",
+                                "caution": "Watch out",
+                                "example": "Example"
+                            },
+                            "default_value": "note",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "parent_layout": "layout_rx_post_body_note"
+                        },
+                        {
+                            "key": "field_rx_post_body_note_title",
+                            "label": "Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "70",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_layout": "layout_rx_post_body_note"
+                        },
+                        {
+                            "key": "field_rx_post_body_note_html",
+                            "label": "Text",
+                            "name": "html",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "Paragraphs as HTML. HTML allowed. Shortcodes such as [rx_link key=\"pricing\"]…[/rx_link] or [rx_plan feat=\"…\"] keep links and plan names live.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "rows": 4,
+                            "placeholder": "",
+                            "new_lines": "",
+                            "parent_layout": "layout_rx_post_body_note"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_rx_post_body_table": {
+                    "key": "layout_rx_post_body_table",
+                    "name": "table",
+                    "label": "Table",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_rx_post_body_table_head",
+                            "label": "Column headings",
+                            "name": "head",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "One heading per line, starting with the heading above the row labels.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "rows": 3,
+                            "placeholder": "",
+                            "new_lines": "",
+                            "parent_layout": "layout_rx_post_body_table"
+                        },
+                        {
+                            "key": "field_rx_post_body_table_rows",
+                            "label": "Rows",
+                            "name": "rows",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "table",
+                            "pagination": 0,
+                            "min": 1,
+                            "max": 0,
+                            "collapsed": "",
+                            "button_label": "Add row",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_rx_post_body_table_rows_cells",
+                                    "label": "Cells",
+                                    "name": "cells",
+                                    "aria-label": "",
+                                    "type": "textarea",
+                                    "instructions": "One cell per line, starting with the row label. HTML allowed.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "rows": 3,
+                                    "placeholder": "",
+                                    "new_lines": "",
+                                    "parent_repeater": "field_rx_post_body_table_rows"
+                                }
+                            ],
+                            "parent_layout": "layout_rx_post_body_table"
+                        },
+                        {
+                            "key": "field_rx_post_body_table_caption",
+                            "label": "Caption",
+                            "name": "caption",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Shown under the table and used as its accessible name.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_layout": "layout_rx_post_body_table"
+                        },
+                        {
+                            "key": "field_rx_post_body_table_highlight_col",
+                            "label": "Highlighted column",
+                            "name": "highlight_col",
+                            "aria-label": "",
+                            "type": "number",
+                            "instructions": "Counting the columns after the row labels (1 = first column after the labels). Empty = none.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "min": 1,
+                            "max": 9,
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "step": 1,
+                            "prepend": "",
+                            "append": "",
+                            "parent_layout": "layout_rx_post_body_table"
+                        },
+                        {
+                            "key": "field_rx_post_body_table_numeric_cols",
+                            "label": "Number columns",
+                            "name": "numeric_cols",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Right-aligned columns, comma-separated, counted the same way. Empty = none.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "1, 3, 4",
+                            "prepend": "",
+                            "append": "",
+                            "parent_layout": "layout_rx_post_body_table"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_rx_post_body_compare": {
+                    "key": "layout_rx_post_body_compare",
+                    "name": "compare",
+                    "label": "Comparison",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_rx_post_body_compare_title",
+                            "label": "Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_layout": "layout_rx_post_body_compare"
+                        },
+                        {
+                            "key": "field_rx_post_body_compare_a_name",
+                            "label": "Option A name",
+                            "name": "a_name",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_layout": "layout_rx_post_body_compare"
+                        },
+                        {
+                            "key": "field_rx_post_body_compare_a_tag",
+                            "label": "Option A tag",
+                            "name": "a_tag",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional pill next to the name.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_layout": "layout_rx_post_body_compare"
+                        },
+                        {
+                            "key": "field_rx_post_body_compare_b_name",
+                            "label": "Option B name",
+                            "name": "b_name",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_layout": "layout_rx_post_body_compare"
+                        },
+                        {
+                            "key": "field_rx_post_body_compare_b_tag",
+                            "label": "Option B tag",
+                            "name": "b_tag",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional pill next to the name.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_layout": "layout_rx_post_body_compare"
+                        },
+                        {
+                            "key": "field_rx_post_body_compare_winner",
+                            "label": "Recommended option",
+                            "name": "winner",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Highlights that column.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "a": "Option A",
+                                "b": "Option B",
+                                "none": "Neither"
+                            },
+                            "default_value": "none",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "parent_layout": "layout_rx_post_body_compare"
+                        },
+                        {
+                            "key": "field_rx_post_body_compare_rows",
+                            "label": "Rows",
+                            "name": "rows",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "table",
+                            "pagination": 0,
+                            "min": 1,
+                            "max": 0,
+                            "collapsed": "",
+                            "button_label": "Add row",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_rx_post_body_compare_rows_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "30",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_rx_post_body_compare_rows"
+                                },
+                                {
+                                    "key": "field_rx_post_body_compare_rows_a_html",
+                                    "label": "Option A",
+                                    "name": "a_html",
+                                    "aria-label": "",
+                                    "type": "textarea",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "35",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "rows": 2,
+                                    "placeholder": "",
+                                    "new_lines": "",
+                                    "parent_repeater": "field_rx_post_body_compare_rows"
+                                },
+                                {
+                                    "key": "field_rx_post_body_compare_rows_b_html",
+                                    "label": "Option B",
+                                    "name": "b_html",
+                                    "aria-label": "",
+                                    "type": "textarea",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "35",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "rows": 2,
+                                    "placeholder": "",
+                                    "new_lines": "",
+                                    "parent_repeater": "field_rx_post_body_compare_rows"
+                                }
+                            ],
+                            "parent_layout": "layout_rx_post_body_compare"
+                        },
+                        {
+                            "key": "field_rx_post_body_compare_verdict_html",
+                            "label": "Verdict",
+                            "name": "verdict_html",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "Printed after \"Verdict.\" Optional. HTML allowed.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "rows": 2,
+                            "placeholder": "",
+                            "new_lines": "",
+                            "parent_layout": "layout_rx_post_body_compare"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_rx_post_body_sum": {
+                    "key": "layout_rx_post_body_sum",
+                    "name": "sum",
+                    "label": "Worked sum",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_rx_post_body_sum_title",
+                            "label": "Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Shown under \"Worked example · illustrative numbers\".",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_layout": "layout_rx_post_body_sum"
+                        },
+                        {
+                            "key": "field_rx_post_body_sum_lines",
+                            "label": "Lines",
+                            "name": "lines",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "table",
+                            "pagination": 0,
+                            "min": 1,
+                            "max": 0,
+                            "collapsed": "",
+                            "button_label": "Add line",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_rx_post_body_sum_lines_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_rx_post_body_sum_lines"
+                                },
+                                {
+                                    "key": "field_rx_post_body_sum_lines_value",
+                                    "label": "Value",
+                                    "name": "value",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "30",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_rx_post_body_sum_lines"
+                                },
+                                {
+                                    "key": "field_rx_post_body_sum_lines_op",
+                                    "label": "Operator",
+                                    "name": "op",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "auto": "Auto (× after the first line)",
+                                        "none": "None",
+                                        "×": "×",
+                                        "+": "+",
+                                        "−": "−",
+                                        "÷": "÷",
+                                        "=": "="
+                                    },
+                                    "default_value": "auto",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "allow_in_bindings": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "parent_repeater": "field_rx_post_body_sum_lines"
+                                }
+                            ],
+                            "parent_layout": "layout_rx_post_body_sum"
+                        },
+                        {
+                            "key": "field_rx_post_body_sum_result_label",
+                            "label": "Result label",
+                            "name": "result_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_layout": "layout_rx_post_body_sum"
+                        },
+                        {
+                            "key": "field_rx_post_body_sum_result_value",
+                            "label": "Result value",
+                            "name": "result_value",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_layout": "layout_rx_post_body_sum"
+                        },
+                        {
+                            "key": "field_rx_post_body_sum_note",
+                            "label": "Note",
+                            "name": "note",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "Optional caption. Plain text.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "rows": 2,
+                            "placeholder": "",
+                            "new_lines": "",
+                            "parent_layout": "layout_rx_post_body_sum"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_rx_post_body_rule": {
+                    "key": "layout_rx_post_body_rule",
+                    "name": "rule",
+                    "label": "Rule of thumb",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_rx_post_body_rule_html",
+                            "label": "Rule",
+                            "name": "html",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "HTML allowed (b, br).",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "rows": 2,
+                            "placeholder": "",
+                            "new_lines": "",
+                            "parent_layout": "layout_rx_post_body_rule"
+                        },
+                        {
+                            "key": "field_rx_post_body_rule_label",
+                            "label": "Label",
+                            "name": "label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Rule of thumb",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_layout": "layout_rx_post_body_rule"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_rx_post_body_checklist": {
+                    "key": "layout_rx_post_body_checklist",
+                    "name": "checklist",
+                    "label": "Checklist",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_rx_post_body_checklist_title",
+                            "label": "Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Shown with the \"Print this list\" button.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_layout": "layout_rx_post_body_checklist"
+                        },
+                        {
+                            "key": "field_rx_post_body_checklist_items",
+                            "label": "Items",
+                            "name": "items",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "table",
+                            "pagination": 0,
+                            "min": 1,
+                            "max": 0,
+                            "collapsed": "",
+                            "button_label": "Add item",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_rx_post_body_checklist_items_html",
+                                    "label": "Item",
+                                    "name": "html",
+                                    "aria-label": "",
+                                    "type": "textarea",
+                                    "instructions": "HTML allowed.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "rows": 2,
+                                    "placeholder": "",
+                                    "new_lines": "",
+                                    "parent_repeater": "field_rx_post_body_checklist_items"
+                                }
+                            ],
+                            "parent_layout": "layout_rx_post_body_checklist"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_rx_post_body_steps": {
+                    "key": "layout_rx_post_body_steps",
+                    "name": "steps",
+                    "label": "Steps",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_rx_post_body_steps_items",
+                            "label": "Steps",
+                            "name": "items",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "pagination": 0,
+                            "min": 1,
+                            "max": 0,
+                            "collapsed": "field_rx_post_body_steps_items_title",
+                            "button_label": "Add step",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_rx_post_body_steps_items_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_rx_post_body_steps_items"
+                                },
+                                {
+                                    "key": "field_rx_post_body_steps_items_html",
+                                    "label": "Text",
+                                    "name": "html",
+                                    "aria-label": "",
+                                    "type": "textarea",
+                                    "instructions": "Paragraphs as HTML. HTML allowed. Shortcodes such as [rx_link key=\"pricing\"]…[/rx_link] or [rx_plan feat=\"…\"] keep links and plan names live.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "rows": 3,
+                                    "placeholder": "",
+                                    "new_lines": "",
+                                    "parent_repeater": "field_rx_post_body_steps_items"
+                                },
+                                {
+                                    "key": "field_rx_post_body_steps_items_when",
+                                    "label": "When",
+                                    "name": "when",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Optional line under the step, for example \"15 minutes\".",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_rx_post_body_steps_items"
+                                }
+                            ],
+                            "parent_layout": "layout_rx_post_body_steps"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_rx_post_body_cta": {
+                    "key": "layout_rx_post_body_cta",
+                    "name": "cta",
+                    "label": "Call to action",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_rx_post_body_cta_kind",
+                            "label": "Look",
+                            "name": "kind",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Inline: a slim line with a link. Feature card: points at a feature page. Demo panel: Book a free demo + Start free.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "inline": "Inline link",
+                                "feature": "Feature card",
+                                "panel": "Demo panel"
+                            },
+                            "default_value": "panel",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "parent_layout": "layout_rx_post_body_cta"
+                        },
+                        {
+                            "key": "field_rx_post_body_cta_title",
+                            "label": "Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_rx_post_body_cta_kind",
+                                        "operator": "==",
+                                        "value": "panel"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_layout": "layout_rx_post_body_cta"
+                        },
+                        {
+                            "key": "field_rx_post_body_cta_text",
+                            "label": "Text",
+                            "name": "text",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "Plain text.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "rows": 2,
+                            "placeholder": "",
+                            "new_lines": "",
+                            "parent_layout": "layout_rx_post_body_cta"
+                        },
+                        {
+                            "key": "field_rx_post_body_cta_link_label",
+                            "label": "Link label",
+                            "name": "link_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_rx_post_body_cta_kind",
+                                        "operator": "==",
+                                        "value": "inline"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_layout": "layout_rx_post_body_cta"
+                        },
+                        {
+                            "key": "field_rx_post_body_cta_link_key",
+                            "label": "Link to",
+                            "name": "link_key",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_rx_post_body_cta_kind",
+                                        "operator": "==",
+                                        "value": "inline"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "home": "Home",
+                                "features": "Features",
+                                "billing": "Billing & counter",
+                                "expiry": "Expiry & batch",
+                                "inventory": "Stock & reorder",
+                                "purchase": "Purchase & suppliers",
+                                "reports": "Reports & dashboard",
+                                "gst": "GST & accounts",
+                                "retention": "Customer retention",
+                                "security": "Security & roles",
+                                "retail": "Retail medical store",
+                                "chain": "Pharmacy chain",
+                                "hospital": "Hospital pharmacy",
+                                "new-pharmacy": "Opening a new pharmacy",
+                                "pricing": "Pricing",
+                                "switch": "Switch",
+                                "calculator": "Expiry loss calculator",
+                                "checklist": "Buyer’s checklist",
+                                "blog": "Blog & guides",
+                                "faq": "FAQ",
+                                "about": "About",
+                                "contact": "Contact",
+                                "support": "Help & support",
+                                "demo": "Book a demo",
+                                "privacy": "Privacy",
+                                "terms": "Terms",
+                                "refund": "Refund policy",
+                                "cookies": "Cookie policy",
+                                "data-security": "Data & security"
+                            },
+                            "default_value": "demo",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "parent_layout": "layout_rx_post_body_cta"
+                        },
+                        {
+                            "key": "field_rx_post_body_cta_feature_key",
+                            "label": "Feature page",
+                            "name": "feature_key",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "The button label and icon come from the Features menu.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_rx_post_body_cta_kind",
+                                        "operator": "==",
+                                        "value": "feature"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "billing": "Billing & counter",
+                                "expiry": "Expiry & batch",
+                                "inventory": "Stock & reorder",
+                                "purchase": "Purchase & suppliers",
+                                "reports": "Reports & dashboard",
+                                "gst": "GST & accounts",
+                                "retention": "Customer retention",
+                                "security": "Security & roles",
+                                "features": "All features",
+                                "switch": "Switching from other software"
+                            },
+                            "default_value": "features",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "parent_layout": "layout_rx_post_body_cta"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Add block"
+        },
+        {
+            "key": "field_rx_post_tab_faq",
+            "label": "FAQ",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_post_faq",
+            "label": "FAQ",
+            "name": "faq",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "\"Asked about this\" section after the article. Leave empty to hide it.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_rx_post_faq_q",
+            "button_label": "Add question",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_post_faq_q",
+                    "label": "Question",
+                    "name": "q",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_post_faq"
+                },
+                {
+                    "key": "field_rx_post_faq_a_html",
+                    "label": "Answer",
+                    "name": "a_html",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Shown inside a paragraph. HTML allowed. Shortcodes such as [rx_link key=\"pricing\"]…[/rx_link] or [rx_plan feat=\"…\"] keep links and plan names live.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_rx_post_faq"
+                },
+                {
+                    "key": "field_rx_post_faq_confirmed",
+                    "label": "Confirmed",
+                    "name": "confirmed",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Off: outlined in review mode (?review) and left out of the FAQ schema.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "This answer is a confirmed fact",
+                    "default_value": 1,
+                    "allow_in_bindings": 0,
+                    "ui": 1,
+                    "ui_on_text": "Yes",
+                    "ui_off_text": "No",
+                    "parent_repeater": "field_rx_post_faq"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Blog post card, cover, article blocks and FAQ (replaces partials/data/blog.php and the bk_*() calls in blog/*.php).",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1792142414
+}

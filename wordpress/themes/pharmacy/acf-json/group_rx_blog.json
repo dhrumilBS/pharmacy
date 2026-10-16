@@ -1,0 +1,508 @@
+{
+    "key": "group_rx_blog",
+    "title": "Blog page",
+    "fields": [
+        {
+            "key": "field_rx_blog_tab_hero",
+            "label": "Hero",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_blog_hero",
+            "label": "Hero",
+            "name": "hero",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_blog_hero_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_blog_hero_h1",
+                    "label": "Heading",
+                    "name": "h1",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Topic views use \"{Topic} guides\" instead. Empty = page title.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_blog_hero_lead",
+                    "label": "Lead",
+                    "name": "lead",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_rx_blog_tab_start",
+            "label": "Start here",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_blog_start_title",
+            "label": "Start here heading",
+            "name": "start_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Reading path beside the featured guide. Shown only on the hub, not on topic views.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_blog_start_here",
+            "label": "Start here posts",
+            "name": "start_here",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Up to 3 posts, in reading order.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "return_format": "id",
+            "min": "",
+            "max": 3,
+            "allow_in_bindings": 0,
+            "elements": "",
+            "bidirectional": 0,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_rx_blog_start_link_label",
+            "label": "Start here link label",
+            "name": "start_link_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Links to the Switch page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rx_blog_tab_tools",
+            "label": "Tools",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rx_blog_tools_head",
+            "label": "Tools heading",
+            "name": "tools_head",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_rx_blog_tools_head_eyebrow",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_blog_tools_head_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_rx_blog_tools_head_intro",
+                    "label": "Intro",
+                    "name": "intro",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_rx_blog_tools",
+            "label": "Tools",
+            "name": "tools",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Strip of tool links at the bottom of the hub and topic views.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add tool",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rx_blog_tools_icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "i-cross": "Cross",
+                        "i-check": "Check",
+                        "i-check-c": "Check in circle",
+                        "i-arrow": "Arrow",
+                        "i-phone": "Phone",
+                        "i-chat": "Chat",
+                        "i-search": "Search",
+                        "i-printer": "Printer",
+                        "i-clock": "Clock",
+                        "i-alert": "Alert",
+                        "i-receipt": "Receipt",
+                        "i-box": "Box",
+                        "i-truck": "Truck",
+                        "i-rupee": "Rupee",
+                        "i-chart": "Chart",
+                        "i-shield": "Shield",
+                        "i-store": "Store",
+                        "i-stores": "Stores",
+                        "i-hospital": "Hospital",
+                        "i-leaf": "Leaf",
+                        "i-file": "File",
+                        "i-upload": "Upload",
+                        "i-users": "Users",
+                        "i-headset": "Headset",
+                        "i-screen": "Screen",
+                        "i-play": "Play",
+                        "i-mobile": "Mobile",
+                        "i-sun": "Sun",
+                        "i-moon": "Moon",
+                        "i-menu": "Menu",
+                        "i-plus": "Plus",
+                        "i-mail": "Mail",
+                        "i-register": "Register",
+                        "i-chev": "Chevron",
+                        "i-scan": "Barcode scan",
+                        "i-return": "Return",
+                        "i-x": "Close",
+                        "i-pin": "Map pin",
+                        "i-calendar": "Calendar",
+                        "i-lock": "Lock",
+                        "i-linkedin": "LinkedIn",
+                        "i-youtube": "YouTube",
+                        "i-instagram": "Instagram",
+                        "i-facebook": "Facebook",
+                        "i-xsocial": "X (social)"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_rx_blog_tools"
+                },
+                {
+                    "key": "field_rx_blog_tools_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rx_blog_tools"
+                },
+                {
+                    "key": "field_rx_blog_tools_text",
+                    "label": "Text",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "35",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_rx_blog_tools"
+                },
+                {
+                    "key": "field_rx_blog_tools_link_key",
+                    "label": "Link to",
+                    "name": "link_key",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "home": "Home",
+                        "features": "Features",
+                        "billing": "Billing & counter",
+                        "expiry": "Expiry & batch",
+                        "inventory": "Stock & reorder",
+                        "purchase": "Purchase & suppliers",
+                        "reports": "Reports & dashboard",
+                        "gst": "GST & accounts",
+                        "retention": "Customer retention",
+                        "security": "Security & roles",
+                        "retail": "Retail medical store",
+                        "chain": "Pharmacy chain",
+                        "hospital": "Hospital pharmacy",
+                        "new-pharmacy": "Opening a new pharmacy",
+                        "pricing": "Pricing",
+                        "switch": "Switch",
+                        "calculator": "Expiry loss calculator",
+                        "checklist": "Buyer’s checklist",
+                        "blog": "Blog & guides",
+                        "faq": "FAQ",
+                        "about": "About",
+                        "contact": "Contact",
+                        "support": "Help & support",
+                        "demo": "Book a demo",
+                        "privacy": "Privacy",
+                        "terms": "Terms",
+                        "refund": "Refund policy",
+                        "cookies": "Cookie policy",
+                        "data-security": "Data & security"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_rx_blog_tools"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "posts_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Blog hub copy: hero, Start here path and tools strip (replaces the copy in blog/index.php).",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1792142414
+}
