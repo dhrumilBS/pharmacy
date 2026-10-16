@@ -182,12 +182,12 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - Home: every section of `index.php` as `group_rx_home` values, with exact text, `confirmed => false` wherever `data-confirm` is used today, and `[rx_brand]` where `$brand` is used
     - SEO title and description from `$title`/`$description`
     - _Requirements: 5.1, 5.2, 5.3, 6.2, 6.3_
-  - [~] 6.4 Write the features hub and feature page data files
+  - [x] 6.4 Write the features hub and feature page data files
     - `content/pages/features.php` and `content/pages/features-{billing,expiry,inventory,purchase,reports,gst,retention,security}.php` (parent `features`)
     - `$fp` mapped onto `group_rx_feature`. Every `feature_plan_label()`, `pricing_split()` and `plan_bill_limits()` use becomes `[rx_plan]`, `[rx_free_plan]` or `[rx_if]`, and every `url()` link becomes `[rx_link]`
     - Worked-example numbers stay literal
     - _Requirements: 5.1, 5.3, 5.5, 6.4, 6.8, 8.4_
-  - [~] 6.5 Write the data files for pricing, switch, FAQ and the company pages
+  - [x] 6.5 Write the data files for pricing, switch, FAQ and the company pages
     - `content/pages/{pricing,switch,faq,about,contact,support,demo}.php`
     - Live values as shortcodes (`[rx_cost_text]`, `[rx_compare_text]`, `[rx_terms_text]`, `[rx_free_plan]`, `[rx_tel]`, `[rx_site]`)
     - Pricing `plan_fit` and `feature_labels` from `pricing.php`
@@ -314,7 +314,7 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - Forms: the demo slip and demo form show errors when empty and the thank-you when valid, with no network request on submit
     - Exported as `runInteractions( page, url )` for `check.mjs`
     - _Requirements: 9.1, 9.2, 10.2_
-  - [~] 11.2 Switch off Contact Form 7 on the front end in `inc/cleanup.php`
+  - [x] 11.2 Switch off Contact Form 7 on the front end in `inc/cleanup.php`
     - `add_filter( 'wpcf7_load_js', '__return_false' )` and `add_filter( 'wpcf7_load_css', '__return_false' )`. Confirm that no import content contains a `[contact-form-7` shortcode
     - _Requirements: 9.3_
 
@@ -350,7 +350,7 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - _Requirements: 9.3, 11.1, 11.2, 11.3, 11.4, 11.5_
 
 - [ ] 14. SEO and schema (Requirement 12)
-  - [~] 14.1 Add the Yoast head filters in `inc/seo.php`
+  - [x] 14.1 Add the Yoast head filters in `inc/seo.php`
     - Topic views: `wpseo_title` ("{Topic} guides for medical stores %%sep%% %%sitename%%" resolved), `wpseo_canonical` and `wpseo_opengraph_url` → `/blog/{topic}/`
     - Pricing: `wpseo_metadesc` built from `rx_pricing_meta_bits()`
     - `wpseo_locale` → `en_IN`; `wpseo_debug_markers` → false
