@@ -108,11 +108,11 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - `demo-form` takes `title`, `sub` and `success_title`
     - `trusted-strip` reads the child theme's `assets/img/trusted/` first, then the parent's
     - _Requirements: 3.6, 5.3, 6.6, 9.1, 9.2, 10.2, 11.5_
-  - [~] 3.3 Write `front-page.php`
+  - [x] 3.3 Write `front-page.php`
     - Sections in today's order, from `group_rx_home` fields: `#top` hero + `hero-lead` (`hl1`), trusted strip, `#tour`, `#problems`, `#estimator` (`cta` `#demo`), `#day`, `#features` tabs (`data-scroll-tabs`), `#switching`, `#solutions`, `#checklist`, `#support`, `#faq` (ids `faq-%d`/`faq-b%d`, start 1), `#demo`
     - End with `get_footer( null, [ 'hide_cta' => true ] )`
     - _Requirements: 3.2, 5.1, 5.2, 5.3_
-  - [~] 3.4 Write `templates/feature.php`
+  - [x] 3.4 Write `templates/feature.php`
     - Port of `partials/feature-page.php` reading `group_rx_feature`
     - Plan lines use `rx_feature_plan_label()` with the fixed `plan` text as fallback, and "Plan: not listed separately" otherwise
     - Related row from `rx_feature_nav()` plus the switching link
@@ -121,17 +121,17 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - Each section is skipped when empty
     - Template Name "Feature"
     - _Requirements: 3.5, 6.4, 8.1_
-  - [~] 3.5 Write `templates/legal.php`
+  - [x] 3.5 Write `templates/legal.php`
     - `page-hero` with the meta line, TOC from `sections`, notice (`notice_html` or the default draft notice, with `data-confirm`)
     - Each body goes through `rx_html()` and then `rx_legal_mark()`, followed by the optional screen and sample caption
     - Template Name "Legal"
     - _Requirements: 3.5, 5.3, 6.4_
-  - [~] 3.6 Write `templates/pricing.php` and `templates/features-hub.php`
+  - [x] 3.6 Write `templates/pricing.php` and `templates/features-hub.php`
     - Pricing: term bar, plan cards (Most popular tab, `plan_fit` lines, `rx_term_total()`), comparison table with collapsible groups and `feature_labels`, credits table, FAQ (`pq%d`, `confirm_on` `answer`)
     - Features hub: CTAs + assure, problem index, two module groups with live plan lines, hospital/chain block, plans table, FAQ
     - When `rx_pricing_data()` is null, both print `rx_pricing_notice()` where prices would be
     - _Requirements: 3.5, 8.2, 8.3, 8.4_
-  - [~] 3.7 Write the company and guide templates
+  - [x] 3.7 Write the company and guide templates
     - `templates/switch.php`, `templates/faq.php`, `templates/about.php`, `templates/contact.php`, `templates/support.php` and `templates/demo.php`, each with the same sections and markup as its PHP file
     - Contact and demo use `demo-form`; demo ends with `get_footer( null, [ 'hide_cta' => true ] )`
     - _Requirements: 3.5, 5.1_
