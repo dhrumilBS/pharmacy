@@ -1,0 +1,4 @@
+# Block every web request to /pharmacy/wordpress/* in the PHP site's web root.
+# WordPress reaches the themes through the junctions under
+# /pharmacy-wp/wp-content/themes/, which this file does not affect.
+Require all denied

@@ -1,0 +1,22 @@
+# WordPress migration: keep only theme, import and tool source in Git.
+# WordPress core, plugins, uploads, wp-config and database files live in
+# d:\xampp\htdocs\pharmacy-wp\ and never enter this repository.
+
+# Test and parity tooling output
+tools/node_modules/
+tools/out/
+
+# Database dumps and archives
+*.sql
+*.sql.gz
+*.zip
+
+# Logs
+*.log
+
+# Secrets and install config
+wp-config*.php
+.env*
+
+# Media uploads
+uploads/
