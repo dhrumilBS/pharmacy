@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Users, roles and security — v2</title><link rel="stylesheet" href="ui.css">
+<style>
+/* Settings › Users & security: one login per person, roles, 2-step OTP, IP whitelist, force logout, activity report.
+   Staff names match 01/07 (Priya Desai, Arjun Mehta, Neha Joshi); owner avatar PD. Dummy data only. */
+.work{flex:1;display:grid;grid-template-columns:1fr 410px;gap:18px;padding:18px 22px;min-height:0}
+.col{display:flex;flex-direction:column;gap:14px;min-height:0}
+.head{display:flex;align-items:center;gap:10px}
+.head h1{font-size:20px}
+.head .sp{flex:1}
+.tabs{display:inline-flex;background:#fff;border:1px solid var(--border);border-radius:10px;padding:3px}
+.tabs span{padding:6px 14px;border-radius:7px;font-weight:600;font-size:12.5px;color:var(--muted)}
+.tabs .on{background:var(--navy-900);color:#fff}
+.us{display:flex;flex-direction:column}
+.us-h{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--border)}
+.us-h h3{font-size:15px}
+table{width:100%;border-collapse:collapse}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;text-align:left;padding:9px 16px;border-bottom:1px solid var(--border)}
+td{padding:13px 16px;border-bottom:1px solid #EEF2F6;vertical-align:middle}
+.who{display:flex;align-items:center;gap:10px}
+.av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:12px;flex:none}
+.who b{display:block;color:var(--navy-950)}
+.who small{color:var(--muted);font-size:11.5px}
+.on-dot{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-2)}
+.on-dot i{width:7px;height:7px;border-radius:50%;background:var(--teal-600)}
+.off i{background:var(--border-2)}
+.lo{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--border-2);border-radius:8px;padding:5px 10px;font-weight:600;font-size:12px;color:var(--navy-800);background:#fff}
+.us-f{display:flex;gap:22px;padding:11px 16px;color:var(--text-2);font-size:12.5px}
+.us-f b{color:var(--navy-950)}
+.role{padding:14px 16px}
+.role h3{font-size:14px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.role h3 .chip{margin-left:auto}
+.pm{display:grid;grid-template-columns:1.4fr repeat(3,1fr);font-size:12.5px}
+.pm div{padding:8px 0;border-bottom:1px solid #EEF2F6;color:var(--text-2)}
+.pm .h{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+.pm .y{color:var(--teal-700);font-weight:700}
+.pm .n{color:var(--border-2);font-weight:700}
+.pane{padding:14px 16px}
+.pane h3{font-size:14px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.pane h3 .chip{margin-left:auto}
+.sw{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #EEF2F6}
+.sw:last-child{border-bottom:0}
+.sw b{color:var(--navy-950);font-size:13px}
+.sw small{display:block;color:var(--muted);font-size:11.5px}
+.tg{margin-left:auto;width:30px;height:17px;border-radius:999px;background:var(--teal-600);position:relative;flex:none}.tg::after{content:"";position:absolute;right:2px;top:2px;width:13px;height:13px;border-radius:50%;background:#fff}
+.ip{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;margin-top:6px;border:1px solid var(--border);border-radius:9px;font-variant-numeric:tabular-nums;color:var(--navy-950);font-weight:600;font-size:12.5px}
+.ip small{color:var(--muted);font-weight:500}
+.act{display:grid;grid-template-columns:66px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid #EEF2F6;font-size:12.5px;color:var(--text-2)}
+.act:last-child{border-bottom:0}
+.act time{font-weight:600;color:var(--navy-800);font-variant-numeric:tabular-nums}
+.act b{color:var(--navy-950)}
+</style></head><body>
+<div class="app">
+  <nav class="rail">
+    <div class="mark" style="background:none"><svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true" style="display:block"><defs><linearGradient id="lmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#0F9F9A"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#lmg)"/><rect x="16.5" y="8" width="7" height="24" rx="3.5" fill="#fff"/><rect x="8" y="16.5" width="24" height="7" rx="3.5" fill="#fff"/><path d="M23.5 16.5h5a3.5 3.5 0 0 1 0 7h-5z" fill="#99F6E4"/></svg></div>
+    <a><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Home</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Sale</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Purchase</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg>Stock</a>
+    <a><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg>Patients</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/></svg>Reports</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M7 4h11M7 8.5h11M7 4c6 0 6 9 0 9h-1l8 7"/></svg>Accounts</a>
+    <span class="sp"></span>
+    <a class="on"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>Settings</a>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="store"><span class="ico" style="border:0;background:var(--blue-50);color:var(--blue-700)"><svg class="i" viewBox="0 0 24 24"><path d="M4 10v10h16V10M3 10l2-6h14l2 6zM9 20v-6h6v6"/></svg></span><div>Shree Sai Medical Store<small>Main branch · Ahmedabad</small></div></div>
+      <div class="cmd"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search items, patients, bills…<span class="kbd" style="margin-left:auto">Ctrl K</span></div>
+      <div class="tb-right">
+        <span class="chip c-grey">Tue, 13 Oct · 7:42 pm</span>
+        <span class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></span>
+        <span class="me">PD</span>
+      </div>
+    </header>
+
+    <div class="work">
+      <div class="col">
+        <div class="head">
+          <h1>Users &amp; security</h1>
+          <span class="tabs"><span class="on">Users</span><span>Roles</span><span>Login security</span></span>
+          <span class="sp"></span>
+          <span class="btn b-primary"><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M19 8v6M16 11h6"/></svg>Add user</span>
+        </div>
+
+        <div class="card us">
+          <div class="us-h"><h3>Users</h3><span class="chip c-blue">5 of 10 on your plan</span><span class="muted" style="margin-left:auto">One login per person</span></div>
+          <table>
+            <thead><tr><th>User</th><th>Role</th><th>Two-step login</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><div class="who"><span class="av" style="background:var(--teal-100);color:var(--teal-700)">MS</span><div><b>Mahesh Shah</b><small>Owner</small></div></div></td><td><span class="chip c-grey">Owner</span></td><td><span class="chip c-teal">✓ OTP on</span></td><td><span class="on-dot off"><i></i>Last seen 11:02 am</span></td><td></td></tr>
+              <tr><td><div class="who"><span class="av" style="background:var(--teal-600);color:#fff">PD</span><div><b>Priya Desai</b><small>Store manager · Counter 1 · you</small></div></div></td><td><span class="chip c-grey">Manager</span></td><td><span class="chip c-teal">✓ OTP on</span></td><td><span class="on-dot"><i></i>Active now</span></td><td></td></tr>
+              <tr><td><div class="who"><span class="av" style="background:var(--blue-100);color:var(--blue-700)">AM</span><div><b>Arjun Mehta</b><small>Pharmacist · Counter 2</small></div></div></td><td><span class="chip c-grey">Pharmacist</span></td><td><span class="chip c-teal">✓ OTP on</span></td><td><span class="on-dot"><i></i>Active now</span></td><td><span class="lo">Force logout</span></td></tr>
+              <tr><td><div class="who"><span class="av" style="background:var(--blue-100);color:var(--blue-700)">NJ</span><div><b>Neha Joshi</b><small>Pharmacist · Counter 3</small></div></div></td><td><span class="chip c-grey">Pharmacist</span></td><td><span class="chip c-teal">✓ OTP on</span></td><td><span class="on-dot off"><i></i>Last seen 6:05 pm</span></td><td><span class="lo">Force logout</span></td></tr>
+              <tr><td><div class="who"><span class="av" style="background:#EEF2F6;color:var(--text-2)">SK</span><div><b>Sanjay Kumar</b><small>Store helper · purchase entry</small></div></div></td><td><span class="chip c-grey">Purchase clerk</span></td><td><span class="chip c-warn">Not set up</span></td><td><span class="on-dot off"><i></i>Last seen yesterday</span></td><td><span class="lo">Force logout</span></td></tr>
+            </tbody>
+          </table>
+          <div class="us-f"><span>Active now <b>3</b></span><span>Two-step login <b>4 of 5</b></span><span style="margin-left:auto">Roles decide which screens each person sees</span></div>
+        </div>
+
+        <div class="card role">
+          <h3>Role: Purchase clerk <span class="chip c-grey">1 user</span></h3>
+          <div class="pm">
+            <div class="h">Screen</div><div class="h">View</div><div class="h">Create</div><div class="h">Edit</div>
+            <div>Purchase entry and import</div><div class="y">✓</div><div class="y">✓</div><div class="n">—</div>
+            <div>Sale</div><div class="n">—</div><div class="n">—</div><div class="n">—</div>
+            <div>Reports</div><div class="n">—</div><div class="n">—</div><div class="n">—</div>
+            <div>Item rates and settings</div><div class="n">—</div><div class="n">—</div><div class="n">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card pane">
+          <h3>Login security <span class="chip c-blue">Advance plan</span></h3>
+          <div class="sw"><div><b>Two-step OTP login</b><small>An OTP on top of the password</small></div><span class="tg"></span></div>
+          <div class="sw"><div><b>IP whitelisting</b><small>Logins only from these addresses</small></div><span class="tg"></span></div>
+          <div class="ip"><span>103.21.58.144</span><small>Store broadband</small></div>
+          <div class="ip"><span>49.36.120.17</span><small>Owner home</small></div>
+        </div>
+
+        <div class="card pane" style="flex:1">
+          <h3>Activity report <span class="chip c-grey">Today</span></h3>
+          <div class="act"><time>7:38 pm</time><span><b>Priya Desai</b> saved bill INV-26-04812 · ₹657.72</span></div>
+          <div class="act"><time>7:12 pm</time><span><b>Arjun Mehta</b> gave a 5% discount on Azithral 500 Tab</span></div>
+          <div class="act"><time>6:05 pm</time><span><b>Neha Joshi</b> logged out · Counter 3</span></div>
+          <div class="act"><time>4:46 pm</time><span><b>Priya Desai</b> changed the minimum stock of Telma 40 Tab to 30</span></div>
+          <div class="act"><time>3:20 pm</time><span><b>Sanjay Kumar</b> imported purchase bill from Shree Krishna Pharma</span></div>
+          <div class="act"><time>2:10 pm</time><span><b>Arjun Mehta</b> made purchase return PR-26-0031 · Mahavir Distributors</span></div>
+          <div class="act"><time>11:02 am</time><span><b>Mahesh Shah</b> locked invoices up to 30-09-2026</span></div>
+          <div class="act"><time>10:58 am</time><span><b>Mahesh Shah</b> logged in · 49.36.120.17 · OTP verified</span></div>
+          <div class="act"><time>9:01 am</time><span><b>Priya Desai</b> logged in · 103.21.58.144 · OTP verified</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

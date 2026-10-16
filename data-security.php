@@ -13,6 +13,9 @@ $hero = ['crumb' => 'Data & security', 'parent' => 'Legal', 'eyebrow' => 'Trust'
 $support = e(SITE['support_phone']);
 $u_priv  = url('privacy');
 $u_terms = url('terms');
+/* Product screen for the controls table (screenshots/v2/src/09-security.html) */
+$shot = '<figure class="shot" style="margin:20px 0 6px">' . svg_img('v2-09-security', 1440, 900, 'Sample screen: users and security settings with roles, two-step login, IP whitelist, force logout and the activity report') . '</figure>'
+      . '<p class="meta-line" style="margin:0 0 12px">Sample screen · illustrative data</p>';
 
 $sections = [
  ['controls', 'Controls in the app', <<<HTML
@@ -27,6 +30,7 @@ $sections = [
    <tr><td>Activity report</td><td>See who created, edited or deleted bills and records, and the IP address they logged in from.</td><td>Advance and above</td></tr>
    <tr><td>Lock invoices &amp; discount verification</td><td>Prevent edits to finalised bills and require approval for discounts.</td><td>Advance and above</td></tr>
   </tbody></table>
+  {$shot}
 HTML],
 
  ['access', 'Access control', <<<HTML

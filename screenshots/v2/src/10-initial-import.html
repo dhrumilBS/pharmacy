@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Initialization: add initial data — v2</title><link rel="stylesheet" href="ui.css">
+<style>
+/* Initialization › Add Initial Data: items and opening stock from a CSV, columns matched to the sample sheet,
+   errors flagged line by line. Rows come from screenshots/dummy-data/items-opening-stock.csv. Dummy data only. */
+.work{flex:1;display:grid;grid-template-columns:1fr 360px;gap:18px;padding:18px 22px;min-height:0}
+.col{display:flex;flex-direction:column;gap:14px;min-height:0}
+.head{display:flex;align-items:center;gap:10px}
+.head h1{font-size:20px}
+.head .sp{flex:1}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:12px 16px}
+.st{display:flex;align-items:center;gap:9px;font-weight:600;font-size:12.5px;color:var(--muted)}
+.st i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:700;background:#EEF2F6;color:var(--text-2);flex:none}
+.st.done{color:var(--navy-950)}.st.done i{background:var(--teal-600);color:#fff}
+.st.now{color:var(--blue-700)}.st.now i{background:var(--blue-600);color:#fff}
+.file{display:flex;align-items:center;gap:12px;padding:12px 16px}
+.file .ic{width:38px;height:38px;border-radius:10px;background:var(--teal-50);color:var(--teal-700);display:grid;place-items:center}
+.file b{color:var(--navy-950)}
+.file small{display:block;color:var(--muted);font-size:11.5px}
+.rows{flex:1;display:flex;flex-direction:column;min-height:0}
+.rows-h{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--border)}
+.rows-h h3{font-size:15px}
+table{width:100%;border-collapse:collapse}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 12px;border-bottom:1px solid #EEF2F6;vertical-align:middle;white-space:nowrap}
+td .nm{font-weight:600;color:var(--navy-950)}
+td .gn{font-size:11.5px;color:var(--muted)}
+tr.bad td{background:var(--danger-50)}
+.err{display:inline-flex;align-items:center;gap:5px;color:#B91C1C;font-weight:600;font-size:12px}
+.okk{display:inline-flex;align-items:center;gap:5px;color:var(--teal-700);font-weight:600;font-size:12px}
+.x{color:#B91C1C;font-weight:700;text-decoration:underline wavy #FCA5A5;text-underline-offset:3px}
+.rows-f{margin-top:auto;display:flex;gap:22px;padding:11px 16px;border-top:1px solid var(--border);color:var(--text-2);font-size:12.5px}
+.rows-f b{color:var(--navy-950)}
+.pane{padding:14px 16px}
+.pane h3{font-size:14px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.pane h3 .chip{margin-left:auto}
+.mp{display:grid;grid-template-columns:1fr 18px 1fr;gap:6px;align-items:center;padding:4px 0;border-bottom:1px solid #EEF2F6;font-size:12.5px}
+.mp:last-of-type{border-bottom:0}
+.mp span:first-child{color:var(--text-2)}
+.mp svg{width:14px;height:14px;color:var(--muted)}
+.mp b{color:var(--navy-950);font-weight:600}
+.sum{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sum div{padding:10px 12px;border-radius:10px;background:var(--bg)}
+.sum small{display:block;color:var(--muted);font-size:11.5px}
+.sum b{font-family:"Plus Jakarta Sans",Inter;font-size:20px;font-weight:800;color:var(--navy-950);font-variant-numeric:tabular-nums}
+.sum .r b{color:#B91C1C}
+.acts{display:grid;gap:10px;margin-top:14px}
+.acts .b-primary{padding:13px 0;font-size:14.5px}
+.tip{display:flex;gap:8px;margin-top:10px;font-size:12px;color:var(--text-2)}
+.ck{display:flex;gap:10px;align-items:flex-start;padding:4px 0;color:var(--text-2);font-size:12.5px}
+.ck i{width:18px;height:18px;border-radius:50%;background:var(--teal-100);color:var(--teal-700);display:grid;place-items:center;font-size:11px;font-weight:700;font-style:normal;flex:none}
+</style></head><body>
+<div class="app">
+  <nav class="rail">
+    <div class="mark" style="background:none"><svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true" style="display:block"><defs><linearGradient id="lmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#0F9F9A"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#lmg)"/><rect x="16.5" y="8" width="7" height="24" rx="3.5" fill="#fff"/><rect x="8" y="16.5" width="24" height="7" rx="3.5" fill="#fff"/><path d="M23.5 16.5h5a3.5 3.5 0 0 1 0 7h-5z" fill="#99F6E4"/></svg></div>
+    <a><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Home</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Sale</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Purchase</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg>Stock</a>
+    <a><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg>Patients</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/></svg>Reports</a>
+    <a><svg class="i" viewBox="0 0 24 24"><path d="M7 4h11M7 8.5h11M7 4c6 0 6 9 0 9h-1l8 7"/></svg>Accounts</a>
+    <span class="sp"></span>
+    <a class="on"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>Settings</a>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="store"><span class="ico" style="border:0;background:var(--blue-50);color:var(--blue-700)"><svg class="i" viewBox="0 0 24 24"><path d="M4 10v10h16V10M3 10l2-6h14l2 6zM9 20v-6h6v6"/></svg></span><div>Shree Sai Medical Store<small>Main branch · Ahmedabad</small></div></div>
+      <div class="cmd"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search items, patients, bills…<span class="kbd" style="margin-left:auto">Ctrl K</span></div>
+      <div class="tb-right">
+        <span class="chip c-grey">Mon, 5 Oct · 4:15 pm</span>
+        <span class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></span>
+        <span class="me">PD</span>
+      </div>
+    </header>
+
+    <div class="work">
+      <div class="col">
+        <div class="head">
+          <h1>Add initial data</h1><span class="chip c-grey">Initialization</span><span class="chip c-blue">Items &amp; opening stock</span>
+          <span class="sp"></span>
+          <span class="btn b-ghost"><svg class="i" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download sample sheet</span>
+        </div>
+
+        <div class="card steps">
+          <span class="st done"><i>✓</i>Upload file</span>
+          <span class="st done"><i>✓</i>Match columns</span>
+          <span class="st now"><i>3</i>Check rows</span>
+          <span class="st"><i>4</i>Import</span>
+        </div>
+
+        <div class="card file">
+          <span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></svg></span>
+          <div><b>items-opening-stock.csv</b><small>Exported from your old software · 1,846 rows · 18 columns</small></div>
+          <span class="chip c-teal" style="margin-left:auto">✓ 18 of 18 columns matched</span>
+        </div>
+
+        <div class="card rows">
+          <div class="rows-h"><h3>Check rows before importing</h3><span class="chip c-red">3 rows need fixing</span><span class="muted" style="margin-left:auto">Showing rows 2–10 of 1,846</span></div>
+          <table>
+            <thead><tr><th>Row</th><th>Item</th><th>Batch</th><th>Expiry</th><th class="num">MRP</th><th>HSN · GST</th><th class="num">Stock</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td class="muted">2</td><td><div class="nm">DOLO 650 TAB</div><div class="gn">Paracetamol 650 mg</div></td><td>DL4521</td><td>30-11-2026</td><td class="num">30.60</td><td>30049099 · 5%</td><td class="num">45</td><td><span class="okk">✓ Ready</span></td></tr>
+              <tr><td class="muted">3</td><td><div class="nm">DOLO 650 TAB</div><div class="gn">Paracetamol 650 mg</div></td><td>DL4790</td><td>30-06-2028</td><td class="num">30.60</td><td>30049099 · 5%</td><td class="num">55</td><td><span class="okk">✓ Ready</span></td></tr>
+              <tr><td class="muted">4</td><td><div class="nm">PAN-D CAP</div><div class="gn">Pantoprazole + Domperidone</div></td><td>PD2208</td><td>31-03-2027</td><td class="num">199.00</td><td>30049099 · 5%</td><td class="num">18</td><td><span class="okk">✓ Ready</span></td></tr>
+              <tr class="bad"><td class="muted">5</td><td><div class="nm">SHELCAL 500 TAB</div><div class="gn">Calcium 500 mg + Vitamin D3</div></td><td>SC7731</td><td><span class="x">12/01/26</span></td><td class="num">112.40</td><td>30045020 · 5%</td><td class="num">22</td><td><span class="err">Expiry not DD-MM-YYYY</span></td></tr>
+              <tr><td class="muted">6</td><td><div class="nm">SHELCAL 500 TAB</div><div class="gn">Calcium 500 mg + Vitamin D3</div></td><td>SC8012</td><td>31-08-2027</td><td class="num">112.40</td><td>30045020 · 5%</td><td class="num">60</td><td><span class="okk">✓ Ready</span></td></tr>
+              <tr class="bad"><td class="muted">7</td><td><div class="nm">AZITHRAL 500 TAB</div><div class="gn">Azithromycin 500 mg</div></td><td><span class="x">(blank)</span></td><td>10-11-2026</td><td class="num">119.50</td><td>30042019 · 5%</td><td class="num">14</td><td><span class="err">Batch number missing</span></td></tr>
+              <tr><td class="muted">8</td><td><div class="nm">MONTAIR LC TAB</div><div class="gn">Montelukast + Levocetirizine</div></td><td>ML0388</td><td>27-11-2026</td><td class="num">218.00</td><td>30049099 · 5%</td><td class="num">9</td><td><span class="okk">✓ Ready</span></td></tr>
+              <tr class="bad"><td class="muted">9</td><td><div class="nm">ELECTRAL POWDER 21.8G</div><div class="gn">Oral rehydration salts</div></td><td>EL5530</td><td>30-06-2027</td><td class="num">22.00</td><td><span class="x">3004</span> · 5%</td><td class="num">90</td><td><span class="err">HSN code too short</span></td></tr>
+              <tr><td class="muted">10</td><td><div class="nm">CALPOL 250 SUSP</div><div class="gn">Paracetamol 250 mg/5 ml</div></td><td>CP2207</td><td>06-12-2026</td><td class="num">48.00</td><td>30049099 · 5%</td><td class="num">6</td><td><span class="okk">✓ Ready</span></td></tr>
+            </tbody>
+          </table>
+          <div class="rows-f"><span>Ready <b>1,843</b></span><span>Need fixing <b>3</b></span><span style="margin-left:auto">Fix the 3 rows in your file, then upload it again</span></div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card pane">
+          <h3>Your columns → our sample sheet <span class="chip c-teal">✓ Matched</span></h3>
+          <div class="mp"><span>Product Name</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><b>Item name</b></div>
+          <div class="mp"><span>Salt / Composition</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><b>Generic name</b></div>
+          <div class="mp"><span>Batch No</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><b>Batch number</b></div>
+          <div class="mp"><span>Exp Dt</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><b>Expiry date</b></div>
+          <div class="mp"><span>M.R.P.</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><b>MRP</b></div>
+          <div class="mp"><span>HSN</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><b>HSN code</b></div>
+          <div class="mp"><span>Closing Qty</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><b>Stock qty</b></div>
+          <div class="mp"><span>Party</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><b>Supplier</b></div>
+          <div class="tip muted">+ 10 more columns matched (category, company, pack size, min and max stock…)</div>
+        </div>
+
+        <div class="card pane">
+          <h3>Before you import</h3>
+          <div class="ck"><i>✓</i>Batch and expiry on every row, not just item names</div>
+          <div class="ck"><i>✓</i>Dates in one format, DD-MM-YYYY</div>
+          <div class="ck"><i>✓</i>MRP per strip or pack, the way you sell</div>
+          <div class="ck"><i>✓</i>HSN and GST matching your current invoices</div>
+        </div>
+
+        <div class="card pane" style="margin-top:auto">
+          <h3>In this file</h3>
+          <div class="sum">
+            <div><small>Items</small><b>1,212</b></div>
+            <div><small>Batches</small><b>1,843</b></div>
+            <div><small>Opening stock value</small><b>₹6,84,210</b></div>
+            <div class="r"><small>Rows to fix</small><b>3</b></div>
+          </div>
+          <div class="acts">
+            <span class="btn b-primary">Upload corrected file</span>
+          </div>
+          <div class="tip">Your old software keeps running. Nothing changes at the counter until you go live.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

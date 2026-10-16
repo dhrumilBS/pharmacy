@@ -31,7 +31,7 @@ $cols = ['Item name', 'Generic name', 'Item category', 'Sub-category', 'Item typ
       <span class="eyebrow">How it works</span>
       <h2>Four steps, at your pace</h2>
       <p>Nothing changes at your counter until you decide. We recommend testing with a few days of real bills before switching fully.</p>
-      <figure class="shot" style="margin-top:24px"><?= img_tag('v2-04-purchase-import', 1440, 900, 'Sample screen: distributor bill imported from a CSV file', '(max-width: 900px) calc(100vw - 32px), 860px') ?></figure>
+      <figure class="shot" style="margin-top:24px"><?= svg_img('v2-10-initial-import', 1440, 900, 'Sample screen: Add initial data, importing items and opening stock from a CSV with problem rows flagged line by line') ?></figure>
       <span class="sample-tag shot-note">Sample screen · illustrative data</span>
     </div>
     <ol class="steps">
