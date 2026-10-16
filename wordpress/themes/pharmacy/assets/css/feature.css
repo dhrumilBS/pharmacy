@@ -1,0 +1,213 @@
+/* Feature pages (partials/feature-page.php): billing, expiry, inventory, purchase.
+   Written to feel like a well-kept register or a spec sheet: ruled lines, plain numbers and written labels,
+   with the leak register as a row of bill-book style cards. Small radii (8–12px), no gradient capsules, no pills,
+   no hover tilts. Brand tokens only. Previous version: archive/features/v1. */
+
+/* ---------- Top: CTAs, reassurance, screen ---------- */
+.fp-top { padding-top: 4px; }
+.fp-ctas { margin-top: 0; }
+.fp-assure { margin-top: 18px; }
+.fp-assure .icon { stroke-width: 2.5; }
+.fp-shot { margin-top: 36px; border-radius: var(--r-md); }
+
+/* ---------- Scenes: a diary of moments (time · what happened · what it cost) ---------- */
+.fp-diary { margin: 0; padding: 0; list-style: none; border-top: 1.5px solid var(--navy-900); }
+.fp-diary li { display: grid; grid-template-columns: 200px minmax(0, 1fr) 280px; gap: 32px; align-items: baseline; padding: 24px 0; border-bottom: 1px solid var(--border-2); }
+.fp-when { font-size: 14px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+.fp-diary h3 { font-size: 19px; }
+.fp-diary div p { margin-top: 6px; max-width: 60ch; color: var(--text-2); }
+.fp-cost { font-size: 15px; color: var(--navy-900); }
+.fp-cost span { display: block; margin-bottom: 2px; font: 600 12px var(--font-eyebrow); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+/* ---------- Leak register: one card per leak (earlier table version: archive/features/v1) ----------
+   Card = leak on top, a dashed tear line like a bill book, the fix below, the plan on a footer line.
+   White cards with a thin border on the soft section; no capsules, tilts or giant numerals. */
+.lc-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.lc { display: flex; flex-direction: column; padding: 20px 20px 0; border: 1px solid var(--border); border-radius: var(--r-md); background: #fff; transition: border-color .15s; }
+.lc:hover { border-color: var(--border-2); }
+.lc-k { font: 600 12px var(--font-eyebrow); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-variant-numeric: tabular-nums; }
+.lc h3 { margin-top: 6px; font-size: 17px; line-height: 1.3; }
+.lc-how { margin-top: 6px; font-size: 14.5px; color: var(--text-2); }
+.lc-fix-k { display: flex; align-items: center; gap: 6px; margin: 16px -20px 0; padding: 14px 20px 0; border-top: 1.5px dashed var(--border-2); font: 600 12px var(--font-eyebrow); letter-spacing: .08em; text-transform: uppercase; color: var(--teal-700); }
+.lc-fix-k .icon { width: 15px; height: 15px; stroke-width: 3; }
+.lc-fix { margin-top: 6px; font-size: 14.5px; color: var(--navy-900); }
+.lc-fix b { color: var(--navy-950); }
+.lc-plan { margin: auto -20px 0; padding: 11px 20px 12px; border-top: 1px solid var(--border); font-size: 13.5px; color: var(--muted); }
+.lc-fix + .lc-plan { margin-top: 16px; }
+.lc-plan b { font-weight: 600; color: var(--navy-800); }
+
+/* Line up the tear lines across a row: every leak card shares the row's 6 tracks */
+@supports (grid-template-rows: subgrid) {
+  .lc:not(.lc-math):not(.lc-cta) { display: grid; grid-row: span 6; grid-template-rows: subgrid; row-gap: 0; }
+  .lc-math, .lc-cta { grid-row: span 6; }
+  .lc .lc-plan { align-self: end; }
+}
+
+/* Last card: the worked example, the sum written out like on the back of a bill book */
+.lc-math { padding-bottom: 18px; border-color: var(--border-2); }
+.lc-math dl { margin: 10px 0 0; }
+.lc-math dl div { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 14.5px; }
+.lc-math dt { color: var(--text-2); }
+.lc-math dd { margin: 0; font-weight: 600; color: var(--navy-950); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.lc-math dd i { margin-right: 4px; font-style: normal; font-weight: 500; color: var(--muted); }
+.lc-math .lc-total { flex-wrap: wrap; align-items: baseline; margin-top: 2px; padding-top: 10px; border-top: 2px solid var(--navy-900); border-bottom: 0; }
+.lc-math .lc-total dt { font-weight: 600; color: var(--navy-950); }
+.lc-math .lc-total dd { font: 700 24px var(--font-head); }
+.lc-note { margin-top: auto; padding-top: 8px; font-size: 13px; color: var(--muted); }
+/* Pages without a worked example: a plain demo card */
+.lc-cta { padding-bottom: 20px; background: var(--blue-50); border-color: var(--blue-100); }
+.lc-cta > p:not(.lc-k) { margin-top: 6px; font-size: 14.5px; color: var(--text-2); }
+.lc-cta .btn { align-self: flex-start; margin-top: auto; }
+.lc-cta h3 + p + .btn { margin-top: 18px; }
+.lc-foot { margin-top: 16px; font-size: 14px; color: var(--muted); }
+.fp-est { margin-top: 48px; }
+
+/* ---------- How it works: a process strip, numbered in words ---------- */
+.fp-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; margin: 0; padding: 0; list-style: none; }
+.fp-steps li { display: flex; flex-direction: column; padding-top: 16px; border-top: 2px solid var(--blue-600); }
+.fp-steps li + li { border-top-color: var(--border-2); }
+.fp-step-k { font: 600 12px var(--font-eyebrow); letter-spacing: .08em; text-transform: uppercase; color: var(--blue-700); }
+.fp-steps h3 { margin-top: 8px; font-size: 18px; }
+.fp-steps li > p:not(.fp-step-k):not(.fp-step-meta) { margin-top: 6px; font-size: 15px; color: var(--text-2); }
+.fp-step-meta { margin-top: auto; padding-top: 12px; font-size: 13.5px; color: var(--muted); }
+.fp-keys { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 15px; color: var(--text-2); }
+.fp-keys > span:first-child { font-weight: 600; color: var(--navy-950); }
+.fp-keys kbd { padding: 2px 7px; border: 1px solid var(--border-2); border-bottom-width: 2px; border-radius: 4px; background: #fff; font: 600 13px var(--font-body); color: var(--navy-950); }
+
+/* ---------- Capabilities: a ruled spec grid ---------- */
+.fp-caps-sec { padding-top: 0; }
+.fp-spec { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--border-2); border-left: 1px solid var(--border); }
+.fp-spec li { display: flex; flex-direction: column; padding: 22px 24px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.fp-spec h3 { display: flex; align-items: center; gap: 10px; font-size: 17px; }
+.fp-spec h3 .icon { flex: none; width: 20px; height: 20px; color: var(--blue-600); }
+.fp-spec li > p { margin-top: 6px; font-size: 15px; color: var(--text-2); }
+.fp-spec .fp-spec-plan { margin-top: auto; padding-top: 12px; font-size: 13.5px; color: var(--muted); }
+.fp-spec .fp-spec-plan b { font-weight: 600; color: var(--navy-800); }
+
+/* ---------- Practical guide ---------- */
+.fp-guide { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
+.fp-guide-copy { position: sticky; top: 96px; }
+.fp-guide-copy h2 { font-size: clamp(26px, 3vw, 36px); }
+.fp-guide-copy > p:not(.meta-line) { margin-top: 14px; font-size: 17px; color: var(--text-2); }
+.fp-guide-list { margin: 0; padding: 0; list-style: none; counter-reset: g; border-top: 1.5px solid var(--navy-900); }
+.fp-guide-list li { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 8px; padding: 18px 0; border-bottom: 1px solid var(--border-2); counter-increment: g; }
+.fp-guide-list li::before { content: counter(g) "."; grid-row: span 2; font: 700 17px var(--font-head); color: var(--blue-700); font-variant-numeric: tabular-nums; }
+.fp-guide-list h3 { font-size: 17px; }
+.fp-guide-list p { margin-top: 4px; font-size: 15px; color: var(--text-2); }
+
+/* ---------- Proof: a checklist sheet the visitor brings to the demo ---------- */
+.fp-proof { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 56px; align-items: start; }
+.fp-proof-copy h2 { font-size: clamp(26px, 3vw, 36px); }
+.fp-proof-copy p { margin-top: 14px; font-size: 17px; color: var(--text-2); }
+.fp-proof-copy .btn { margin-top: 24px; }
+.fp-sheet { border: 1px solid var(--border-2); border-radius: var(--r-md); background: #fff; }
+.fp-sheet-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 14px 20px; border-bottom: 1.5px solid var(--navy-900); }
+.fp-sheet-h b { font-size: 16px; color: var(--navy-950); }
+.fp-sheet-h span { font-size: 13.5px; color: var(--muted); }
+.fp-sheet ol { margin: 0; padding: 4px 20px; list-style: none; }
+.fp-sheet li { display: flex; align-items: flex-start; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--border); font-size: 15.5px; color: var(--navy-900); }
+.fp-sheet li:last-child { border-bottom: 0; }
+.fp-box { flex: none; width: 18px; height: 18px; margin-top: 2px; border: 1.5px solid var(--navy-800); border-radius: 3px; }
+
+/* ---------- Related: a plain link row ---------- */
+.fp-rel-sec { border-top: 1px solid var(--border); }
+.fp-rel-h { font-size: 20px; }
+.fp-related { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 32px; margin: 16px 0 0; padding: 0; list-style: none; }
+.fp-related a { display: block; padding: 14px 0; border-top: 1px solid var(--border-2); color: inherit; text-decoration: none; }
+.fp-related b { display: flex; align-items: center; gap: 6px; font-size: 16px; color: var(--blue-700); }
+.fp-related b .icon { width: 16px; height: 16px; transition: transform .15s; }
+.fp-related span { display: block; margin-top: 4px; font-size: 14px; color: var(--text-2); }
+.fp-related a:hover b { text-decoration: underline; }
+.fp-related a:hover b .icon { transform: translateX(3px); }
+@media (prefers-reduced-motion: reduce) { .fp-related b .icon, .lc { transition: none; } }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .fp-diary li { grid-template-columns: 150px minmax(0, 1fr) 220px; gap: 24px; }
+  .lc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fp-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 32px; }
+  .fp-steps li + li { border-top-color: var(--border-2); }
+  .fp-related { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .fp-diary li { grid-template-columns: 1fr; gap: 6px; }
+  .fp-cost { margin-top: 6px; }
+  .fp-spec { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fp-guide, .fp-proof { grid-template-columns: 1fr; gap: 28px; }
+  .fp-guide-copy { position: static; }
+}
+@media (max-width: 600px) {
+  .fp-shot { margin-top: 24px; }
+  .fp-steps, .fp-spec, .fp-related, .lc-grid { grid-template-columns: 1fr; }
+  .lc { padding: 16px 16px 0; }
+  .lc-fix-k, .lc-plan { margin-left: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; }
+  .lc-math, .lc-cta { padding-bottom: 16px; }
+  .fp-spec li { padding: 18px 16px; }
+  .fp-sheet ol { padding: 4px 16px; }
+  .fp-sheet-h { flex-direction: column; gap: 2px; padding: 12px 16px; }
+}
+
+/* ======================================================================
+   Features overview (features/index.php): "fi-" rules, same language as the feature pages
+   ====================================================================== */
+
+/* Start with your problem: a ruled index, pain on the left, the page on the right */
+.fi-index-wrap { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
+.fi-index-wrap .section-head { margin-bottom: 0; }
+.fi-index { margin: 0; padding: 0; list-style: none; border-top: 1.5px solid var(--navy-900); }
+.fi-index a { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 15px 0; border-bottom: 1px solid var(--border-2); color: inherit; text-decoration: none; }
+.fi-pain { font-size: 16px; color: var(--navy-950); }
+.fi-go { display: inline-flex; align-items: center; gap: 6px; flex: none; font-size: 14.5px; font-weight: 600; color: var(--blue-700); white-space: nowrap; }
+.fi-go .icon { width: 16px; height: 16px; transition: transform .15s; }
+.fi-index a:hover .fi-pain { text-decoration: underline; text-decoration-color: var(--border-2); text-underline-offset: 3px; }
+.fi-index a:hover .fi-go .icon { transform: translateX(3px); }
+
+/* Module cards: same build as the leak cards (white, thin border, footer line) */
+.fi-mods { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.fi-mod { display: flex; flex-direction: column; padding: 20px 20px 0; border: 1px solid var(--border); border-radius: var(--r-md); background: #fff; }
+.fi-mod h3 { display: flex; align-items: center; gap: 10px; font-size: 18px; }
+.fi-mod h3 .icon { flex: none; width: 22px; height: 22px; color: var(--blue-600); }
+.fi-desc { margin-top: 6px; font-size: 14.5px; color: var(--text-2); }
+.fi-pts { margin: 16px -20px 0; padding: 4px 20px 0; list-style: none; border-top: 1.5px dashed var(--border-2); }
+.fi-pts li { display: flex; flex-direction: column; gap: 1px; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 14.5px; color: var(--navy-900); }
+.fi-pts li:last-child { border-bottom: 0; }
+.fi-pts small { font-size: 12.5px; color: var(--muted); }
+.fi-open { display: flex; align-items: center; gap: 6px; margin: auto -20px 0; padding: 12px 20px 13px; border-top: 1px solid var(--border); font-size: 14.5px; font-weight: 600; color: var(--blue-700); text-decoration: none; }
+.fi-pts + .fi-open { margin-top: 12px; }
+.fi-open .icon { width: 16px; height: 16px; transition: transform .15s; }
+.fi-open:hover { text-decoration: underline; }
+.fi-open:hover .icon { transform: translateX(3px); }
+.fi-mod:hover { border-color: var(--border-2); }
+/* Line up the dashed line and the "Open …" footer across a row (title, blurb, points, link = 4 tracks) */
+@supports (grid-template-rows: subgrid) {
+  .fi-mod { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; }
+  .fi-mod .fi-open { align-self: end; }
+}
+
+/* Also built in */
+.fi-also { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 48px; align-items: center; }
+.fi-also h2 { font-size: clamp(26px, 3vw, 36px); }
+.fi-also-lead { margin-top: 12px; font-size: 17px; color: var(--text-2); }
+.fi-also-links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 20px; font-weight: 600; }
+.fi-also-links a { color: var(--blue-700); }
+
+/* Plans at a glance */
+.fi-plans-wrap { overflow-x: auto; border: 1px solid var(--border-2); border-radius: var(--r-md); }
+.fi-plans { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 15px; }
+.fi-plans thead th { padding: 12px 18px; border-bottom: 1.5px solid var(--navy-900); background: var(--bg); text-align: left; font: 600 12px var(--font-eyebrow); letter-spacing: .08em; text-transform: uppercase; color: var(--navy-800); }
+.fi-plans td, .fi-plans tbody th { padding: 14px 18px; border-bottom: 1px solid var(--border); text-align: left; color: var(--navy-900); font-variant-numeric: tabular-nums; }
+.fi-plans tbody th { font-weight: 600; color: var(--navy-950); }
+.fi-plans tbody tr:last-child > * { border-bottom: 0; }
+.fi-pop { margin-left: 8px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--blue-700); }
+
+@media (prefers-reduced-motion: reduce) { .fi-go .icon, .fi-open .icon { transition: none; } }
+@media (max-width: 1100px) { .fi-mods { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 900px) {
+  .fi-index-wrap, .fi-also { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 600px) {
+  .fi-mods { grid-template-columns: 1fr; }
+  .fi-index a { flex-direction: column; gap: 4px; }
+  .fi-mod { padding: 16px 16px 0; }
+  .fi-pts, .fi-open { margin-left: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; }
+}

@@ -1,0 +1,239 @@
+/* Home page: CRO hero + demo slip, trusted marquee, product tour, and the "hand-made" personality layer.
+   Palette: existing tokens only (navy / blue / teal / greys). Loaded after site.css + layout.css on index.php. */
+
+:root { --mono: var(--font-body); }   /* Campton only; tabular numbers via font-variant-numeric */
+
+/* Eyebrows use the shared mono label style from layout.css (no handwriting font). */
+.page-home .section-head.center { text-align: left; margin-inline: 0; }
+
+/* Marker-style underline drawn under a word */
+.scribble, .scribble-u { position: relative; white-space: nowrap; }
+.scribble::after, .scribble-u::after {
+  content: ""; position: absolute; left: -2%; right: -2%; bottom: -.14em; height: .32em; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none' fill='none' stroke='%233B82F6' stroke-width='5' stroke-linecap='round'%3E%3Cpath d='M3 11C40 4 92 3 197 7M60 13c30-3 70-4 110-3'/%3E%3C/svg%3E") no-repeat 0 0 / 100% 100%;
+}
+.scribble-u::after { opacity: .55; }
+
+/* ---------- Hero (lead capture first) ---------- */
+.hero3 { position: relative; padding: 52px 0 64px; background: #fff; overflow: hidden; }
+.hero3::before {                      /* faint dot paper, top right */
+  content: ""; position: absolute; inset: 0 0 auto auto; width: 55%; height: 100%; pointer-events: none;
+  background: radial-gradient(var(--border-2) 1px, transparent 1.4px) 0 0 / 22px 22px;
+  -webkit-mask-image: radial-gradient(ellipse at 80% 20%, #000 0%, transparent 68%); mask-image: radial-gradient(ellipse at 80% 20%, #000 0%, transparent 68%);
+}
+.hero3-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr); gap: 56px; align-items: center; }
+.hero3 h1 { font-size: clamp(36px, 4.5vw, 56px); line-height: 1.05; letter-spacing: -.028em; }
+.hero3 h1 .hl { color: var(--blue-600); }
+.hero3 .hero-lead { margin-top: 18px; max-width: 540px; font-size: 18px; }
+.hero3-alt { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 16px; font-size: 15px; }
+.hero3-alt a { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: var(--navy-800); text-decoration: none; }
+.hero3-alt a:hover { color: var(--blue-700); text-decoration: underline; }
+.hero3-alt .icon { width: 18px; height: 18px; color: var(--blue-600); }
+
+/* Hero: the demo slip sits in the right-hand column */
+.hero3-form .slip { margin: 0 0 0 auto; max-width: 520px; }
+
+/* "Switching made safe": demo button under the copy */
+.switch-cta { margin: 24px 0 0; }
+
+/* Demo slip: a counter bill with a perforated tear-off and barcode */
+.slip { position: relative; margin-top: 26px; max-width: 540px; background: #fff; border: 1px solid var(--border-2); border-radius: 14px; box-shadow: 0 24px 48px -28px rgba(8, 28, 44, .35); }
+.slip-body { padding: 20px 22px 18px; }
+.slip-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.slip-title { font-size: 19px; }
+.slip-no { font: 500 11px var(--mono); letter-spacing: .08em; color: var(--muted); white-space: nowrap; }
+.slip-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+.slip .fld label { display: block; font-weight: 600; font-size: 14px; color: var(--navy-950); margin-bottom: 6px; }
+.slip .fld input { width: 100%; min-height: 48px; padding: 10px 14px; border: 1.5px solid var(--border-2); border-radius: var(--r-sm); background: #fff; color: var(--text); }
+.slip .fld input:focus { outline: none; border-color: var(--blue-600); box-shadow: 0 0 0 4px var(--blue-100); }
+.slip-tel { display: flex; align-items: stretch; }
+.slip-tel > span { display: grid; place-items: center; padding: 0 10px; border: 1.5px solid var(--border-2); border-right: 0; border-radius: var(--r-sm) 0 0 var(--r-sm); background: var(--bg); color: var(--text-2); font-weight: 600; font-size: 15px; }
+.slip .slip-tel input { border-radius: 0 var(--r-sm) var(--r-sm) 0; }
+.slip-tel:focus-within > span { border-color: var(--blue-600); }
+.slip .fld .err { display: none; color: var(--danger); font-size: 13px; margin-top: 4px; }
+.slip .fld.invalid input, .slip .fld.invalid .slip-tel > span { border-color: var(--danger); }
+.slip .fld.invalid .err { display: block; }
+.slip-btn { width: 100%; margin-top: 14px; min-height: 54px; font-size: 17px; }
+.slip-terms { display: flex; flex-wrap: wrap; gap: 4px 16px; list-style: none; margin: 12px 0 0; padding: 0; font-size: 14px; color: var(--text-2); }
+.slip-terms li::before { content: "✓"; margin-right: 6px; font-weight: 700; color: var(--teal-700); }
+.slip-foot { position: relative; display: flex; flex-direction: column; align-items: stretch; gap: 6px; padding: 16px 22px 14px; border-top: 2px dashed var(--border-2); }
+.slip-foot::before, .slip-foot::after {      /* punched notches at both ends of the tear line */
+  content: ""; position: absolute; top: -10px; width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 1px solid var(--border-2);
+}
+.slip-foot::before { left: -10px; clip-path: inset(0 0 0 50%); }
+.slip-foot::after { right: -10px; clip-path: inset(0 50% 0 0); }
+.slip-bc { display: block; width: 100%; height: 44px; fill: var(--navy-900); }
+.slip-foot span { text-align: center; font: 500 11px var(--mono); letter-spacing: .32em; color: var(--text-2); }
+.slip-done { display: flex; gap: 12px; align-items: flex-start; padding: 22px; font-size: 15px; color: var(--text-2); }
+.slip-done[hidden] { display: none; }
+.slip-done > .icon { width: 30px; height: 30px; color: var(--teal-700); }
+.slip-done b { display: block; font: 700 18px var(--font-head); color: var(--navy-950); margin-bottom: 4px; }
+.slip-done small { display: block; margin-top: 6px; color: var(--muted); font-size: 12px; }
+.slip.is-done .slip-body { display: none; }
+.slip.is-done .slip-bc { animation: slip-scan .8s ease-out; }
+@keyframes slip-scan { 0% { opacity: .2; } 30% { opacity: 1; } 45% { opacity: .35; } 100% { opacity: 1; } }
+
+/* ---------- Trusted-by marquee (never pauses: see partials/trusted-strip.php) ---------- */
+.trust { padding: 30px 0 34px; border-block: 1px solid var(--border); background: #fff; }
+.trust-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; margin-bottom: 20px; }
+.trust-head h2 { font: 600 15px var(--font-body); letter-spacing: 0; color: var(--text-2); }
+.trust-note { font: 600 11.5px var(--font-eyebrow); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.trust-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+.trust-track { display: flex; width: max-content; animation: trust-roll 42s linear infinite; }
+.trust-track, .trust-track:hover, .trust-marquee:hover .trust-track, .trust-track:focus-within { animation-play-state: running !important; }
+.trust-row { display: flex; align-items: center; gap: 60px; padding: 0 60px 0 0; margin: 0; list-style: none; flex: none; }
+@keyframes trust-roll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .trust .trust-track { animation: trust-roll 42s linear infinite !important; } }
+.trust-row img { display: block; height: 40px; width: auto; max-width: none; opacity: .78; }
+
+/* Product tour styles live in tour.css (v1 copy: archive/video/v1/tour.css) */
+
+/* ---------- Surfaces (after styles.refero.design): filled, rounded panels instead of bordered boxes ---------- */
+.page-home .section.bg-soft { background: none; padding: 20px 0; }
+.page-home .section.bg-soft > .container { width: min(1328px, 100% - 32px); padding: 64px clamp(24px, 5vw, 64px); border-radius: 32px; background: var(--bg); }
+.page-home .sol, .page-home .channel { border: 0; background: var(--bg); }
+.page-home .sol.featured { position: relative; background: var(--blue-50); box-shadow: none; }
+.page-home .sol.featured::after { content: "Most stores start here"; position: absolute; top: 30px; right: 26px; font: 600 11px var(--font-eyebrow); letter-spacing: .08em; text-transform: uppercase; color: var(--blue-700); }
+.page-home .bg-soft .moved { border: 0; background: #fff; }
+.page-home .check-table { border: 0; }
+.page-home .final { background: none; padding: 20px 0 40px; }
+.page-home .final > .container { width: min(1328px, 100% - 32px); padding: 64px clamp(24px, 5vw, 64px); border-radius: 32px; background: var(--navy-900); }
+.page-home .final .form-card { box-shadow: none; }
+
+/* Estimator styles live in estimator.css (shared with the expiry page) */
+
+/* ---------- A day at the pharmacy: a shift register ---------- */
+.shift { list-style: none; margin: 8px 0 0; padding: 0; border-top: 1.5px solid var(--navy-900); }
+.shift li { display: grid; grid-template-columns: 190px 240px minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 28px 0; border-bottom: 1px solid var(--border-2); }
+.shift time { font: 600 clamp(34px, 3.4vw, 46px)/1 var(--font-display); letter-spacing: -.03em; color: var(--navy-950); font-variant-numeric: tabular-nums; transition: color .2s; }
+.shift time small { margin-left: 6px; font: 600 12px var(--font-eyebrow); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.shift h3 { font-size: 20px; }
+.shift p { max-width: 62ch; color: var(--text-2); }
+.shift li:hover time { color: var(--blue-700); }
+
+/* ---------- Features: tabs stick and advance as you scroll (site.js [data-scroll-tabs]) ---------- */
+@media (min-width: 1025px) {
+  .feat-track { height: calc(7 * 46vh + 560px); }
+  /* Tabs run across the top so the panel gets the full width; the screen comes first, then its copy */
+  .feat-track .tabs { position: sticky; top: 92px; grid-template-columns: 1fr; gap: 14px; }
+  .feat-track .tablist { display: flex; flex-wrap: wrap; gap: 6px; }
+  .feat-track .tab { width: auto; padding: 9px 14px; border-radius: 8px; font-size: 14.5px; }
+  .feat-track .tab .icon { width: 18px; height: 18px; }
+  .feat-track .panel.panel-shot { grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: 32px; align-items: center; min-height: 0; padding: 22px 30px 22px 22px; }
+  .feat-track .panel-shot h3 { font-size: 23px; }
+  .feat-track .panel-shot .checks { grid-template-columns: 1fr; gap: 10px; font-size: 15px; }
+  .feat-track .panel:not([hidden]) { animation: panel-in .5s cubic-bezier(.2, .8, .2, 1); }
+}
+@keyframes panel-in { from { opacity: 0; transform: translateY(14px); } }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .hero3-grid { gap: 36px; }
+  
+  
+  .shift li { grid-template-columns: 150px 200px minmax(0, 1fr); }
+}
+@media (max-width: 900px) {
+  .hero3-grid { grid-template-columns: 1fr; }
+  
+  .hero3-form .slip { margin: 8px 0 0; max-width: 560px; }
+  
+  
+  
+  
+  .shift li { grid-template-columns: 1fr; gap: 8px; }
+}
+@media (max-width: 600px) {
+  .page-home .section.bg-soft > .container, .page-home .final > .container { width: 100%; padding: 44px 12px; border-radius: 0; }
+  .hero3 { padding: 32px 0 44px; }
+  .hero3 .hero-lead { font-size: 17px; }
+  .slip-body { padding: 18px 16px 16px; }
+  .slip-fields { grid-template-columns: 1fr; }
+  .slip-no { display: none; }
+  .slip-foot { padding: 14px 16px 12px; }
+  
+  .trust-row { gap: 40px; padding-right: 40px; }
+  
+  .page-home .sol.featured::after { position: static; display: block; margin-top: 14px; }
+}
+
+/* =====================================================================
+   14 Oct 2026 pass: hero density, message inbox, image-first features, playful details
+   ===================================================================== */
+
+
+/* ---------- "Sound familiar?" as a message inbox  ---------- */
+.pc-head { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 12px 48px; align-items: end; margin-bottom: 28px; }
+.pc-head h2 { font-size: clamp(28px, 3.2vw, 40px); }
+.pc-head > p { font-size: 17px; color: var(--text-2); }
+.pc-note { display: inline-block; margin-left: 6px; font-size: 11.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); vertical-align: 1px; }
+.pc { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.3fr); min-height: 500px; border-radius: 24px; overflow: hidden; background: #fff; box-shadow: 0 30px 60px -44px rgba(8, 28, 44, .45); }
+.pc-list { display: flex; flex-direction: column; gap: 2px; padding: 10px; border-right: 1px solid var(--border); }
+.pc-tab { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 12px; align-items: center; width: 100%; padding: 12px; border: 0; border-radius: 14px; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: background .15s; }
+.pc-tab:hover { background: var(--bg); }
+.pc-tab[aria-selected=true] { background: var(--blue-50); }
+.pc-av { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--bg); color: var(--navy-800); transition: background .15s, color .15s; }
+.pc-tab[aria-selected=true] .pc-av { background: var(--blue-600); color: #fff; }
+.pc-meta { min-width: 0; }
+.pc-meta b { display: block; font-size: 15px; font-weight: 600; color: var(--navy-950); }
+.pc-meta small { display: block; overflow: hidden; font-size: 13.5px; color: var(--text-2); white-space: nowrap; text-overflow: ellipsis; }
+.pc-tab time { align-self: start; padding-top: 4px; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.pc-thread { padding: 26px 30px; background: radial-gradient(var(--border) 1px, transparent 1.3px) 0 0 / 18px 18px, var(--bg); }
+.pc-panel { display: flex; flex-direction: column; gap: 12px; }
+.pc-panel[hidden] { display: none; }
+.pc-day { margin: 0 0 4px; text-align: center; }
+.pc-day span { display: inline-block; padding: 4px 12px; border-radius: 999px; background: #fff; font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.bub { max-width: 84%; padding: 14px 16px; border-radius: 18px; box-shadow: 0 1px 0 rgba(8, 28, 44, .06); }
+.bub.in { align-self: flex-start; border-bottom-left-radius: 6px; background: #fff; }
+.bub.in > p:first-child { font-size: 19px; font-weight: 600; line-height: 1.35; color: var(--navy-950); }
+.bub-why { margin-top: 6px; font-size: 15px; color: var(--text-2); }
+.bub-meta { display: block; margin-top: 8px; font-size: 11.5px; color: var(--muted); }
+.bub.out { align-self: flex-end; border-bottom-right-radius: 6px; background: var(--navy-900); }
+.bub.out p { font-size: 15.5px; line-height: 1.55; color: #fff; }
+.bub-label { display: block; margin-bottom: 4px; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--teal-500); }
+.bub.out .bub-meta { color: #9FB3C8; text-align: right; }
+.pc-typing { align-self: flex-end; display: flex; gap: 4px; padding: 12px 14px; border-radius: 16px; background: #fff; }
+.pc-typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--border-2); animation: pc-dot 1s ease-in-out infinite; }
+.pc-typing i:nth-child(2) { animation-delay: .15s; }
+.pc-typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes pc-dot { 40% { transform: translateY(-4px); background: var(--muted); } }
+/* Each time a message opens: the owner's bubble pops in, "typing…" shows briefly, then the reply */
+.pc-panel:not([hidden]) .bub.in { animation: pc-pop .35s cubic-bezier(.2, .8, .2, 1) both; }
+.pc-panel:not([hidden]) .pc-typing { animation: pc-typing 1.1s forwards; }
+.pc-panel:not([hidden]) .bub.out, .pc-panel:not([hidden]) .pc-cta { animation: pc-pop .45s 1.05s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes pc-pop { from { opacity: 0; transform: translateY(8px) scale(.97); } }
+@keyframes pc-typing { 0%, 85% { opacity: 1; max-height: 60px; } 100% { opacity: 0; max-height: 0; padding-block: 0; margin-top: -12px; } }
+@media (prefers-reduced-motion: reduce) { .pc-typing { display: none; } }
+.pc-cta { align-self: flex-end; margin-top: 4px; }
+@media (max-width: 900px) {
+  .pc-head { grid-template-columns: 1fr; }
+  .pc { grid-template-columns: 1fr; min-height: 0; }
+  .pc-list { flex-direction: row; gap: 6px; overflow-x: auto; padding: 10px; border-right: 0; border-bottom: 1px solid var(--border); scrollbar-width: thin; }
+  .pc-tab { flex: none; width: auto; grid-template-columns: 30px auto; gap: 8px; padding: 6px 12px 6px 6px; border-radius: 999px; }
+  .pc-av { width: 30px; height: 30px; }
+  .pc-av .icon { width: 16px; height: 16px; }
+  .pc-meta small, .pc-tab time { display: none; }
+  .pc-meta b { font-size: 14px; white-space: nowrap; }
+  .pc-thread { padding: 20px 14px; }
+  .bub { max-width: 94%; }
+  .bub.in > p:first-child { font-size: 17px; }
+}
+
+/* ---------- Features: active tab + panel colours (all widths) ----------
+   Blue is the action colour: the active pill is solid blue with white text (5.2:1 contrast), inactive pills
+   have a light outline, and the panel sits on a soft blue tint so the white product screen stands out. */
+.feat-track .tab { border-color: var(--border); background: #fff; color: var(--text-2); transition: background .2s, color .2s, border-color .2s, box-shadow .2s; }
+.feat-track .tab .icon { color: var(--blue-600); }
+.feat-track .tab:hover { background: var(--blue-50); border-color: var(--blue-100); color: var(--blue-700); }
+.feat-track .tab[aria-selected=true] { background: var(--blue-600); border-color: var(--blue-600); color: #fff; box-shadow: 0 8px 18px -10px rgba(37, 99, 235, .75); }
+.feat-track .tab[aria-selected=true] .icon { color: #fff; }
+.feat-track .tab:focus-visible { outline: 3px solid var(--blue-100); outline-offset: 2px; box-shadow: 0 0 0 2px var(--blue-600); }
+.feat-track .panel { background: var(--blue-50); border-color: var(--blue-100); }
+@media (prefers-reduced-motion: reduce) { .feat-track .tab { transition: none; } }
+
+/* ---------- Features: screen first, then its copy (all widths) ---------- */
+.panel-shot .shot { order: -1; }
+
+
+/* Two plain (white) sections in a row: don't stack both paddings */
+.page-home .section:not(.bg-soft) + .section:not(.bg-soft) { padding-top: 24px; }

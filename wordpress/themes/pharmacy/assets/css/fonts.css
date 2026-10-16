@@ -1,0 +1,19 @@
+/* Campton webfonts (self-hosted WOFF2, subset to Latin + ₹ and site symbols).
+   Built from font/campton/*.otf by scripts/make-webfonts.py. Loaded first by partials/head.php.
+   font-display: swap shows fallback text immediately, then swaps in Campton. */
+@font-face { font-family: "Campton"; src: url("../fonts/campton/campton-300.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "Campton"; src: url("../fonts/campton/campton-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Campton"; src: url("../fonts/campton/campton-400i.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Campton"; src: url("../fonts/campton/campton-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Campton"; src: url("../fonts/campton/campton-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Campton"; src: url("../fonts/campton/campton-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Campton"; src: url("../fonts/campton/campton-800.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
+
+/* Campton is the only typeface on the site: headings, body, labels and numbers. No other webfonts are loaded. */
+:root {
+  --font-head: "Campton", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Campton", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Campton", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-eyebrow: "Campton", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Campton", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
