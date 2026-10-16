@@ -1,0 +1,14 @@
+/*
+Theme Name:        Pharmacy
+Description:       Classic parent theme for the pharmacy software marketing site. Templates print the same markup as the PHP site, so its CSS and JavaScript run unchanged. Activate the child theme "Pharmacy Child", not this one.
+Version:           1.0.0
+Requires at least: 6.8
+Tested up to:      7.1
+Requires PHP:      8.1
+Text Domain:       pharmacy
+*/
+
+/*
+ * This file holds only the theme header. The site styles live in
+ * assets/css/ and are loaded per page by inc/enqueue.php.
+ */

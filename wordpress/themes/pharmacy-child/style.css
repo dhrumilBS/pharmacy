@@ -1,0 +1,13 @@
+/*
+Theme Name: Pharmacy Child
+Description: Child theme of Pharmacy. Holds site-specific overrides only; all templates, styles, scripts and logic live in the parent theme.
+Template: pharmacy
+Version: 1.0.0
+Requires PHP: 8.1
+Text Domain: pharmacy-child
+*/
+
+/*
+ * This file only carries the theme header. It is not enqueued: the parent
+ * theme loads every stylesheet itself (inc/enqueue.php).
+ */
