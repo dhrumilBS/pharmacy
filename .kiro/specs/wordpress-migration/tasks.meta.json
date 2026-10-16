@@ -1,0 +1,920 @@
+{
+  "pbtResults": {
+    "8.2 Write a property test for the slug guard": {
+      "status": "passed",
+      "lastRunTimestamp": 1792145612025
+    },
+    "7.7 Write a property test for FAQ schema": {
+      "status": "passed",
+      "lastRunTimestamp": 1792145625161
+    },
+    "8.3 Write a property test for the TOC builder": {
+      "status": "passed",
+      "lastRunTimestamp": 1792145670703
+    },
+    "9.3 Write a property test for the pricing source order": {
+      "status": "passed",
+      "lastRunTimestamp": 1792146225069
+    },
+    "9.2 Write a property test for pricing parity": {
+      "status": "passed",
+      "lastRunTimestamp": 1792146296496
+    }
+  },
+  "executionHistory": {
+    "1.1 Create `wordpress/tools/baseline.ps1` and record the baseline": [
+      {
+        "executionId": "49f50ef3-06ec-4ef1-a494-0505bbc28b7e",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792135105742
+      },
+      {
+        "executionId": "49f50ef3-06ec-4ef1-a494-0505bbc28b7e",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792135260253
+      }
+    ],
+    "1.2 Create `wordpress/.gitignore` and `wordpress/.htaccess`": [
+      {
+        "executionId": "49f50ef3-06ec-4ef1-a494-0505bbc28b7e",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792135266853
+      },
+      {
+        "executionId": "49f50ef3-06ec-4ef1-a494-0505bbc28b7e",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792135536951
+      }
+    ],
+    "1.3 Create `wordpress/import/lib/guard.php`": [
+      {
+        "executionId": "49f50ef3-06ec-4ef1-a494-0505bbc28b7e",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792135267152
+      },
+      {
+        "executionId": "49f50ef3-06ec-4ef1-a494-0505bbc28b7e",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792135537678
+      }
+    ],
+    "2.1 Create the parent theme skeleton in `wordpress/themes/pharmacy/`": [
+      {
+        "executionId": "49f50ef3-06ec-4ef1-a494-0505bbc28b7e",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792135651644
+      },
+      {
+        "executionId": "49f50ef3-06ec-4ef1-a494-0505bbc28b7e",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792135966748
+      }
+    ],
+    "2.2 Create the child theme in `wordpress/themes/pharmacy-child/`": [
+      {
+        "executionId": "49f50ef3-06ec-4ef1-a494-0505bbc28b7e",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792135652813
+      },
+      {
+        "executionId": "49f50ef3-06ec-4ef1-a494-0505bbc28b7e",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792135967736
+      }
+    ],
+    "2.3 Copy the assets and the pricing snapshot into the parent theme": [
+      {
+        "executionId": "49f50ef3-06ec-4ef1-a494-0505bbc28b7e",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792135653622
+      },
+      {
+        "executionId": "49f50ef3-06ec-4ef1-a494-0505bbc28b7e",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792135968534
+      }
+    ],
+    "2.8 Set up the test harness in `wordpress/tools/`": [
+      {
+        "executionId": "49f50ef3-06ec-4ef1-a494-0505bbc28b7e",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792135654399
+      },
+      {
+        "executionId": "49f50ef3-06ec-4ef1-a494-0505bbc28b7e",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792135969167
+      }
+    ],
+    "1.4 Implement the outbound HTTP allow-list": [
+      {
+        "executionId": "49f50ef3-06ec-4ef1-a494-0505bbc28b7e",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792135973628
+      },
+      {
+        "executionId": "49f50ef3-06ec-4ef1-a494-0505bbc28b7e",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792136188145
+      }
+    ],
+    "1. Keep the PHP site safe and the work local (Requirement 1)": [
+      {
+        "executionId": "49f50ef3-06ec-4ef1-a494-0505bbc28b7e",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792136188375
+      }
+    ],
+    "2.4 Link the themes and copy the plugins (local only, nothing in Git)": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141214880
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141247012
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141930584
+      }
+    ],
+    "2.5 Write and run `wordpress/import/setup.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141215048
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792143876326
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145217704
+      }
+    ],
+    "2.6 Port the `config.php` helpers": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141215155
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141247250
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141931620
+      }
+    ],
+    "2.7 Implement theme setup and asset loading": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141215261
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141247348
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141932007
+      }
+    ],
+    "3.1 Write `header.php` and `footer.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141215365
+      }
+    ],
+    "3.2 Write the shared parts in `parts/`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141215485
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792146373003
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792147648662
+      }
+    ],
+    "3.3 Write `front-page.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141215593
+      }
+    ],
+    "3.4 Write `templates/feature.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141215731
+      }
+    ],
+    "3.5 Write `templates/legal.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141215893
+      }
+    ],
+    "3.6 Write `templates/pricing.php` and `templates/features-hub.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141216000
+      }
+    ],
+    "3.7 Write the company and guide templates": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141216102
+      }
+    ],
+    "3.8 Write `page.php`, `index.php` and `404.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141216230
+      }
+    ],
+    "4.1 Implement `Rx_Mega_Walker` in `inc/nav.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141216336
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792143877219
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145218300
+      }
+    ],
+    "4.2 Implement `Rx_Footer_Walker`, the legal links and the `#rx:` resolver in `inc/nav.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141216461
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792146373234
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792147648842
+      }
+    ],
+    "4.3 Write `wordpress/import/content/menus.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141216564
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792143470901
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792143856362
+      }
+    ],
+    "5. Checkpoint: theme scaffold, templates and menus": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141216671
+      }
+    ],
+    "6.1 Write the import library in `wordpress/import/lib/`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141216767
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141957817
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792143465118
+      }
+    ],
+    "6.2 Write `wordpress/import/import.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141216877
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792143876736
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145219510
+      }
+    ],
+    "6.3 Write `content/settings.php` and `content/pages/home.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141216982
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792147656997
+      },
+      {
+        "executionId": "52b2af37-cdeb-4b12-9b1b-9bbf9dfa376a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792150625470
+      }
+    ],
+    "6.4 Write the features hub and feature page data files": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141217085
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792147658206
+      },
+      {
+        "executionId": "52b2af37-cdeb-4b12-9b1b-9bbf9dfa376a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792150626618
+      }
+    ],
+    "6.5 Write the data files for pricing, switch, FAQ and the company pages": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141217187
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792147659000
+      },
+      {
+        "executionId": "52b2af37-cdeb-4b12-9b1b-9bbf9dfa376a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792150626936
+      }
+    ],
+    "6.6 Write the five legal data files": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141217310
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792147660392
+      },
+      {
+        "executionId": "52b2af37-cdeb-4b12-9b1b-9bbf9dfa376a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792150625920
+      }
+    ],
+    "6.7 Write the blog data files": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141217414
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792147660861
+      },
+      {
+        "executionId": "52b2af37-cdeb-4b12-9b1b-9bbf9dfa376a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792150626306
+      }
+    ],
+    "6.8 Run the import twice": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141217523
+      }
+    ],
+    "7.1 Create `acf-json/group_rx_settings.json`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141217618
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141248659
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141932894
+      }
+    ],
+    "7.2 Create `acf-json/group_rx_home.json`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141217741
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141956177
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792143462189
+      }
+    ],
+    "7.3 Create `acf-json/group_rx_feature.json` and `acf-json/group_rx_legal.json`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141217854
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141956424
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792143462871
+      }
+    ],
+    "7.4 Create the remaining page groups": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141217969
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141956942
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792143463577
+      }
+    ],
+    "7.5 Create the post, blog page and menu-item groups": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141218098
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141957259
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792143464397
+      }
+    ],
+    "7.6 Implement `rx_faq_schema( array $items ): ?array` in `inc/core/schema.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141218205
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792143473254
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792143855383
+      }
+    ],
+    "7.8 Implement the shortcodes in `inc/shortcodes.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141218308
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792146372509
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792147648526
+      }
+    ],
+    "8.1 Implement the pure blog helpers in `inc/core/blog.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141218431
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792143473757
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792143857093
+      }
+    ],
+    "8.4 Implement blog routing and queries in `inc/blog.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141218568
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792143877703
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145220499
+      }
+    ],
+    "8.5 Write the blog parts": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141218735
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792146373380
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792147650615
+      }
+    ],
+    "8.6 Write `home.php` (blog hub and topic views)": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141218856
+      }
+    ],
+    "8.7 Write `single.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141218990
+      }
+    ],
+    "9.1 Implement the pure pricing core in `inc/core/pricing.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141219101
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141247662
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141932617
+      }
+    ],
+    "9.4 Implement the WordPress pricing service in `inc/pricing.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141219219
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792143878036
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145222825
+      }
+    ],
+    "10. Checkpoint: content imported, pricing and blog working": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141219330
+      }
+    ],
+    "11.1 Write the interaction check `wordpress/tools/parity/interactions.mjs` (playwright-core, Edge)": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141219442
+      }
+    ],
+    "11.2 Switch off Contact Form 7 on the front end in `inc/cleanup.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141219554
+      }
+    ],
+    "12.1 Add the `lang` and body class filters in `inc/setup.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141219680
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792146373642
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792147650879
+      }
+    ],
+    "12.2 Audit the templates and parts against the partials": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141219796
+      }
+    ],
+    "13.1 Implement the front-end cleanup in `inc/cleanup.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141219909
+      }
+    ],
+    "14.1 Add the Yoast head filters in `inc/seo.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141220022
+      }
+    ],
+    "14.2 Add the schema pieces with `wpseo_schema_graph` in `inc/seo.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141220136
+      }
+    ],
+    "14.3 Add the logo attachment step to `wordpress/import/import.php`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141220254
+      }
+    ],
+    "15.1 Write `wordpress/tools/parity/pages.json`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141220372
+      }
+    ],
+    "15.2 Write `wordpress/tools/parity/check.mjs`": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141220479
+      }
+    ],
+    "15.3 Run the full check and share the report": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141220583
+      }
+    ],
+    "15.4 Fix the differences and re-run": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141220693
+      }
+    ],
+    "16. Final checkpoint: ensure all tests pass": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792141220799
+      }
+    ],
+    "2. Parent and child theme scaffold (Requirement 2)": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145218050
+      }
+    ],
+    "9. Live pricing (Requirement 8)": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145223070
+      }
+    ],
+    "1.5 Write unit tests for the host checks": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145263108
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145290775
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145697489
+      }
+    ],
+    "2.9 Write unit tests for the ported format helpers": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145263695
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145302200
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145697673
+      }
+    ],
+    "7.7 Write a property test for FAQ schema": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145264892
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145302527
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145698755
+      }
+    ],
+    "8.2 Write a property test for the slug guard": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145265763
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145302684
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145699201
+      }
+    ],
+    "8.3 Write a property test for the TOC builder": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145267232
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145302916
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145700033
+      }
+    ],
+    "9.2 Write a property test for pricing parity": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145267620
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145706470
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792146337227
+      }
+    ],
+    "9.3 Write a property test for the pricing source order": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145268225
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792145707208
+      },
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792146337585
+      }
+    ],
+    "7. Editable content with SCF (Requirement 6)": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792147648976
+      }
+    ],
+    "4. Header and mega menu (Requirement 4)": [
+      {
+        "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792147649168
+      }
+    ]
+  }
+}
