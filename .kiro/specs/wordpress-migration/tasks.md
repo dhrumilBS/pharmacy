@@ -91,7 +91,7 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - _Requirements: 2.6, 5.3_
 
 - [ ] 3. Theme files: templates and parts (Requirement 3)
-  - [~] 3.1 Write `header.php` and `footer.php`
+  - [x] 3.1 Write `header.php` and `footer.php`
     - `header.php`:
       - Doctype, `<html <?php language_attributes(); ?>>`, charset and viewport meta, `wp_head()`
       - `<body <?php body_class(); ?>>`, `wp_body_open()`, `parts/sprite`, skip link, review banner
@@ -334,8 +334,8 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - No "Healthray" outside URL values in `settings.php`, and none of the snapshot's paid plan prices (for example `4,999`, `9,999`) outside `data/pricing.json`
     - _Requirements: 8.4, 10.4_
 
-- [ ] 13. Performance (Requirement 11)
-  - [~] 13.1 Implement the front-end cleanup in `inc/cleanup.php`
+- [x] 13. Performance (Requirement 11)
+  - [x] 13.1 Implement the front-end cleanup in `inc/cleanup.php`
     - Deregister `jquery`, `wp-embed`
     - Remove emoji scripts, styles and filters
     - Dequeue `wp-block-library`, `wp-block-library-theme`, `classic-theme-styles` and `global-styles`, and remove `wp_enqueue_global_styles`
@@ -355,13 +355,13 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - Pricing: `wpseo_metadesc` built from `rx_pricing_meta_bits()`
     - `wpseo_locale` → `en_IN`; `wpseo_debug_markers` → false
     - _Requirements: 12.1, 12.5_
-  - [~] 14.2 Add the schema pieces with `wpseo_schema_graph` in `inc/seo.php`
+  - [x] 14.2 Add the schema pieces with `wpseo_schema_graph` in `inc/seo.php`
     - Article `author` → Organization `@id`, and Person nodes removed
     - FAQPage from `rx_faq_schema()` on the features hub, feature pages, FAQ page and posts
     - Blog + BlogPosting on the blog hub and topic views
     - SoftwareApplication with one Offer per non-custom plan on pricing, omitted when pricing is null
     - _Requirements: 12.3, 12.4, 12.5_
-  - [~] 14.3 Add the logo attachment step to `wordpress/import/import.php`
+  - [x] 14.3 Add the logo attachment step to `wordpress/import/import.php`
     - Copy the theme's `assets/img/logo-mark.svg` into uploads once (found by `_rx_source`), `wp_insert_attachment()` with mime `image/svg+xml` and width/height from the viewBox
     - Set Yoast `company_logo` and `company_logo_id` through `WPSEO_Options::set()`
     - _Requirements: 12.3_
