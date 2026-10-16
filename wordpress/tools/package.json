@@ -1,0 +1,20 @@
+{
+  "name": "pharmacy-wp-tools",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Tests and parity check for the WordPress migration of the pharmacy site. Local use only.",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.mjs\"",
+    "parity": "node parity/check.mjs"
+  },
+  "devDependencies": {
+    "fast-check": "4.10.2",
+    "pixelmatch": "8.0.0",
+    "playwright-core": "1.64.1",
+    "pngjs": "7.0.0"
+  }
+}
