@@ -1,6 +1,7 @@
 <?php
 /**
  * Inner-page hero with breadcrumb. Set $hero = ['crumb' => 'About', 'h1' => '...', 'lead' => '...', 'eyebrow' => optional, 'meta' => optional].
+ * Optional 'parent_url' turns the parent crumb into a link (blog posts link back to the blog).
  * Background pattern (.page-hero.ph2 in layout.css) follows HERO_PATTERN in config.php; a page can override it
  * with 'pattern' => true or false.
  */
@@ -10,7 +11,7 @@ $ph_pattern = (bool) ($hero['pattern'] ?? HERO_PATTERN);
   <div class="container">
     <ol class="crumbs" aria-label="Breadcrumb">
       <li><a href="<?= url('home') ?>">Home</a></li>
-      <?php if (!empty($hero['parent'])): ?><li><?= e($hero['parent']) ?></li><?php endif; ?>
+      <?php if (!empty($hero['parent'])): ?><li><?php if (!empty($hero['parent_url'])): ?><a href="<?= e($hero['parent_url']) ?>"><?= e($hero['parent']) ?></a><?php else: ?><?= e($hero['parent']) ?><?php endif; ?></li><?php endif; ?>
       <li aria-current="page"><?= e($hero['crumb']) ?></li>
     </ol>
     <?php if (!empty($hero['eyebrow'])): ?><span class="eyebrow"><?= e($hero['eyebrow']) ?></span><?php endif; ?>

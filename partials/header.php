@@ -43,7 +43,7 @@ $active = function (array $keys) use ($page_key) { return in_array($page_key, $k
         <li><a class="hd-link<?= $active(['pricing']) ?>" href="<?= url('pricing') ?>">Pricing</a></li>
         <li><a class="hd-link<?= $active(['switch']) ?>" href="<?= url('switch') ?>">Switch</a></li>
         <li class="hd-has">
-          <button class="hd-link<?= $active(['calculator','checklist','guides','faq','support']) ?>" type="button" aria-expanded="false" aria-controls="mm-resources">Resources<svg class="icon chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <button class="hd-link<?= $active(['calculator','checklist','guides','blog','faq','support']) ?>" type="button" aria-expanded="false" aria-controls="mm-resources">Resources<svg class="icon chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
           <div class="mm" id="mm-resources" hidden>
             <div class="mm-col"><?php foreach (NAV_RESOURCES as $it) echo nav_item_link($it); ?></div>
           </div>

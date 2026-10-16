@@ -54,15 +54,15 @@ function logo(): string {
 const PAGES = [
   'home'          => ['file' => 'index.php'],
   // Features
-  'billing'       => ['fallback' => 'index.php#features'],
-  'expiry'        => ['fallback' => 'index.php#features'],
-  'inventory'     => ['fallback' => 'index.php#features'],
-  'purchase'      => ['fallback' => 'index.php#features'],
-  'gst'           => ['fallback' => 'index.php#features'],
-  'reports'       => ['fallback' => 'index.php#features'],
-  'retention'     => ['fallback' => 'index.php#features'],
-  'security'      => ['fallback' => 'data-security.php'],
-  'features'      => ['fallback' => 'index.php#features'],
+  'billing'       => ['file' => 'features/billing.php'],     // "Run the counter" feature pages (partials/feature-page.php)
+  'expiry'        => ['file' => 'features/expiry.php'],
+  'inventory'     => ['file' => 'features/inventory.php'],
+  'purchase'      => ['file' => 'features/purchase.php'],
+  'gst'           => ['file' => 'features/gst.php'],         // "Run the business" feature pages (same template)
+  'reports'       => ['file' => 'features/reports.php'],
+  'retention'     => ['file' => 'features/retention.php'],
+  'security'      => ['file' => 'features/security.php'],
+  'features'      => ['file' => 'features/index.php'],
   // Solutions
   'retail'        => ['fallback' => 'index.php#solutions'],
   'chain'         => ['fallback' => 'index.php#solutions'],
@@ -74,7 +74,8 @@ const PAGES = [
   // Resources
   'calculator'    => ['fallback' => 'index.php#estimator'],
   'checklist'     => ['fallback' => 'index.php#checklist'],
-  'guides'        => ['fallback' => 'index.php#faq'],
+  'guides'        => ['file' => 'blog/index.php'],   // the blog is the guides hub (posts in blog/, data in partials/data/blog.php)
+  'blog'          => ['file' => 'blog/index.php'],
   'faq'           => ['file' => 'faq.php'],
   // Company
   'about'         => ['file' => 'about.php'],
@@ -162,6 +163,7 @@ const NAV_SOLUTIONS = [
 const NAV_RESOURCES = [
   ['calculator', 'Expiry loss calculator', 'Put a number on expiry loss',   'i-chart'],
   ['checklist',  'Buyer’s checklist',      '8 questions to ask any vendor', 'i-file'],
+  ['blog',       'Blog & guides',          'Practical guides for the counter', 'i-register'],
   ['faq',        'FAQ',                    'Straight answers',              'i-chat'],
   ['support',    'Help & support',         'Phone, help centre, guides',    'i-headset'],
 ];
