@@ -29,13 +29,16 @@
  *     "privacy". Each is set only when that page exists and is published.
  *  6. Menus from content/menus.php with their items and menu-item fields,
  *     then the theme menu locations.
- *  7. Logo attachment for Yoast's Organization (task 14.3).
+ *  7. Logo attachment for Yoast's Organization: the theme's
+ *     assets/img/logo-mark.svg as an attachment (found by `_rx_source`,
+ *     created once), then Yoast's company_logo and company_logo_id.
  *  8. The WordPress sample content, deleted once: post "Hello world!" (and
  *     its comments), page "Sample Page" and the draft page "Privacy Policy",
  *     each only when it has no `_rx_source`. Option rx_import_samples_deleted
  *     records what was handled, so later runs touch nothing. This is the only
  *     deletion in the import (stale menu items aside, which rx_upsert_menu()
- *     removes to keep each menu equal to its data).
+ *     removes to keep each menu equal to its data, and a logo file step 7
+ *     copied in the same run when registering it as an attachment fails).
  *  9. flush_rewrite_rules( false ), then a summary of created, updated,
  *     unchanged, deleted, failed, missing and skipped counts per type.
  *
@@ -70,6 +73,12 @@ const RX_IMPORT_ACF_JSON = __DIR__ . '/../themes/pharmacy/acf-json';
 
 /** Option recording which WordPress sample items step 8 has handled. */
 const RX_IMPORT_SAMPLES_OPTION = 'rx_import_samples_deleted';
+
+/** Parent theme file the logo attachment is made from; also its `_rx_source` (step 7). */
+const RX_IMPORT_LOGO_SOURCE = 'assets/img/logo-mark.svg';
+
+/** MIME type of the logo attachment. */
+const RX_IMPORT_LOGO_MIME = 'image/svg+xml';
 
 /*
  * -------------------------------------------------------------------------
@@ -1604,20 +1613,474 @@ function rx_import_locations( Rx_Import_Run $run, array $assign ): void {
 /**
  * Step 7: the logo attachment Yoast needs to output Organization (design §12).
  *
- * Placeholder until task 14.3, which fills it in: copy the theme's
- * assets/img/logo-mark.svg into uploads once (found by `_rx_source`), create
- * the attachment (image/svg+xml, width and height from the viewBox) and set
- * Yoast's company_logo and company_logo_id through WPSEO_Options::set().
+ * 1. Attachment, found by `_rx_source` = RX_IMPORT_LOGO_SOURCE:
+ *    - None yet: the parent theme's assets/img/logo-mark.svg is copied into
+ *      the uploads folder of wp_upload_dir(). The name stays logo-mark.svg
+ *      unless that file exists; wp_unique_filename() then adds a number, so
+ *      no other file is overwritten. wp_insert_attachment() registers it as
+ *      image/svg+xml, and its metadata gets width and height from the SVG
+ *      viewBox. No image editor runs and wp_generate_attachment_metadata()
+ *      is not called (it cannot read SVG).
+ *    - Found: it is reused, so the ID stays the same on every run. A file
+ *      that went missing is copied back from the theme, and metadata that
+ *      does not match the file is corrected.
+ * 2. Yoast: company_logo (the attachment URL) and company_logo_id are set
+ *    with WPSEO_Options::set() when they differ, then read back. Yoast's
+ *    cached logo data (company_logo_meta) is reset at the same time, as
+ *    Yoast's own site representation settings do, so Yoast rebuilds it from
+ *    the new attachment. When Yoast is not loaded this part fails and the
+ *    attachment is kept.
+ *
+ * A dry run reports what would happen and writes nothing: no file is copied
+ * and no folder is created.
  *
  * @param bool $dry Dry run: check only, write nothing.
- * @return array{status: string, message: string, id?: int} status is one of
- *         'created', 'updated', 'unchanged', 'skipped' or 'failed'.
+ * @return array<int, array{status: string, message: string, id?: int, word?: string, details?: string[]}>
+ *         One result per part (attachment, then Yoast). status is one of
+ *         'created', 'updated', 'unchanged', 'skipped' or 'failed'; word is
+ *         the log word when it differs from status; details are printed
+ *         under the line (for a failure: the problems).
  */
 function rx_import_logo( bool $dry ): array {
-	unset( $dry );
+	$attachment = rx_import_logo_attachment( $dry );
 	return array(
-		'status'  => 'skipped',
-		'message' => 'logo attachment: not implemented yet (task 14.3 adds it)',
+		array_diff_key( $attachment, array( 'url' => true ) ),
+		rx_import_logo_yoast( $dry, $attachment ),
+	);
+}
+
+/**
+ * Width and height of an SVG: from the root element's viewBox, else from
+ * its width and height attributes (unitless or px).
+ *
+ * @param string $svg SVG markup.
+ * @return int[]|null [ width, height ] rounded to whole pixels, or null when unknown.
+ */
+function rx_import_svg_size( string $svg ): ?array {
+	if ( ! preg_match( '/<svg\b[^>]*>/i', $svg, $tag ) ) {
+		return null;
+	}
+	$tag = $tag[0];
+	$num = '[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?';
+	$sep = '(?:\s*,\s*|\s+)';
+
+	if ( preg_match( '/\sviewBox\s*=\s*(["\'])\s*(' . $num . ')' . $sep . '(' . $num . ')' . $sep . '(' . $num . ')' . $sep . '(' . $num . ')\s*\1/i', $tag, $m ) ) {
+		$width  = (int) round( (float) $m[4] );
+		$height = (int) round( (float) $m[5] );
+		if ( $width > 0 && $height > 0 ) {
+			return array( $width, $height );
+		}
+	}
+
+	$size = array();
+	foreach ( array( 'width', 'height' ) as $attr ) {
+		if ( ! preg_match( '/\s' . $attr . '\s*=\s*(["\'])\s*(' . $num . ')\s*(?:px)?\s*\1/i', $tag, $m ) ) {
+			return null;
+		}
+		$size[] = (int) round( (float) $m[2] );
+	}
+	return $size[0] > 0 && $size[1] > 0 ? $size : null;
+}
+
+/**
+ * The logo file in the parent theme: the active pharmacy theme's copy, else
+ * (a dry run with another theme active) the repository's.
+ */
+function rx_import_logo_source_file(): string {
+	$theme = 'pharmacy' === get_template() ? get_template_directory() : dirname( __DIR__ ) . '/themes/pharmacy';
+	return wp_normalize_path( $theme . '/' . RX_IMPORT_LOGO_SOURCE );
+}
+
+/**
+ * Path of a file relative to the uploads folder, e.g. '2026/10/logo-mark.svg'.
+ *
+ * Compares normalised paths, so mixed slashes (and letter case on Windows)
+ * do not matter. WordPress' _wp_relative_upload_path() compares the raw
+ * strings instead.
+ *
+ * @param string $path    File path.
+ * @param string $basedir Uploads base folder.
+ * @return string Relative path, or '' when the file is not inside the
+ *                uploads folder (or the path has a ".." segment).
+ */
+function rx_import_upload_rel( string $path, string $basedir ): string {
+	$path = wp_normalize_path( $path );
+	$base = untrailingslashit( wp_normalize_path( $basedir ) );
+	if ( '' === $base || preg_match( '#(?:^|/)\.\.(?:/|$)#', $path ) || ! str_starts_with( rx_guard_norm_path( $path ), rx_guard_norm_path( $base ) . '/' ) ) {
+		return '';
+	}
+	return substr( $path, strlen( $base ) + 1 );
+}
+
+/**
+ * Copy the theme logo to a path in the uploads folder. Never overwrites a
+ * file: it fails when something is already there.
+ *
+ * @param string $source Theme file.
+ * @param string $dest   Target path.
+ * @return string '' on success, else the problem.
+ */
+function rx_import_logo_copy( string $source, string $dest ): string {
+	if ( file_exists( $dest ) ) {
+		return 'not copied: ' . $dest . ' already exists';
+	}
+	if ( ! wp_mkdir_p( dirname( $dest ) ) ) {
+		return 'cannot create the folder ' . dirname( $dest );
+	}
+	if ( ! copy( $source, $dest ) ) {
+		$error = error_get_last();
+		return 'cannot copy ' . $source . ' to ' . $dest . ( $error ? ': ' . $error['message'] : '' );
+	}
+	if ( ! hash_equals( (string) md5_file( $source ), (string) md5_file( $dest ) ) ) {
+		return 'the copy at ' . $dest . ' differs from ' . $source;
+	}
+	return '';
+}
+
+/**
+ * Attachment metadata for the logo file: what WordPress stores for an image
+ * without sub-sizes.
+ *
+ * @param string $rel      Path relative to the uploads folder.
+ * @param int[]  $size     [ width, height ].
+ * @param int    $filesize File size in bytes.
+ */
+function rx_import_logo_metadata( string $rel, array $size, int $filesize ): array {
+	return array(
+		'width'    => $size[0],
+		'height'   => $size[1],
+		'file'     => $rel,
+		'filesize' => $filesize,
+		'sizes'    => array(),
+	);
+}
+
+/**
+ * Problems with a saved logo attachment, read back from the database.
+ *
+ * @param int    $id      Attachment ID.
+ * @param string $rel     Expected file, relative to the uploads folder.
+ * @param int[]  $size    Expected [ width, height ].
+ * @param string $basedir Uploads base folder.
+ * @return string[] Problems (empty when the attachment is as expected).
+ */
+function rx_import_logo_verify( int $id, string $rel, array $size, string $basedir ): array {
+	clean_post_cache( $id );
+	$problems = array();
+	if ( 'attachment' !== get_post_type( $id ) || RX_IMPORT_LOGO_MIME !== get_post_mime_type( $id ) ) {
+		$problems[] = "#{$id} is not an " . RX_IMPORT_LOGO_MIME . ' attachment';
+	}
+	if ( RX_IMPORT_LOGO_SOURCE !== get_post_meta( $id, '_rx_source', true ) ) {
+		$problems[] = '_rx_source reads back as ' . var_export( get_post_meta( $id, '_rx_source', true ), true );
+	}
+	$attached = (string) get_attached_file( $id, true );
+	if ( rx_import_upload_rel( $attached, $basedir ) !== $rel ) {
+		$problems[] = '_wp_attached_file reads back as ' . var_export( get_post_meta( $id, '_wp_attached_file', true ), true ) . ", not {$rel}";
+	} elseif ( ! is_file( $attached ) ) {
+		$problems[] = 'the file ' . wp_normalize_path( $attached ) . ' does not exist';
+	}
+	$meta = wp_get_attachment_metadata( $id, true );
+	if ( ! is_array( $meta ) || (int) ( $meta['width'] ?? 0 ) !== $size[0] || (int) ( $meta['height'] ?? 0 ) !== $size[1] || ( $meta['file'] ?? '' ) !== $rel ) {
+		$problems[] = 'metadata reads back as ' . wp_json_encode( $meta ) . ", not {$size[0]}x{$size[1]} for {$rel}";
+	}
+	return $problems;
+}
+
+/**
+ * Step 7, part 1: find, create or repair the logo attachment.
+ *
+ * @param bool $dry Dry run.
+ * @return array Result (see rx_import_logo()) plus 'url': the attachment URL
+ *               for the Yoast part (in a dry run, the URL it would get).
+ */
+function rx_import_logo_attachment( bool $dry ): array {
+	$label  = 'logo attachment ' . RX_IMPORT_LOGO_SOURCE;
+	$source = rx_import_logo_source_file();
+	$fail   = static fn( array $problems, int $id = 0 ): array => array(
+		'status'  => 'failed',
+		'message' => $label . ( $id ? " (#{$id})" : '' ),
+		'details' => $problems,
+		'url'     => '',
+	);
+
+	$svg = is_file( $source ) ? file_get_contents( $source ) : false;
+	if ( ! is_string( $svg ) || '' === $svg ) {
+		return $fail( array( 'cannot read the theme file ' . $source ) );
+	}
+	$size = rx_import_svg_size( $svg );
+	if ( null === $size ) {
+		return $fail( array( 'no width and height in the viewBox (or width/height attributes) of ' . $source ) );
+	}
+
+	// Paths and URLs only: false = do not create the month folder here.
+	$uploads = wp_upload_dir( null, false );
+	if ( ! empty( $uploads['error'] ) ) {
+		return $fail( array( 'uploads folder: ' . wp_strip_all_tags( (string) $uploads['error'] ) ) );
+	}
+
+	$id = rx_import_find_by_meta( '_rx_source', RX_IMPORT_LOGO_SOURCE, array( 'attachment' ) );
+	if ( ! $id ) {
+		return rx_import_logo_create( $dry, $label, $source, $size, $uploads, $fail );
+	}
+
+	// Existing attachment: reuse it, repairing its file and metadata if needed.
+	if ( RX_IMPORT_LOGO_MIME !== get_post_mime_type( $id ) ) {
+		return $fail( array( 'it has _rx_source ' . RX_IMPORT_LOGO_SOURCE . ' but MIME type ' . var_export( get_post_mime_type( $id ), true ) . '; fix or delete it, then run again' ), $id );
+	}
+
+	$recorded = '' !== (string) get_post_meta( $id, '_wp_attached_file', true );
+	$changes  = array();
+	$copy     = false;
+
+	if ( ! $recorded ) {
+		$rel       = rx_import_logo_new_rel( $uploads );
+		$copy      = true;
+		$changes[] = "no file recorded: copy the theme logo to uploads/{$rel} and record it";
+	} else {
+		$attached = (string) get_attached_file( $id, true );
+		$rel      = rx_import_upload_rel( $attached, $uploads['basedir'] );
+		if ( '' === $rel ) {
+			return $fail( array( 'its file ' . wp_normalize_path( $attached ) . ' is outside the uploads folder ' . wp_normalize_path( $uploads['basedir'] ) . '; nothing was changed' ), $id );
+		}
+		if ( ! file_exists( $uploads['basedir'] . '/' . $rel ) ) {
+			$copy      = true;
+			$changes[] = "file missing: copy the theme logo back to uploads/{$rel}";
+		}
+	}
+	$abs = $uploads['basedir'] . '/' . $rel;
+
+	// Size and file size of the file the attachment will have: the theme's
+	// when it is copied now, else the uploaded one.
+	if ( ! $copy ) {
+		$content = file_get_contents( $abs );
+		$size    = is_string( $content ) ? rx_import_svg_size( $content ) : null;
+		if ( null === $size ) {
+			return $fail( array( 'no width and height in the viewBox of ' . wp_normalize_path( $abs ) ), $id );
+		}
+	}
+	$want = rx_import_logo_metadata( $rel, $size, (int) wp_filesize( $copy ? $source : $abs ) );
+	$meta = wp_get_attachment_metadata( $id, true );
+	$have = is_array( $meta ) ? array(
+		'width'    => (int) ( $meta['width'] ?? 0 ),
+		'height'   => (int) ( $meta['height'] ?? 0 ),
+		'file'     => (string) ( $meta['file'] ?? '' ),
+		'filesize' => (int) ( $meta['filesize'] ?? -1 ),
+	) : null;
+	$compare = array_diff_key( $want, array( 'sizes' => true ) );
+	if ( $have !== $compare ) {
+		$changes[] = 'metadata ' . wp_json_encode( $have ) . ' -> ' . wp_json_encode( $compare );
+	}
+
+	$text = "{$label}: uploads/{$rel}";
+	$url  = $recorded ? (string) wp_get_attachment_url( $id ) : $uploads['baseurl'] . '/' . $rel;
+	if ( ! $changes || $dry ) {
+		return array(
+			'status'  => $changes ? 'updated' : 'unchanged',
+			'message' => $text,
+			'id'      => $id,
+			'details' => $changes,
+			'url'     => $url,
+		);
+	}
+
+	if ( $copy ) {
+		$problem = rx_import_logo_copy( $source, $abs );
+		if ( '' !== $problem ) {
+			return $fail( array( $problem ), $id );
+		}
+		if ( ! $recorded ) {
+			update_attached_file( $id, $abs );
+		}
+	}
+	wp_update_attachment_metadata( $id, array_merge( is_array( $meta ) ? $meta : array(), $want ) );
+
+	$problems = rx_import_logo_verify( $id, $rel, $size, $uploads['basedir'] );
+	if ( $problems ) {
+		return $fail( $problems, $id );
+	}
+	return array(
+		'status'  => 'updated',
+		'message' => $text,
+		'id'      => $id,
+		'details' => $changes,
+		'url'     => (string) wp_get_attachment_url( $id ),
+	);
+}
+
+/**
+ * Path, relative to the uploads folder, for a new copy of the logo: the
+ * current uploads month folder and logo-mark.svg, numbered by
+ * wp_unique_filename() when a file of that name exists.
+ *
+ * @param array $uploads wp_upload_dir() result.
+ */
+function rx_import_logo_new_rel( array $uploads ): string {
+	$subdir = trim( (string) $uploads['subdir'], '/' );
+	$name   = wp_unique_filename( $uploads['path'], wp_basename( RX_IMPORT_LOGO_SOURCE ) );
+	return ( '' !== $subdir ? $subdir . '/' : '' ) . $name;
+}
+
+/**
+ * Step 7, part 1 for a new attachment: copy the file and register it.
+ *
+ * @param bool     $dry     Dry run.
+ * @param string   $label   Log label.
+ * @param string   $source  Theme file.
+ * @param int[]    $size    [ width, height ] from the viewBox.
+ * @param array    $uploads wp_upload_dir() result.
+ * @param callable $fail    Builds a failure result from problems and an ID.
+ * @return array Result (see rx_import_logo_attachment()).
+ */
+function rx_import_logo_create( bool $dry, string $label, string $source, array $size, array $uploads, callable $fail ): array {
+	$rel  = rx_import_logo_new_rel( $uploads );
+	$abs  = $uploads['basedir'] . '/' . $rel;
+	$url  = $uploads['baseurl'] . '/' . $rel;
+	$text = "{$label} -> uploads/{$rel} ({$size[0]}x{$size[1]}, " . RX_IMPORT_LOGO_MIME . ')';
+
+	if ( $dry ) {
+		return array(
+			'status'  => 'created',
+			'message' => $text,
+			'url'     => $url,
+		);
+	}
+
+	$problem = rx_import_logo_copy( $source, $abs );
+	if ( '' !== $problem ) {
+		return $fail( array( $problem ) );
+	}
+
+	$brand  = trim( (string) get_bloginfo( 'name' ) );
+	$result = rx_import_without_kses(
+		static fn() => wp_insert_attachment(
+			array(
+				'post_title'     => '' !== $brand ? $brand . ' logo' : 'Logo',
+				'post_content'   => '',
+				'post_excerpt'   => '',
+				'post_status'    => 'inherit',
+				'post_mime_type' => RX_IMPORT_LOGO_MIME,
+				'post_author'    => rx_import_author_id(),
+				'comment_status' => 'closed',
+				'ping_status'    => 'closed',
+				'guid'           => $url,
+				'meta_input'     => array( '_rx_source' => RX_IMPORT_LOGO_SOURCE ),
+			),
+			$abs,
+			0,
+			true
+		)
+	);
+	if ( is_wp_error( $result ) || ! $result ) {
+		// Remove the copy this run just made, so the next run starts clean.
+		wp_delete_file( $abs );
+		return $fail( array( 'wp_insert_attachment(): ' . ( is_wp_error( $result ) ? $result->get_error_message() : 'returned 0' ) ) );
+	}
+
+	$id = (int) $result;
+	wp_update_attachment_metadata( $id, rx_import_logo_metadata( $rel, $size, (int) wp_filesize( $abs ) ) );
+
+	$problems = rx_import_logo_verify( $id, $rel, $size, $uploads['basedir'] );
+	if ( $problems ) {
+		return $fail( $problems, $id );
+	}
+	return array(
+		'status'  => 'created',
+		'message' => $text,
+		'id'      => $id,
+		'url'     => (string) wp_get_attachment_url( $id ),
+	);
+}
+
+/**
+ * Step 7, part 2: point Yoast's company logo at the attachment.
+ *
+ * @param bool  $dry        Dry run.
+ * @param array $attachment Result of rx_import_logo_attachment().
+ * @return array Result (see rx_import_logo()).
+ */
+function rx_import_logo_yoast( bool $dry, array $attachment ): array {
+	$label = 'Yoast company_logo and company_logo_id';
+	if ( 'failed' === $attachment['status'] ) {
+		return array(
+			'status'  => 'skipped',
+			'message' => "{$label}: left as they are, because the logo attachment failed",
+		);
+	}
+	if ( ! class_exists( 'WPSEO_Options' ) || ! defined( 'WPSEO_VERSION' ) ) {
+		return array(
+			'status'  => 'failed',
+			'message' => $label,
+			'details' => array( 'Yoast SEO is not loaded, so the company logo is not set (the attachment is kept). Activate Yoast with wordpress/import/setup.php, then run the import again.' ),
+		);
+	}
+
+	$id   = (int) ( $attachment['id'] ?? 0 );
+	$want = array(
+		'company_logo'    => (string) ( $attachment['url'] ?? '' ),
+		'company_logo_id' => $id,
+	);
+	if ( '' === $want['company_logo'] ) {
+		return array(
+			'status'  => 'failed',
+			'message' => $label,
+			'details' => array( 'the logo attachment has no URL' ),
+		);
+	}
+
+	$read = static function (): array {
+		WPSEO_Options::clear_cache();
+		return array(
+			'company_logo'    => (string) WPSEO_Options::get( 'company_logo', '' ),
+			'company_logo_id' => (int) WPSEO_Options::get( 'company_logo_id', 0 ),
+		);
+	};
+	$show = static fn( array $v, string $new_id = '' ): string => 'company_logo = ' . ( '' !== $v['company_logo'] ? $v['company_logo'] : "''" )
+		. ', company_logo_id = ' . ( '' !== $new_id ? $new_id : $v['company_logo_id'] );
+
+	$before = $read();
+	if ( $id && $before === $want ) {
+		return array(
+			'status'  => 'unchanged',
+			'message' => 'Yoast ' . $show( $want ),
+		);
+	}
+
+	$message = 'Yoast ' . $show( $want, $id ? '' : 'ID of the new attachment' );
+	$details = array( 'was: ' . $show( $before ) );
+	if ( $dry ) {
+		$details[] = 'company_logo_meta (Yoast\'s cached logo data) would be reset to false';
+		return array(
+			'status'  => 'updated',
+			'word'    => 'set',
+			'message' => $message,
+			'details' => $details,
+		);
+	}
+
+	foreach ( $want as $key => $value ) {
+		if ( $before[ $key ] !== $value ) {
+			WPSEO_Options::set( $key, $value, 'wpseo_titles' );
+		}
+	}
+	WPSEO_Options::clear_cache();
+	if ( false !== WPSEO_Options::get( 'company_logo_meta', false ) ) {
+		WPSEO_Options::set( 'company_logo_meta', false, 'wpseo_titles' );
+		$details[] = 'company_logo_meta (Yoast\'s cached logo data) reset to false';
+	}
+
+	$after = $read();
+	if ( $after !== $want ) {
+		return array(
+			'status'  => 'failed',
+			'message' => $label,
+			'details' => array( 'read back as ' . $show( $after ) . ', expected ' . $show( $want ) ),
+		);
+	}
+	return array(
+		'status'  => 'updated',
+		'word'    => 'set',
+		'message' => $message,
+		'details' => $details,
 	);
 }
 
@@ -1897,22 +2360,27 @@ function rx_import_main( array $argv ): int {
 	rx_import_step( '6/9', 'Menus' );
 	rx_import_guarded( $run, 'menus', 'Menus', static fn() => rx_import_menus_step( $run, $menus, $plan ) );
 
-	// 7. Logo attachment (task 14.3).
+	// 7. Logo attachment, then Yoast's company logo (one summary count each).
 	rx_import_step( '7/9', 'Logo attachment' );
 	rx_import_guarded(
 		$run,
 		'logo',
 		'Logo attachment',
 		static function () use ( $run ) {
-			$logo   = rx_import_logo( $run->dry );
-			$status = (string) ( $logo['status'] ?? 'failed' );
-			$text   = (string) ( $logo['message'] ?? '' ) . ( ! empty( $logo['id'] ) ? " (#{$logo['id']})" : '' );
-			if ( 'failed' === $status || ! in_array( $status, Rx_Import_Run::COLUMNS, true ) ) {
-				$run->fail( 'logo', 'Logo attachment', '' !== $text ? $text : 'unknown status ' . var_export( $status, true ) );
-				return;
+			foreach ( rx_import_logo( $run->dry ) as $logo ) {
+				$status  = (string) ( $logo['status'] ?? 'failed' );
+				$text    = (string) ( $logo['message'] ?? '' ) . ( ! empty( $logo['id'] ) && 'failed' !== $status ? " (#{$logo['id']})" : '' );
+				$details = array_values( array_filter( (array) ( $logo['details'] ?? array() ), 'is_string' ) );
+				if ( 'failed' === $status || ! in_array( $status, Rx_Import_Run::COLUMNS, true ) ) {
+					$run->fail( 'logo', '' !== $text ? $text : 'Logo attachment', $details ? $details : ( 'failed' === $status ? 'failed' : 'unknown status ' . var_export( $status, true ) ) );
+					continue;
+				}
+				$run->add( 'logo', $status );
+				rx_import_line( $run->word( (string) ( $logo['word'] ?? $status ) ), $text );
+				foreach ( $details as $detail ) {
+					rx_import_detail( $detail );
+				}
 			}
-			$run->add( 'logo', $status );
-			rx_import_line( $run->word( $status ), $text );
 		}
 	);
 
@@ -1941,6 +2409,15 @@ function rx_import_main( array $argv ): int {
 	);
 
 	return rx_import_summary( $run );
+}
+
+/*
+ * Run only when this file is the script being executed, so a test script can
+ * require it for its functions without starting the import.
+ */
+$rx_import_entry = realpath( (string) ( $_SERVER['SCRIPT_FILENAME'] ?? '' ) );
+if ( false === $rx_import_entry || rx_guard_norm_path( $rx_import_entry ) !== rx_guard_norm_path( __FILE__ ) ) {
+	return;
 }
 
 exit( rx_import_main( $_SERVER['argv'] ?? array() ) );
