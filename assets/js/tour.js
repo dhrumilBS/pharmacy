@@ -1,4 +1,4 @@
-/* Product tour: a scripted, pausable timeline over the DOM in partials/product-tour.php.
+/* Product tour v2 (v1: archive/video/v1): a scripted, pausable timeline over the DOM in partials/product-tour.php.
    Two controls only: play/pause and full screen. Autoplays (muted by nature) when on screen, unless the
    visitor prefers reduced motion or paused it themselves. Loops after the end card. Vanilla, no dependencies. */
 (function () {
@@ -45,7 +45,7 @@
   function show(t, sel) { cls(t, sel, 'on', true); }
   function hide(t, sel) { cls(t, sel, 'on', false); }
   function text(t, sel, s) { at(t, 0, function () { var el = q(sel); if (el) el.textContent = s; }); }
-  var SCENES = { dash: ['Dashboard', '/dashboard'], bill: ['New sale', '/sales/new'], buy: ['Purchase import', '/purchase/import'], exp: ['Expiry report', '/reports/stock-expiry'] };
+  var SCENES = { dash: ['Dashboard', '/pharmacy/dashboard'], bill: ['Sales', '/pharmacy/sales'], buy: ['Purchases', '/pharmacy/purchase'], exp: ['Stock Expiry Report', '/pharmacy/expiry-report'] };
   function scene(t, name) {
     at(t, 0, function () {
       stage.setAttribute('data-scene', name);
@@ -99,74 +99,86 @@
     });
   }
 
-  /* ---------- Script (seconds) ---------- */
+  /* ---------- Script (seconds), v2. Ends at 38.6 s with the end card; TOTAL leaves it on screen before the loop ---------- */
   scene(0, 'dash');
-  move(.6, 1.4, '.t-new', -10, 2);
-  click(2.2, '.t-new');
-  scene(2.6, 'bill');
+  count(0, 1.0, '.t-k1', 0, 731); count(0, 1.0, '.t-k2', 0, 1561); count(0, 1.0, '.t-k3', 0, 213.35); count(0, 1.0, '.t-k4', 0, 1561);
+  move(1.2, 1.3, '.t-nav-sale', 0, 2);
+  click(2.6, '.t-nav-sale');
+  scene(2.9, 'bill');
   // Scan the first item with the barcode reader
-  show(3.1, '.t-scanner');
-  cls(3.9, '.t-scanner', 'scan');
-  cls(4.8, '.t-scanner', 'beep');
-  show(4.9, '.t-row1'); cls(4.9, '.t-empty', 'gone');
-  text(4.9, '.t-items', '1 item'); count(4.9, .5, '.t-total', 0, 128.40);
-  hide(5.7, '.t-scanner');
-  // Search the second item; the nearest-expiry batch is picked
-  move(5.8, 1.0, '.t-search', -140, 0);
-  click(6.9, '.t-search'); cls(6.9, '.t-search', 'focus');
-  type(7.2, 1.0, 'search', 'dolo 6');
-  show(8.3, '.t-dd');
-  move(8.6, .7, '.dd-pick', -60, 0);
-  click(9.4, '.dd-pick');
-  hide(9.7, '.t-dd'); show(9.7, '.t-batches');
-  cls(10.3, '.bt-pick', 'flash');
-  hide(11.4, '.t-batches'); cls(11.4, '.t-search', 'focus', false); type(11.4, .01, 'search', '');
-  show(11.5, '.t-row2'); text(11.5, '.t-items', '2 items'); count(11.5, .6, '.t-total', 128.40, 159.31);
+  show(3.4, '.t-scanner');
+  cls(4.2, '.t-scanner', 'scan');
+  cls(5.1, '.t-scanner', 'beep');
+  show(5.2, '.t-row1'); text(5.2, '.t-srn', '2'); text(5.2, '.t-gen', 'Glimepiride + Voglibose + Metformin');
+  count(5.2, .5, '.t-total', 0, 421.05); count(5.2, .5, '.t-gst', 0, 20.05);
+  hide(6.0, '.t-scanner');
+  // Search the second item; the batch expiring first is picked
+  move(6.1, 1.0, '.t-search', -180, 0);
+  click(7.2, '.t-search'); cls(7.2, '.t-search', 'focus');
+  type(7.5, 1.0, 'search', 'zerodol');
+  show(8.6, '.t-dd');
+  move(8.9, .7, '.dd-pick', -120, 0);
+  click(9.7, '.dd-pick');
+  hide(10.0, '.t-dd'); show(10.0, '.t-batches');
+  cls(10.6, '.bt-pick', 'flash');
+  hide(11.7, '.t-batches'); cls(11.7, '.t-search', 'focus', false); type(11.7, .01, 'search', '');
+  show(11.8, '.t-row2'); text(11.8, '.t-srn', '3'); text(11.8, '.t-gen', 'Aceclofenac + Paracetamol + Serratiopeptidase');
+  count(11.8, .6, '.t-total', 421.05, 560.73); count(11.8, .6, '.t-gst', 20.05, 26.70);
   // Quantity 2
-  move(12.3, .8, '.t-qty', 0, 0);
-  click(13.2, '.t-qty');
-  text(13.5, '.t-qty', '2'); text(13.5, '.t-amt2', '₹61.82'); count(13.5, .5, '.t-total', 159.31, 190.22);
+  move(12.6, .8, '.t-qty', 0, 0);
+  click(13.5, '.t-qty');
+  text(13.8, '.t-qty', '2'); text(13.8, '.t-amt2', '279.36');
+  count(13.8, .5, '.t-total', 560.73, 700.41); count(13.8, .5, '.t-gst', 26.70, 33.35);
   // Patient
-  move(14.1, .8, '.t-patient', -40, 0);
-  click(15.0, '.t-patient'); cls(15.0, '.t-patient', 'focus');
-  type(15.2, .8, 'patient', 'Ramesh');
-  show(16.1, '.t-pchip');
-  move(16.4, .5, '.t-pchip', -30, 0);
-  click(17.0, '.t-pchip');
-  type(17.1, .01, 'patient', 'Ramesh Patel'); hide(17.2, '.t-pchip'); cls(17.2, '.t-patient', 'focus', false);
-  // Pay by UPI, save, print + share
-  move(17.5, .7, '.t-upi', 0, 0);
-  click(18.3, '.t-upi'); cls(18.3, '.t-upi', 'sel');
-  move(18.7, .8, '.t-save', -30, 0);
-  click(19.6, '.t-save');
-  show(19.9, '.t-receipt');
-  toast(20.1, 'Bill INV-26-04813 saved · shared on WhatsApp', 2.2);
-  hide(22.1, '.t-receipt');
-  // Distributor bill: drag the CSV in
-  scene(22.6, 'buy');
-  show(23.1, '.t-file');
-  move(23.4, .8, '.t-file', -40, 0);
-  cls(24.3, '.t-cursor', 'grab');
-  drag(24.4, 1.4, '.t-file', '.t-drop');
-  cls(25.0, '.t-drop', 'hot');
-  cls(25.9, '.t-cursor', 'grab', false); cls(25.9, '.t-file', 'gone'); cls(25.9, '.t-drop', 'hot', false); cls(25.9, '.t-drop', 'busy');
-  at(26.0, 1.4, function (p) { q('.t-prog i').style.width = (p * 100) + '%'; });
-  [0, 1, 2, 3, 4].forEach(function (i) { at(27.4 + i * .22, 0, function () { qa('.t-prow')[i].classList.add('on'); }); });
-  cls(27.5, '.t-drop', 'done'); text(27.5, '.t-droplabel', 'SKP-2026-4471.csv imported');
-  show(28.7, '.t-psum');
-  move(28.9, 1.0, '.t-psum', 120, -6);       // rest on the summary line (it sits near the stage's bottom edge)
-  // Expiry report: 60 days, then draft a purchase return
-  scene(30.0, 'exp');
-  move(30.6, .9, '.t-f60', 0, 0);
-  click(31.6, '.t-f60'); cls(31.6, '.t-f60', 'sel');
-  [0, 1, 2, 3].forEach(function (i) { at(31.9 + i * .2, 0, function () { qa('.t-erow')[i].classList.add('on'); }); });
-  show(32.8, '.t-esum');
-  move(33.6, .9, '.t-ret', -10, 0);
-  click(34.6, '.t-ret');
-  toast(34.8, 'Purchase return drafted · Shree Krishna Pharma', 2.0);
-  move(35.6, 1.2, '.t-esum', 260, 0);        // drift to the "at risk" total, inside the frame
-  at(37.0, 0, function () { endCard.hidden = false; player.classList.add('is-ended'); });
-  var TOTAL = 30000;
+  move(14.4, .8, '.t-patient', -40, 0);
+  click(15.3, '.t-patient'); cls(15.3, '.t-patient', 'focus');
+  type(15.5, .8, 'patient', 'Ramesh');
+  show(16.4, '.t-pchip');
+  move(16.7, .5, '.t-pchip', -30, 0);
+  click(17.3, '.t-pchip');
+  type(17.4, .01, 'patient', 'Ramesh Patel'); hide(17.5, '.t-pchip'); cls(17.5, '.t-patient', 'focus', false);
+  text(17.5, '.t-phone', '+91 90990 12345'); cls(17.5, '.t-phone', 'ph', false);
+  text(17.5, '.t-doc', 'Dr. Kavita Shah'); cls(17.5, '.t-doc', 'ph', false);
+  // Pay by UPI, save & print, share
+  move(17.9, .7, '.t-upi', 0, 0);
+  click(18.7, '.t-upi'); cls(18.7, '.t-upi', 'sel');
+  move(19.1, .8, '.t-save', -20, 0);
+  click(20.0, '.t-save');
+  show(20.3, '.t-receipt');
+  toast(20.5, 'Bill INV-26-04813 saved · shared on WhatsApp', 2.2);
+  hide(22.4, '.t-receipt');
+  // Distributor bill: drag the CSV in; margins are compared with the last purchase
+  move(22.7, .9, '.t-nav-buy', 0, 2);
+  click(23.7, '.t-nav-buy');
+  scene(24.0, 'buy');
+  show(24.4, '.t-file');
+  move(24.6, .8, '.t-file', -40, 0);
+  cls(25.5, '.t-cursor', 'grab');
+  drag(25.6, 1.4, '.t-file', '.t-drop');
+  cls(26.2, '.t-drop', 'hot');
+  cls(27.1, '.t-cursor', 'grab', false); cls(27.1, '.t-file', 'gone'); cls(27.1, '.t-drop', 'hot', false); cls(27.1, '.t-drop', 'busy');
+  at(27.2, 1.1, function (p) { q('.t-prog i').style.width = (p * 100) + '%'; });
+  [0, 1, 2, 3, 4].forEach(function (i) { at(28.4 + i * .2, 0, function () { qa('.t-prow')[i].classList.add('on'); }); });
+  cls(28.4, '.t-dropr', 'gone');
+  count(28.4, 1.0, '.t-pgross', 0, 10657.95); count(28.4, 1.0, '.t-pdue', 0, 10657.95);
+  show(29.6, '.t-psum'); cls(29.9, '.t-pwarn', 'flag');
+  move(29.8, 1.0, '.t-psum em', 0, 0);
+  // Reports menu → stock expiry report → supplier-wise → purchase return
+  move(31.0, .8, '.t-nav-rep', 0, 2);
+  click(31.9, '.t-nav-rep'); show(31.9, '.t-rep-dd');
+  move(32.2, .6, '.t-rep-exp', -30, 0);
+  click(32.9, '.t-rep-exp');
+  hide(33.1, '.t-rep-dd'); scene(33.2, 'exp');
+  [0, 1, 2, 3, 4, 5].forEach(function (i) { at(33.5 + i * .12, 0, function () { qa('.t-erow')[i].classList.add('on'); }); });
+  move(34.3, .8, '.t-tab-sup', 0, 0);
+  click(35.2, '.t-tab-sup');
+  at(35.3, 0, function () { q('.t-tab-item').classList.remove('on'); q('.t-tab-sup').classList.add('on'); q('.e-wrap').classList.add('by-sup'); });
+  [0, 1, 2, 3, 4, 5, 6].forEach(function (i) { at(35.4 + i * .1, 0, function () { qa('.t-srow2')[i].classList.add('on'); }); });
+  move(36.2, .8, '.t-ret', -20, 0);
+  click(37.1, '.t-ret');
+  toast(37.3, 'Purchase return drafted · Om Sai Medical Agency · 3 batches', 2.0);
+  at(38.6, 0, function () { endCard.hidden = false; player.classList.add('is-ended'); });
+  var TOTAL = 43000;
 
   /* ---------- Player ---------- */
   var elapsed = 0, state = [], playing = false, raf = 0, last = 0, userPaused = false;

@@ -3,7 +3,7 @@ require_once __DIR__ . '/partials/config.php';
 $title       = page_title('Pharmacy software for medical stores: billing, expiry & stock');
 $description = 'Pharmacy billing software for medical stores: batch-wise FEFO billing, stock expiry reports, CSV and OCR purchase import, and GST reports. Book a free demo or start free.';
 $page_key    = 'home';
-$extra_css   = ['css/home.css', 'css/estimator.css'];
+$extra_css   = ['css/home.css', 'css/estimator.css', 'css/tour.css'];
 $extra_js    = ['js/tour.js'];
 $brand       = e(BRAND ?: 'our software');
 require __DIR__ . '/partials/head.php';

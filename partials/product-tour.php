@@ -1,11 +1,14 @@
 <?php
 /**
- * Product tour "video": a scripted HTML animation in a browser frame (assets/js/tour.js + home.css).
- * Crisp at any size (it's DOM, scaled), no audio, no captions. Only two controls: play/pause and full screen.
- * The stage is decorative (aria-hidden); #tour-desc describes it for screen readers.
- * Every number is sample data and matches the screenshots (Shree Sai Medical Store, INV-26-04813…).
- * Features shown are verified in the app: FEFO batch pick, barcode reader, bill share on WhatsApp
- * (message credits), CSV purchase import, stock expiry report, purchase returns.
+ * Product tour v2 ("video"): a scripted HTML animation in a browser frame (assets/js/tour.js + assets/css/tour.css).
+ * Layout follows the real app about 70/30: its top menu, dashboard tiles, sale grid + patient panel, purchase grid
+ * with free qty / PTR / margin diff, stock expiry report with item-wise and supplier-wise tabs, and the bottom
+ * action bar (Save draft · Done · Save & print). The 30% new: Campton type, softer surfaces, a segmented payment
+ * picker, a CSV drop, and the scanner / receipt / toast overlays.
+ * Data: products, batches, packs, expiry dates, MRP and PTR come from the app's test account (15 Oct 2026). The store,
+ * staff, patient and supplier names are our sample names (no real people or businesses on a public page). The second
+ * Zerodol batch (ZS2611) is added so the FEFO pick has two batches to choose from.
+ * Previous version: archive/video/v1/. Only two controls: play/pause and full screen. No audio.
  */
 $slug = strtolower(BRAND ?: 'app');
 ?>
@@ -14,7 +17,7 @@ $slug = strtolower(BRAND ?: 'app');
     <div class="tour-head">
       <p class="eyebrow">Product tour · 40 seconds</p>
       <h2 id="tour-t">Watch one bill go from <span class="scribble-u">scan to print</span></h2>
-      <p>Then a distributor bill comes in, and the expiry report catches what’s about to go to waste. Same screens your counter staff would use.</p>
+      <p>Then a distributor bill comes in with its margins checked, and the expiry report lines up what to send back. The same screens your counter staff use.</p>
     </div>
 
     <div class="tour-player" data-tour aria-describedby="tour-desc">
@@ -24,131 +27,241 @@ $slug = strtolower(BRAND ?: 'app');
             <div class="bw-bar">
               <span class="bw-dots"><i></i><i></i><i></i></span>
               <span class="bw-tab"><svg class="brand-logo"><use href="#logo-mark"/></svg><span data-tab-title>Dashboard</span><b>×</b></span>
-              <span class="bw-url"><svg viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5z"/></svg><b><?= e($slug) ?></b><span data-url>/dashboard</span></span>
+              <span class="bw-url"><svg viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5z"/></svg><b><?= e($slug) ?></b><span data-url>/pharmacy/dashboard</span></span>
             </div>
-            <div class="app">
-              <aside class="app-side">
+            <div class="ap">
+              <header class="ap-top">
                 <svg class="brand-logo"><use href="#logo-mark"/></svg>
-                <span class="nav-i" data-nav="dash"><svg><use href="#i-chart"/></svg>Home</span>
-                <span class="nav-i" data-nav="bill"><svg><use href="#i-receipt"/></svg>Sales</span>
-                <span class="nav-i" data-nav="buy"><svg><use href="#i-truck"/></svg>Purchase</span>
-                <span class="nav-i" data-nav="exp"><svg><use href="#i-alert"/></svg>Expiry</span>
-                <span class="nav-i"><svg><use href="#i-box"/></svg>Stock</span>
-              </aside>
-              <div class="app-main">
-                <header class="app-top">
-                  <span class="store"><b>Shree Sai Medical Store</b><small>Main branch · Ahmedabad</small></span>
-                  <span class="t-who"><i>P</i>Priya · Counter 1</span>
-                </header>
+                <nav class="ap-nav">
+                  <span class="ap-n" data-nav="dash"><svg><use href="#i-chart"/></svg>Dashboard</span>
+                  <span class="ap-n"><svg><use href="#i-users"/></svg>Account Master</span>
+                  <span class="ap-n t-nav-sale" data-nav="bill"><svg><use href="#i-receipt"/></svg>Sale</span>
+                  <span class="ap-n t-nav-buy" data-nav="buy"><svg><use href="#i-truck"/></svg>Purchase</span>
+                  <span class="ap-n"><svg><use href="#i-box"/></svg>Item Master</span>
+                  <span class="ap-n"><svg><use href="#i-upload"/></svg>Initialization</span>
+                  <span class="ap-n t-nav-rep" data-nav="exp"><svg><use href="#i-file"/></svg>Reports<i>▾</i>
+                    <span class="t-rep-dd">
+                      <span>Stock Alert Report</span>
+                      <span class="t-rep-exp">Stock Expiry Report</span>
+                      <span>Margin Report</span>
+                      <span>GST Report</span>
+                    </span>
+                  </span>
+                </nav>
+                <span class="ap-right">
+                  <span class="ap-plan">Advance · 31-03-2027</span>
+                  <span class="ap-ic"><svg><use href="#i-search"/></svg></span>
+                  <span class="ap-me">P</span>
+                </span>
+              </header>
 
-                <div class="scenes">
-                  <!-- 1 · Dashboard -->
-                  <section class="sc" data-scene="dash">
-                    <div class="sc-head"><div><h3>Good evening, Priya</h3><small>Monday, 12 Oct</small></div>
-                      <span class="t-btn t-new"><svg><use href="#i-plus"/></svg>New sale</span></div>
-                    <div class="kpis">
-                      <div class="kpi"><small>Today’s sales</small><b>₹42,380</b><span>186 bills</span></div>
-                      <div class="kpi"><small>Collected</small><b>₹39,910</b><span>UPI 58% · Cash 37%</span></div>
-                      <div class="kpi kpi-warn"><small>Expiring in 60 days</small><b>₹18,640</b><span>23 batches</span></div>
-                      <div class="kpi"><small>Short book</small><b>14 items</b><span>below minimum</span></div>
+              <div class="scenes">
+                <!-- 1 · Dashboard (today's tiles, collection by method, stock alert: values from the test account) -->
+                <section class="sc" data-scene="dash">
+                  <div class="d-head">
+                    <b class="d-store"><svg><use href="#i-store"/></svg>Shree Sai Medical Store</b>
+                    <span class="d-f"><small>Select store</small><b>Main branch ▾</b></span>
+                    <span class="d-f"><small>Date</small><b>15-10-2026 → 15-10-2026</b></span>
+                    <span class="d-f"><small>User</small><b>All ▾</b></span>
+                    <span class="ab g"><svg><use href="#i-upload"/></svg>Download</span>
+                  </div>
+                  <div class="d-grid">
+                    <div class="d-kpis">
+                      <div class="kp"><small>Sales</small><b class="up t-k1">₹731.00</b><span>2 invoices</span></div>
+                      <div class="kp"><small>Sales return</small><b class="dn">₹0.00</b><span>0 invoices</span></div>
+                      <div class="kp"><small>Purchase</small><b class="dn t-k2">₹1,561.00</b><span>1 invoice</span></div>
+                      <div class="kp"><small>Purchase return</small><b class="up">₹0.00</b><span>0 invoices</span></div>
+                      <div class="kp"><small>Profit</small><b class="up t-k3">₹213.35</b><span>Sales profit</span></div>
+                      <div class="kp"><small>Expense</small><b class="dn t-k4">₹1,561.00</b><span>Purchase expense</span></div>
                     </div>
-                    <div class="dash-row">
-                      <div class="dash-chart"><small>Sales · last 7 days</small>
-                        <div class="tbars"><i style="--h:52%"></i><i style="--h:66%"></i><i style="--h:58%"></i><i style="--h:71%"></i><i style="--h:64%"></i><i style="--h:93%"></i><i style="--h:79%"></i></div>
-                        <div class="tdays"><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span><span>Mon</span></div>
-                      </div>
-                      <div class="dash-todo"><small>Needs attention today</small>
-                        <p><b>Azithral 500 · AZ1189</b><span>Expires in 28 days · 14 strips</span></p>
-                        <p><b>Telma 40 Tab</b><span>Below minimum · 6 left</span></p>
-                        <p><b>Shree Krishna Pharma</b><span>Payment due Thursday · ₹24,180</span></p>
-                      </div>
-                    </div>
-                  </section>
-
-                  <!-- 2 · Billing -->
-                  <section class="sc" data-scene="bill">
-                    <div class="sc-head"><div><h3>New sale <em>INV-26-04813</em></h3></div><span class="chip">FEFO on</span></div>
-                    <div class="bill">
-                      <div class="bill-l">
-                        <div class="t-search"><svg><use href="#i-search"/></svg><span class="t-typed" data-typed="search"></span><span class="caret"></span><span class="ph">Scan or search item</span><kbd>F2</kbd>
-                          <div class="t-dd">
-                            <div class="dd-o dd-pick"><b>Dolo 650 Tab</b><small>Paracetamol 650 mg · 3 batches</small></div>
-                            <div class="dd-o"><b>Dolo 500 Tab</b><small>Paracetamol 500 mg · 1 batch</small></div>
-                          </div>
-                          <div class="t-batches">
-                            <small>Batches · nearest expiry first</small>
-                            <div class="bt bt-pick"><b>DL4521</b><span>Exp Nov 2026</span><span>45 strips</span><em>✓ Sell first</em></div>
-                            <div class="bt"><b>DL4790</b><span>Exp Jun 2028</span><span>55 strips</span><em>Later</em></div>
-                            <div class="bt"><b>DL5013</b><span>Exp Jan 2029</span><span>30 strips</span><em>Later</em></div>
-                          </div>
-                        </div>
-                        <table class="tlines">
-                          <thead><tr><th>Item</th><th>Batch</th><th>Exp</th><th class="n">Qty</th><th class="n">Amount</th></tr></thead>
-                          <tbody>
-                            <tr class="t-row t-row1"><td><b>Shelcal 500 Tab</b><small>Calcium + D3 · strip of 15</small></td><td>SC7731</td><td>12/26</td><td class="n">1</td><td class="n">₹128.40</td></tr>
-                            <tr class="t-row t-row2"><td><b>Dolo 650 Tab</b><small>Paracetamol 650 mg · strip of 15</small></td><td>DL4521</td><td>11/26</td><td class="n"><span class="t-qty">1</span></td><td class="n t-amt2">₹30.91</td></tr>
-                            <tr class="t-empty"><td colspan="5">Scan a barcode or press F2 to search</td></tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="bill-r">
-                        <label>Patient</label>
-                        <div class="t-field t-patient"><span class="t-typed" data-typed="patient"></span><span class="caret"></span><span class="ph">Name or mobile</span></div>
-                        <div class="t-pchip">Ramesh Patel · 98xxxxxx21 · no dues</div>
-                        <label>Payment</label>
-                        <div class="seg"><span>Cash</span><span class="t-upi">UPI</span><span>Card</span><span>Credit</span></div>
-                        <div class="tot"><span><span class="t-items">0 items</span> · GST incl.</span><b class="t-total">₹0.00</b></div>
-                        <span class="t-btn t-save">Save &amp; print <kbd>Ctrl+S</kbd></span>
-                      </div>
-                    </div>
-                  </section>
-
-                  <!-- 3 · Purchase import -->
-                  <section class="sc" data-scene="buy">
-                    <div class="sc-head"><div><h3>Purchase <em>Import distributor bill</em></h3></div><span class="chip">Shree Krishna Pharma</span></div>
-                    <div class="buy">
-                      <div class="t-drop"><svg><use href="#i-upload"/></svg><b class="t-droplabel">Drop the distributor’s CSV here</b><small>Columns matched once, remembered for next time</small>
-                        <div class="t-prog"><i></i></div></div>
-                      <table class="tlines plines">
-                        <thead><tr><th>Item</th><th>Batch</th><th>Exp</th><th class="n">Qty + free</th><th class="n">PTR</th><th></th></tr></thead>
+                    <div class="d-card">
+                      <div class="d-tabs"><span class="on">Overall collection</span><span>Deposit collection</span></div>
+                      <table class="d-tbl">
+                        <thead><tr><th>Method</th><th class="n">Sales</th><th class="n">Return</th><th class="n">Total</th></tr></thead>
                         <tbody>
-                          <tr class="t-prow"><td>Pan 40 Tab</td><td>PN2291</td><td>08/28</td><td class="n">20 + 2</td><td class="n">₹89.60</td><td class="ok">✓</td></tr>
-                          <tr class="t-prow"><td>Augmentin 625 Duo</td><td>AG7710</td><td>03/28</td><td class="n">10</td><td class="n">₹171.20</td><td class="ok">✓</td></tr>
-                          <tr class="t-prow"><td>Telma 40 Tab</td><td>TL0932</td><td>11/27</td><td class="n">30 + 3</td><td class="n">₹151.80</td><td class="ok">✓</td></tr>
-                          <tr class="t-prow"><td>Glycomet GP 1</td><td>GM5521</td><td>06/28</td><td class="n">20</td><td class="n">₹96.40</td><td class="ok">✓</td></tr>
-                          <tr class="t-prow"><td>Montair LC Tab</td><td>ML0412</td><td>01/28</td><td class="n">15 + 1</td><td class="n">₹178.10</td><td class="ok">✓</td></tr>
+                          <tr><td><b>Cash</b></td><td class="n">₹731.00</td><td class="n">₹0.00</td><td class="n"><b>₹731.00</b></td></tr>
+                          <tr><td><b>Bank</b></td><td class="n">₹0.00</td><td class="n">₹0.00</td><td class="n">₹0.00</td></tr>
+                          <tr><td><b>UPI</b></td><td class="n">₹0.00</td><td class="n">₹0.00</td><td class="n">₹0.00</td></tr>
+                          <tr><td><b>Card</b></td><td class="n">₹0.00</td><td class="n">₹0.00</td><td class="n">₹0.00</td></tr>
+                          <tr><td><b>Rokda</b></td><td class="n">₹0.00</td><td class="n">₹0.00</td><td class="n">₹0.00</td></tr>
+                          <tr><td><b>Razorpay</b></td><td class="n">₹0.00</td><td class="n">₹0.00</td><td class="n">₹0.00</td></tr>
+                          <tr><td><b>Outstanding</b></td><td class="n">₹0.00</td><td class="n">₹0.00</td><td class="n">₹0.00</td></tr>
+                          <tr class="d-tot"><td><b>Total</b></td><td class="n"><b>₹731.00</b></td><td class="n">₹0.00</td><td class="n"><b>₹731.00</b></td></tr>
                         </tbody>
                       </table>
-                      <div class="t-psum"><b>38 / 38 lines read</b><span>batch · expiry · MRP · PTR · GST</span><em>Stock updated</em></div>
                     </div>
-                    <div class="t-file"><svg><use href="#i-file"/></svg><span><b>SKP-2026-4471.csv</b><small>38 rows · 6 KB</small></span></div>
-                  </section>
+                    <div class="d-card">
+                      <div class="d-tabs"><span>Stock expiry</span><span class="on">Stock alert</span></div>
+                      <table class="d-tbl">
+                        <thead><tr><th>Product</th><th class="n">Stock</th><th class="n">Min</th></tr></thead>
+                        <tbody>
+                          <tr><td><b>THYRONORM 100MCG TAB</b></td><td class="n lo">3</td><td class="n">6</td></tr>
+                          <tr><td><b>RABLET 20MG TAB</b></td><td class="n lo">9</td><td class="n">120</td></tr>
+                          <tr><td><b>TRENTAL 400MG TAB</b></td><td class="n lo">19</td><td class="n">38</td></tr>
+                          <tr><td><b>TELMA AMH 40MG TAB</b></td><td class="n lo">15</td><td class="n">45</td></tr>
+                          <tr><td><b>UPRISE D3 60K CAP</b></td><td class="n lo">16</td><td class="n">46</td></tr>
+                          <tr><td><b>ZINCOVIT TAB</b></td><td class="n lo">32</td><td class="n">71</td></tr>
+                          <tr><td><b>CETZINE TAB</b></td><td class="n lo">81</td><td class="n">102</td></tr>
+                          <tr><td><b>STAMLO 2.5MG TAB</b></td><td class="n lo">149</td><td class="n">210</td></tr>
+                        </tbody>
+                      </table>
+                      <p class="d-note">8 items below minimum · added to the short book</p>
+                    </div>
+                  </div>
+                </section>
 
-                  <!-- 4 · Expiry report -->
-                  <section class="sc" data-scene="exp">
-                    <div class="sc-head"><div><h3>Stock expiry report <em>Supplier-wise</em></h3></div>
-                      <span class="filters"><span>All</span><span>30 days</span><span class="t-f60">60 days</span><span>90 days</span></span></div>
-                    <div class="exp">
-                      <div class="erow t-erow"><span><b>Azithral 500 Tab</b><small>AZ1189 · 14 strips · Shree Krishna Pharma</small></span><span class="days"><i style="--d:31%"></i>28 days</span><span class="ev">₹1,652</span><span class="t-btn t-ret">Purchase return</span></div>
-                      <div class="erow t-erow"><span><b>Montair LC Tab</b><small>ML0388 · 9 strips · Mahavir Distributors</small></span><span class="days"><i style="--d:50%"></i>45 days</span><span class="ev">₹1,603</span><span class="ghost">Return</span></div>
-                      <div class="erow t-erow"><span><b>Shelcal 500 Tab</b><small>SC7731 · 22 strips · Shree Krishna Pharma</small></span><span class="days"><i style="--d:64%"></i>58 days</span><span class="ev">₹2,825</span><span class="ghost">Return</span></div>
-                      <div class="erow t-erow"><span><b>Becosules Cap</b><small>BC2280 · 31 strips · Om Sai Agencies</small></span><span class="days"><i style="--d:66%"></i>59 days</span><span class="ev">₹1,488</span><span class="ghost">Return</span></div>
-                      <div class="e-sum t-esum"><span>23 batches in the next 60 days</span><b>₹18,640 at risk</b></div>
+                <!-- 2 · Sale -->
+                <section class="sc" data-scene="bill">
+                  <div class="s-bar">
+                    <span>System discount <span class="tgl">ON</span></span>
+                    <span>Sales on <b>MRP ▾</b></span>
+                    <span class="chip">FEFO on</span>
+                    <span class="s-sp"></span>
+                    <span class="ab g"><svg><use href="#i-users"/></svg>Patient list</span>
+                    <span class="ab"><svg><use href="#i-chart"/></svg>Sales today</span>
+                    <span class="ab"><svg><use href="#i-file"/></svg>Drafts</span>
+                    <span class="ab r"><svg><use href="#i-x"/></svg>Clear screen</span>
+                  </div>
+                  <div class="s-body">
+                    <div class="s-main">
+                      <table class="g-tbl">
+                        <thead><tr><th class="sr">Sr</th><th>Item name</th><th>Pack</th><th>Batch</th><th>Expiry</th><th class="n">MRP</th><th class="n">Qty</th><th class="n">GST %</th><th class="n">Margin %</th><th class="n">Amount</th></tr></thead>
+                        <tbody>
+                          <tr class="t-row t-row1"><td class="sr">1</td><td><b>GLUCONORM VG 2 FORTE TAB</b></td><td>1×15</td><td>SGZL0125</td><td>04/28</td><td class="n">421.05</td><td class="n">1</td><td class="n">5</td><td class="n">23.81</td><td class="n"><b>421.05</b></td></tr>
+                          <tr class="t-row t-row2"><td class="sr">2</td><td><b>ZERODOL SP TABLET</b></td><td>1×10</td><td>420</td><td>12/27</td><td class="n">139.68</td><td class="n"><span class="t-qty">1</span></td><td class="n">5</td><td class="n">23.80</td><td class="n"><b class="t-amt2">139.68</b></td></tr>
+                          <tr class="t-srow"><td class="sr t-srn">1</td><td colspan="9">
+                            <div class="t-search"><svg><use href="#i-search"/></svg><span class="t-typed" data-typed="search"></span><span class="caret"></span><span class="ph">Search items or scan a barcode</span><kbd>F2</kbd>
+                              <div class="t-dd">
+                                <div class="dd-o dd-pick"><b>ZERODOL SP TABLET (10 TABLET)</b><small>Aceclofenac + Paracetamol + Serratiopeptidase · 2 batches</small></div>
+                              </div>
+                              <div class="t-batches">
+                                <small>Batches · nearest expiry first</small>
+                                <div class="bt bt-pick"><b>420</b><span>Exp 12/27</span><span>100 in stock</span><em>✓ Sell first</em></div>
+                                <div class="bt"><b>ZS2611</b><span>Exp 09/28</span><span>60 in stock</span><em>Later</em></div>
+                              </div>
+                            </div>
+                          </td></tr>
+                        </tbody>
+                      </table>
+                      <p class="s-info"><span>Generic <b class="t-gen">—</b></span><span>Category <b>Tablet</b></span><span>Location <b>Rack B2</b></span></p>
                     </div>
-                  </section>
-                </div>
+                    <aside class="s-pat">
+                      <p class="s-radio"><span class="lbl">Search type</span><span class="on">OPD</span><span>IPD</span></p>
+                      <label>Patient name</label>
+                      <div class="pf t-patient"><span class="t-typed" data-typed="patient"></span><span class="caret"></span><span class="ph">Search patient or UHID</span></div>
+                      <div class="t-pchip">Ramesh Patel · HR-104582 · no dues</div>
+                      <label>Contact no.</label>
+                      <div class="pf"><span class="t-phone ph">+91 Contact no.</span></div>
+                      <label>Doctor name</label>
+                      <div class="pf"><span class="t-doc ph">Search doctor</span></div>
+                      <label>GST no.</label>
+                      <div class="pf"><span class="ph">GST no.</span></div>
+                    </aside>
+                  </div>
+                  <div class="s-foot">
+                    <div class="sf"><small>Invoice date</small><b>15/10/2026</b></div>
+                    <div class="sf sf-pay"><small>Payment method</small><span class="seg"><span>Cash</span><span class="t-upi">UPI</span><span>Card</span><span>Credit</span></span></div>
+                    <div class="sf"><small>Total GST</small><b class="t-gst">₹0.00</b></div>
+                    <div class="sf"><small>Net total</small><b class="t-total">₹0.00</b></div>
+                    <span class="fb"><svg><use href="#i-file"/></svg>Save draft</span>
+                    <span class="fb b"><svg><use href="#i-check"/></svg>Done</span>
+                    <span class="fb g t-save"><svg><use href="#i-printer"/></svg>Save &amp; print</span>
+                  </div>
+                </section>
+
+                <!-- 3 · Purchase: distributor CSV, margin compared with the last purchase -->
+                <section class="sc" data-scene="buy">
+                  <div class="s-bar">
+                    <span>Search by <b>Invoice ▾</b></span>
+                    <span class="s-sp"></span>
+                    <span class="ab t-upload"><svg><use href="#i-upload"/></svg>Upload</span>
+                    <span class="ab"><svg><use href="#i-calendar"/></svg>Monthly purchase</span>
+                    <span class="ab g"><svg><use href="#i-plus"/></svg>Item master</span>
+                    <span class="ab"><svg><use href="#i-file"/></svg>Drafts</span>
+                    <span class="ab g"><svg><use href="#i-register"/></svg>PO</span>
+                  </div>
+                  <div class="p-row">
+                    <span class="pfl"><small>Supplier *</small><b>Shree Krishna Pharma</b></span>
+                    <span class="pfl"><small>Bill no.</small><b>SKP-4471</b></span>
+                    <span class="p-md"><small>Margin diff on</small><span class="s-radio"><span class="on">Last purchase</span><span>Purchase avg</span></span></span>
+                  </div>
+                  <div class="s-main p-main">
+                    <table class="g-tbl plines">
+                      <thead><tr><th>Item name</th><th>Batch</th><th>Expiry</th><th class="n">MRP</th><th class="n">Qty</th><th class="n">Free</th><th class="n">PTR</th><th class="n">Margin %</th><th class="n">Diff %</th><th class="n">Amount</th></tr></thead>
+                      <tbody>
+                        <tr class="t-prow"><td><b>NUROKIND HS INJ</b></td><td>B3EEX003</td><td>02/30</td><td class="n">124.99</td><td class="n">10</td><td class="n">0</td><td class="n">89.28</td><td class="n">28.57</td><td class="n up">+3.57</td><td class="n"><b>892.80</b></td></tr>
+                        <tr class="t-prow t-pwarn"><td><b>PAN 40MG TAB</b></td><td>25415</td><td>06/27</td><td class="n">192.00</td><td class="n">20</td><td class="n">2</td><td class="n">140.00</td><td class="n">27.08</td><td class="n dn">−1.72</td><td class="n"><b>2,800.00</b></td></tr>
+                        <tr class="t-prow"><td><b>CANDIFORCE 100 CAP</b></td><td>G45Y007</td><td>03/27</td><td class="n">147.11</td><td class="n">10</td><td class="n">0</td><td class="n">105.08</td><td class="n">28.57</td><td class="n up">+3.57</td><td class="n"><b>1,050.80</b></td></tr>
+                        <tr class="t-prow t-pwarn"><td><b>PAN D CAP</b></td><td>123</td><td>06/27</td><td class="n">238.12</td><td class="n">15</td><td class="n">0</td><td class="n">181.43</td><td class="n">23.81</td><td class="n dn">−1.79</td><td class="n"><b>2,721.45</b></td></tr>
+                        <tr class="t-prow"><td><b>ZERODOL SP TABLET</b></td><td>420</td><td>12/27</td><td class="n">139.68</td><td class="n">30</td><td class="n">3</td><td class="n">106.43</td><td class="n">23.80</td><td class="n up">+3.81</td><td class="n"><b>3,192.90</b></td></tr>
+                        <tr class="t-dropr"><td colspan="10">
+                          <div class="t-drop"><svg><use href="#i-upload"/></svg><b class="t-droplabel">Drop the distributor’s CSV here</b><small>Columns matched once, remembered for next time</small><div class="t-prog"><i></i></div></div>
+                        </td></tr>
+                      </tbody>
+                    </table>
+                    <div class="t-psum"><b>5 / 5 lines read</b><span>batch · expiry · MRP · PTR · free qty</span><em>2 lines: margin below last purchase</em></div>
+                  </div>
+                  <div class="s-foot">
+                    <div class="sf"><small>Invoice date</small><b>15/10/2026</b></div>
+                    <div class="sf"><small>Payment method</small><b>Credit ▾</b></div>
+                    <div class="sf"><small>Total gross</small><b class="t-pgross">₹0.00</b></div>
+                    <div class="sf"><small>Amount due</small><b class="t-pdue">₹0.00</b></div>
+                    <span class="fb"><svg><use href="#i-file"/></svg>Save draft</span>
+                    <span class="fb b"><svg><use href="#i-arrow"/></svg>Save</span>
+                    <span class="fb g"><svg><use href="#i-printer"/></svg>Save &amp; print</span>
+                  </div>
+                  <div class="t-file"><svg><use href="#i-file"/></svg><span><b>SKP-2026-4471.csv</b><small>5 rows · 2 KB</small></span></div>
+                </section>
+
+                <!-- 4 · Stock expiry report: item-wise, then supplier-wise for returns -->
+                <section class="sc" data-scene="exp">
+                  <div class="e-head">
+                    <h3>Stock expiry report</h3>
+                    <span class="e-by">Expiring by <b>31-10-2026 ▾</b></span>
+                    <span class="s-sp"></span>
+                    <span class="ab"><svg><use href="#i-search"/></svg>Filter data</span>
+                    <span class="ab o"><svg><use href="#i-file"/></svg>Export</span>
+                  </div>
+                  <div class="e-tabs"><span class="t-tab-item on">Item wise</span><span class="t-tab-sup">Supplier wise</span></div>
+                  <div class="e-wrap">
+                    <table class="g-tbl e-tbl t-eitem">
+                      <thead><tr><th class="sr">Sr</th><th>Product name</th><th class="n">Unit</th><th>Batch no</th><th class="n">Unit qty</th><th>Pack</th><th>Expiry</th><th>Supplier</th></tr></thead>
+                      <tbody>
+                        <tr class="t-erow"><td class="sr">1</td><td><b>AZITHRAL XL 200 SYP 200ML</b></td><td class="n">10</td><td>24NVHIK</td><td class="n">69</td><td>1×10</td><td class="ex">10/26</td><td>Om Sai Medical Agency</td></tr>
+                        <tr class="t-erow"><td class="sr">2</td><td><b>ACILOC 150 TABLET 30S</b></td><td class="n">10</td><td>34233</td><td class="n">151</td><td>10</td><td class="ex">10/26</td><td>Mahavir Distributors</td></tr>
+                        <tr class="t-erow"><td class="sr">3</td><td><b>MET XL AM 50/5 TAB</b></td><td class="n">15</td><td>GT21694</td><td class="n">124</td><td>1×15</td><td class="ex">10/26</td><td>Om Sai Medical Agency</td></tr>
+                        <tr class="t-erow"><td class="sr">4</td><td><b>BISONEXT 5 TAB</b></td><td class="n">15</td><td>SGXL0290</td><td class="n">43</td><td>1×15</td><td class="ex">10/26</td><td>Shree Krishna Pharma</td></tr>
+                        <tr class="t-erow"><td class="sr">5</td><td><b>THYROX 50 TAB</b></td><td class="n">100</td><td>16240684A</td><td class="n">100</td><td>1×100</td><td class="ex">10/26</td><td>Om Sai Medical Agency</td></tr>
+                        <tr class="t-erow"><td class="sr">6</td><td><b>DEPRAN-L</b></td><td class="n">15</td><td>K2402358</td><td class="n">75</td><td>1×15</td><td class="ex">10/26</td><td>Mahavir Distributors</td></tr>
+                      </tbody>
+                    </table>
+                    <table class="g-tbl e-tbl t-esup">
+                      <thead><tr><th>Product name</th><th>Batch no</th><th class="n">Unit qty</th><th>Pack</th><th>Expiry</th><th class="n"></th></tr></thead>
+                      <tbody>
+                        <tr class="e-grp t-srow2"><td colspan="5"><b>Om Sai Medical Agency</b><small>3 batches · return before the rep’s next visit</small></td><td class="n"><span class="ab t-ret"><svg><use href="#i-return"/></svg>Purchase return</span></td></tr>
+                        <tr class="t-srow2"><td><b>AZITHRAL XL 200 SYP 200ML</b></td><td>24NVHIK</td><td class="n">69</td><td>1×10</td><td class="ex">10/26</td><td></td></tr>
+                        <tr class="t-srow2"><td><b>MET XL AM 50/5 TAB</b></td><td>GT21694</td><td class="n">124</td><td>1×15</td><td class="ex">10/26</td><td></td></tr>
+                        <tr class="t-srow2"><td><b>THYROX 50 TAB</b></td><td>16240684A</td><td class="n">100</td><td>1×100</td><td class="ex">10/26</td><td></td></tr>
+                        <tr class="e-grp t-srow2"><td colspan="5"><b>Mahavir Distributors</b><small>2 batches</small></td><td class="n"><span class="ab o">Purchase return</span></td></tr>
+                        <tr class="t-srow2"><td><b>ACILOC 150 TABLET 30S</b></td><td>34233</td><td class="n">151</td><td>10</td><td class="ex">10/26</td><td></td></tr>
+                        <tr class="t-srow2"><td><b>DEPRAN-L</b></td><td>K2402358</td><td class="n">75</td><td>1×15</td><td class="ex">10/26</td><td></td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p class="e-foot"><span>Page 1 of 5 · 20 batches a page</span><span>Short-dated stock goes back on record, with a credit note</span></p>
+                </section>
               </div>
             </div>
             <div class="t-toast" data-toast></div>
           </div>
 
-          <!-- Barcode scanner and printed receipt (billing scene) -->
-          <div class="t-scanner"><div class="pack"><b>SHELCAL 500</b><small>Calcium + Vitamin D3</small><?= barcode_svg('8901234567890', 44, 'pack-bc') ?><span>8 901234 567890</span></div><i class="beam"></i></div>
+          <!-- Barcode scanner and printed receipt (sale scene) -->
+          <div class="t-scanner"><div class="pack"><b>GLUCONORM VG 2 FORTE</b><small>Glimepiride + Voglibose + Metformin</small><?= barcode_svg('8901234567890', 44, 'pack-bc') ?><span>8 901234 567890</span></div><i class="beam"></i></div>
           <div class="t-receipt">
-            <b>Shree Sai Medical Store</b><small>INV-26-04813 · 12 Oct 2026</small>
-            <p><span>Shelcal 500 Tab ×1</span><span>₹128.40</span></p>
-            <p><span>Dolo 650 Tab ×2</span><span>₹61.82</span></p>
-            <p class="r-tot"><span>Total</span><span>₹190.22</span></p>
+            <b>Shree Sai Medical Store</b><small>INV-26-04813 · 15 Oct 2026</small>
+            <p><span>Gluconorm VG 2 Forte ×1</span><span>₹421.05</span></p>
+            <p><span>Zerodol SP Tab ×2</span><span>₹279.36</span></p>
+            <p class="r-tot"><span>Total (GST incl.)</span><span>₹700.41</span></p>
             <?= barcode_svg('INV-26-04813', 26, 'r-bc') ?>
           </div>
 
@@ -177,12 +290,14 @@ $slug = strtolower(BRAND ?: 'app');
         </button>
       </div>
     </div>
-    <p class="sr-only" id="tour-desc">Animated product tour, about 40 seconds, no sound. A counter staff member scans
-      Shelcal 500 and its nearest-expiry batch is added; searches “dolo”, picks Dolo 650 and the batch expiring first
-      fills in; sets quantity 2, adds patient Ramesh Patel, chooses UPI and saves, and the bill prints and is shared on
-      WhatsApp. Next, a distributor’s CSV file is dropped on the purchase screen and 38 lines are read with batch,
-      expiry and PTR. Finally the stock expiry report is filtered to 60 days, showing ₹18,640 at risk, and a purchase
-      return is drafted. All data is sample data.</p>
-    <span class="sample-tag tour-tag">Animated walkthrough · sample data</span>
+    <p class="sr-only" id="tour-desc">Animated product tour, about 40 seconds, no sound. On the dashboard, today’s
+      sales, purchase and profit tiles fill in and a stock alert lists items below minimum. On the sale screen, a staff
+      member scans Gluconorm VG 2 Forte, searches “zerodol” and the batch expiring first (12/27) is picked, sets the
+      quantity to 2, adds patient Ramesh Patel, pays by UPI and saves: the bill prints and is shared on WhatsApp. On the
+      purchase screen, a distributor’s CSV is dropped in, five lines are read with batch, expiry, PTR and free
+      quantity, and two lines are flagged because their margin is below the last purchase. Finally the stock expiry
+      report switches to supplier-wise and a purchase return is drafted. Product data is from a test account; names are
+      sample names.</p>
+    <span class="sample-tag tour-tag">Animated walkthrough · demo data</span>
   </div>
 </section>
