@@ -1,6 +1,6 @@
 <?php
 /* Feature page: Purchase & suppliers. Data only; layout in partials/feature-page.php.
-   Facts: PHARMACY-ICP-AND-UX-STRATEGY.md §0 (purchase). Don't claim rate-difference alerts (not in the app).
+   Facts: PHARMACY-ICP-AND-UX-STRATEGY.md §0 (purchase). The purchase grid has a Diff % column (margin vs last purchase or purchase average; seen in the app 15 Oct 2026). Don't claim a pop-up rate alert.
    Plan badges come live from the pricing API. */
 require_once __DIR__ . '/../partials/config.php';
 require_once __DIR__ . '/../partials/pricing-data.php';
@@ -40,7 +40,7 @@ $fp = [
       ['Typing errors on every bill', 'Batch, expiry and rate retyped by hand, late at night.', '<b>CSV import</b> with column mapping, or <b>OCR import</b> from a scanned bill (uses OCR credits).', 'feat_csv_import'],
       ['Free quantity not recorded', 'Schemes like 10 + 1 are skipped or entered as a discount.', '<b>Scheme and free quantity</b> are recorded on the line, so cost and stock are right.', null, 'Every plan'],
       ['Margin you can’t see', 'Nobody works out margin per item at entry.', '<b>PTR and margin are calculated on save</b>, plus a <b>margin report</b> to review later.', 'feat_margin_report'],
-      ['Rates drifting from what was agreed', 'Promised rates live in a phone call.', ($rc ? '<b>Supplier rate contracts</b> record agreed rates per supplier (' . e($rc) . '). ' : '') . 'On every plan, margin on save shows when a rate looks wrong.', 'feat_supplier_rate_contract'],
+      ['Rates drifting from what was agreed', 'Promised rates live in a phone call.', 'A <b>Diff % column</b> compares each line’s margin with the last purchase or the purchase average, so a rate that went up stands out before you save.' . ($rc ? ' <b>Supplier rate contracts</b> record agreed rates (' . e($rc) . ').' : ''), null],
       ['Returns that never become credit', 'Stock goes back, but the credit is never adjusted.', '<b>Purchase returns with credit notes</b>, kept on the supplier’s ledger.', 'feat_purchase_credit_note'],
       ['Paying the wrong amount', 'Dues are tracked from memory and the rep’s statement.', '<b>Supplier ledger and dues</b> with a <b>supplier due report</b>, and supplier vouchers for payments.', 'feat_supplier_due_report'],
       ['Bills changed or lost later', 'Paper bills go missing; saved entries get edited.', '<b>Bill attachment</b> keeps the original, and <b>lock invoices</b> stops quiet changes.', 'feat_bill_attachment'],
@@ -103,7 +103,7 @@ $fp = [
     ['Do I have to type every distributor bill?', 'No. Import the bill as a CSV file, or scan a printed bill with OCR import (uses OCR credits). You can still type a bill by hand when needed.', true],
     ['Do I map the CSV columns every time?', 'No. Map the distributor’s columns once, then import their bills.', true],
     ['Does it record scheme and free quantity?', 'Yes. Scheme and free quantity are recorded on the purchase line, and PTR and margin are worked out when you save.', true],
-    ['Does it alert me when a rate is different from last time?', 'Not as an automatic alert. Margin is shown when you save the bill, and ' . ($rc ? 'on ' . e($rc) . ' you can record agreed rates per supplier with rate contracts.' : 'you can compare rates in the margin report.'), true],
+    ['Does it show when a rate is different from last time?', 'Yes, on the purchase screen. A Diff % column compares each line’s margin with the last purchase (or the purchase average, your choice), so a line where you now earn less stands out before you save. It isn’t a pop-up alert.' . ($rc ? ' On ' . e($rc) . ' you can also record agreed rates per supplier with rate contracts.' : ''), true],
     ['How do I track what I owe each supplier?', 'Each supplier has a ledger with bills, returns, payments and dues, plus a supplier due report.', true],
     ['How much does OCR import cost?', 'OCR import uses OCR credits. Each plan includes some, and you can buy more as an add-on. See <a href="' . url('pricing') . '">pricing</a>.', true],
   ],

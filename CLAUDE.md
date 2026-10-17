@@ -95,7 +95,7 @@ Headless Edge clamps the window to about 500px minimum. To test true phone width
 - **Use Indian number formatting** (`₹8,00,000`, via `Intl.NumberFormat('en-IN')`). Use sentence case for headings and buttons.
 - **Label all sample data**: every mock screen or number carries a `.sample-tag`. Never present it as customer results.
 - **No fabricated testimonials, logos, ratings or user counts.** The one exception is the trusted-by placeholder strip, which is flagged `data-confirm` and must be replaced before launch.
-- **Do not claim** (not found in the app): an owner mobile app, rate-difference alerts, substitute suggestions, rack/shelf locations, offline billing, a 14-day trial, assisted migration, support hours or languages, or automatic GST-rate updates.
+- **Do not claim** (not found in the app): an owner mobile app, pop-up rate-difference alerts (the purchase grid does show a Diff % column: margin vs last purchase or purchase average), substitute suggestions, rack/shelf locations, offline billing, a 14-day trial, assisted migration, support hours or languages, or automatic GST-rate updates.
 
 ## Unconfirmed claims: `data-confirm`
 

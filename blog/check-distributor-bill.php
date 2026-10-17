@@ -1,6 +1,6 @@
 <?php
 /* Blog post. Facts: §0 purchase (CSV/OCR import, scheme & free qty, PTR and margin on save, credit notes,
-   supplier ledger). There is no rate-difference alert in the app: don't imply one. */
+   supplier ledger). The purchase grid's Diff % column compares margin with the last purchase or purchase average (seen in the app 15 Oct 2026); there is no pop-up rate alert. */
 require __DIR__ . '/../partials/blog.php';
 require_once __DIR__ . '/../partials/pricing-data.php';
 $rc = feature_plan_label('feat_supplier_rate_contract');
@@ -34,7 +34,7 @@ blog_start('check-distributor-bill');
 
 <h2>3. The rate is what you agreed</h2>
 <p>Compare the rate (PTR) with the last bill from the same distributor. The margin shown when you save is a quick sense check: if a fast mover’s margin suddenly looks thin, look at the rate before you save.</p>
-<?= bk_note('note', 'Rates aren’t compared for you automatically', '<p>The software works out PTR and margin on save, but it doesn’t raise an alert when a rate differs from last time. Glancing at the margin is the habit that catches it.' . ($rc ? ' On ' . e($rc) . ', supplier rate contracts record agreed rates per supplier.' : '') . '</p>') ?>
+<?= bk_note('tip', 'Read the Diff % column', '<p>The purchase screen has a Diff % column that compares each line’s margin with your last purchase, or with the purchase average. A negative number means you now earn less on that item than last time: check the rate before you save. It isn’t a pop-up alert, so make glancing at it a habit.' . ($rc ? ' On ' . e($rc) . ', supplier rate contracts record agreed rates per supplier.' : '') . '</p>') ?>
 
 <h2>4. MRP is per strip or per pack, the way you sell</h2>
 <p>If you sell by the strip, the MRP on the line should be per strip. A pack MRP entered as a strip MRP shows up at the counter as a price that’s ten times too high.</p>
