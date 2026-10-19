@@ -166,7 +166,7 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
 - [~] 5. Checkpoint: theme scaffold, templates and menus
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 6. Pages, content and the import (Requirement 5)
+- [x] 6. Pages, content and the import (Requirement 5)
   - [x] 6.1 Write the import library in `wordpress/import/lib/`
     - `upsert.php`:
       - `rx_upsert_post( array $item ): int|WP_Error`: finds by `_rx_source`, then calls `wp_insert_post()`/`wp_update_post()` with `post_status`, `comment_status=closed`, `page_template`, the parent found by `_rx_key`, `post_date` for posts, and `meta_input` for `_rx_key`, `_rx_source` and the Yoast meta
@@ -201,7 +201,7 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - `content/pages/blog.php`: hub hero copy, Start here posts (`desktop-vs-browser`, `switch-pharmacy-software`, `staff-logins-roles`) and tools
     - `content/posts/{cut-expiry-loss,switch-pharmacy-software,min-max-stock,check-distributor-bill,desktop-vs-browser,staff-logins-roles}.php`: metadata from `partials/data/blog.php`, `body` layouts mapped one-to-one from the `<h2>`, `<p>` and `bk_*` calls, and FAQ from `blog_end()`
     - _Requirements: 5.1, 5.5, 6.5, 7.2_
-  - [~] 6.8 Run the import twice
+  - [x] 6.8 Run the import twice
     - Run `php wordpress/import/import.php` after the field groups (7), blog code (8) and pricing (9) exist
     - Run it a second time and confirm that page, post and menu-item counts and IDs are unchanged and no item failed
     - _Requirements: 5.4, 5.5_
@@ -303,7 +303,7 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 11. Scripts, interactions and forms (Requirement 9)
-  - [~] 11.1 Write the interaction check `wordpress/tools/parity/interactions.mjs` (playwright-core, Edge)
+  - [-] 11.1 Write the interaction check `wordpress/tools/parity/interactions.mjs` (playwright-core, Edge)
     - Menus: mega menus open and close, Escape closes them, and the burger opens the full-screen menu at 375 px
     - Feature tabs: arrow, Home and End keys; scroll tabs at 1440
     - FAQ: `aria-expanded` toggles
@@ -374,7 +374,7 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - _Requirements: 12.1, 12.2, 12.3, 12.4, 12.5_
 
 - [ ] 15. Check before handover (Requirement 13)
-  - [~] 15.1 Write `wordpress/tools/parity/pages.json`
+  - [x] 15.1 Write `wordpress/tools/parity/pages.json`
     - 34 pairs `{ name, php, wp, expectTypes, motion }`: home, pricing, features hub, 8 feature pages, switch, faq, about, contact, support, demo, 5 legal pages, blog hub, 5 topic views and 6 posts. Plus the WordPress-only 404
     - PHP URLs on `http://localhost/pharmacy/`, WordPress URLs on `http://192.168.0.25/pharmacy-wp/`
     - _Requirements: 13.1, 13.4_

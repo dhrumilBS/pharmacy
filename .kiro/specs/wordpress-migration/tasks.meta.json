@@ -531,6 +531,16 @@
         "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
         "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
         "timestamp": 1792141217523
+      },
+      {
+        "executionId": "5a5428f6-d360-41ca-8cae-06444160a82a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792155372356
+      },
+      {
+        "executionId": "0afb2490-6417-4627-abf7-67911706f1ea",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792382820139
       }
     ],
     "7.1 Create `acf-json/group_rx_settings.json`": [
@@ -783,6 +793,11 @@
         "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
         "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
         "timestamp": 1792141219442
+      },
+      {
+        "executionId": "5a5428f6-d360-41ca-8cae-06444160a82a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792155372788
       }
     ],
     "11.2 Switch off Contact Form 7 on the front end in `inc/cleanup.php`": [
@@ -899,6 +914,16 @@
         "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
         "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
         "timestamp": 1792141220372
+      },
+      {
+        "executionId": "5a5428f6-d360-41ca-8cae-06444160a82a",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792155373562
+      },
+      {
+        "executionId": "0afb2490-6417-4627-abf7-67911706f1ea",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792382821085
       }
     ],
     "15.2 Write `wordpress/tools/parity/check.mjs`": [
@@ -1112,6 +1137,13 @@
         "executionId": "5a5428f6-d360-41ca-8cae-06444160a82a",
         "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
         "timestamp": 1792155332532
+      }
+    ],
+    "6. Pages, content and the import (Requirement 5)": [
+      {
+        "executionId": "0afb2490-6417-4627-abf7-67911706f1ea",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792382820642
       }
     ]
   }
