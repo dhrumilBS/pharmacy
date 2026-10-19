@@ -1,0 +1,109 @@
+/* Block-editor pages (template "Block page", e.g. the block-editor copy of the home page).
+   Core blocks print no CSS of their own on this site (cleanup.php removes the block library),
+   so this file lays out the blocks the editor offers: columns, groups, buttons, list, details, image.
+   Everything uses the site tokens (site.css) and keys off our own classes, so it also styles the
+   editor canvas (add_editor_style in inc/blocks.php) and never touches other pages.
+   Sections themselves reuse existing classes: section, bg-soft, container, section-head, eyebrow,
+   hero3 / hero3-grid / hero3-copy / hero3-form (home.css) and final / final-grid / final-copy (site.css). */
+
+/* ---------- Columns: a grid, stacking on small screens ---------- */
+.wp-block-columns.rx-cols { display: grid; gap: 20px; align-items: start; margin: 0; }
+.rx-cols > .wp-block-column { min-width: 0; margin: 0; }
+.rx-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.rx-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.rx-cols-feature { grid-template-columns: minmax(0, 1.35fr) minmax(0, .65fr); gap: 36px; align-items: center; }
+.rx-cols-switch { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 56px; }
+@media (max-width: 900px) {
+  .rx-cols-feature, .rx-cols-switch { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .rx-cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .rx-cols-2, .rx-cols-3 { grid-template-columns: minmax(0, 1fr); }
+}
+
+.rx-cols + .rx-cols { margin-top: 20px; }
+.rx-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 0; }
+@media (max-width: 600px) { .rx-grid-2 { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Buttons ---------- */
+.wp-block-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0 0; }
+.wp-block-button__link {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 22px;
+  border: 1.5px solid transparent; border-radius: var(--r-sm); background: var(--blue-600); color: #fff;
+  font: 600 16px var(--font-body); text-decoration: none; cursor: pointer; transition: background .15s;
+}
+.wp-block-button__link:hover { background: var(--blue-700); color: #fff; }
+.wp-block-button.is-secondary .wp-block-button__link { background: #fff; color: var(--navy-800); border-color: var(--border-2); }
+.wp-block-button.is-secondary .wp-block-button__link:hover { border-color: var(--navy-700); color: var(--navy-950); }
+
+/* ---------- Cards: problems, solutions, support ---------- */
+.rx-card { margin: 0; padding: 22px 24px; border-radius: var(--r-md); background: #fff; }
+.rx-card.is-featured { background: var(--blue-50); }
+.rx-card .rx-label { margin: 0 0 8px; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.rx-card h3 { margin: 0 0 8px; font-size: 19px; line-height: 1.3; }
+.rx-card p { margin: 0; color: var(--text-2); }
+.rx-card .rx-fix { margin-top: 14px; padding-left: 14px; border-left: 2px solid var(--teal-500); color: var(--navy-800); font-weight: 500; }
+.rx-card .rx-fix strong { display: block; margin-bottom: 2px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--teal-700); }
+.rx-card ul.wp-block-list { margin: 14px 0 0; }
+
+/* Ticked list */
+ul.rx-checks { margin: 0; padding: 0; list-style: none; }
+ul.rx-checks li { position: relative; margin: 0 0 8px; padding-left: 24px; }
+ul.rx-checks li::before { content: "✓"; position: absolute; left: 0; font-weight: 700; color: var(--teal-700); }
+
+/* ---------- A day at the pharmacy: a shift register ---------- */
+.rx-shift { margin: 8px 0 0; border-top: 1.5px solid var(--navy-900); }
+.rx-shift-row { display: grid; grid-template-columns: 250px 220px minmax(0, 1fr); gap: 24px; align-items: baseline; margin: 0; padding: 26px 0; border-bottom: 1px solid var(--border-2); }
+.rx-shift-row > * { margin: 0; }
+.rx-shift-row .rx-time { font: 600 clamp(32px, 3.2vw, 44px)/1 var(--font-display); letter-spacing: -.03em; color: var(--navy-950); font-variant-numeric: tabular-nums; }
+.rx-shift-row h3 { font-size: 20px; }
+.rx-shift-row p:last-child { max-width: 62ch; color: var(--text-2); }
+@media (max-width: 900px) { .rx-shift-row { grid-template-columns: minmax(0, 1fr); gap: 6px; } }
+
+/* ---------- Feature rows: screen first, then its copy ---------- */
+.rx-feature { margin: 0; padding: 28px 0; border-top: 1px solid var(--border-2); }
+.rx-feature .wp-block-image { margin: 0; }
+.rx-feature .wp-block-image img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: var(--r-md); background: var(--bg); box-shadow: var(--shadow-md); }
+.rx-feature h3 { margin: 0 0 10px; font-size: 24px; }
+.rx-feature p { margin: 0; color: var(--text-2); }
+.rx-feature ul.wp-block-list { margin: 16px 0 0; }
+
+/* ---------- Numbered steps ---------- */
+.rx-steps { margin: 0; counter-reset: rxs; }
+.rx-step { position: relative; margin: 0; padding: 0 0 26px 64px; counter-increment: rxs; }
+.rx-step::before {
+  content: counter(rxs); position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 44px; height: 44px;
+  border-radius: 50%; background: var(--blue-600); color: #fff; font: 700 18px var(--font-head);
+}
+.rx-step::after { content: ""; position: absolute; left: 21px; top: 50px; bottom: 6px; width: 2px; background: var(--blue-100); }
+.rx-step:last-child::after { display: none; }
+.rx-step h3 { margin: 8px 0 4px; font-size: 19px; }
+.rx-step p { margin: 0; color: var(--text-2); }
+.rx-step p.rx-when { margin-top: 6px; font-size: 13px; font-weight: 600; color: var(--teal-700); }
+
+/* ---------- FAQ and checklist: the Details block as an accordion ---------- */
+.rx-faq { margin: 0; border-top: 1px solid var(--border); }
+.wp-block-details { margin: 0; border-bottom: 1px solid var(--border); }
+.wp-block-details summary { position: relative; padding: 18px 36px 18px 0; list-style: none; cursor: pointer; font-size: 17px; font-weight: 600; color: var(--navy-950); }
+.wp-block-details summary::-webkit-details-marker { display: none; }
+.wp-block-details summary::after { content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%); font-size: 22px; font-weight: 400; color: var(--blue-600); }
+.wp-block-details[open] summary::after { content: "−"; }
+.wp-block-details > :not(summary) { max-width: 70ch; margin: 0 0 16px; color: var(--text-2); }
+.wp-block-details strong { color: var(--navy-950); }
+
+/* ---------- Hero: emphasis in the headline (Bold = blue, same as the PHP site's .hl) ---------- */
+.hero3 h1 strong { color: var(--blue-600); font-weight: inherit; }
+.hero3-copy > p, .hero3-form > * { margin-top: 0; }
+
+/* ---------- Demo section: the numbered "what happens next" list ---------- */
+ol.rx-next { margin: 26px 0 0; padding: 0; list-style: none; counter-reset: rxn; display: grid; gap: 16px; }
+.rx-next li { position: relative; padding-left: 46px; counter-increment: rxn; color: #C8D5E3; }
+.rx-next li::before {
+  content: counter(rxn); position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 32px; height: 32px;
+  border: 1.5px solid rgba(255, 255, 255, .35); border-radius: 50%; color: #fff; font-size: 14px; font-weight: 700;
+}
+.rx-next li strong { display: block; color: #fff; }
+
+/* A note under a section heading */
+p.rx-note { margin: 0 0 24px; font-size: 13px; color: var(--muted); }
+.wp-block-image img { max-width: 100%; height: auto; }

@@ -113,6 +113,9 @@ function rx_body_class( $classes ): array {
 	$classes = (array) $classes;
 	$key     = sanitize_html_class( rx_page_key() );
 	$out     = array( 'page-' . ( '' !== $key ? $key : 'generic' ) );
+	if ( 'home-blocks' === $key ) {
+		$out[] = 'page-home'; // The block-editor copy of the home page shares home.css's `.page-home` rules.
+	}
 
 	foreach ( array( 'admin-bar', 'logged-in' ) as $keep ) {
 		if ( in_array( $keep, $classes, true ) ) {

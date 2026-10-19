@@ -95,12 +95,16 @@ function rx_asset_map( ?array $ctx = null ): array {
 		'rx-site-js' => 'js/site.js',
 	);
 
-	if ( 'home' === $key ) {
+	if ( 'home' === $key || 'home-blocks' === $key ) {
 		// Same order as index.php: home, estimator, tour.
 		$styles['rx-home']      = 'css/home.css';
 		$styles['rx-estimator'] = 'css/estimator.css';
 		$styles['rx-tour']      = 'css/tour.css';
 		$scripts['rx-tour-js']  = 'js/tour.js';
+		if ( 'home-blocks' === $key ) {
+			// The block-editor copy of the home page: styles for its core blocks (also loaded in the editor).
+			$styles['rx-blocks'] = 'css/blocks.css';
+		}
 	} elseif ( in_array( $key, array( 'pricing', 'faq', 'switch' ), true ) ) {
 		$styles['rx-pages'] = 'css/pages.css';
 		if ( 'pricing' === $key ) {
