@@ -839,6 +839,16 @@
         "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
         "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
         "timestamp": 1792141219796
+      },
+      {
+        "executionId": "0afb2490-6417-4627-abf7-67911706f1ea",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792382883436
+      },
+      {
+        "executionId": "0afb2490-6417-4627-abf7-67911706f1ea",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792383542426
       }
     ],
     "13.1 Implement the front-end cleanup in `inc/cleanup.php`": [
@@ -1144,6 +1154,55 @@
         "executionId": "0afb2490-6417-4627-abf7-67911706f1ea",
         "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
         "timestamp": 1792382820642
+      }
+    ],
+    "8.8 Write example tests for blog routes": [
+      {
+        "executionId": "0afb2490-6417-4627-abf7-67911706f1ea",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792382852418
+      }
+    ],
+    "9.5 Write an example test for the pricing fallback": [
+      {
+        "executionId": "0afb2490-6417-4627-abf7-67911706f1ea",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792382852810
+      }
+    ],
+    "4.4 Write an example test for the header navigation": [
+      {
+        "executionId": "0afb2490-6417-4627-abf7-67911706f1ea",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792382853074
+      }
+    ],
+    "12.3 Write a static content test": [
+      {
+        "executionId": "0afb2490-6417-4627-abf7-67911706f1ea",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792382853368
+      }
+    ],
+    "13.2 Write a front-end assets test": [
+      {
+        "executionId": "0afb2490-6417-4627-abf7-67911706f1ea",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792382853680
+      }
+    ],
+    "14.4 Write an example test for SEO output": [
+      {
+        "executionId": "0afb2490-6417-4627-abf7-67911706f1ea",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792382853942
+      }
+    ],
+    "12. Design, accessibility and responsive layout (Requirement 10)": [
+      {
+        "executionId": "0afb2490-6417-4627-abf7-67911706f1ea",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792383542909
       }
     ]
   }

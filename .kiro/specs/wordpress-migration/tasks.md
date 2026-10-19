@@ -163,7 +163,7 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - The normalised `#hd-nav` markup equals the PHP site's for the same page, and the `is-active` item matches the PHP site for every page key
     - _Requirements: 4.1, 4.3_
 
-- [~] 5. Checkpoint: theme scaffold, templates and menus
+- [ ] 5. Checkpoint: theme scaffold, templates and menus
   - Ensure all tests pass, ask the user if questions arise.
 
 - [x] 6. Pages, content and the import (Requirement 5)
@@ -299,11 +299,11 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - A test-only filter forces `rx_pricing_data()` to null. Pricing, a feature page and the features hub then render with HTTP 200, the notice, "Plan: not listed separately" and no SoftwareApplication
     - _Requirements: 8.3_
 
-- [~] 10. Checkpoint: content imported, pricing and blog working
+- [ ] 10. Checkpoint: content imported, pricing and blog working
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 11. Scripts, interactions and forms (Requirement 9)
-  - [-] 11.1 Write the interaction check `wordpress/tools/parity/interactions.mjs` (playwright-core, Edge)
+  - [ ] 11.1 Write the interaction check `wordpress/tools/parity/interactions.mjs` (playwright-core, Edge)
     - Menus: mega menus open and close, Escape closes them, and the burger opens the full-screen menu at 375 px
     - Feature tabs: arrow, Home and End keys; scroll tabs at 1440
     - FAQ: `aria-expanded` toggles
@@ -318,12 +318,12 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - `add_filter( 'wpcf7_load_js', '__return_false' )` and `add_filter( 'wpcf7_load_css', '__return_false' )`. Confirm that no import content contains a `[contact-form-7` shortcode
     - _Requirements: 9.3_
 
-- [ ] 12. Design, accessibility and responsive layout (Requirement 10)
+- [x] 12. Design, accessibility and responsive layout (Requirement 10)
   - [x] 12.1 Add the `lang` and body class filters in `inc/setup.php`
     - `language_attributes` → `lang="en-IN"`
     - `body_class` → `page-{rx_page_key()}`, keeping only `admin-bar` and `logged-in` when present
     - _Requirements: 10.1, 10.2_
-  - [~] 12.2 Audit the templates and parts against the partials
+  - [ ] 12.2 Audit the templates and parts against the partials
     - Every template has `<main id="main">`. The order is sprite, skip link, review banner
     - Every `role`, `aria-*`, `hidden`, `tabindex`, `data-confirm` and `data-cta` from the PHP markup is present
     - No wrapper elements were added around `.hd`, `.container` or sections
@@ -378,21 +378,21 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - 34 pairs `{ name, php, wp, expectTypes, motion }`: home, pricing, features hub, 8 feature pages, switch, faq, about, contact, support, demo, 5 legal pages, blog hub, 5 topic views and 6 posts. Plus the WordPress-only 404
     - PHP URLs on `http://localhost/pharmacy/`, WordPress URLs on `http://192.168.0.25/pharmacy-wp/`
     - _Requirements: 13.1, 13.4_
-  - [~] 15.2 Write `wordpress/tools/parity/check.mjs`
+  - [ ] 15.2 Write `wordpress/tools/parity/check.mjs`
     - Implements checks 1–8 of design Testing Strategy: status and console/page errors; screenshots at 1440 and 375 with a pixelmatch percentage; visible text, section order, `data-confirm`, image and asset diffs; `scrollWidth` at 360, 375, 390, 414, 768 and 1024; title, description, robots, duplicate meta and JSON-LD validity and types; "Healthray" scan; local link and anchor crawl with external links only listed; network log
     - Calls `runInteractions()`. Reads new `debug.log` lines per page
     - Writes `tools/out/report.md` (per-page table + list of differences) and screenshots to `tools/out/`
     - _Requirements: 10.3, 10.4, 12.5, 13.1, 13.2, 13.3, 13.4_
-  - [~] 15.3 Run the full check and share the report
+  - [ ] 15.3 Run the full check and share the report
     - Switch on `WP_DEBUG` and `WP_DEBUG_LOG` (with `WP_DEBUG_DISPLAY` false) in `pharmacy-wp/wp-config.php`, run `npm run parity` and `npm test`, then restore `wp-config.php` exactly
     - Run `php -l` on every PHP file under `wordpress/`, `baseline.ps1 -Verify` and `git status`
     - Share the per-page results from `report.md` with the user
     - _Requirements: 1.1, 1.2, 2.6, 13.1, 13.2, 13.3, 13.4_
-  - [~] 15.4 Fix the differences and re-run
+  - [ ] 15.4 Fix the differences and re-run
     - Fix template, part or data-file differences found in 15.3, re-import if data changed, and re-run until only differences the user accepts remain (for example the new 404 page and `/blog/{topic}/` URLs)
     - _Requirements: 5.1, 10.1, 10.3, 13.2_
 
-- [~] 16. Final checkpoint: ensure all tests pass
+- [ ] 16. Final checkpoint: ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
 ## Notes
