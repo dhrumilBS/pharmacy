@@ -28,7 +28,24 @@ $rx_df_args    = isset( $args ) && is_array( $args ) ? $args : array();
 $rx_df_title   = trim( rx_text( $rx_df_args['title'] ?? __( 'Book your free demo', 'pharmacy' ) ) );
 $rx_df_sub     = trim( rx_text( $rx_df_args['sub'] ?? __( 'Tell us about your store and we’ll call you.', 'pharmacy' ) ) );
 $rx_df_success = trim( rx_text( $rx_df_args['success_title'] ?? __( 'Thank you, we’ll call you soon', 'pharmacy' ) ) );
-?>
+$rx_df_form = function_exists( 'rx_form_html' ) ? rx_form_html( 'demo', __( 'Book a free demo', 'pharmacy' ) ) : '';
+
+if ( '' !== $rx_df_form ) :
+	// Contact Form 7 booking form: same card, heading and privacy line; Lead Guard opens the thank-you page after a send.
+	?>
+<div class="form-card" data-lead-guard-wrap>
+  <?php if ( '' !== $rx_df_title ) : ?><h3><?php echo $rx_df_title; ?></h3><?php endif; ?>
+  <?php if ( '' !== $rx_df_sub ) : ?><p><?php echo $rx_df_sub; ?></p><?php endif; ?>
+  <?php echo $rx_df_form; ?>
+  <p class="form-small" data-confirm><?php
+		printf(
+			/* translators: %s: "privacy policy" link. */
+			esc_html__( 'We’ll only use your details to contact you about this request. See our %s.', 'pharmacy' ),
+			'<a href="' . esc_url( rx_url( 'privacy' ) ) . '">' . esc_html__( 'privacy policy', 'pharmacy' ) . '</a>'
+		);
+		?></p>
+</div>
+<?php else : // Fallback: the original script-driven form. ?>
 <div class="form-card">
   <form id="demo-form" novalidate>
     <?php if ( '' !== $rx_df_title ) : ?><h3><?php echo $rx_df_title; ?></h3><?php endif; ?>
@@ -62,5 +79,6 @@ $rx_df_success = trim( rx_text( $rx_df_args['success_title'] ?? __( 'Thank you, 
     <p><?php esc_html_e( 'Prototype only: nothing was sent.', 'pharmacy' ); ?></p>
   </div>
 </div>
+<?php endif; ?>
 <?php
 // phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped

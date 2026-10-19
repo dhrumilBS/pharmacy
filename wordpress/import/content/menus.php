@@ -373,6 +373,12 @@ return array(
 				'title' => 'Cookies',
 				'page'  => 'cookies',
 			),
+			// Opens the cookie preferences of the TrustLayer Consent plugin (it handles this link in the browser).
+			array(
+				'title' => 'Cookie settings',
+				'id'    => 'cookie-settings',
+				'url'   => '#tlc-preferences',
+			),
 		),
 	),
 );

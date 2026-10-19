@@ -19,7 +19,7 @@ foreach ( array( 'format', 'http', 'pricing', 'blog', 'schema' ) as $rx_file ) {
 }
 
 // WordPress-aware: hooks, helpers, templates support, SEO.
-foreach ( array( 'http', 'setup', 'helpers', 'enqueue', 'cleanup', 'nav', 'shortcodes', 'pricing', 'blog', 'seo', 'blocks' ) as $rx_file ) {
+foreach ( array( 'http', 'setup', 'helpers', 'enqueue', 'cleanup', 'nav', 'shortcodes', 'pricing', 'blog', 'seo', 'blocks', 'forms' ) as $rx_file ) {
 	require_once __DIR__ . '/inc/' . $rx_file . '.php';
 }
 

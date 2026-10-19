@@ -1,0 +1,52 @@
+/* Booking forms: Contact Form 7 inside the demo slip (.slip) and the demo form (.form-card),
+   plus the thank-you page. CF7's own stylesheet is off (inc/cleanup.php); the field, label,
+   button and card looks come from site.css and home.css, so this file only styles what CF7 adds:
+   field wrappers, validation messages, the response box and the submitting state. */
+
+.wpcf7, .wpcf7 form { margin: 0; }
+.wpcf7-form-control-wrap { display: block; }
+.slip-tel .wpcf7-form-control-wrap { flex: 1; min-width: 0; }
+.rx-form .fld select { width: 100%; }
+
+/* Validation: the message sits under the field, the field gets the danger border */
+.wpcf7-not-valid-tip { display: block; margin-top: 4px; font-size: 13px; font-weight: 500; color: var(--danger); }
+.wpcf7 .fld .wpcf7-not-valid { border-color: var(--danger); }
+.wpcf7 .fld .wpcf7-not-valid:focus { box-shadow: 0 0 0 4px rgba(220, 38, 38, .14); }
+
+/* Response box: hidden until there is something to say (status is also read out by CF7's live region) */
+.wpcf7 form .wpcf7-response-output { display: none; margin: 12px 0 0; padding: 10px 14px; border: 1.5px solid var(--border-2); border-radius: var(--r-sm); font-size: 14px; color: var(--text); }
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.unaccepted .wpcf7-response-output,
+.wpcf7 form.failed .wpcf7-response-output,
+.wpcf7 form.aborted .wpcf7-response-output,
+.wpcf7 form.spam .wpcf7-response-output,
+.wpcf7 form.sent .wpcf7-response-output { display: block; }
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.unaccepted .wpcf7-response-output,
+.wpcf7 form.failed .wpcf7-response-output,
+.wpcf7 form.aborted .wpcf7-response-output,
+.wpcf7 form.spam .wpcf7-response-output { border-color: var(--danger); }
+.wpcf7 form.sent .wpcf7-response-output { border-color: var(--teal-500); color: var(--teal-700); }
+
+/* Submitting: the button dims, the spinner is not drawn */
+.wpcf7-spinner { display: none; }
+.wpcf7 form.submitting input[type="submit"] { opacity: .65; cursor: progress; pointer-events: none; }
+.rx-form input[type="submit"] { cursor: pointer; }
+.form-card .rx-form input[type="submit"] { width: 100%; }
+
+/* CF7's screen-reader live region and hidden fields */
+.screen-reader-response { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
+.wpcf7 .hidden-fields-container { display: none; }
+.wpcf7 form [data-lead-guard-status] { margin: 12px 0 0; }
+
+/* Thank-you page */
+.thanks { max-width: 720px; text-align: center; }
+.thanks .sol-ic { margin: 0 auto 18px; }
+.thanks h1 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 44px); }
+.thanks > p { margin: 0 auto 10px; max-width: 56ch; color: var(--text-2); }
+.thanks-next { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 40px 0 0; padding: 0; list-style: none; text-align: left; }
+.thanks-next li { padding: 20px 22px; border-radius: var(--r-md); background: var(--blue-50); }
+.thanks-next a { display: block; font: 700 17px var(--font-head); color: var(--navy-950); text-decoration: none; }
+.thanks-next a:hover { color: var(--blue-700); }
+.thanks-next span { display: block; margin-top: 4px; font-size: 14px; color: var(--text-2); }
+@media (max-width: 767px) { .thanks-next { grid-template-columns: minmax(0, 1fr); } }

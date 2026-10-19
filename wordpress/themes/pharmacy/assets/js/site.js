@@ -137,14 +137,28 @@
   /* ---------- Demo form: intent from CTA + local validation (sends nothing) ---------- */
   var form = $('#demo-form'), want = $('#f-want');
   if (want) {
+    // The scripted form's options have the values demo / quote / checklist; the Contact Form 7 form
+    // posts the option text, so an option is matched by its value or by a word in its text.
     var labels = { demo: 'Book my free demo', quote: 'Get Enterprise pricing', checklist: 'Send me the checklist' };
-    var sync = function () { var l = $('#submit-label'); if (l && labels[want.value]) l.textContent = labels[want.value]; };
+    var words = { demo: 'demo', quote: 'enterprise', checklist: 'checklist' };
+    var find = function (key) {
+      var hit = null;
+      Array.prototype.forEach.call(want.options, function (o) {
+        if (!hit && (o.value === key || (o.value + ' ' + o.text).toLowerCase().indexOf(words[key]) > -1)) hit = o;
+      });
+      return hit;
+    };
+    var sync = function () {
+      var l = $('#submit-label'), sel = want.options[want.selectedIndex], k = null;
+      Object.keys(words).forEach(function (w) { if (!k && sel && find(w) === sel) k = w; });
+      if (l && k) { if (l.tagName === 'INPUT') l.value = labels[k]; else l.textContent = labels[k]; }
+    };
     var fromUrl = (location.search.match(/[?&]want=(\w+)/) || [])[1];
-    if (fromUrl && want.querySelector('option[value="' + fromUrl + '"]')) want.value = fromUrl;
+    if (fromUrl && words[fromUrl] && find(fromUrl)) want.value = find(fromUrl).value;
     $$('[data-cta]').forEach(function (a) {
       a.addEventListener('click', function () {
-        var v = a.getAttribute('data-cta');
-        if (want.querySelector('option[value="' + v + '"]')) want.value = v;
+        var v = a.getAttribute('data-cta'), o = words[v] ? find(v) : null;
+        if (o) want.value = o.value;
         sync();
       });
     });

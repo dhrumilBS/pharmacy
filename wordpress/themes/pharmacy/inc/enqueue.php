@@ -122,6 +122,14 @@ function rx_asset_map( ?array $ctx = null ): array {
 		}
 	}
 
+	// Booking forms (Contact Form 7, inc/forms.php) and the thank-you page.
+	if ( function_exists( 'rx_forms_page_keys' ) && in_array( $key, rx_forms_page_keys(), true ) ) {
+		$styles['rx-forms'] = 'css/forms.css';
+		if ( 'thank-you' === $key ) {
+			$scripts['rx-forms-js'] = 'js/forms.js';
+		}
+	}
+
 	return array(
 		'styles'  => $styles,
 		'scripts' => $scripts,
