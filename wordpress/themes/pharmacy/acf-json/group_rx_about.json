@@ -234,7 +234,7 @@
             "name": "why_html",
             "aria-label": "",
             "type": "textarea",
-            "instructions": "One <p> per paragraph. HTML allowed. Live values go in as shortcodes, for example [rx_link key=\"pricing\"]pricing page[/rx_link], [rx_tel key=\"sales\"] or [rx_plan feat=\"feat_x\"].",
+            "instructions": "One <p> per paragraph. HTML allowed. Live values go in as shortcodes, for example [rx_link key=\"pricing\"]pricing page[\/rx_link], [rx_tel key=\"sales\"] or [rx_plan feat=\"feat_x\"].",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -255,7 +255,7 @@
             "name": "why_image",
             "aria-label": "",
             "type": "select",
-            "instructions": "JPG in assets/img/ (with its @2x copy).",
+            "instructions": "JPG in assets\/img\/ (with its @2x copy).",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -279,7 +279,9 @@
             "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_rx_about_why_image_alt",
@@ -492,7 +494,9 @@
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": "",
-                    "parent_repeater": "field_rx_about_promises"
+                    "parent_repeater": "field_rx_about_promises",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_rx_about_promises_title",
@@ -821,7 +825,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "templates/about.php"
+                "value": "templates\/about.php"
             }
         ]
     ],
@@ -832,8 +836,10 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Copy for templates/about.php (from about.php).",
+    "description": "Copy for templates\/about.php (from about.php).",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1792142461
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1792401428
 }

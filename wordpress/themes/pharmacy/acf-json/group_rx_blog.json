@@ -381,7 +381,9 @@
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": "",
-                    "parent_repeater": "field_rx_blog_tools"
+                    "parent_repeater": "field_rx_blog_tools",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_rx_blog_tools_title",
@@ -480,7 +482,9 @@
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": "",
-                    "parent_repeater": "field_rx_blog_tools"
+                    "parent_repeater": "field_rx_blog_tools",
+                    "create_options": 0,
+                    "save_options": 0
                 }
             ]
         }
@@ -501,8 +505,10 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Blog hub copy: hero, Start here path and tools strip (replaces the copy in blog/index.php).",
+    "description": "Blog hub copy: hero, Start here path and tools strip (replaces the copy in blog\/index.php).",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1792142414
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1792401435
 }

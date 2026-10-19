@@ -298,7 +298,9 @@
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": "",
-                    "parent_repeater": "field_rx_contact_cards"
+                    "parent_repeater": "field_rx_contact_cards",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_rx_contact_cards_title",
@@ -641,7 +643,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "templates/contact.php"
+                "value": "templates\/contact.php"
             }
         ]
     ],
@@ -652,8 +654,10 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Copy for templates/contact.php (from contact.php). Phone numbers, address, map and social profiles come from Site settings.",
+    "description": "Copy for templates\/contact.php (from contact.php). Phone numbers, address, map and social profiles come from Site settings.",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1792142461
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1792401442
 }

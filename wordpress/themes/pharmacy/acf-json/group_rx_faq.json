@@ -294,6 +294,7 @@
                     "collapsed": "",
                     "button_label": "Add question",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_rx_faq_topics",
                     "sub_fields": [
                         {
                             "key": "field_rx_faq_topics_questions_q",
@@ -323,7 +324,7 @@
                             "name": "a_html",
                             "aria-label": "",
                             "type": "textarea",
-                            "instructions": "HTML allowed. Live values go in as shortcodes, for example [rx_link key=\"pricing\"]pricing page[/rx_link], [rx_tel key=\"sales\"] or [rx_plan feat=\"feat_x\"].",
+                            "instructions": "HTML allowed. Live values go in as shortcodes, for example [rx_link key=\"pricing\"]pricing page[\/rx_link], [rx_tel key=\"sales\"] or [rx_plan feat=\"feat_x\"].",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -361,8 +362,7 @@
                             "ui_off_text": "No",
                             "parent_repeater": "field_rx_faq_topics_questions"
                         }
-                    ],
-                    "parent_repeater": "field_rx_faq_topics"
+                    ]
                 }
             ]
         }
@@ -372,7 +372,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "templates/faq.php"
+                "value": "templates\/faq.php"
             }
         ]
     ],
@@ -383,8 +383,10 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Copy for templates/faq.php (from faq.php). Each topic becomes a jump link and a block; confirmed answers go into FAQ schema.",
+    "description": "Copy for templates\/faq.php (from faq.php). Each topic becomes a jump link and a block; confirmed answers go into FAQ schema.",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1792142461
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1792401456
 }

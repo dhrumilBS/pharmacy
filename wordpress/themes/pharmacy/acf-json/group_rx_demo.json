@@ -217,7 +217,7 @@
             "name": "alt_html",
             "aria-label": "",
             "type": "textarea",
-            "instructions": "HTML allowed. Live values go in as shortcodes, for example [rx_link key=\"pricing\"]pricing page[/rx_link], [rx_tel key=\"sales\"] or [rx_plan feat=\"feat_x\"].",
+            "instructions": "HTML allowed. Live values go in as shortcodes, for example [rx_link key=\"pricing\"]pricing page[\/rx_link], [rx_tel key=\"sales\"] or [rx_plan feat=\"feat_x\"].",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -298,7 +298,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "templates/demo.php"
+                "value": "templates\/demo.php"
             }
         ]
     ],
@@ -309,8 +309,10 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Copy for templates/demo.php (from demo.php). The page has its own dark hero next to the demo form.",
+    "description": "Copy for templates\/demo.php (from demo.php). The page has its own dark hero next to the demo form.",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1792142461
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1792401448
 }
