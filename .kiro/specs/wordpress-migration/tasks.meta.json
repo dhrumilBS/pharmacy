@@ -798,6 +798,11 @@
         "executionId": "5a5428f6-d360-41ca-8cae-06444160a82a",
         "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
         "timestamp": 1792155372788
+      },
+      {
+        "executionId": "0afb2490-6417-4627-abf7-67911706f1ea",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792388186172
       }
     ],
     "11.2 Switch off Contact Form 7 on the front end in `inc/cleanup.php`": [
@@ -941,6 +946,11 @@
         "executionId": "91be815c-3720-4411-9667-5d76c6e18ff6",
         "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
         "timestamp": 1792141220479
+      },
+      {
+        "executionId": "0afb2490-6417-4627-abf7-67911706f1ea",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792388511738
       }
     ],
     "15.3 Run the full check and share the report": [
@@ -1203,6 +1213,13 @@
         "executionId": "0afb2490-6417-4627-abf7-67911706f1ea",
         "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
         "timestamp": 1792383542909
+      }
+    ],
+    "11. Scripts, interactions and forms (Requirement 9)": [
+      {
+        "executionId": "0afb2490-6417-4627-abf7-67911706f1ea",
+        "chatSessionId": "sess_7f73a7cc-4af0-4b7b-a761-28e3ab631957",
+        "timestamp": 1792388186172
       }
     ]
   }

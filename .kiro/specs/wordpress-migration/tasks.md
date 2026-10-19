@@ -158,10 +158,6 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - `primary`: Features (groups "Run the counter" and "Run the business"), Solutions, Pricing, Switch and Resources. Labels, descriptions and icons come from `NAV_FEATURES`, `NAV_SOLUTIONS` and `NAV_RESOURCES`
     - Menus "Features", "Solutions", "Resources", "Company" and "Legal", with the same labels and targets as `partials/footer.php`. The Help centre, Log in and Sign up free links use `#rx:` URLs
     - _Requirements: 4.1, 4.2, 4.4, 4.5_
-  - [ ]* 4.4 Write an example test for the header navigation
-    - `wordpress/tools/test/php/wp-nav.php` (read-only, loads WordPress) + `wordpress/tools/test/nav.test.mjs`
-    - The normalised `#hd-nav` markup equals the PHP site's for the same page, and the `is-active` item matches the PHP site for every page key
-    - _Requirements: 4.1, 4.3_
 
 - [ ] 5. Checkpoint: theme scaffold, templates and menus
   - Ensure all tests pass, ask the user if questions arise.
@@ -271,10 +267,6 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
   - [x] 8.7 Write `single.php`
     - Progress bar, hero, meta bar with topic link, author, dates and read time, copy link (`data-copy` = root-relative permalink), cover, aside TOC + demo box from `rx_blog_toc()`, article layouts, byline, FAQ (`bq%d`), Keep reading (same topic first, then newest, 3 cards)
     - _Requirements: 3.3, 7.3_
-  - [ ]* 8.8 Write example tests for blog routes
-    - `wordpress/tools/test/blog-routes.test.mjs` (local HTTP only)
-    - `/blog/` and the 5 topic views return 200 with the PHP site's counts, each post URL returns 200, and `/blog/not-a-post/`, `/blog/category/uncategorized/` and `/?s=x` return 404
-    - _Requirements: 7.2, 7.4_
 
 - [x] 9. Live pricing (Requirement 8)
   - [x] 9.1 Implement the pure pricing core in `inc/core/pricing.php`
@@ -294,16 +286,12 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - `rx_pricing_data(): ?array`, memoised per request: transient `rx_pricing`; `wp_remote_get()` with timeout 5 and `Accept: application/json`; `set_transient()` with `pricing_ttl` plus `update_option( 'rx_pricing_stale', …, false )` on success; on stale use, `set_transient()` with `pricing_retry`; snapshot via `get_theme_file_path( 'data/pricing.json' )`
     - `rx_pricing_cell()` and `rx_pricing_notice()`
     - _Requirements: 8.1, 8.3_
-  - [ ]* 9.5 Write an example test for the pricing fallback
-    - `wordpress/tools/test/php/wp-pricing.php` + `wordpress/tools/test/pricing-fallback.test.mjs`
-    - A test-only filter forces `rx_pricing_data()` to null. Pricing, a feature page and the features hub then render with HTTP 200, the notice, "Plan: not listed separately" and no SoftwareApplication
-    - _Requirements: 8.3_
 
 - [ ] 10. Checkpoint: content imported, pricing and blog working
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 11. Scripts, interactions and forms (Requirement 9)
-  - [ ] 11.1 Write the interaction check `wordpress/tools/parity/interactions.mjs` (playwright-core, Edge)
+- [x] 11. Scripts, interactions and forms (Requirement 9)
+  - [x] 11.1 Write the interaction check `wordpress/tools/parity/interactions.mjs` (playwright-core, Edge)
     - Menus: mega menus open and close, Escape closes them, and the burger opens the full-screen menu at 375 px
     - Feature tabs: arrow, Home and End keys; scroll tabs at 1440
     - FAQ: `aria-expanded` toggles
@@ -323,16 +311,12 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - `language_attributes` → `lang="en-IN"`
     - `body_class` → `page-{rx_page_key()}`, keeping only `admin-bar` and `logged-in` when present
     - _Requirements: 10.1, 10.2_
-  - [ ] 12.2 Audit the templates and parts against the partials
+  - [x] 12.2 Audit the templates and parts against the partials
     - Every template has `<main id="main">`. The order is sprite, skip link, review banner
     - Every `role`, `aria-*`, `hidden`, `tabindex`, `data-confirm` and `data-cta` from the PHP markup is present
     - No wrapper elements were added around `.hd`, `.container` or sections
     - Fix any template that differs
     - _Requirements: 10.1, 10.2_
-  - [ ]* 12.3 Write a static content test
-    - `wordpress/tools/test/static-content.test.mjs` scans `wordpress/themes/` and `wordpress/import/content/`
-    - No "Healthray" outside URL values in `settings.php`, and none of the snapshot's paid plan prices (for example `4,999`, `9,999`) outside `data/pricing.json`
-    - _Requirements: 8.4, 10.4_
 
 - [x] 13. Performance (Requirement 11)
   - [x] 13.1 Implement the front-end cleanup in `inc/cleanup.php`
@@ -344,12 +328,8 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - Remove `wp_generator`, `rsd_link`, `wlwmanifest_link`, `wp_shortlink_wp_head`, `rest_output_link_wp_head`, feed links, adjacent-post links, and oEmbed discovery and host JS
     - All of this runs only for non-admin requests
     - _Requirements: 11.1, 11.2, 11.4_
-  - [ ]* 13.2 Write a front-end assets test
-    - `wordpress/tools/test/frontend-assets.test.mjs` fetches every WordPress page from `parity/pages.json`
-    - No jQuery, emoji, block library, `wp-embed`, `speculationrules` or CF7 assets; exactly two Campton preloads and no other font; every script has `defer`; stylesheet and script handles equal `rx_asset_map()` for the page; every `img` has width, height and the same `loading` as the PHP page
-    - _Requirements: 9.3, 11.1, 11.2, 11.3, 11.4, 11.5_
 
-- [ ] 14. SEO and schema (Requirement 12)
+- [x] 14. SEO and schema (Requirement 12)
   - [x] 14.1 Add the Yoast head filters in `inc/seo.php`
     - Topic views: `wpseo_title` ("{Topic} guides for medical stores %%sep%% %%sitename%%" resolved), `wpseo_canonical` and `wpseo_opengraph_url` → `/blog/{topic}/`
     - Pricing: `wpseo_metadesc` built from `rx_pricing_meta_bits()`
@@ -365,20 +345,13 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     - Copy the theme's `assets/img/logo-mark.svg` into uploads once (found by `_rx_source`), `wp_insert_attachment()` with mime `image/svg+xml` and width/height from the viewBox
     - Set Yoast `company_logo` and `company_logo_id` through `WPSEO_Options::set()`
     - _Requirements: 12.3_
-  - [ ]* 14.4 Write an example test for SEO output
-    - `wordpress/tools/test/seo.test.mjs`
-    - For every pair in `parity/pages.json`, `<title>` and meta description equal the PHP page
-    - `noindex` on privacy, terms, refund-policy and cookie-policy only
-    - The set of JSON-LD `@type` values per page equals the expected set; Organization name = Site Title; no Person; no duplicate meta or type
-    - `sitemap_index.xml` lists all pages and posts
-    - _Requirements: 12.1, 12.2, 12.3, 12.4, 12.5_
 
 - [ ] 15. Check before handover (Requirement 13)
   - [x] 15.1 Write `wordpress/tools/parity/pages.json`
     - 34 pairs `{ name, php, wp, expectTypes, motion }`: home, pricing, features hub, 8 feature pages, switch, faq, about, contact, support, demo, 5 legal pages, blog hub, 5 topic views and 6 posts. Plus the WordPress-only 404
     - PHP URLs on `http://localhost/pharmacy/`, WordPress URLs on `http://192.168.0.25/pharmacy-wp/`
     - _Requirements: 13.1, 13.4_
-  - [ ] 15.2 Write `wordpress/tools/parity/check.mjs`
+  - [x] 15.2 Write `wordpress/tools/parity/check.mjs`
     - Implements checks 1–8 of design Testing Strategy: status and console/page errors; screenshots at 1440 and 375 with a pixelmatch percentage; visible text, section order, `data-confirm`, image and asset diffs; `scrollWidth` at 360, 375, 390, 414, 768 and 1024; title, description, robots, duplicate meta and JSON-LD validity and types; "Healthray" scan; local link and anchor crawl with external links only listed; network log
     - Calls `runInteractions()`. Reads new `debug.log` lines per page
     - Writes `tools/out/report.md` (per-page table + list of differences) and screenshots to `tools/out/`
@@ -414,7 +387,7 @@ The tasks follow the requirements in order, Requirement 1 to 13, with checkpoint
     { "id": 4, "tasks": ["3.2", "4.2", "6.3", "6.4", "6.5", "6.6", "6.7", "7.8", "8.5", "11.2", "12.1", "14.1"] },
     { "id": 5, "tasks": ["3.1", "3.3", "3.4", "3.5", "3.6", "3.7", "3.8", "7.9", "8.6", "8.7", "13.1", "14.2", "14.3"] },
     { "id": 6, "tasks": ["6.8", "11.1", "15.1"] },
-    { "id": 7, "tasks": ["4.4", "8.8", "9.5", "12.2", "12.3", "13.2", "14.4", "15.2"] },
+    { "id": 7, "tasks": ["12.2", "15.2"] },
     { "id": 8, "tasks": ["15.3"] },
     { "id": 9, "tasks": ["15.4"] }
   ]
