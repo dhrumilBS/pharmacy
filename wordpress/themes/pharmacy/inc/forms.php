@@ -28,31 +28,6 @@ add_filter( 'wpcf7_skip_mail', '__return_true' );
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
 
 /**
- * Lets visitors type a local mobile number: a 10-digit number starting 6-9
- * gets "+91" in front, before Lead Guard checks it (it requires a country
- * code). Any number typed with its own "+" is left alone.
- *
- * @param array $posted Posted data.
- * @return array
- */
-function rx_forms_prefix_mobile( $posted ) {
-	if ( ! is_array( $posted ) ) {
-		return $posted;
-	}
-	foreach ( array( 'your_phone' ) as $name ) {
-		if ( ! isset( $posted[ $name ] ) || ! is_string( $posted[ $name ] ) ) {
-			continue;
-		}
-		$digits = preg_replace( '/\D/', '', $posted[ $name ] );
-		if ( '' !== $posted[ $name ] && ! str_contains( $posted[ $name ], '+' ) && preg_match( '/^[6-9]\d{9}$/', (string) $digits ) ) {
-			$posted[ $name ] = '+91' . $digits;
-		}
-	}
-	return $posted;
-}
-add_filter( 'wpcf7_posted_data', 'rx_forms_prefix_mobile', 10 );
-
-/**
  * Id of the CF7 form with the given `_rx_form` key (0 when there is none).
  *
  * @param string $slug Form key: 'hero' or 'demo'.

@@ -13,21 +13,22 @@
 .wpcf7 .fld .wpcf7-not-valid { border-color: var(--danger); }
 .wpcf7 .fld .wpcf7-not-valid:focus { box-shadow: 0 0 0 4px rgba(220, 38, 38, .14); }
 
-/* Response box: hidden until there is something to say (status is also read out by CF7's live region) */
-.wpcf7 form .wpcf7-response-output { display: none; margin: 12px 0 0; padding: 10px 14px; border: 1.5px solid var(--border-2); border-radius: var(--r-sm); font-size: 14px; color: var(--text); }
-.wpcf7 form.invalid .wpcf7-response-output,
-.wpcf7 form.unaccepted .wpcf7-response-output,
+/* Response box: only for a send that failed, was marked spam, or succeeded. Field mistakes
+   (class "invalid") already show under each field, so no box repeats them. */
+.wpcf7 form .wpcf7-response-output { display: none; margin: 12px 0 0; padding: 12px 14px 12px 44px; position: relative; border-radius: var(--r-sm); font-size: 14px; font-weight: 500; line-height: 1.4; }
 .wpcf7 form.failed .wpcf7-response-output,
 .wpcf7 form.aborted .wpcf7-response-output,
 .wpcf7 form.spam .wpcf7-response-output,
 .wpcf7 form.sent .wpcf7-response-output { display: block; }
-.wpcf7 form.invalid .wpcf7-response-output,
-.wpcf7 form.unaccepted .wpcf7-response-output,
+.wpcf7 form .wpcf7-response-output::before { content: "!"; position: absolute; left: 12px; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; color: #fff; font: 700 14px var(--font-head); }
 .wpcf7 form.failed .wpcf7-response-output,
 .wpcf7 form.aborted .wpcf7-response-output,
-.wpcf7 form.spam .wpcf7-response-output { border-color: var(--danger); }
-.wpcf7 form.sent .wpcf7-response-output { border-color: var(--teal-500); color: var(--teal-700); }
-
+.wpcf7 form.spam .wpcf7-response-output { background: #FEF2F2; border: 1px solid #FCA5A5; color: #991B1B; }
+.wpcf7 form.failed .wpcf7-response-output::before,
+.wpcf7 form.aborted .wpcf7-response-output::before,
+.wpcf7 form.spam .wpcf7-response-output::before { background: var(--danger); }
+.wpcf7 form.sent .wpcf7-response-output { background: #ECFDF5; border: 1px solid #6EE7B7; color: var(--teal-700); }
+.wpcf7 form.sent .wpcf7-response-output::before { content: "✓"; background: var(--teal-700); }
 /* Submitting: the button dims, the spinner is not drawn */
 .wpcf7-spinner { display: none; }
 .wpcf7 form.submitting input[type="submit"] { opacity: .65; cursor: progress; pointer-events: none; }
@@ -50,3 +51,10 @@
 .thanks-next a:hover { color: var(--blue-700); }
 .thanks-next span { display: block; margin-top: 4px; font-size: 14px; color: var(--text-2); }
 @media (max-width: 767px) { .thanks-next { grid-template-columns: minmax(0, 1fr); } }
+
+/* Phone with a country-code label: the error message sits inside the input's wrapper, so the label
+   must not stretch down with it, and it takes the error colour with the field */
+.slip-tel { align-items: flex-start; }
+.slip-tel > .slip-cc { align-self: flex-start; box-sizing: border-box; height: 48px; }
+.slip-tel:has(.wpcf7-not-valid) > .slip-cc { border-color: var(--danger); }
+.slip-tel .wpcf7-not-valid-tip { margin-left: 2px; }

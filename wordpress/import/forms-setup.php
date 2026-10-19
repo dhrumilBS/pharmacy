@@ -84,13 +84,19 @@ foreach ( $plugin_files as $file ) {
 /*
  * --- 2. The two forms -----------------------------------------------------------
  */
-$utm_names = array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content' );
+// Attribution captured by HandL: this visit's UTMs, click ids, landing page and referrer.
+$utm_names = array(
+	'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
+	'gclid', 'fbclid', 'msclkid',
+	'handl_landing_page', 'handl_original_ref', 'handl_ref',
+);
 $utm_tags  = '';
 if ( is_plugin_active( 'handl-utm-grabber-v3/handl-utm-grabber-v3.php' ) || $dry ) {
 	foreach ( $utm_names as $name ) {
 		$utm_tags .= '[' . $name . '_cf7 ' . $name . ']';
 	}
-	$utm_tags = "\n" . $utm_tags;
+	// The hidden fields sit in one hidden group, so they never take layout space.
+	$utm_tags = "\n<div class=\"rx-utm\" hidden>" . $utm_tags . '</div>';
 }
 
 $settings_common = "skip_mail: on\nlead_guard_redirect: /thank-you/\nlead_guard_delay: 800\nlead_guard_event: demo_request_submitted\n";
@@ -222,6 +228,28 @@ if ( class_exists( 'WPCF7_ContactForm' ) ) {
 }
 
 /*
+ * --- 3b. UTM fields in every form (forms made by hand get the hidden fields added at the end) ---
+ */
+if ( class_exists( 'WPCF7_ContactForm' ) && ! $dry && '' !== $utm_tags ) {
+	foreach ( get_posts( array( 'post_type' => 'wpcf7_contact_form', 'post_status' => 'any', 'posts_per_page' => -1, 'fields' => 'ids' ) ) as $form_id ) {
+		$cf = WPCF7_ContactForm::get_instance( (int) $form_id );
+		if ( ! $cf ) {
+			continue;
+		}
+		$body = (string) $cf->prop( 'form' );
+		// Rebuild the group: drop the old wrapper and every HandL tag (also the retired first_utm_* ones), then add the current set.
+		$clean = preg_replace( '~\s*<div class="rx-utm" hidden>.*?</div>~s', '', $body );
+		$clean = preg_replace( '~\s*\[(?:first_)?(?:utm_[a-z]+|gclid|fbclid|msclkid|handl_[a-z_]+)_cf7 [a-z_]+\]~', '', (string) $clean );
+		$next  = rtrim( (string) $clean ) . $utm_tags;
+		if ( $next !== $body ) {
+			$cf->set_properties( array( 'form' => $next ) );
+			$cf->save();
+			rx_fs_line( 'utm', 'set in #' . $form_id . ' (' . $cf->title() . ')' );
+		}
+	}
+}
+
+/*
  * --- 4. Thank you page ------------------------------------------------------------
  */
 $thanks = array(
@@ -256,14 +284,19 @@ if ( ! $dry && is_plugin_active( 'lead-guard-cf7/lead-guard-cf7.php' ) ) {
 		array_merge(
 			$lg,
 			array(
-				'phone_default'     => 'none', // A country code is required; the theme adds +91 to a 10-digit mobile (inc/forms.php).
-				'msg_phone'         => 'Please enter a valid mobile number.',
-				'msg_phone_country' => 'Please add your country code, e.g. +44.',
+				// A number typed without "+" is a national number with the default country code (Contact > Lead Guard).
+				'phone_default'        => 'code',
+				'phone_code'           => '91',
+				'phone_national_len'   => 10,
+				'phone_national_first' => '6789',
+				'msg_phone'            => 'Please enter a valid mobile number.',
+				'msg_phone_national'   => 'Please enter a 10-digit mobile number.',
+				'msg_phone_country'    => 'Please add your country code, e.g. +44.',
 				'msg_duplicate'     => 'We already have your request from the last {hours} hours. We will call you soon.',
 			)
 		)
 	);
-	rx_fs_line( 'lead guard', 'settings saved (phone: country code required)' );
+	rx_fs_line( 'lead guard', 'settings saved (phone: default country code +91, 10 digits)' );
 }
 
 if ( ! $dry && class_exists( 'TLC_Settings' ) ) {

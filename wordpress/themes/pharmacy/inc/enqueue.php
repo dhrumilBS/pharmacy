@@ -93,6 +93,7 @@ function rx_asset_map( ?array $ctx = null ): array {
 	);
 	$scripts = array(
 		'rx-site-js' => 'js/site.js',
+		'rx-utm-js'  => 'js/utm.js', // campaign attribution for the booking forms
 	);
 
 	if ( 'home' === $key || 'home-blocks' === $key ) {
