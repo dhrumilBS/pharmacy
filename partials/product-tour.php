@@ -10,7 +10,6 @@
  * Zerodol batch (ZS2611) is added so the FEFO pick has two batches to choose from.
  * Previous version: archive/video/v1/. Only two controls: play/pause and full screen. No audio.
  */
-$slug = strtolower(BRAND ?: 'app');
 ?>
 <section class="section tour" id="tour" aria-labelledby="tour-t">
   <div class="container">
@@ -24,14 +23,9 @@ $slug = strtolower(BRAND ?: 'app');
       <div class="tour-fit">
         <div class="tour-stage" aria-hidden="true">
           <div class="bw">
-            <div class="bw-bar">
-              <span class="bw-dots"><i></i><i></i><i></i></span>
-              <span class="bw-tab"><svg class="brand-logo"><use href="#logo-mark"/></svg><span data-tab-title>Dashboard</span><b>×</b></span>
-              <span class="bw-url"><svg viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5z"/></svg><b><?= e($slug) ?></b><span data-url>/pharmacy/dashboard</span></span>
-            </div>
             <div class="ap">
               <header class="ap-top">
-                <svg class="brand-logo"><use href="#logo-mark"/></svg>
+                <img class="brand-logo" src="<?= asset('img/trusted/universal-pharmacy.webp') ?>" width="32" height="32" alt=""><?php /* White-label: the app bar shows the hospital's own logo */ ?>
                 <nav class="ap-nav">
                   <span class="ap-n" data-nav="dash"><svg><use href="#i-chart"/></svg>Dashboard</span>
                   <span class="ap-n"><svg><use href="#i-users"/></svg>Account Master</span>

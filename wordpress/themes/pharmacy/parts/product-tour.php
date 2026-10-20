@@ -32,7 +32,6 @@ $rx_tour_eyebrow = trim( rx_text( $rx_tour_args['eyebrow'] ?? __( 'Product tour 
 $rx_tour_title   = trim( rx_html( $rx_tour_args['title_html'] ?? __( 'Watch one bill go from <span class="scribble-u">scan to print</span>', 'pharmacy' ) ) );
 $rx_tour_intro   = trim( rx_text( $rx_tour_args['intro'] ?? __( 'Then a distributor bill comes in with its margins checked, and the expiry report lines up what to send back. The same screens your counter staff use.', 'pharmacy' ) ) );
 $rx_tour_end     = isset( $rx_tour_args['end_cta'] ) && is_string( $rx_tour_args['end_cta'] ) && '' !== $rx_tour_args['end_cta'] ? $rx_tour_args['end_cta'] : '#top';
-$rx_tour_slug    = strtolower( '' !== rx_brand() ? rx_brand() : 'app' ); // Address bar host, follows the Site Title.
 ?>
 <section class="section tour" id="tour"<?php echo '' !== $rx_tour_title ? ' aria-labelledby="tour-t"' : ''; ?>>
   <div class="container">
@@ -46,14 +45,9 @@ $rx_tour_slug    = strtolower( '' !== rx_brand() ? rx_brand() : 'app' ); // Addr
       <div class="tour-fit">
         <div class="tour-stage" aria-hidden="true">
           <div class="bw">
-            <div class="bw-bar">
-              <span class="bw-dots"><i></i><i></i><i></i></span>
-              <span class="bw-tab"><svg class="brand-logo"><use href="#logo-mark"/></svg><span data-tab-title><?php esc_html_e( 'Dashboard', 'pharmacy' ); ?></span><b>×</b></span>
-              <span class="bw-url"><svg viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5z"/></svg><b><?php echo esc_html( $rx_tour_slug ); ?></b><span data-url>/pharmacy/dashboard</span></span>
-            </div>
             <div class="ap">
               <header class="ap-top">
-                <svg class="brand-logo"><use href="#logo-mark"/></svg>
+                <img class="brand-logo" src="<?php echo esc_url( get_theme_file_uri( 'assets/img/trusted/universal-pharmacy.webp' ) ); ?>" width="32" height="32" alt=""><?php /* White-label: the app bar shows the hospital's own logo */ ?>
                 <nav class="ap-nav">
                   <span class="ap-n" data-nav="dash"><svg><use href="#i-chart"/></svg><?php esc_html_e( 'Dashboard', 'pharmacy' ); ?></span>
                   <span class="ap-n"><svg><use href="#i-users"/></svg><?php esc_html_e( 'Account Master', 'pharmacy' ); ?></span>
@@ -313,7 +307,6 @@ $rx_tour_slug    = strtolower( '' !== rx_brand() ? rx_brand() : 'app' ); // Addr
       </div>
     </div>
     <p class="sr-only" id="tour-desc"><?php esc_html_e( 'Animated product tour, about 40 seconds, no sound. On the dashboard, today’s sales, purchase and profit tiles fill in and a stock alert lists items below minimum. On the sale screen, a staff member scans Gluconorm VG 2 Forte, searches “zerodol” and the batch expiring first (12/27) is picked, sets the quantity to 2, adds patient Ramesh Patel, pays by UPI and saves: the bill prints and is shared on WhatsApp. On the purchase screen, a distributor’s CSV is dropped in, five lines are read with batch, expiry, PTR and free quantity, and two lines are flagged because their margin is below the last purchase. Finally the stock expiry report switches to supplier-wise and a purchase return is drafted. Product data is from a test account; names are sample names.', 'pharmacy' ); ?></p>
-    <span class="sample-tag tour-tag"><?php esc_html_e( 'Animated walkthrough · demo data', 'pharmacy' ); ?></span>
   </div>
 </section>
 <?php

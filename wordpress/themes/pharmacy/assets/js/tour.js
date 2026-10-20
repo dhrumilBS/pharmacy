@@ -45,11 +45,9 @@
   function show(t, sel) { cls(t, sel, 'on', true); }
   function hide(t, sel) { cls(t, sel, 'on', false); }
   function text(t, sel, s) { at(t, 0, function () { var el = q(sel); if (el) el.textContent = s; }); }
-  var SCENES = { dash: ['Dashboard', '/pharmacy/dashboard'], bill: ['Sales', '/pharmacy/sales'], buy: ['Purchases', '/pharmacy/purchase'], exp: ['Stock Expiry Report', '/pharmacy/expiry-report'] };
   function scene(t, name) {
     at(t, 0, function () {
       stage.setAttribute('data-scene', name);
-      q('[data-tab-title]').textContent = SCENES[name][0]; q('[data-url]').textContent = SCENES[name][1];
     });
   }
   // Human-ish move: eased, with a slight arc. The target is re-measured every frame, so the tip still

@@ -36,29 +36,9 @@ tr.grp b{color:var(--navy-950);font-size:13px}
 .car{display:inline-block;width:16px;color:var(--muted)}
 </style></head><body>
 <div class="app">
-  <nav class="rail">
-    <div class="mark" style="background:none"><svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true" style="display:block"><defs><linearGradient id="lmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#0F9F9A"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#lmg)"/><rect x="16.5" y="8" width="7" height="24" rx="3.5" fill="#fff"/><rect x="8" y="16.5" width="24" height="7" rx="3.5" fill="#fff"/><path d="M23.5 16.5h5a3.5 3.5 0 0 1 0 7h-5z" fill="#99F6E4"/></svg></div>
-    <a><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Home</a>
-    <a><svg class="i" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Sale</a>
-    <a><svg class="i" viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Purchase</a>
-    <a class="on"><svg class="i" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg>Stock</a>
-    <a><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg>Patients</a>
-    <a><svg class="i" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/></svg>Reports</a>
-    <a><svg class="i" viewBox="0 0 24 24"><path d="M7 4h11M7 8.5h11M7 4c6 0 6 9 0 9h-1l8 7"/></svg>Accounts</a>
-    <span class="sp"></span>
-    <a><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>Settings</a>
-  </nav>
+  <header class="hd"><svg class="logo" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><defs><linearGradient id="lmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#0F9F9A"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#lmg)"/><rect x="16.5" y="8" width="7" height="24" rx="3.5" fill="#fff"/><rect x="8" y="16.5" width="24" height="7" rx="3.5" fill="#fff"/><path d="M23.5 16.5h5a3.5 3.5 0 0 1 0 7h-5z" fill="#99F6E4"/></svg><nav><a><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Dashboard</a><a><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg>Account Master</a><a><svg class="i" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Sale</a><a><svg class="i" viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Purchase</a><a><svg class="i" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg>Item Master</a><a><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>Initialization<svg class="i dd" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a><a><svg class="i" viewBox="0 0 24 24"><path d="M7 4h11M7 8.5h11M7 4c6 0 6 9 0 9h-1l8 7"/></svg>Pay Bill<svg class="i dd" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a><a class="on"><svg class="i" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/></svg>Reports<svg class="i dd" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a></nav><span class="sp"></span><span class="plan"><b>Advance</b> · 31-03-2027</span><span class="phone"><svg class="i" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>+91 89808 80819</span><span class="ico"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span><span class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></span><span class="me">P</span></header>
 
   <div class="main">
-    <header class="topbar">
-      <div class="store"><span class="ico" style="border:0;background:var(--blue-50);color:var(--blue-700)"><svg class="i" viewBox="0 0 24 24"><path d="M4 10v10h16V10M3 10l2-6h14l2 6zM9 20v-6h6v6"/></svg></span><div>Shree Sai Medical Store<small>Main branch · Ahmedabad</small></div></div>
-      <div class="cmd"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search items, patients, bills…<span class="kbd" style="margin-left:auto">Ctrl K</span></div>
-      <div class="tb-right">
-        <span class="chip c-grey">Tue, 13 Oct · 7:42 pm</span>
-        <span class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></span>
-        <span class="me">PD</span>
-      </div>
-    </header>
 
     <div class="work">
       <div class="head">

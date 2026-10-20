@@ -12,26 +12,32 @@ html,body{margin:0}
 body{font-family:Inter,system-ui,sans-serif;font-size:13px;color:var(--text);background:var(--bg);width:1440px;height:900px;overflow:hidden;-webkit-font-smoothing:antialiased}
 h1,h2,h3{font-family:"Plus Jakarta Sans",Inter,sans-serif;margin:0;color:var(--navy-950);letter-spacing:-.01em}
 svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.app{display:grid;grid-template-columns:76px 1fr;height:100%}
+.app{display:flex;flex-direction:column;height:100%}
 
-/* Rail */
-.rail{background:var(--navy-950);display:flex;flex-direction:column;align-items:center;padding:16px 0;gap:6px}
-.rail .mark{width:40px;height:40px;border-radius:11px;background:var(--blue-600);display:grid;place-items:center;color:#fff;margin-bottom:14px}
-.rail a{width:60px;padding:9px 0 7px;border-radius:10px;color:#93A8BF;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10.5px;font-weight:500}
-.rail a.on{background:rgba(59,130,246,.18);color:#fff}
-.rail .sp{flex:1}
+/* Top header, as in the real app: hospital logo, menu with icons, plan, phone, search, bell, user */
+.hd{height:56px;flex:none;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;padding:0 20px 0 16px}
+.hd .logo{width:34px;height:34px;flex:none;margin-right:12px}
+.hd nav{display:flex;gap:2px}
+.hd nav a{position:relative;display:flex;align-items:center;gap:7px;height:56px;padding:0 12px;color:var(--text-2);font-weight:500;font-size:13px;white-space:nowrap}
+.hd nav a svg.i{width:16px;height:16px}
+.hd nav a svg.dd{width:12px;height:12px;margin-left:-2px;color:var(--muted)}
+.hd nav a.on{color:var(--blue-700);font-weight:600}
+.hd nav a.on::after{content:"";position:absolute;left:10px;right:10px;bottom:0;height:2.5px;background:var(--blue-600);border-radius:2px 2px 0 0}
+.hd .sp{flex:1}
+.hd .plan{white-space:nowrap;background:var(--blue-100);color:var(--blue-700);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:500}
+.hd .plan b{font-weight:700}
+.hd .phone{white-space:nowrap;display:flex;align-items:center;gap:7px;border:1px solid var(--border);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--navy-800)}
+.hd .phone svg.i{width:14px;height:14px;color:var(--blue-700)}
 
-/* Top bar */
-.main{display:flex;flex-direction:column;min-width:0}
-.topbar{height:62px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px;padding:0 22px}
+/* Page area under the header */
+.main{flex:1;min-height:0;display:flex;flex-direction:column;min-width:0}
 .store{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--navy-900)}
 .store small{display:block;font-weight:500;color:var(--muted);font-size:11px}
 .cmd{flex:1;max-width:520px;margin-left:18px;display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:9px 12px;color:var(--muted)}
 .kbd{font-size:11px;font-weight:600;background:#fff;border:1px solid var(--border-2);border-bottom-width:2px;border-radius:5px;padding:1px 6px;color:var(--text-2)}
 .tb-right{margin-left:auto;display:flex;align-items:center;gap:12px}
-.ico{width:36px;height:36px;border-radius:10px;border:1px solid var(--border);display:grid;place-items:center;color:var(--text-2);background:#fff}
-.me{width:36px;height:36px;border-radius:50%;background:var(--teal-600);color:#fff;display:grid;place-items:center;font-weight:700}
-
+.ico{width:34px;height:34px;border-radius:10px;border:1px solid var(--border);display:grid;place-items:center;color:var(--text-2);background:#fff}
+.me{width:34px;height:34px;border-radius:50%;background:var(--blue-600);color:#fff;display:grid;place-items:center;font-weight:700}
 /* Common */
 .chip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
 .c-teal{background:var(--teal-100);color:var(--teal-700)}.c-blue{background:var(--blue-100);color:var(--blue-700)}

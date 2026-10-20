@@ -2,6 +2,8 @@
 
 A new visual design for the Healthray Pharmacy screens, used for marketing graphics. The functions and data match the real app (FEFO batch selection, OPD/IPD patient, doctor, payment methods, GST-inclusive totals, WhatsApp bill sharing, keyboard shortcuts), but the layout is not a copy of it. It follows the website design system: navy/blue/teal, Plus Jakarta Sans + Inter. The earlier recreations in `../` are left unchanged.
 
+**Layout (updated 20 Oct 2026):** every screen has the real app's top header and no sidebar: hospital logo (white-label, the Universal Pharmacy logo), menu (Dashboard, Account Master, Sale, Purchase, Item Master, Initialization, Pay Bill, Reports), plan chip, support phone, search, bell and user. The active menu item names where the screen lives in the app. The header is in `src/ui.css` (`.hd`) and repeated at the top of each screen's HTML.
+
 | File | What |
 |---|---|
 | `src/ui.css` | Shared v2 UI styles |
