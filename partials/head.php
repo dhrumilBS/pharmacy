@@ -18,7 +18,9 @@ $page_key    = $page_key ?? '';
   <?php if (!empty($noindex)): ?><meta name="robots" content="noindex"><?php endif; ?>
   <meta property="og:title" content="<?= e($title) ?>">
   <?php if (BRAND): ?><meta property="og:site_name" content="<?= e(BRAND) ?>"><?php endif; ?>
-  <link rel="icon" href="<?= asset('img/logo-mark.svg') ?>" type="image/svg+xml">
+  <link rel="icon" href="<?= asset('img/favicon-32.png') ?>" type="image/png" sizes="32x32">
+  <link rel="icon" href="<?= asset('img/favicon-192.png') ?>" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="<?= asset('img/apple-touch-icon.png') ?>">
   <?php // The only typeface is self-hosted Campton (assets/fonts/campton, @font-face in fonts.css). No external fonts. ?>
   <link rel="preload" href="<?= asset('fonts/campton/campton-400.woff2') ?>" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="<?= asset('fonts/campton/campton-700.woff2') ?>" as="font" type="font/woff2" crossorigin>

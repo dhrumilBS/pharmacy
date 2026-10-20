@@ -214,7 +214,7 @@ function blog_end(array $faq = []): void {
     <article class="b-article">
       <?= $body ?>
       <footer class="b-byline">
-        <span class="b-byline-mark" aria-hidden="true"><svg class="brand-logo"><use href="#logo-mark"/></svg></span>
+        <span class="b-byline-mark" aria-hidden="true"><img class="brand-logo" src="<?= asset('img/favicon-32.png') ?>" width="32" height="32" alt=""></span>
         <div><p><b>Written by <?= e(blog_author()) ?></b></p>
           <p>We build pharmacy software for medical stores, chains and hospital pharmacies. Where this guide describes the software, it matches the app as of <?= e(blog_date($p['updated'] ?? $p['date'])) ?>. Practical advice here is general; check rules that apply to your store with your adviser.</p></div>
       </footer>

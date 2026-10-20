@@ -24,7 +24,7 @@ $footer_link = function (string $key, string $label) { return '<li><a href="' . 
   <div class="container">
     <div class="ft-top">
       <div class="ft-brand">
-        <a class="brand" href="<?= url('home') ?>" aria-label="Home"><?= logo() ?></a>
+        <a class="brand" href="<?= url('home') ?>" aria-label="Home"><?= logo(true) ?></a>
         <p>Billing, expiry, stock, purchase and GST software for medical stores, pharmacy chains and hospital pharmacies.</p>
         <ul class="ft-contact">
           <li><a href="tel:<?= SITE['sales_tel'] ?>"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Sales <?= e(SITE['sales_phone']) ?></a></li>
@@ -58,7 +58,7 @@ $footer_link = function (string $key, string $label) { return '<li><a href="' . 
       </ul></nav>
     </div>
     <div class="ft-bottom">
-      <span>© <span data-year>2026</span><?= BRAND ? ' ' . e(BRAND) : '' ?>. Draft website, not yet published.</span>
+      <span>© <span data-year>2026</span><?= BRAND ? ' ' . e(BRAND) : '' ?>.</span>
       <nav aria-label="Legal">
         <a href="<?= url('privacy') ?>">Privacy</a><a href="<?= url('terms') ?>">Terms</a><a href="<?= url('refund') ?>">Refund policy</a><a href="<?= url('data-security') ?>">Data &amp; security</a><a href="<?= url('cookies') ?>">Cookies</a>
       </nav>

@@ -30,7 +30,7 @@
  *  6. Menus from content/menus.php with their items and menu-item fields,
  *     then the theme menu locations.
  *  7. Logo attachment for Yoast's Organization: the theme's
- *     assets/img/logo-mark.svg as an attachment (found by `_rx_source`,
+ *     assets/img/healthray-logo.svg as an attachment (found by `_rx_source`,
  *     created once), then Yoast's company_logo and company_logo_id.
  *  8. The WordPress sample content, deleted once: post "Hello world!" (and
  *     its comments), page "Sample Page" and the draft page "Privacy Policy",
@@ -75,7 +75,7 @@ const RX_IMPORT_ACF_JSON = __DIR__ . '/../themes/pharmacy/acf-json';
 const RX_IMPORT_SAMPLES_OPTION = 'rx_import_samples_deleted';
 
 /** Parent theme file the logo attachment is made from; also its `_rx_source` (step 7). */
-const RX_IMPORT_LOGO_SOURCE = 'assets/img/logo-mark.svg';
+const RX_IMPORT_LOGO_SOURCE = 'assets/img/healthray-logo.svg';
 
 /** MIME type of the logo attachment. */
 const RX_IMPORT_LOGO_MIME = 'image/svg+xml';
@@ -1614,8 +1614,8 @@ function rx_import_locations( Rx_Import_Run $run, array $assign ): void {
  * Step 7: the logo attachment Yoast needs to output Organization (design §12).
  *
  * 1. Attachment, found by `_rx_source` = RX_IMPORT_LOGO_SOURCE:
- *    - None yet: the parent theme's assets/img/logo-mark.svg is copied into
- *      the uploads folder of wp_upload_dir(). The name stays logo-mark.svg
+ *    - None yet: the parent theme's assets/img/healthray-logo.svg is copied into
+ *      the uploads folder of wp_upload_dir(). The name stays healthray-logo.svg
  *      unless that file exists; wp_unique_filename() then adds a number, so
  *      no other file is overwritten. wp_insert_attachment() registers it as
  *      image/svg+xml, and its metadata gets width and height from the SVG
@@ -1692,7 +1692,7 @@ function rx_import_logo_source_file(): string {
 }
 
 /**
- * Path of a file relative to the uploads folder, e.g. '2026/10/logo-mark.svg'.
+ * Path of a file relative to the uploads folder, e.g. '2026/10/healthray-logo.svg'.
  *
  * Compares normalised paths, so mixed slashes (and letter case on Windows)
  * do not matter. WordPress' _wp_relative_upload_path() compares the raw

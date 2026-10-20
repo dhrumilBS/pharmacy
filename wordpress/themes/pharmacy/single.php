@@ -178,8 +178,8 @@ get_template_part(
     <article class="b-article">
       <?php echo $rx_sp_body; ?>
       <footer class="b-byline">
-        <span class="b-byline-mark" aria-hidden="true"><svg class="brand-logo"><use href="#logo-mark"/></svg></span>
-        <div><p><b><?php /* translators: %s: author line, e.g. "The Rxtiva team". */ echo esc_html( sprintf( __( 'Written by %s', 'pharmacy' ), $rx_sp_author ) ); ?></b></p>
+        <span class="b-byline-mark" aria-hidden="true"><img class="brand-logo" src="<?php echo esc_url( get_theme_file_uri( 'assets/img/favicon-32.png' ) ); ?>" width="32" height="32" alt=""></span>
+        <div><p><b><?php /* translators: %s: author line, e.g. "The Healthray team". */ echo esc_html( sprintf( __( 'Written by %s', 'pharmacy' ), $rx_sp_author ) ); ?></b></p>
           <p><?php
 			if ( '' !== $rx_sp_as_of ) {
 				/* translators: %s: date the guide was written or last updated, e.g. "14 Oct 2026". */

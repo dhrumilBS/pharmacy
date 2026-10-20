@@ -1,14 +1,14 @@
-# CLAUDE.md — Pharmacy software marketing site (brand name pending)
+# CLAUDE.md — Pharmacy software marketing site (Healthray)
 
-Marketing site for a browser-based pharmacy management app (brand name not final; the product currently runs on Healthray infrastructure). It targets Indian retail medical stores (primary), pharmacy chains, and hospital pharmacies. Multi-page PHP site with shared partials (no framework, no build step), served by XAMPP. It's written to port easily to WordPress templates later.
+Marketing site for a browser-based pharmacy management app (brand: Healthray, final). It targets Indian retail medical stores (primary), pharmacy chains, and hospital pharmacies. Multi-page PHP site with shared partials (no framework, no build step), served by XAMPP. It's written to port easily to WordPress templates later.
 
-## Brand name is not final
+## Brand: Healthray (final)
 
-- **Working name: "Rxtiva"** (temporary). It lives only in `BRAND` in `partials/config.php`. `logo()`, `page_title()`, the footer and home copy (`$brand` in `index.php`, the tour URL bar, the demo-slip code) all read it, so a rename is a one-line change. Never type the name into pages.
-- **Don't rebrand images:** product screenshots stay as rendered.
-- **Never show "Healthray"** in page copy, titles, alt text, screenshots or graphics.
-- **Logo (final: option C, "blister pack"):** `#logo-mark` in `partials/sprite.php`, also `assets/img/logo-mark.svg` (plus `logo-mark-dark.svg` and `logo-mark-mono.svg`). A deep-navy rounded square with four capsule dots; the teal one is the nearest-expiry batch picked first. The favicon is the same file.
-- **Healthray URLs:** they remain only as link targets in `config.php` (app login/signup, help centre, calendar) because those services still live there. Never print them as text.
+- **Name: "Healthray"** (final, owner decision 20 Oct 2026). It lives only in `BRAND` in `partials/config.php` (PHP site) and in the WordPress Site Title (`wordpress/import/brand-setup.php` sets it). Titles, the footer, alt text, home copy, the demo-slip code and the social image all follow it. Never type the name into pages; use `BRAND` / `rx_brand()`.
+- **Images carry the brand too:** the social card (`assets/img/og-default.png`), the theme screenshots and the Yoast organisation logo use the Healthray logo. Product screenshots show the app's own interface and stay as rendered.
+- **Healthray in copy:** the earlier "never show Healthray" rule is retired now that Healthray is the brand. Do not claim a customer count or other figure that is not verified.
+- **Logo and favicon (final):** the Healthray logo `assets/img/healthray-logo.svg` (heart, wordmark and tagline, 150×83, shown 52px tall by `logo()` / `rx_logo()`; on a white plate in the dark footer) and the heart icon `favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png`, `favicon-512.png`. Taken from healthray.com. The old blister-pack mark (`logo-mark*.svg`, `#logo-mark` in `partials/sprite.php`) is retired but left in place.
+- **Healthray URLs:** they remain link targets in `config.php` (app login/signup, help centre, calendar). Never print them as text.
 - **Research docs:** the strategy docs mention Healthray only as the source of verified facts.
 
 ## Design choices (final)
@@ -18,7 +18,7 @@ The design-variant review is finished and the switcher, `variants.js`, `variants
 - **Hero:** product-style hero with the demo slip on the right (no screenshot).
 - **"Why switch" band:** none.
 - **Features:** the tabs with screens only (no live cards).
-- **Logo:** C (see Brand name above).
+- **Logo:** the Healthray logo image (see Brand above); the earlier option C mark is retired.
 - **"Sound familiar?":** the message inbox (`partials/problems-chat.php`).
 
 ## Files
@@ -141,7 +141,7 @@ Home (`index.php`): `#top` hero → trusted-by marquee → `#tour` → `#problem
 - **Hero (final):** copy on the left, the demo slip (`hero-lead.php`, `$lead_id = 'hl1'`) in the right-hand `.hero3-form` column, no product image. The "Switching made safe" section has a "Book a free demo" button (`.switch-cta`, `data-cta="demo"`) and the "Who it's for" cards carry no links.
 - **Features scroll:** `[data-scroll-tabs]` (`.feat-track`) makes the tab block sticky at ≥1025px. Scrolling advances the tabs and clicking a tab scrolls to its stretch (`site.js`). Below that width they're normal tabs.
 - **Section surfaces** follow styles.refero.design: `.bg-soft` sections and `#demo` become filled, rounded panels (32px radius) and cards use fills, not borders. Problems is an interview-style list (`.pr`), the day section is a shift register (`.shift`), and the estimator is a filled panel with a white result card.
-- **Product tour** (`partials/product-tour.php` + `assets/js/tour.js`): a scripted DOM animation in a browser frame, designed at 1200×640 and scaled to fit. It has only two controls, play/pause and full screen; no audio, no captions. It autoplays when on screen (not under reduced motion), restarts from 0 s each time it scrolls back into view (unless the visitor paused it), and loops. There is no video file. Edit the script block in `tour.js` (`at()/move()/click()/type()` in seconds) and keep sample numbers consistent with the screenshots. For review screenshots, `?tour-at=15` freezes it at 15 s.
+- **Product tour** (`partials/product-tour.php` + `assets/js/tour.js`): a scripted DOM animation in a frame with no browser bar (the bar with the dots, tab and address was removed on 20 Oct 2026), designed at 1200×640 and scaled to fit. It has only two controls, play/pause and full screen; no audio, no captions. It autoplays when on screen (not under reduced motion), restarts from 0 s each time it scrolls back into view (unless the visitor paused it), and loops. There is no video file. Edit the script block in `tour.js` (`at()/move()/click()/type()` in seconds) and keep sample numbers consistent with the screenshots. For review screenshots, `?tour-at=15` freezes it at 15 s.
 - **Type: Campton only (final).** No other webfonts are loaded anywhere: no Google Fonts, no `@import`. The source OTFs are in `font/campton/` on the owner's disk only: that folder is **git-ignored** and was purged from git history, because Campton is a commercial font and the repo is public. Only the subset WOFF2 files in `assets/fonts/campton/` are tracked (web fonts cannot be truly encrypted, since browsers must read them; WOFF2 is compressed, subset and not directly installable). `scripts/make-webfonts.py` (fontTools + brotli) converts weights 300–800 plus 400 italic to subset WOFF2 files (~20 KB each) in `assets/fonts/campton/`. `assets/css/fonts.css` holds the `@font-face` rules and points every font token (`--font-head`, `--font-body`, `--font-display`, `--font-eyebrow`, `--mono`) at Campton. `head.php` loads it right after `site.css` and preloads 400 and 700. Use `font-variant-numeric: tabular-nums` where a monospace look is wanted. Eyebrows are small uppercase Campton labels whose marker is a tiny two-tone capsule (`layout.css`). The trusted-by SVG logos keep their own type because they stand in for customer logos.
 - **Spacing:** `.section` is 72px (56px at ≤900, 44px at ≤600). Two white sections in a row get a 24px top on home. Home panels use 64px padding.
 - **Mobile:** at ≤767px `.container` is full width with 12px side padding, and home panels go full-bleed with 12px padding. Every page was checked at 360/375/390/414/768/1024 with no horizontal overflow; re-check after layout changes.

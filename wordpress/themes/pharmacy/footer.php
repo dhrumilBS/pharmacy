@@ -89,7 +89,7 @@ if ( empty( $rx_ft_args['hide_cta'] ) ) {
   <div class="container">
     <div class="ft-top">
       <div class="ft-brand">
-        <a class="brand" href="<?php echo esc_url( rx_url( 'home' ) ); ?>" aria-label="<?php esc_attr_e( 'Home', 'pharmacy' ); ?>"><?php echo rx_logo(); ?></a>
+        <a class="brand" href="<?php echo esc_url( rx_url( 'home' ) ); ?>" aria-label="<?php esc_attr_e( 'Home', 'pharmacy' ); ?>"><?php echo rx_logo( true ); ?></a>
         <?php if ( '' !== $rx_ft_blurb ) : ?><p><?php echo $rx_ft_blurb; ?></p><?php endif; ?>
         <ul class="ft-contact">
           <?php foreach ( $rx_ft_phones as $rx_ft_phone ) : ?>

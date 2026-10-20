@@ -480,14 +480,15 @@ function rx_svg_img( string $name, int $w, int $h, string $alt, string $extra = 
 }
 
 /**
- * Logo markup: the mark always, the wordmark only when the Site Title is
- * set. Port of logo().
+ * Logo markup: the Healthray logo image (heart, wordmark and tagline),
+ * 150x83 artwork shown 52px tall, with the Site Title as its alt text.
+ * $dark: the white-text version for dark backgrounds (the footer).
+ * Port of logo().
  *
- * @return string Markup (the sprite holds #logo-mark).
+ * @return string Markup.
  */
-function rx_logo(): string {
-	$brand = rx_brand();
-	return '<svg class="brand-logo" aria-hidden="true"><use href="#logo-mark"/></svg>' . ( '' !== $brand ? '<span>' . esc_html( $brand ) . '</span>' : '' );
+function rx_logo( bool $dark = false ): string {
+	return '<img class="brand-logo-img" src="' . esc_url( get_theme_file_uri( 'assets/img/healthray-logo' . ( $dark ? '-dark' : '' ) . '.svg' ) ) . '" width="94" height="52" alt="' . esc_attr( rx_brand() ) . '">';
 }
 
 /*

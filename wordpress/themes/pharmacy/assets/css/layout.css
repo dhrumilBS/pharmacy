@@ -163,7 +163,11 @@
 @media (max-width:1024px){.channels.four{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.channels.four{grid-template-columns:1fr}}
 
-/* Logo mark (brand name pending: wordmark only renders when BRAND is set) */
+/* Logo: the Healthray logo image; the footer uses the white-text version (healthray-logo-dark.svg). */
+.brand-logo-img{display:block;height:52px;width:auto;flex:none}
+.ft .brand-logo-img{height:68px}
+@media (max-width:767px){.brand-logo-img{height:44px}.ft .brand-logo-img{height:52px}}
+/* Small icon mark (heart favicon): blog byline, tour app bar */
 .brand-logo{width:40px;height:40px;flex:none;display:block}
 .ft .brand-logo{width:44px;height:44px}
 

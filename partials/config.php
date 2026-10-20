@@ -1,17 +1,16 @@
 <?php
 /*
  * Site-wide settings for the pharmacy software marketing site.
- * BRAND NAME IS NOT FINAL: "Rxtiva" is the working name. It lives only in BRAND below and appears next to
- * the logo, in page titles and in home copy via BRAND. Never hard-code a brand or company name in pages.
+ * The brand is "Healthray" (final). It lives only in BRAND below and appears in page titles, the footer and home
+ * copy via BRAND; the logo is the image assets/img/healthray-logo.svg. Never hard-code the name in pages.
  * Facts verified 13 Oct 2026 (see PHARMACY-ICP-AND-UX-STRATEGY.md §0). Anything marked [confirm] needs sign-off.
  */
 
 // Base URL path of this site (XAMPP: http://localhost/pharmacy/). Change when deploying.
 const BASE = '/pharmacy/';
 
-// Working brand name (temporary, will change). Change it here only: logo wordmark, titles, footer and home
-// copy all read BRAND. Empty = logo-only header/footer and brand-free titles. Product screenshots are not rebranded.
-const BRAND = 'Rxtiva';
+// Brand name (final). Change it here only: titles, footer, alt text and home copy all read BRAND.
+const BRAND = 'Healthray';
 
 const SITE = [
   'name'          => 'Pharmacy software',           // generic descriptor used until BRAND is set
@@ -42,9 +41,10 @@ const HERO_PATTERN = true;
 /** Brand-aware title: "Page | Brand" once BRAND is set, otherwise just "Page". */
 function page_title(string $t): string { return BRAND ? $t . ' | ' . BRAND : $t; }
 
-/** Logo markup: mark always, wordmark only when BRAND is set. */
-function logo(): string {
-  return '<svg class="brand-logo" aria-hidden="true"><use href="#logo-mark"/></svg>' . (BRAND ? '<span>' . e(BRAND) . '</span>' : '');
+/** Logo markup: the Healthray logo image (heart, wordmark and tagline), 150x83 artwork shown 52px tall.
+ *  $dark = the white-text version for dark backgrounds (the footer). */
+function logo(bool $dark = false): string {
+  return '<img class="brand-logo-img" src="' . asset('img/healthray-logo' . ($dark ? '-dark' : '') . '.svg') . '" width="94" height="52" alt="' . e(BRAND) . '">';
 }
 
 /*

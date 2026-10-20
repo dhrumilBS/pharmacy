@@ -186,12 +186,14 @@ function rx_preload_fonts( $resources ): array {
 add_filter( 'wp_preload_resources', 'rx_preload_fonts' );
 
 /**
- * Prints the SVG favicon (the logo mark), as partials/head.php does.
+ * Prints the favicon and the touch icon, as partials/head.php does.
  */
 function rx_favicon(): void {
 	printf(
-		'<link rel="icon" href="%s" type="image/svg+xml">' . "\n",
-		esc_url( get_theme_file_uri( 'assets/img/logo-mark.svg' ) )
+		'<link rel="icon" href="%s" type="image/png" sizes="32x32">' . "\n" . '<link rel="icon" href="%s" type="image/png" sizes="192x192">' . "\n" . '<link rel="apple-touch-icon" href="%s">' . "\n",
+		esc_url( get_theme_file_uri( 'assets/img/favicon-32.png' ) ),
+		esc_url( get_theme_file_uri( 'assets/img/favicon-192.png' ) ),
+		esc_url( get_theme_file_uri( 'assets/img/apple-touch-icon.png' ) )
 	);
 }
 add_action( 'wp_head', 'rx_favicon', 1 );
