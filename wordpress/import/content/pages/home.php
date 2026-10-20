@@ -39,8 +39,8 @@ return array(
 	'slug'   => 'home',
 	'group'  => 'home',
 	'seo'    => array(
-		'title'   => 'Pharmacy software for medical stores: billing, expiry & stock %%sep%% %%sitename%%',
-		'desc'    => 'Pharmacy billing software for medical stores: batch-wise FEFO billing, stock expiry reports, CSV and OCR purchase import, and GST reports. Book a free demo or start free.',
+		'title'   => 'Pharmacy software: billing, expiry and stock %%sep%% %%sitename%%',
+		'desc'    => 'Pharmacy software for medical stores: batch-wise FEFO billing, expiry reports, CSV and OCR purchase import and GST reports. Book a free demo.',
 		'noindex' => false,
 	),
 	'fields' => array(

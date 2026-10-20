@@ -34,7 +34,7 @@ return array(
 	'slug'     => 'data-security',
 	'template' => 'templates/legal.php',
 	'seo'      => array(
-		'desc'    => 'How our pharmacy software protects your store and patient data: individual logins, roles, two-step OTP login, IP whitelisting, activity reports, ABDM consent and how we handle incidents.',
+		'desc'    => 'How we protect store and patient data: individual logins, roles, two-step OTP login, IP whitelisting, activity reports, ABDM consent and incident handling.',
 		'noindex' => false,
 	),
 	'fields'   => array(

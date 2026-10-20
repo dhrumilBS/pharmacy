@@ -291,7 +291,7 @@ function rx_term_total( int $price, array $term ): string {
  * Plan phrases for the pricing meta description, in sort_order:
  * [ 'Starter free forever', 'Basic ₹4,999/year', …, 'Enterprise for chains' ].
  * The caller joins them as pricing.php does:
- * 'Simple yearly plans for medical stores: ' . implode( ', ', $bits ) . '. Prices exclude 18% GST. Compare every feature.'
+ * 'Yearly plans for medical stores: ' . implode( ', ', $bits ) . '. Prices exclude 18% GST. Compare features.'
  *
  * @param array $d Valid pricing document.
  * @return string[]

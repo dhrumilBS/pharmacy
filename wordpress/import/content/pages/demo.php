@@ -22,7 +22,7 @@ return array(
 	'slug'     => 'demo',
 	'template' => 'templates/demo.php',
 	'seo'      => array(
-		'title'   => 'Book a free demo %%sep%% %%sitename%%',
+		'title'   => 'Book a free pharmacy software demo %%sep%% %%sitename%%',
 		'desc'    => 'See our pharmacy software working with medicines from your own shelf: billing, expiry report and purchase entry. Free demo on a call.',
 		'noindex' => false,
 	),

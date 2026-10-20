@@ -31,7 +31,7 @@ return array(
 	'slug'     => 'pricing',
 	'template' => 'templates/pricing.php',
 	'seo'      => array(
-		'title'   => 'Pricing: pharmacy software plans from free to Enterprise %%sep%% %%sitename%%',
+		'title'   => 'Pricing: pharmacy software plans from free %%sep%% %%sitename%%',
 		'noindex' => false,
 	),
 	'fields'   => array(

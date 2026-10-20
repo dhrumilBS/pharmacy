@@ -20,7 +20,7 @@ return array(
 	'template' => 'templates/switch.php',
 	'seo'      => array(
 		'title'   => 'Switching from your current pharmacy software %%sep%% %%sitename%%',
-		'desc'    => 'Change pharmacy software without stopping a single bill: set up free, import items and opening stock from CSV, train staff with in-app walkthroughs, and go live on your day.',
+		'desc'    => 'Change pharmacy software without stopping a bill: set up free, import items and stock from CSV, train staff with walkthroughs, go live on your day.',
 		'noindex' => false,
 	),
 	'fields'   => array(

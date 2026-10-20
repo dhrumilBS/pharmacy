@@ -29,8 +29,8 @@ return array(
 	'status' => 'publish',
 	'group'  => 'blog',
 	'seo'    => array(
-		'title'   => 'Blog & guides: practical help for running a medical store %%sep%% %%sitename%%',
-		'desc'    => 'Plain, practical guides for pharmacy owners: cutting expiry loss, setting stock levels, checking distributor bills, switching software safely and setting up staff logins.',
+		'title'   => 'Blog & guides for running a medical store %%sep%% %%sitename%%',
+		'desc'    => 'Practical guides for pharmacy owners: cutting expiry loss, setting stock levels, checking distributor bills, switching safely and staff logins.',
 		'noindex' => false,
 	),
 	'fields' => array(

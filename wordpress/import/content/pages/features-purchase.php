@@ -27,8 +27,8 @@ return array(
 	'template' => 'templates/feature.php',
 	'status'   => 'publish',
 	'seo'      => array(
-		'title'   => 'Pharmacy purchase management software: import distributor bills by CSV or OCR %%sep%% %%sitename%%',
-		'desc'    => 'Stop typing distributor bills line by line: import them by CSV or scan with OCR, record scheme and free quantity, see PTR and margin on save, and keep supplier ledgers, dues and credit notes in one place.',
+		'title'   => 'Pharmacy purchase software: CSV and OCR bill import %%sep%% %%sitename%%',
+		'desc'    => 'Stop typing distributor bills line by line: import by CSV or OCR, record scheme and free quantity, see PTR and margin on save, keep supplier dues.',
 		'noindex' => false,
 	),
 	'group'    => 'feature',

@@ -29,6 +29,7 @@ return array(
 	'date'   => '2026-09-11',
 	'status' => 'publish',
 	'seo'    => array(
+		'title'   => 'Staff logins and roles: pharmacy security checklist %%sep%% %%sitename%%',
 		'desc'    => 'Most store problems aren’t break-ins, they’re shared passwords. How to set up logins and roles, and the ten-minute routine for the day someone leaves.',
 		'noindex' => false,
 	),

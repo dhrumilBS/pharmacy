@@ -25,8 +25,8 @@ return array(
 	'template' => 'templates/feature.php',
 	'status'   => 'publish',
 	'seo'      => array(
-		'title'   => 'Pharmacy expiry management software: batch tracking and expiry reports %%sep%% %%sitename%%',
-		'desc'    => 'Track every medicine by batch and expiry: stock expiry report item-wise or supplier-wise, first-expiry-first-out billing, purchase returns with credit notes, and a setting to stop expired sales.',
+		'title'   => 'Pharmacy expiry software: batches and reports %%sep%% %%sitename%%',
+		'desc'    => 'Track every medicine by batch and expiry: item-wise or supplier-wise expiry reports, first-expiry-first-out billing and purchase returns.',
 		'noindex' => false,
 	),
 	'group'    => 'feature',

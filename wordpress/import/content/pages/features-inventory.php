@@ -24,8 +24,8 @@ return array(
 	'template' => 'templates/feature.php',
 	'status'   => 'publish',
 	'seo'      => array(
-		'title'   => 'Pharmacy inventory management software: stock alerts, short book and reorder %%sep%% %%sitename%%',
-		'desc'    => 'Medical store stock management: min and max stock per item, stock alerts and a short book, purchase orders from the short book, non-moving items, recorded stock adjustments and barcode labels.',
+		'title'   => 'Pharmacy inventory software: stock alerts, reorder %%sep%% %%sitename%%',
+		'desc'    => 'Medical store stock control: min and max levels per item, stock alerts, a short book with purchase orders, non-moving items and barcode labels.',
 		'noindex' => false,
 	),
 	'group'    => 'feature',

@@ -26,8 +26,8 @@ return array(
 	'template' => 'templates/feature.php',
 	'status'   => 'publish',
 	'seo'      => array(
-		'title'   => 'Medical store billing software: fast counter billing with FEFO batches %%sep%% %%sitename%%',
-		'desc'    => 'Pharmacy billing software for the counter rush: search by brand or generic name, nearest-expiry batch picked automatically, cash, card, UPI or credit, and bills on WhatsApp. Book a free demo or start free.',
+		'title'   => 'Medical store billing software with FEFO batches %%sep%% %%sitename%%',
+		'desc'    => 'Pharmacy billing for the counter rush: search by brand or generic, nearest-expiry batch picked first, cash, card, UPI or credit, bills on WhatsApp.',
 		'noindex' => false,
 	),
 	'group'    => 'feature',

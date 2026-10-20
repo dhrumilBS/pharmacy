@@ -26,8 +26,8 @@ return array(
 	'template' => 'templates/feature.php',
 	'status'   => 'publish',
 	'seo'      => array(
-		'title'   => 'Pharmacy software security: staff roles, two-step login and IP whitelisting %%sep%% %%sitename%%',
-		'desc'    => 'Control who can do what at your medical store: one login per staff member, role management, two-step OTP login, IP whitelisting, force logout, locked invoices and an activity report.',
+		'title'   => 'Pharmacy security: staff roles and two-step login %%sep%% %%sitename%%',
+		'desc'    => 'Control who does what at your medical store: a login per staff member, roles, two-step OTP login, IP whitelisting and an activity report.',
 		'noindex' => false,
 	),
 	'group'    => 'feature',

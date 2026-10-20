@@ -22,7 +22,7 @@ return array(
 	'slug'     => 'about',
 	'template' => 'templates/about.php',
 	'seo'      => array(
-		'title'   => 'About us %%sep%% %%sitename%%',
+		'title'   => 'About us: the team behind our pharmacy software %%sep%% %%sitename%%',
 		'desc'    => 'Pharmacy software built by a Surat-based team that also builds hospital and EMR software, for medical stores, pharmacy chains and hospital pharmacies.',
 		'noindex' => false,
 	),

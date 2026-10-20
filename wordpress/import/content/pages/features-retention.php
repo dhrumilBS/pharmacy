@@ -26,8 +26,8 @@ return array(
 	'template' => 'templates/feature.php',
 	'status'   => 'publish',
 	'seo'      => array(
-		'title'   => 'Pharmacy customer retention: medicine reminders, bills on WhatsApp and loyalty %%sep%% %%sitename%%',
-		'desc'    => 'Bring regular patients back to your counter: bills on WhatsApp, SMS or email, medicine reminders, loyalty cards, online orders for pick-up or delivery, and patient history and dues on every bill.',
+		'title'   => 'Pharmacy customer retention: reminders and loyalty %%sep%% %%sitename%%',
+		'desc'    => 'Bring regular patients back: bills on WhatsApp, SMS or email, medicine reminders, loyalty cards, and patient history and dues on every bill.',
 		'noindex' => false,
 	),
 	'group'    => 'feature',

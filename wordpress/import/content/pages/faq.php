@@ -30,7 +30,7 @@ return array(
 	'template' => 'templates/faq.php',
 	'seo'      => array(
 		'title'   => 'FAQ: pharmacy software questions, answered %%sep%% %%sitename%%',
-		'desc'    => 'Straight answers on the free plan, switching from your current software, FEFO billing, expiry, purchase import, GST and Tally, hospital pharmacy, security and pricing.',
+		'desc'    => 'Straight answers on the free plan, switching, FEFO billing, expiry, purchase import, GST and Tally, hospital pharmacy, security and pricing.',
 		'noindex' => false,
 	),
 	'fields'   => array(

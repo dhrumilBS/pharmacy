@@ -26,11 +26,12 @@ return array(
 	'date'   => '2026-10-02',
 	'status' => 'publish',
 	'seo'    => array(
-		'desc'    => 'Too little and you lose the sale; too much and your cash sits on the shelf. A plain rule for setting levels, with worked numbers for fast and slow movers.',
+		'title'   => 'Set minimum and maximum stock for a medical store %%sep%% %%sitename%%',
+		'desc'    => 'Too little stock loses the sale; too much ties up cash. A plain rule for setting levels, with worked numbers for fast and slow movers.',
 		'noindex' => false,
 	),
 	'fields' => array(
-		'dek'          => 'Too little and you lose the sale; too much and your cash sits on the shelf. A plain rule for setting levels, with worked numbers for fast and slow movers.',
+		'dek'          => 'Too little stock loses the sale; too much ties up cash. A plain rule for setting levels, with worked numbers for fast and slow movers.',
 		'topic'        => 'expiry',
 		'read_time'    => 7,
 		'featured'     => false,

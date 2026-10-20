@@ -71,7 +71,7 @@ add_filter( 'wpseo_og_locale', 'rx_seo_locale' );
 /**
  * Title of the current topic view, resolved the way Yoast resolves titles:
  * "{Topic} guides for medical stores %%sep%% %%sitename%%", giving for
- * example "Expiry & stock guides for medical stores | Rxtiva" with the
+ * example "Expiry & stock guides for medical stores | Healthray" with the
  * separator and site name from the Yoast settings.
  *
  * @return string Plain text (unescaped). '' outside topic views, or when
@@ -180,7 +180,7 @@ function rx_seo_pricing_description(): string {
 
 	return sprintf(
 		/* translators: %s: comma-separated plans with yearly prices, for example "Starter free forever, Basic ₹4,999/year, Enterprise for chains". */
-		__( 'Simple yearly plans for medical stores: %s. Prices exclude 18%% GST. Compare every feature.', 'pharmacy' ),
+		__( 'Yearly plans for medical stores: %s. Prices exclude 18%% GST. Compare features.', 'pharmacy' ),
 		implode( ', ', $bits )
 	);
 }
@@ -213,7 +213,9 @@ add_filter( 'wpseo_metadesc', 'rx_seo_metadesc' );
  */
 function rx_seo_social_description( $description, $presentation, string $field ) {
 	if ( ! is_string( $description ) || '' === trim( $description ) ) {
-		return $description;
+		// Yoast has no stored description to derive from: on Pricing the live one is the social text too.
+		$live = rx_seo_pricing_description();
+		return '' !== $live ? $live : $description;
 	}
 	$model = is_object( $presentation ) && isset( $presentation->model ) && is_object( $presentation->model ) ? $presentation->model : null;
 	if ( $model && ! empty( $model->{$field} ) ) {

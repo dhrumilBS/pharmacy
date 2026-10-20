@@ -26,7 +26,7 @@ return array(
 	'template' => 'templates/legal.php',
 	'seo'      => array(
 		'title'   => 'Privacy notice %%sep%% %%sitename%%',
-		'desc'    => 'How our pharmacy software collects, uses, shares and protects store, staff, patient and payment information, and the rights you may have under the privacy laws that apply to you.',
+		'desc'    => 'How our pharmacy software collects, uses, shares and protects store, staff, patient and payment information, and the rights you may have.',
 		'noindex' => true, // Draft until legal sign-off.
 	),
 	'fields'   => array(

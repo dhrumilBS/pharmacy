@@ -25,11 +25,12 @@ return array(
 	'date'   => '2026-10-09',
 	'status' => 'publish',
 	'seo'    => array(
-		'desc'    => 'The real risk in switching isn’t the new software, it’s the first week at the counter. A week-by-week plan to run both systems and go live on your own day.',
+		'title'   => 'Switch pharmacy software without stopping billing %%sep%% %%sitename%%',
+		'desc'    => 'The real risk in switching is the first week at the counter. A week-by-week plan to run both systems and go live on your own day.',
 		'noindex' => false,
 	),
 	'fields' => array(
-		'dek'          => 'The real risk in switching isn’t the new software, it’s the first week at the counter. A week-by-week plan to run both systems and go live on your own day.',
+		'dek'          => 'The real risk in switching is the first week at the counter. A week-by-week plan to run both systems and go live on your own day.',
 		'topic'        => 'switching',
 		'read_time'    => 8,
 		'featured'     => false,

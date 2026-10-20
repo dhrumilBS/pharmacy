@@ -27,8 +27,8 @@ return array(
 	'template' => 'templates/features-hub.php',
 	'status'   => 'publish',
 	'seo'      => array(
-		'title'   => 'Pharmacy software features: billing, expiry, stock, purchase, GST and reports %%sep%% %%sitename%%',
-		'desc'    => 'Every part of a medical store in one browser-based system: counter billing with FEFO batches, expiry and stock control, distributor bill import, GST and accounts, reports, customer retention and staff security.',
+		'title'   => 'Pharmacy software features: billing to reports %%sep%% %%sitename%%',
+		'desc'    => 'One browser-based system for a medical store: FEFO counter billing, expiry and stock control, bill import, GST, reports, retention and staff security.',
 		'noindex' => false,
 	),
 	'group'    => 'features_hub',

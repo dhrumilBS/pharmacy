@@ -24,11 +24,12 @@ return array(
 	'date'   => '2026-09-18',
 	'status' => 'publish',
 	'seo'    => array(
-		'desc'    => 'An honest comparison for owners weighing the switch: where the data lives, what happens when a PC fails, how updates and pricing work, and the questions to ask any vendor.',
+		'title'   => 'Desktop vs browser-based pharmacy software %%sep%% %%sitename%%',
+		'desc'    => 'Weighing a switch? Where your data lives, what happens when a PC fails, how updates and pricing work, and what to ask any vendor.',
 		'noindex' => false,
 	),
 	'fields' => array(
-		'dek'          => 'An honest comparison for owners weighing the switch: where the data lives, what happens when a PC fails, how updates and pricing work, and the questions to ask any vendor.',
+		'dek'          => 'Weighing a switch? Where your data lives, what happens when a PC fails, how updates and pricing work, and what to ask any vendor.',
 		'topic'        => 'buying',
 		'read_time'    => 8,
 		'featured'     => false,

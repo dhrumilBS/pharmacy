@@ -22,11 +22,12 @@ return array(
 	'date'   => '2026-10-14',
 	'status' => 'publish',
 	'seo'    => array(
-		'desc'    => 'Expiry is the leak most owners never put a number on. Here is a simple weekly routine, the maths behind it, and what to do with each near-expiry batch.',
+		'title'   => 'Cut expiry loss in a medical store: weekly routine %%sep%% %%sitename%%',
+		'desc'    => 'Expiry is the leak most owners never measure. A simple weekly routine, the maths behind it, and what to do with each near-expiry batch.',
 		'noindex' => false,
 	),
 	'fields' => array(
-		'dek'          => 'Expiry is the leak most owners never put a number on. Here is a simple weekly routine, the maths behind it, and what to do with each near-expiry batch.',
+		'dek'          => 'Expiry is the leak most owners never measure. A simple weekly routine, the maths behind it, and what to do with each near-expiry batch.',
 		'topic'        => 'expiry',
 		'read_time'    => 9,
 		'featured'     => true,

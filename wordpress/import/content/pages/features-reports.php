@@ -24,8 +24,8 @@ return array(
 	'template' => 'templates/feature.php',
 	'status'   => 'publish',
 	'seo'      => array(
-		'title'   => 'Pharmacy reports software: dashboard, margin reports and a daily WhatsApp report %%sep%% %%sitename%%',
-		'desc'    => 'Medical store reports without standing at the counter: executive dashboard, 25+ reports including margin, top-selling, non-moving, collection and supplier due reports, and the day’s report on WhatsApp.',
+		'title'   => 'Pharmacy reports: dashboard, margins, daily report %%sep%% %%sitename%%',
+		'desc'    => 'Reports without standing at the counter: an executive dashboard, 25+ reports including margin and non-moving stock, and a daily WhatsApp report.',
 		'noindex' => false,
 	),
 	'group'    => 'feature',

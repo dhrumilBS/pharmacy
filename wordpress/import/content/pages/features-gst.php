@@ -25,8 +25,8 @@ return array(
 	'template' => 'templates/feature.php',
 	'status'   => 'publish',
 	'seo'      => array(
-		'title'   => 'GST billing software for medical stores: GST reports, ledgers and Tally export %%sep%% %%sitename%%',
-		'desc'    => 'HSN and GST rate on every bill from the item master, GST report and bill-wise tax report for your CA, account, patient and supplier ledgers, vouchers, expenses and Tally XML export on Enterprise.',
+		'title'   => 'GST billing software for medical stores %%sep%% %%sitename%%',
+		'desc'    => 'HSN and GST rate on every bill, GST and bill-wise tax reports for your CA, ledgers and vouchers, with Tally XML export on Enterprise.',
 		'noindex' => false,
 	),
 	'group'    => 'feature',
