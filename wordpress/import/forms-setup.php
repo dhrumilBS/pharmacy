@@ -260,7 +260,7 @@ $thanks = array(
 	'template' => 'templates/thank-you.php',
 	'seo'      => array(
 		'title'   => 'Thank you %%sep%% %%sitename%%',
-		'desc'    => 'We have your request and will call you to book your demo.',
+		'desc'    => 'We have your request and will call you to book your demo. Keep billing as you do today; nothing changes until you choose.',
 		'noindex' => true,
 	),
 	'content'  => rx_blk_p( 'We have your request. Keep billing as you do today: nothing changes until you choose.' ),
