@@ -63,7 +63,7 @@ foreach ( $rx_ts_folders as $rx_ts_folder ) {
 		} else {
 			$rx_ts_size = is_readable( $rx_ts_path ) ? getimagesize( $rx_ts_path ) : false;
 			if ( $rx_ts_size ) {
-				$rx_ts_w = (int) round( $rx_ts_size[0] * 40 / max( 1, $rx_ts_size[1] ) ); // Keep the aspect ratio at 40px tall.
+				$rx_ts_w = (int) round( $rx_ts_size[0] * 80 / max( 1, $rx_ts_size[1] ) ); // Keep the aspect ratio at 80px tall.
 			}
 		}
 		$rx_ts_logos[] = array( $rx_ts_file, $rx_ts_name, $rx_ts_w );
@@ -93,7 +93,7 @@ $rx_ts_note        = trim( rx_text( $rx_ts_args['note'] ?? __( 'A few of them', 
 $rx_ts_row = static function ( bool $copy ) use ( $rx_ts_logos, $rx_ts_from ): string {
 	$out = '';
 	foreach ( $rx_ts_logos as $logo ) {
-		$out .= '<li><img src="' . esc_url( $rx_ts_from . rawurlencode( $logo[0] ) ) . '" width="' . (int) $logo[2] . '" height="40" loading="lazy" decoding="async" alt="'
+		$out .= '<li><img src="' . esc_url( $rx_ts_from . rawurlencode( $logo[0] ) ) . '" width="' . (int) $logo[2] . '" height="80" loading="lazy" decoding="async" alt="'
 			/* translators: %s: business name built from the logo's filename. */
 			. ( $copy ? '' : esc_attr( sprintf( __( '%s logo', 'pharmacy' ), $logo[1] ) ) ) . '"></li>';
 	}

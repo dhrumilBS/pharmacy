@@ -74,8 +74,8 @@
 @keyframes slip-scan { 0% { opacity: .2; } 30% { opacity: 1; } 45% { opacity: .35; } 100% { opacity: 1; } }
 
 /* ---------- Trusted-by marquee (never pauses: see partials/trusted-strip.php) ---------- */
-.trust { padding: 30px 0 34px; border-block: 1px solid var(--border); background: #fff; }
-.trust-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; margin-bottom: 20px; }
+.trust { padding: 44px 0 48px; border-block: 1px solid var(--border); background: #fff; }
+.trust-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; margin-bottom: 36px; }
 .trust-head h2 { font: 600 15px var(--font-body); letter-spacing: 0; color: var(--text-2); }
 .trust-note { font: 600 11.5px var(--font-eyebrow); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .trust-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
@@ -84,7 +84,17 @@
 .trust-row { display: flex; align-items: center; gap: 60px; padding: 0 60px 0 0; margin: 0; list-style: none; flex: none; }
 @keyframes trust-roll { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .trust .trust-track { animation: trust-roll 42s linear infinite !important; } }
-.trust-row img { display: block; height: 40px; width: auto; max-width: none; opacity: .78; }
+.trust-row img { display: block; height: 60px; width: auto; max-width: none; opacity: .9; }
+
+/* Logo strip: the marquee window shows 6 big logos at a time (3 on phones); the track still scrolls without pausing. */
+.trust .trust-marquee { --slot: calc(min(1176px, 100vw - 24px) / 6); width: min(1176px, 100% - 24px); margin-inline: auto; }
+.trust .trust-row { gap: 0; padding: 0; }
+.trust .trust-row li { display: flex; align-items: center; justify-content: flex-start; width: var(--slot); }
+.trust .trust-row img { height: 80px; opacity: 1; }
+@media (max-width: 767px) {
+  .trust .trust-marquee { --slot: calc((100vw - 24px) / 3); }
+  .trust .trust-row img { height: 64px; }
+}
 
 /* Product tour styles live in tour.css (v1 copy: archive/video/v1/tour.css) */
 
@@ -152,7 +162,8 @@
   .slip-no { display: none; }
   .slip-foot { padding: 14px 16px 12px; }
   
-  .trust-row { gap: 40px; padding-right: 40px; }
+  .trust-row { gap: 36px; padding-right: 36px; }
+  .trust-row img { height: 48px; }
   
   .page-home .sol.featured::after { position: static; display: block; margin-top: 14px; }
 }

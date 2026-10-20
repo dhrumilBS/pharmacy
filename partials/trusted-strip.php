@@ -8,8 +8,8 @@
  * with their written permission) in assets/img/trusted/ and delete the placeholder files. The strip lists every
  * image in that folder in filename order, and builds the alt text from the filename:
  *   "green-cross-pharmacy.svg" -> alt "Green Cross Pharmacy logo". Name files after the real business.
- * Logos render 40px tall. The current files are INVENTED placeholders (made by scripts/make-trusted-logos.ps1), and
- * the whole strip stays data-confirm until they are replaced.
+ * Logos render 80px tall in a window that shows 6 at a time. The current files are the real logos of the businesses listed on the product site (WebP),
+ * and the whole strip stays data-confirm until each business has given written permission to be shown here.
  */
 $trusted = [];
 foreach (glob(__DIR__ . '/../assets/img/trusted/*.{svg,png,webp,jpg,jpeg}', GLOB_BRACE) ?: [] as $path) {
@@ -19,7 +19,7 @@ foreach (glob(__DIR__ . '/../assets/img/trusted/*.{svg,png,webp,jpg,jpeg}', GLOB
     $w = preg_match('/\bwidth=[\'"](\d+)/', (string) @file_get_contents($path, false, null, 0, 600), $m) ? (int) $m[1] : 160;
   } else {
     $size = @getimagesize($path);
-    $w = $size ? (int) round($size[0] * 40 / max(1, $size[1])) : 160;   // keep the aspect ratio at 40px tall
+    $w = $size ? (int) round($size[0] * 80 / max(1, $size[1])) : 160;   // keep the aspect ratio at 80px tall
   }
   $trusted[] = [$file, $name, $w];
 }
@@ -27,7 +27,7 @@ sort($trusted);
 $logo_row = function (bool $copy) use ($trusted) {
   foreach ($trusted as [$file, $name, $w]) {
     // The duplicate row (for the seamless loop) is hidden from assistive tech and has empty alt text
-    echo '<li><img src="' . asset('img/trusted/' . rawurlencode($file)) . '" width="' . $w . '" height="40" loading="lazy" decoding="async" alt="'
+    echo '<li><img src="' . asset('img/trusted/' . rawurlencode($file)) . '" width="' . $w . '" height="80" loading="lazy" decoding="async" alt="'
        . ($copy ? '' : e($name) . ' logo') . '"></li>';
   }
 };
