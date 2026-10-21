@@ -43,6 +43,7 @@
 /* Thank-you page */
 .thanks { max-width: 720px; text-align: center; }
 .thanks .sol-ic { margin: 0 auto 18px; }
+.thanks .hb { width: 140px; margin-bottom: 14px; }
 .thanks h1 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 44px); }
 .thanks > p { margin: 0 auto 10px; max-width: 56ch; color: var(--text-2); }
 .thanks-next { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 40px 0 0; padding: 0; list-style: none; text-align: left; }

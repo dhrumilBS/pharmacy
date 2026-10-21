@@ -243,3 +243,8 @@ h1, h2 { font-family: var(--font-display); }
 .page-hero.ph2 .container { position: relative; }
 @media (max-width: 900px) { .page-hero.ph2::before { width: 70%; opacity: .3; } }
 @media (max-width: 600px) { .page-hero.ph2::before { width: 100%; opacity: .2; } }
+
+/* Heartbeat animation (the app's own splash): the success panels. Reduced motion gets the still check icon instead. */
+.hb{display:block;width:120px;height:auto;margin:0 auto 10px}
+.hb-still{display:none}
+@media (prefers-reduced-motion:reduce){.hb{display:none}.hb-still{display:grid}}

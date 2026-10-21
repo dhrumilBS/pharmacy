@@ -74,7 +74,7 @@ if ( '' !== $rx_df_form ) :
 		?></p>
   </form>
   <div class="form-success" id="form-success" hidden tabindex="-1">
-    <div class="sol-ic"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></div>
+    <img class="hb" src="<?php echo esc_url( get_theme_file_uri( 'assets/img/heartbeat.gif' ) ); ?>" width="120" height="115" alt="" loading="lazy" decoding="async"><div class="sol-ic hb-still"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></div>
     <?php if ( '' !== $rx_df_success ) : ?><h3><?php echo $rx_df_success; ?></h3><?php endif; ?>
     <p><?php esc_html_e( 'Prototype only: nothing was sent.', 'pharmacy' ); ?></p>
   </div>

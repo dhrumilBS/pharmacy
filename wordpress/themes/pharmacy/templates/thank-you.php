@@ -38,7 +38,7 @@ get_header();
 <main id="main">
 <section class="section">
   <div class="container thanks">
-    <div class="sol-ic"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></div>
+    <img class="hb" src="<?php echo esc_url( get_theme_file_uri( 'assets/img/heartbeat.gif' ) ); ?>" width="140" height="134" alt="" decoding="async"><div class="sol-ic hb-still"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></div>
     <h1><?php esc_html_e( 'Thank you', 'pharmacy' ); ?><span data-thanks-name></span><?php esc_html_e( ', we’ll call you soon', 'pharmacy' ); ?></h1>
     <?php if ( '' !== $rx_ty_body ) : ?>
       <?php echo wp_kses_post( $rx_ty_body ); ?>

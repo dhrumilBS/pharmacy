@@ -21,7 +21,7 @@
     <p class="form-small" data-confirm>We’ll only use your details to contact you about this request. See our <a href="<?= url('privacy') ?>">privacy policy</a>.</p>
   </form>
   <div class="form-success" id="form-success" hidden tabindex="-1">
-    <div class="sol-ic"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></div>
+    <img class="hb" src="<?= asset('img/heartbeat.gif') ?>" width="120" height="115" alt="" loading="lazy" decoding="async"><div class="sol-ic hb-still"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></div>
     <h3>Thank you, we’ll call you soon</h3>
     <p>Prototype only: nothing was sent.</p>
   </div>
