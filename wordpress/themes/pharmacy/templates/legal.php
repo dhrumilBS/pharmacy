@@ -100,7 +100,7 @@ $rx_legal_toc = array_filter(
         <?php if ( '' !== $rx_legal_s['heading'] ) : ?><h2<?php echo '' !== $rx_legal_s['anchor'] ? ' id="' . esc_attr( $rx_legal_s['anchor'] ) . '"' : ''; ?>><?php echo $rx_legal_s['heading']; ?></h2><?php endif; ?>
         <?php echo $rx_legal_s['body']; ?>
         <?php if ( '' !== $rx_legal_s['screen'] ) : ?>
-        <figure class="shot" style="margin:20px 0 6px"><?php echo rx_svg_img( $rx_legal_s['screen'], 1440, 900, $rx_legal_s['alt'] ); ?></figure><p class="meta-line" style="margin:0 0 12px"><?php esc_html_e( 'Sample screen · illustrative data', 'pharmacy' ); ?></p>
+        <figure class="shot" style="margin:20px 0 6px"><?php echo rx_svg_img( $rx_legal_s['screen'], 1440, 900, $rx_legal_s['alt'] ); ?></figure>
         <?php endif; ?>
       <?php endforeach; ?>
     </article>

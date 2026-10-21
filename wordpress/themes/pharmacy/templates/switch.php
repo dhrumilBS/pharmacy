@@ -185,7 +185,7 @@ get_header();
       <?php if ( '' !== $rx_sw_steps_t ) : ?><h2><?php echo $rx_sw_steps_t; ?></h2><?php endif; ?>
       <?php if ( '' !== $rx_sw_steps_i ) : ?><p><?php echo $rx_sw_steps_i; ?></p><?php endif; ?>
       <?php if ( '' !== $rx_sw_screen ) : ?><figure class="shot" style="margin-top:24px"><?php echo rx_svg_img( $rx_sw_screen, 1440, 900, $rx_sw_screen_alt ); ?></figure>
-      <span class="sample-tag shot-note"><?php esc_html_e( 'Sample screen · illustrative data', 'pharmacy' ); ?></span><?php endif; ?>
+      <?php endif; ?>
     </div>
     <?php if ( $rx_sw_steps ) : ?>
     <ol class="steps">

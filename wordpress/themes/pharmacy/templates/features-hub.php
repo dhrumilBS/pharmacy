@@ -292,7 +292,7 @@ foreach ( $rx_fh_groups as $rx_fh_group => $rx_fh_items ) :
     <?php if ( '' !== $rx_fh_screen ) : ?>
     <div>
       <figure class="shot"><?php echo rx_svg_img( $rx_fh_screen, 1440, 900, wp_strip_all_tags( do_shortcode( $rx_fh_screen_alt ) ) ); ?></figure>
-      <span class="sample-tag shot-note"><?php esc_html_e( 'Sample screen · illustrative data', 'pharmacy' ); ?></span>
+      
     </div>
     <?php endif; ?>
   </div>

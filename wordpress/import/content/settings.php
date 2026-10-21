@@ -49,7 +49,7 @@ return array(
 	// Layout.
 	'hero_pattern'     => true,
 	'footer_blurb'     => 'Billing, expiry, stock, purchase and GST software for medical stores, pharmacy chains and hospital pharmacies.',
-	'footer_note'      => 'Draft website, not yet published.',
+	'footer_note'      => '',
 	'cta_title'        => 'See it working with medicines from your own shelf',
 	'cta_text'         => 'Book a short demo, or start free[rx_free_plan field="name" before=" on the " after=" plan"], no payment needed.',
 	'promo_image'      => 'v2-02-dashboard',

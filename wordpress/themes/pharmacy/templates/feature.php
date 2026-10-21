@@ -324,7 +324,7 @@ get_header();
     <?php endif; ?>
     <?php if ( '' !== $rx_fp_screen ) : ?>
       <figure class="shot fp-shot"><?php echo rx_svg_img( $rx_fp_screen, 1440, 900, sprintf( /* translators: %s: description of the product screen. */ __( 'Sample screen: %s', 'pharmacy' ), $rx_fp_alt ), 'loading="eager" fetchpriority="high"' ); ?></figure>
-      <span class="sample-tag shot-note"><?php esc_html_e( 'Sample screen · illustrative data', 'pharmacy' ); ?></span>
+      
     <?php endif; ?>
   </div>
 </section>
