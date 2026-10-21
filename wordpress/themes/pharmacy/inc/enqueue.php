@@ -116,10 +116,20 @@ function rx_asset_map( ?array $ctx = null ): array {
 		if ( $ctx['feature'] && $ctx['estimator'] ) {
 			$styles['rx-estimator'] = 'css/estimator.css';
 		}
+	} elseif ( 'home-v2' === $key ) {
+		$styles['rx-home'] = 'css/home.css'; // The trusted-by strip.
+		$styles['rx-home2'] = 'css/home2.css';
+		$styles['rx-blog']  = 'css/blog.css'; // The article cards.
+		$styles['rx-forms'] = 'css/forms.css';
+	} elseif ( in_array( $key, array( 'retail', 'chain', 'hospital', 'new-pharmacy' ), true ) ) {
+		$styles['rx-solution'] = 'css/solution.css';
 	} elseif ( 'blog' === $key ) {
 		$styles['rx-blog'] = 'css/blog.css';
 		if ( $ctx['single'] ) {
 			$scripts['rx-blog-js'] = 'js/blog.js';
+			$styles['rx-forms']       = 'css/forms.css'; // The demo panel of a guide holds the booking form.
+		} else {
+			$scripts['rx-blog-hub-js'] = 'js/blog-hub.js'; // Topic switching without a page refresh.
 		}
 	}
 
@@ -190,7 +200,8 @@ add_filter( 'wp_preload_resources', 'rx_preload_fonts' );
  */
 function rx_favicon(): void {
 	printf(
-		'<link rel="icon" href="%s" type="image/png" sizes="32x32">' . "\n" . '<link rel="icon" href="%s" type="image/png" sizes="192x192">' . "\n" . '<link rel="apple-touch-icon" href="%s">' . "\n",
+		'<link rel="icon" href="%s" sizes="any">' . "\n" . '<link rel="icon" href="%s" type="image/png" sizes="32x32">' . "\n" . '<link rel="icon" href="%s" type="image/png" sizes="192x192">' . "\n" . '<link rel="apple-touch-icon" href="%s">' . "\n",
+		esc_url( get_theme_file_uri( 'assets/img/favicon.ico' ) ),
 		esc_url( get_theme_file_uri( 'assets/img/favicon-32.png' ) ),
 		esc_url( get_theme_file_uri( 'assets/img/favicon-192.png' ) ),
 		esc_url( get_theme_file_uri( 'assets/img/apple-touch-icon.png' ) )
