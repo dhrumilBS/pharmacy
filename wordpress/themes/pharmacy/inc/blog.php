@@ -46,13 +46,16 @@ if ( ! defined( 'RX_TOPICS' ) ) {
 			'purchase'  => array( 'Purchase', 'blue' ),
 			'switching' => array( 'Switching', 'navy' ),
 			'staff'     => array( 'Counter & staff', 'amber' ),
-			'buying'    => array( 'Buying guides', 'slate' ),
+			'buying'    => array( 'Buying', 'slate' ),
 		)
 	);
 }
 
 /** Path of the posts page and the first segment of every blog URL. */
 const RX_BLOG_BASE = 'blog';
+
+/** Articles per page on the hub and on a topic view (3 rows of 3). */
+const RX_BLOG_PER_PAGE = 9;
 
 /*
  * -------------------------------------------------------------------------
@@ -93,6 +96,18 @@ function rx_blog_rewrite_rules(): void {
 	add_rewrite_rule(
 		'^' . RX_BLOG_BASE . '/(' . implode( '|', $keys ) . ')/?$',
 		'index.php?pagename=' . RX_BLOG_BASE . '&rx_topic=$matches[1]',
+		'top'
+	);
+
+	// Pagination: /blog/page/2/ and /blog/{topic}/page/2/ (page 1 is /blog/ and /blog/{topic}/, never /page/1/).
+	add_rewrite_rule(
+		'^' . RX_BLOG_BASE . '/(' . implode( '|', $keys ) . ')/page/([0-9]{1,})/?$',
+		'index.php?pagename=' . RX_BLOG_BASE . '&rx_topic=$matches[1]&paged=$matches[2]',
+		'top'
+	);
+	add_rewrite_rule(
+		'^' . RX_BLOG_BASE . '/page/([0-9]{1,})/?$',
+		'index.php?pagename=' . RX_BLOG_BASE . '&paged=$matches[1]',
 		'top'
 	);
 }
@@ -224,7 +239,8 @@ function rx_blog_slug_taken( string $slug, int $post_id ): bool {
 /**
  * Whether the main query is a view the site doesn't have: category, tag
  * (and any other taxonomy, such as post formats), date, author, search,
- * feed (including comment feeds), attachment, or a paged list.
+ * feed (including comment feeds), attachment, or a paged list other than the
+ * blog hub and its topic views (those paginate: see RX_BLOG_PER_PAGE).
  *
  * Sitemap requests (core and Yoast) are never counted, even when paged.
  */
@@ -233,7 +249,7 @@ function rx_blog_is_disabled_view(): bool {
 		return false;
 	}
 	return is_category() || is_tag() || is_tax() || is_date() || is_author()
-		|| is_search() || is_feed() || is_attachment() || is_paged();
+		|| is_search() || is_feed() || is_attachment() || ( is_paged() && ! is_home() );
 }
 
 /**
@@ -367,6 +383,8 @@ function rx_blog_all_posts( bool $reset = false ): array {
 					),
 					'ignore_sticky_posts'    => true,
 					'no_found_rows'          => true,
+					// The sample guide (wordpress/import/blog-components-sample.php) is not part of any list.
+					'meta_query'             => array( array( 'key' => '_rx_sample', 'compare' => 'NOT EXISTS' ) ), // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 					'update_post_term_cache' => false,
 				)
 			)
@@ -482,7 +500,7 @@ function rx_blog_post_topic( $post = null ): string {
  *
  * Every RX_TOPICS key is present, in RX_TOPICS order, including topics
  * with 0 posts (the hub hides those, as today). Posts without a valid
- * topic count only towards the "All guides" total, count( rx_blog_posts() ).
+ * topic count only towards the "All articles" total, count( rx_blog_posts() ).
  *
  * @return array<string, int> Topic key => count.
  */
@@ -545,3 +563,182 @@ function rx_blog_author(): string {
 	/* translators: %s: brand name (the Site Title). */
 	return sprintf( __( 'The %s team', 'pharmacy' ), $brand );
 }
+
+
+/*
+ * -------------------------------------------------------------------------
+ * Pagination of the hub and the topic views
+ * -------------------------------------------------------------------------
+ *
+ * The hub is the posts page, so its main query is the list: this makes WordPress itself count the pages,
+ * answer 404 for a page beyond the last (no thin or empty pages to index), 301 /page/1/ to the page's own URL
+ * and let Yoast write the canonical, so the numbers can never disagree with what is on the page.
+ *
+ *   /blog/                 page 1 (the featured article is shown above, so it is not repeated in the list)
+ *   /blog/page/2/          page 2
+ *   /blog/{topic}/         page 1 of a topic
+ *   /blog/{topic}/page/2/  page 2 of a topic
+ *
+ * Every page links to the next and the previous with real <a href> links and rel="prev" / rel="next",
+ * is indexable with its own canonical, and has a unique title and description ("Page 2 of 3").
+ */
+
+/**
+ * The featured article: the first post with the `featured` field on (newest first), or null.
+ *
+ * @return WP_Post|null
+ */
+function rx_blog_featured_post(): ?WP_Post {
+	static $found = false;
+	static $post  = null;
+	if ( $found ) {
+		return $post;
+	}
+	$found = true;
+	foreach ( rx_blog_all_posts() as $candidate ) {
+		$flag = get_post_meta( (int) $candidate->ID, 'featured', true );
+		if ( ! empty( $flag ) ) {
+			$post = $candidate;
+			break;
+		}
+	}
+	return $post;
+}
+
+/**
+ * Turns the posts-page main query into the paginated list: RX_BLOG_PER_PAGE posts, newest first, the sample
+ * post left out, the featured article left out of the hub list (it has its own place), and only the topic's
+ * posts on a topic view.
+ *
+ * @param WP_Query $query The main query.
+ */
+function rx_blog_paginate_main_query( $query ): void {
+	if ( is_admin() || ! $query instanceof WP_Query || ! $query->is_main_query() || ! $query->is_home() ) {
+		return;
+	}
+
+	$query->set( 'post_type', 'post' );
+	$query->set( 'post_status', 'publish' );
+	$query->set( 'posts_per_page', RX_BLOG_PER_PAGE );
+	$query->set( 'ignore_sticky_posts', true );
+	$query->set( 'orderby', array( 'date' => 'DESC', 'ID' => 'DESC' ) );
+
+	$meta  = array( 'relation' => 'AND', array( 'key' => '_rx_sample', 'compare' => 'NOT EXISTS' ) );
+	$topic = $query->get( 'rx_topic' );
+	if ( is_string( $topic ) && isset( RX_TOPICS[ $topic ] ) ) {
+		$meta[] = array( 'key' => 'topic', 'value' => $topic );
+	} else {
+		$featured = rx_blog_featured_post();
+		if ( $featured ) {
+			$query->set( 'post__not_in', array( (int) $featured->ID ) );
+		}
+	}
+	$query->set( 'meta_query', $meta ); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- a handful of posts.
+}
+add_action( 'pre_get_posts', 'rx_blog_paginate_main_query' );
+
+/**
+ * URL of a page of the hub or of a topic view.
+ *
+ * @param string $topic Topic key, or '' for the hub.
+ * @param int    $page  Page number; 1 gives the page's own URL (no /page/1/).
+ * @return string Absolute URL, unescaped.
+ */
+function rx_blog_page_url( string $topic = '', int $page = 1 ): string {
+	$base = '' !== $topic ? rx_blog_topic_url( $topic ) : rx_url( 'blog' );
+	if ( $page <= 1 || '' === $base ) {
+		return $base;
+	}
+
+	global $wp_rewrite;
+	if ( $wp_rewrite instanceof WP_Rewrite && $wp_rewrite->using_permalinks() ) {
+		return trailingslashit( $base ) . 'page/' . $page . '/';
+	}
+	return add_query_arg( 'paged', $page, $base );
+}
+
+/**
+ * Current page and page count of the main query on the hub or a topic view.
+ *
+ * @return array{0:int,1:int} Page (1 or more), total pages (1 or more).
+ */
+function rx_blog_page_state(): array {
+	global $wp_query;
+	$paged = max( 1, (int) get_query_var( 'paged' ) );
+	$total = $wp_query instanceof WP_Query ? max( 1, (int) $wp_query->max_num_pages ) : 1;
+	return array( $paged, $total );
+}
+
+/**
+ * The pagination bar: a <nav> of real links (Previous, 1 … 4 5 6 … 12, Next), the current page marked with
+ * aria-current, rel="prev" and rel="next" on the neighbours. Empty when there is only one page.
+ *
+ * @return string HTML.
+ */
+function rx_blog_pagination(): string {
+	list( $current, $total ) = rx_blog_page_state();
+	if ( $total < 2 ) {
+		return '';
+	}
+	$topic = rx_blog_current_topic();
+
+	$items = array();
+	$last  = 0;
+	for ( $n = 1; $n <= $total; $n++ ) {
+		if ( 1 === $n || $total === $n || abs( $n - $current ) <= 1 ) {
+			if ( $last && $n - $last > 1 ) {
+				$items[] = '<li class="b-pager-gap" aria-hidden="true">…</li>';
+			}
+			if ( $n === $current ) {
+				/* translators: %d: page number. */
+				$items[] = '<li><a class="b-page is-on" href="' . esc_url( rx_blog_page_url( $topic, $n ) ) . '" aria-current="page" aria-label="' . esc_attr( sprintf( __( 'Page %d, current page', 'pharmacy' ), $n ) ) . '">' . (int) $n . '</a></li>';
+			} else {
+				/* translators: %d: page number. */
+				$items[] = '<li><a class="b-page" href="' . esc_url( rx_blog_page_url( $topic, $n ) ) . '" aria-label="' . esc_attr( sprintf( __( 'Page %d', 'pharmacy' ), $n ) ) . '">' . (int) $n . '</a></li>';
+			}
+			$last = $n;
+		}
+	}
+
+	$prev = $current > 1
+		? '<li><a class="b-page b-page-prev" rel="prev" href="' . esc_url( rx_blog_page_url( $topic, $current - 1 ) ) . '"><span aria-hidden="true">←</span> ' . esc_html__( 'Previous', 'pharmacy' ) . '</a></li>'
+		: '<li><span class="b-page b-page-prev is-off" aria-hidden="true"><span>←</span> ' . esc_html__( 'Previous', 'pharmacy' ) . '</span></li>';
+	$next = $current < $total
+		? '<li><a class="b-page b-page-next" rel="next" href="' . esc_url( rx_blog_page_url( $topic, $current + 1 ) ) . '">' . esc_html__( 'Next', 'pharmacy' ) . ' <span aria-hidden="true">→</span></a></li>'
+		: '<li><span class="b-page b-page-next is-off" aria-hidden="true">' . esc_html__( 'Next', 'pharmacy' ) . ' <span>→</span></span></li>';
+
+	return '<nav class="b-pager" aria-label="' . esc_attr__( 'Pagination', 'pharmacy' ) . '"><ul>' . $prev . implode( '', $items ) . $next . '</ul></nav>';
+}
+
+/**
+ * <link rel="prev"> and <link rel="next"> in the head of a paginated hub or topic view.
+ */
+function rx_blog_prev_next_links(): void {
+	if ( ! is_home() ) {
+		return;
+	}
+	list( $current, $total ) = rx_blog_page_state();
+	$topic                   = rx_blog_current_topic();
+	if ( $current > 1 ) {
+		echo '<link rel="prev" href="' . esc_url( rx_blog_page_url( $topic, $current - 1 ) ) . '">' . "\n";
+	}
+	if ( $current < $total ) {
+		echo '<link rel="next" href="' . esc_url( rx_blog_page_url( $topic, $current + 1 ) ) . '">' . "\n";
+	}
+}
+add_action( 'wp_head', 'rx_blog_prev_next_links', 3 );
+
+
+/**
+ * Flushes the rewrite rules once after the blog rules change (bump RX_BLOG_RULES_VERSION when they do), so a deploy
+ * never needs a manual "Save permalinks" and a missing pagination rule can never show up as a 404 on a live site.
+ */
+const RX_BLOG_RULES_VERSION = '2';
+
+function rx_blog_maybe_flush_rewrite_rules(): void {
+	if ( get_option( 'rx_blog_rules_version' ) !== RX_BLOG_RULES_VERSION ) {
+		flush_rewrite_rules( false );
+		update_option( 'rx_blog_rules_version', RX_BLOG_RULES_VERSION, true );
+	}
+}
+add_action( 'init', 'rx_blog_maybe_flush_rewrite_rules', 99 );

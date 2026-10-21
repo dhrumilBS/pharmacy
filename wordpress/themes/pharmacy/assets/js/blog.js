@@ -18,20 +18,29 @@
     tick();
   }
 
-  /* Table of contents: mark the section being read */
+  /* Table of contents: mark the section being read (the sidebar list and the small-screen list both follow) */
   var links = Array.prototype.slice.call(document.querySelectorAll('.b-toc a'));
-  if (links.length && 'IntersectionObserver' in window) {
-    var byId = {};
-    links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        links.forEach(function (a) { a.classList.remove('is-on'); a.removeAttribute('aria-current'); });
-        var a = byId[en.target.id];
-        if (a) { a.classList.add('is-on'); a.setAttribute('aria-current', 'location'); }
+  if (links.length) {
+    var heads = [];
+    links.forEach(function (a) {
+      var h = document.getElementById(a.getAttribute('href').slice(1));
+      if (h && heads.indexOf(h) === -1) heads.push(h);
+    });
+    var current = null;
+    var mark = function () {
+      var id = null;
+      heads.forEach(function (h) { if (h.getBoundingClientRect().top <= 140) id = h.id; });
+      if (id === current) return;
+      current = id;
+      links.forEach(function (a) {
+        var on = id !== null && a.getAttribute('href') === '#' + id;
+        a.classList.toggle('is-on', on);
+        if (on) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current');
       });
-    }, { rootMargin: '-90px 0px -70% 0px' });
-    Object.keys(byId).forEach(function (id) { var h = document.getElementById(id); if (h) io.observe(h); });
+    };
+    window.addEventListener('scroll', mark, { passive: true });
+    window.addEventListener('resize', mark);
+    mark();
   }
 
   /* Collapse the table of contents on small screens (open on desktop, where it sits in the sidebar) */

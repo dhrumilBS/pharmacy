@@ -43,9 +43,9 @@ $rx_404_links = array(
 	array(
 		'key'   => 'blog',
 		'icon'  => 'i-file',
-		'title' => __( 'Blog & guides', 'pharmacy' ),
-		'text'  => __( 'Practical guides for running a medical store.', 'pharmacy' ),
-		'label' => __( 'Read the guides', 'pharmacy' ),
+		'title' => __( 'Blog', 'pharmacy' ),
+		'text'  => __( 'Practical articles for running a medical store.', 'pharmacy' ),
+		'label' => __( 'Read the blog', 'pharmacy' ),
 	),
 );
 

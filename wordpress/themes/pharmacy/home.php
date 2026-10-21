@@ -13,17 +13,17 @@
  * Copy comes from the Blog page's fields (group_rx_blog, on the posts page):
  *
  * 1. parts/page-hero: `hero` (eyebrow, h1, lead). The crumb is the page
- *    title ("Blog & guides"). A topic view shows the topic name as the crumb,
+ *    title ("Blog"). A topic view shows the topic name as the crumb,
  *    the page title as a parent crumb linking to the hub, and the h1
  *    "{Topic} guides".
- * 2. Topic links: "All guides" with the total, then every topic that has
+ * 2. Topic links: "All articles" with the total, then every topic that has
  *    posts with its count. The current view gets .is-on and aria-current.
  *    Topic links point at /blog/{topic}/ (rx_blog_topic_url()).
- * 3. Featured guide + Start here (hub only, and only when a post has
+ * 3. Featured article + Start here (hub only, and only when a post has
  *    `featured` on): the first featured post as the large card, beside the
  *    `start_title` reading path of `start_here` posts (in their order) and a
  *    `start_link_label` link to the Switch page.
- * 4. Grid: "Latest guides" on the hub (every post but the featured one),
+ * 4. Grid: "Latest articles" on the hub (every post but the featured one),
  *    "N guides" on a topic view (with an "All topics" link), or the empty
  *    message when the topic has no posts.
  * 5. Tools strip: `tools_head`, `tools` [icon, title, text, link_key].
@@ -53,8 +53,7 @@ $rx_bh_text = static fn( $row, string $key ): string => is_array( $row ) ? trim(
 
 /** Read time of a post in minutes: its SCF value, or the raw meta when SCF is inactive. */
 $rx_bh_mins = static function ( WP_Post $post ): int {
-	$mins = rx_field( 'read_time', (int) $post->ID );
-	return (int) ( null === $mins ? get_post_meta( (int) $post->ID, 'read_time', true ) : $mins );
+	return rx_blog_read_mins( $post ); // Counted from the body.
 };
 
 $rx_bh_hub_url = rx_url( 'blog' );
@@ -67,40 +66,34 @@ if ( '' !== $rx_bh_topic ) {
 	$rx_bh_topic_name = RX_TOPICS[ $rx_bh_topic ][0];
 
 	$rx_bh_hero_args['crumb']      = $rx_bh_topic_name;
-	$rx_bh_hero_args['parent']     = '' !== trim( $rx_bh_page_title ) ? $rx_bh_page_title : __( 'Blog & guides', 'pharmacy' );
+	$rx_bh_hero_args['parent']     = '' !== trim( $rx_bh_page_title ) ? $rx_bh_page_title : __( 'Blog', 'pharmacy' );
 	$rx_bh_hero_args['parent_url'] = $rx_bh_hub_url;
 	/* translators: %s: blog topic name, e.g. "Expiry & stock". */
-	$rx_bh_hero_args['h1'] = sprintf( __( '%s guides', 'pharmacy' ), $rx_bh_topic_name );
+	$rx_bh_hero_args['h1'] = sprintf( __( '%s articles', 'pharmacy' ), $rx_bh_topic_name );
 }
 
-// 2. Posts and topic counts.
-$rx_bh_all    = rx_blog_posts();
-$rx_bh_posts  = '' !== $rx_bh_topic ? rx_blog_posts( array( 'topic' => $rx_bh_topic ) ) : $rx_bh_all;
-$rx_bh_counts = rx_blog_topic_counts();
+// 2. Posts and topic counts. The list on this page is the main query, which is paginated (see rx_blog_paginate_main_query()).
+global $wp_query;
+$rx_bh_all     = rx_blog_posts();
+$rx_bh_posts   = $wp_query instanceof WP_Query ? array_values( $wp_query->posts ) : array();
+$rx_bh_found   = $wp_query instanceof WP_Query ? (int) $wp_query->found_posts : count( $rx_bh_posts );
+list( $rx_bh_paged, $rx_bh_pages ) = rx_blog_page_state();
+$rx_bh_counts  = rx_blog_topic_counts();
 
-// 3. Featured guide (hub only): the first post with `featured` on.
-$rx_bh_feat = null;
-if ( '' === $rx_bh_topic ) {
-	foreach ( $rx_bh_all as $rx_bh_post ) {
-		$rx_bh_featured = rx_field( 'featured', (int) $rx_bh_post->ID );
-		if ( ! empty( null === $rx_bh_featured ? get_post_meta( (int) $rx_bh_post->ID, 'featured', true ) : $rx_bh_featured ) ) {
-			$rx_bh_feat = $rx_bh_post;
-			break;
-		}
-	}
-}
-$rx_bh_grid = array_values(
-	array_filter(
-		$rx_bh_posts,
-		static fn( WP_Post $p ): bool => ! $rx_bh_feat || (int) $p->ID !== (int) $rx_bh_feat->ID
-	)
-);
+// 3. Featured article: on page 1 of the hub only (the list leaves it out, on every page).
+$rx_bh_feat = '' === $rx_bh_topic && $rx_bh_paged <= 1 ? rx_blog_featured_post() : null;
+$rx_bh_grid = $rx_bh_posts;
 
-// 4. Grid heading: "Latest guides" on the hub, "N guides" on a topic view.
+// 4. Grid heading: "Latest articles" on the hub, "N articles" on a topic view.
 $rx_bh_grid_h = '' !== $rx_bh_topic
-	/* translators: %d: number of guides on the topic. */
-	? esc_html( sprintf( _n( '%d guide', '%d guides', count( $rx_bh_posts ), 'pharmacy' ), count( $rx_bh_posts ) ) )
-	: esc_html__( 'Latest guides', 'pharmacy' );
+	/* translators: %d: number of articles on the topic. */
+	? esc_html( sprintf( _n( '%d article', '%d articles', $rx_bh_found, 'pharmacy' ), $rx_bh_found ) )
+	: esc_html__( 'Latest articles', 'pharmacy' );
+$rx_bh_page_label = '';
+if ( $rx_bh_pages > 1 ) {
+	/* translators: 1: current page, 2: number of pages. */
+	$rx_bh_page_label = esc_html( sprintf( __( 'Page %1$d of %2$d', 'pharmacy' ), $rx_bh_paged, $rx_bh_pages ) );
+}
 
 // Start here: published posts from `start_here`, in their order.
 $rx_bh_path       = array();
@@ -152,7 +145,7 @@ get_header();
   <div class="container b-filter">
     <nav aria-label="<?php esc_attr_e( 'Topics', 'pharmacy' ); ?>">
       <ul class="b-topics">
-        <li><a class="b-topic<?php echo '' !== $rx_bh_topic ? '' : ' is-on'; ?>" href="<?php echo esc_url( $rx_bh_hub_url ); ?>"<?php echo '' !== $rx_bh_topic ? '' : ' aria-current="page"'; ?>><?php esc_html_e( 'All guides', 'pharmacy' ); ?> <span><?php echo (int) count( $rx_bh_all ); ?></span></a></li>
+        <li><a class="b-topic<?php echo '' !== $rx_bh_topic ? '' : ' is-on'; ?>" href="<?php echo esc_url( $rx_bh_hub_url ); ?>"<?php echo '' !== $rx_bh_topic ? '' : ' aria-current="page"'; ?>><?php esc_html_e( 'All articles', 'pharmacy' ); ?> <span><?php echo (int) count( $rx_bh_all ); ?></span></a></li>
         <?php
         foreach ( RX_TOPICS as $rx_bh_k => $rx_bh_def ) :
 			if ( empty( $rx_bh_counts[ $rx_bh_k ] ) ) {
@@ -168,7 +161,7 @@ get_header();
 </section>
 
 <?php if ( $rx_bh_feat ) : ?>
-<section class="section-tight" aria-label="<?php esc_attr_e( 'Featured guide', 'pharmacy' ); ?>">
+<section class="section-tight" aria-label="<?php esc_attr_e( 'Featured article', 'pharmacy' ); ?>">
   <div class="container b-top">
     <?php get_template_part( 'parts/blog-card', null, array( 'post' => $rx_bh_feat, 'variant' => 'feature' ) ); ?>
     <?php if ( '' !== $rx_bh_start_t || $rx_bh_path || '' !== $rx_bh_start_more ) : ?>
@@ -194,12 +187,13 @@ get_header();
 
 <section class="section-tight" aria-labelledby="b-latest">
   <div class="container">
-    <div class="b-sec-head"><h2 id="b-latest"><?php echo $rx_bh_grid_h; ?></h2>
+    <div class="b-sec-head"><h2 id="b-latest"><?php echo $rx_bh_grid_h; ?></h2><?php if ( '' !== $rx_bh_page_label ) : ?><p class="b-sec-meta"><?php echo $rx_bh_page_label; ?></p><?php endif; ?>
       <?php if ( '' !== $rx_bh_topic ) : ?><a href="<?php echo esc_url( $rx_bh_hub_url ); ?>"><?php esc_html_e( 'All topics', 'pharmacy' ); ?> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><?php endif; ?></div>
     <?php if ( $rx_bh_grid ) : ?>
       <div class="b-grid"><?php foreach ( $rx_bh_grid as $rx_bh_p ) { get_template_part( 'parts/blog-card', null, array( 'post' => $rx_bh_p ) ); } ?></div>
+      <?php echo rx_blog_pagination(); ?>
     <?php else : ?>
-      <p class="b-empty"><?php esc_html_e( 'No guides on this topic yet.', 'pharmacy' ); ?> <a href="<?php echo esc_url( $rx_bh_hub_url ); ?>"><?php esc_html_e( 'See all guides', 'pharmacy' ); ?></a>.</p>
+      <p class="b-empty"><?php esc_html_e( 'No articles on this topic yet.', 'pharmacy' ); ?> <a href="<?php echo esc_url( $rx_bh_hub_url ); ?>"><?php esc_html_e( 'See all articles', 'pharmacy' ); ?></a>.</p>
     <?php endif; ?>
   </div>
 </section>

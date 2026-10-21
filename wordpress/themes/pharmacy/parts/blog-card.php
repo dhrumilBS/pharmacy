@@ -6,7 +6,7 @@
  * - post    WP_Post|int|null The post. Default: the current post.
  * - variant string           'card' (default): grid card with an <h3> title.
  *                            'feature': large card at the top of the hub, <h2>
- *                            title, eager cover and a "Read the guide" link.
+ *                            title, eager cover and a "Read the article" link.
  *                            'row': compact list item (<li class="bc-row">); the
  *                            caller prints the surrounding <ul>/<ol>.
  *                            Any other value is treated as 'card'.
@@ -21,7 +21,7 @@
  *     <article class="bc bc-{variant}">
  *       <a class="bc-link" href="{url}" tabindex="-1" aria-hidden="true">{cover}</a>
  *       <div class="bc-body">{pill}<h3 class="bc-title"><a href="{url}">{title}</a></h3>
- *         <p class="bc-dek">{dek}</p>{meta}[feature: <a class="bc-more" …>Read the guide …</a>]</div>
+ *         <p class="bc-dek">{dek}</p>{meta}[feature: <a class="bc-more" …>Read the article …</a>]</div>
  *     </article>
  *   row:
  *     <li class="bc-row"><a href="{url}"><span class="bc-row-t">{title}</span>{meta}</a></li>
@@ -55,8 +55,7 @@ if ( $rx_card_post instanceof WP_Post ) {
 	$rx_card_dek = rx_field( 'dek', $rx_card_id );
 	$rx_card_dek = rx_text( null === $rx_card_dek ? get_post_meta( $rx_card_id, 'dek', true ) : $rx_card_dek );
 
-	$rx_card_mins = rx_field( 'read_time', $rx_card_id );
-	$rx_card_mins = (int) ( null === $rx_card_mins ? get_post_meta( $rx_card_id, 'read_time', true ) : $rx_card_mins );
+	$rx_card_mins = rx_blog_read_mins( $rx_card_post ); // Counted from the body.
 
 	// Meta line: date, then read time.
 	$rx_card_iso  = '0000-00-00 00:00:00' !== $rx_card_post->post_date ? (string) mysql2date( 'Y-m-d', $rx_card_post->post_date ) : '';
@@ -93,7 +92,7 @@ if ( $rx_card_post instanceof WP_Post ) {
 			. ( '' !== $rx_card_dek ? '<p class="bc-dek">' . $rx_card_dek . '</p>' : '' )
 			. $rx_card_meta;
 		if ( 'feature' === $rx_card_variant ) {
-			echo '<a class="bc-more" href="' . $rx_card_url . '">' . esc_html__( 'Read the guide', 'pharmacy' ) . ' <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>';
+			echo '<a class="bc-more" href="' . $rx_card_url . '">' . esc_html__( 'Read the article', 'pharmacy' ) . ' <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>';
 		}
 		echo '</div></article>';
 	}

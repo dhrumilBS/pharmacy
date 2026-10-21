@@ -64,14 +64,14 @@ add_filter( 'wpseo_og_locale', 'rx_seo_locale' );
  * A topic view is the posts page with rx_topic set (see inc/blog.php), so
  * Yoast treats it as the Blog page: hub title, hub description and the
  * /blog/ canonical. The PHP site's blog/index.php?topic=x changes only the
- * title ("{Topic} guides for medical stores | {brand}"); the description
+ * title ("{Topic} articles for medical stores | {brand}"); the description
  * stays the hub's, so Yoast's stored Blog page description is kept.
  */
 
 /**
  * Title of the current topic view, resolved the way Yoast resolves titles:
- * "{Topic} guides for medical stores %%sep%% %%sitename%%", giving for
- * example "Expiry & stock guides for medical stores | Healthray" with the
+ * "{Topic} articles for medical stores %%sep%% %%sitename%%", giving for
+ * example "Expiry & stock articles for medical stores | Healthray" with the
  * separator and site name from the Yoast settings.
  *
  * @return string Plain text (unescaped). '' outside topic views, or when
@@ -85,7 +85,7 @@ function rx_seo_topic_title(): string {
 
 	$text = sprintf(
 		/* translators: %s: blog topic name, for example "Expiry & stock". */
-		__( '%s guides for medical stores', 'pharmacy' ),
+		__( '%s articles for medical stores', 'pharmacy' ),
 		RX_TOPICS[ $topic ][0]
 	);
 
@@ -104,8 +104,90 @@ function rx_seo_topic_title(): string {
  */
 function rx_seo_title( $title ) {
 	$topic_title = rx_seo_topic_title();
-	return '' !== $topic_title ? $topic_title : $title;
+	$title       = '' !== $topic_title ? $topic_title : $title;
+	return rx_seo_add_page_to_title( $title );
 }
+
+/**
+ * Adds "Page 2 of 5" to the title of page 2 and up of the hub and of a topic view, before the separator and the
+ * site name, so every page of a list has its own title ("Expiry & stock articles – Page 2 of 3 | Healthray").
+ *
+ * @param mixed $title Title.
+ * @return mixed
+ */
+function rx_seo_add_page_to_title( $title ) {
+	if ( ! is_string( $title ) || ! is_home() ) {
+		return $title;
+	}
+	list( $paged, $pages ) = rx_blog_page_state();
+	if ( $paged < 2 || false !== strpos( $title, 'Page ' . $paged ) ) {
+		return $title;
+	}
+	/* translators: 1: current page, 2: number of pages. */
+	$label = sprintf( __( 'Page %1$d of %2$d', 'pharmacy' ), $paged, $pages );
+
+	// Put it before the last " | Healthray" style tail (the separator comes from the Yoast settings).
+	$tail = function_exists( 'wpseo_replace_vars' ) ? trim( (string) wpseo_replace_vars( '%%sep%% %%sitename%%', array() ) ) : '';
+	if ( '' !== $tail && false !== ( $at = strrpos( $title, $tail ) ) ) {
+		return rtrim( substr( $title, 0, $at ) ) . ' – ' . $label . ' ' . substr( $title, $at );
+	}
+	return $title . ' – ' . $label;
+}
+
+/**
+ * `wpseo_metadesc` and `wpseo_opengraph_desc`: page 2 and up of a list get "Page N of M." after the description, so
+ * no two pages share the same snippet.
+ *
+ * @param mixed $desc Description.
+ * @return mixed
+ */
+function rx_seo_page_description( $desc ) {
+	if ( ! is_string( $desc ) || '' === trim( $desc ) || ! is_home() ) {
+		return $desc;
+	}
+	// Each topic has its own snippet, so no two topic pages share one.
+	$topic = rx_blog_current_topic();
+	if ( '' !== $topic ) {
+		$topic_desc = rx_seo_topic_descriptions()[ $topic ] ?? '';
+		if ( '' !== $topic_desc ) {
+			$desc = $topic_desc;
+		}
+	}
+	list( $paged, $pages ) = rx_blog_page_state();
+	if ( $paged < 2 ) {
+		return $desc;
+	}
+	/* translators: 1: current page, 2: number of pages. */
+	return rtrim( $desc ) . ' ' . sprintf( __( 'Page %1$d of %2$d.', 'pharmacy' ), $paged, $pages );
+}
+/**
+ * Search snippets of the topic views.
+ *
+ * @return array<string, string>
+ */
+function rx_seo_topic_descriptions(): array {
+	return array(
+		'expiry'    => __( 'Practical articles on expiry and stock for medical stores: a weekly expiry routine, minimum and maximum levels, FEFO, non-moving stock and the short book.', 'pharmacy' ),
+		'purchase'  => __( 'Practical articles on purchasing for medical stores: checking distributor bills, comparing rates, schemes and free quantity, and purchase returns with credit notes.', 'pharmacy' ),
+		'switching' => __( 'Practical articles on switching pharmacy software safely: a four-week plan, moving from Excel and registers, and what to do with your old data.', 'pharmacy' ),
+		'staff'     => __( 'Practical articles on running the counter: staff logins and roles, a shift handover routine and training a new counter assistant.', 'pharmacy' ),
+		'buying'    => __( 'Practical articles for choosing pharmacy software: what changes between desktop and browser-based, questions to ask a vendor, and how to run a useful demo.', 'pharmacy' ),
+	);
+}
+add_filter( 'wpseo_metadesc', 'rx_seo_page_description' );
+
+/**
+ * Yoast prints its own rel="prev" / rel="next" from the posts-page query, which is wrong on topic views (it knows only
+ * the hub's URLs). rx_blog_prev_next_links() prints the right ones for the hub and for every topic.
+ *
+ * @param mixed $url Adjacent URL.
+ * @return mixed
+ */
+function rx_seo_no_yoast_adjacent( $url ) {
+	return is_home() ? '' : $url;
+}
+add_filter( 'wpseo_adjacent_rel_url', 'rx_seo_no_yoast_adjacent' );
+add_filter( 'wpseo_opengraph_desc', 'rx_seo_page_description' );
 add_filter( 'wpseo_title', 'rx_seo_title' );
 add_filter( 'wpseo_opengraph_title', 'rx_seo_title' );
 
@@ -141,7 +223,8 @@ function rx_seo_topic_url( $url ) {
 	if ( '' === $topic ) {
 		return $url;
 	}
-	$topic_url = rx_blog_topic_url( $topic );
+	list( $paged ) = rx_blog_page_state();
+	$topic_url     = rx_blog_page_url( $topic, $paged );
 	return '' !== $topic_url ? $topic_url : $url;
 }
 add_filter( 'wpseo_canonical', 'rx_seo_topic_url' );
@@ -861,7 +944,7 @@ function rx_schema_blog_node( int $page_id, string $org_id ): ?array {
  * - Every @id equal to the hub URL, or starting with it plus "#", is moved
  *   (the WebPage, its #breadcrumb, a #primaryimage), references included.
  * - The WebPage gets url = topic URL and name = the topic title.
- * - The BreadcrumbList gets the topic as a last crumb after "Blog & guides",
+ * - The BreadcrumbList gets the topic as a last crumb after "Blog",
  *   which now links to the hub, as the page hero shows it.
  *
  * The hub itself (no topic) is left as Yoast built it.

@@ -64,6 +64,12 @@ if ( $rx_cover_post instanceof WP_Post ) {
 		$rx_cover_focus = '24% 33%';
 	}
 
+	// A featured image (Posts > Featured image) replaces the cover screen.
+	if ( has_post_thumbnail( $rx_cover_post ) ) {
+		echo '<span class="bc-cover bc-photo" aria-hidden="true">' . wp_get_attachment_image( (int) get_post_thumbnail_id( $rx_cover_post ), 'rx-guide-card', false, array( 'alt' => '', 'loading' => $rx_cover_loading, 'decoding' => 'async' ) ) . '</span>';
+		return;
+	}
+
 	echo '<span class="bc-cover bc-' . esc_attr( $rx_cover_tone ) . '" aria-hidden="true"><span class="bc-frame">';
 	if ( '' !== $rx_cover_screen ) {
 		echo '<img src="' . esc_url( rx_asset( 'img/screens/' . $rx_cover_screen . '.svg' ) ) . '" alt="" width="1440" height="900"'
