@@ -62,6 +62,8 @@ function blog_card(array $p, string $variant = 'card'): string {
 /* ---------- Article components ---------- */
 
 function bk_takeaways(array $items): string {
+  // The first list on a post is shown in the hero (the short answer), not in the article body
+  if (!empty($GLOBALS['blog_short_open']) && empty($GLOBALS['blog_short'])) { $GLOBALS['blog_short'] = $items; return ''; }
   $li = ''; foreach ($items as $t) $li .= '<li>' . $t . '</li>';
   return '<aside class="bk-take" aria-label="In short"><p class="bk-take-h">In short</p><ol>' . $li . '</ol></aside>';
 }
@@ -167,9 +169,9 @@ function blog_start(string $slug): void {
   $extra_css = ['css/blog.css']; $extra_js = ['js/blog.js'];
   require __DIR__ . '/head.php';
   require __DIR__ . '/header.php';
-  $hero = ['crumb' => BLOG_CATS[$p['cat']][0], 'parent' => 'Blog & guides', 'parent_url' => url('blog'), 'h1' => $p['title'], 'lead' => $p['dek']];
-  echo '<div class="b-progress" aria-hidden="true"><i></i></div><main id="main" class="b-post">';
-  require __DIR__ . '/page-hero.php';
+  $GLOBALS['blog_short'] = null; $GLOBALS['blog_short_open'] = true;
+  $GLOBALS['blog_ui'] = in_array($_GET['ui'] ?? '', ['v3', 'v4'], true) ? $_GET['ui'] : 'v5';   // three designs while you compare: magazine (default), ?ui=v4 editorial, ?ui=v3 first
+  echo '<div class="b-progress" aria-hidden="true"><i></i></div><main id="main" class="b-post b-ui-' . substr($GLOBALS['blog_ui'], 1) . '">';
   ob_start();
 }
 
@@ -192,26 +194,100 @@ function blog_end(array $faq = []): void {
   foreach ($toc as [$id, $t]) $tocHtml .= '<li><a href="#' . e($id) . '">' . e($t) . '</a></li>';
   $u = blog_url($p['slug']);
   ?>
-  <div class="container b-meta-bar">
-    <p class="b-meta"><?= blog_cat_pill($p['cat'], true) ?><span><?= e(blog_author()) ?></span><span aria-hidden="true">·</span>
-      <time datetime="<?= e($p['date']) ?>"><?= e(blog_date($p['date'])) ?></time><span aria-hidden="true">·</span><span><?= (int) $p['mins'] ?> min read</span>
-      <?php if (!empty($p['updated'])): ?><span aria-hidden="true">·</span><span>Updated <?= e(blog_date($p['updated'])) ?></span><?php endif; ?></p>
-    <button type="button" class="b-copy" data-copy="<?= e($u) ?>"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg><span>Copy link</span></button>
+  <?php $short = $GLOBALS['blog_short'] ?? null; $GLOBALS['blog_short_open'] = false; $asof = blog_date(!empty($p['updated']) ? $p['updated'] : $p['date']); ?>
+  <?php if (($GLOBALS['blog_ui'] ?? 'v5') === 'v5'): ?>
+  <header class="bm">
+    <div class="container">
+      <nav class="bm-crumb" aria-label="Breadcrumb"><a href="<?= url('home') ?>">Home</a><span aria-hidden="true">/</span><a href="<?= url('blog') ?>">Blog &amp; guides</a></nav>
+      <div class="bm-head">
+        <a class="eyebrow" href="<?= BASE ?>blog/index.php?topic=<?= e($p['cat']) ?>">Guide · <?= e(BLOG_CATS[$p['cat']][0]) ?></a>
+        <h1><?= e($p['title']) ?></h1>
+        <?php if (!empty($p['dek'])): ?><p class="bm-dek"><?= e($p['dek']) ?></p><?php endif; ?>
+        <div class="bm-by">
+          <span class="bm-av" aria-hidden="true"><img src="<?= asset('img/favicon-32.png') ?>" width="28" height="28" alt=""></span>
+          <p><b><?= e(blog_author()) ?></b><small>Matches the app as of <?= e($asof) ?> · <?= (int) $p['mins'] ?> min read</small></p>
+          <span class="bm-tools"><button type="button" data-copy="<?= e($u) ?>"><span>Copy link</span></button><button type="button" data-print>Print</button></span>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <figure class="bm-photo b-hero-cover"><?= blog_cover($p, 'eager') ?><figcaption>Sample screen, dummy data</figcaption></figure>
   </div>
-  <div class="container"><figure class="b-hero-cover"><?= blog_cover($p, 'eager') ?></figure></div>
-
+  <?php elseif ($GLOBALS['blog_ui'] === 'v4'): ?>
+  <header class="bh">
+    <div class="container">
+      <nav class="bh-crumb" aria-label="Breadcrumb"><a href="<?= url('home') ?>">Home</a><span aria-hidden="true">/</span><a href="<?= url('blog') ?>">Blog &amp; guides</a></nav>
+      <div class="bh-grid">
+        <div class="bh-copy">
+          <a class="eyebrow" href="<?= BASE ?>blog/index.php?topic=<?= e($p['cat']) ?>">Guide · <?= e(BLOG_CATS[$p['cat']][0]) ?></a>
+          <h1><?= e($p['title']) ?></h1>
+          <?php if (!empty($p['dek'])): ?><p class="bh-dek"><?= e($p['dek']) ?></p><?php endif; ?>
+        </div>
+        <div class="bh-rail">
+          <span class="bh-av" aria-hidden="true"><img src="<?= asset('img/favicon-32.png') ?>" width="26" height="26" alt=""></span>
+          <p class="bh-name"><?= e(blog_author()) ?></p>
+          <p class="bh-meta">Matches the app as of <?= e($asof) ?><br><?= (int) $p['mins'] ?> min read</p>
+          <p class="bh-tools"><button type="button" data-copy="<?= e($u) ?>"><span>Copy link</span></button><button type="button" data-print>Print</button></p>
+        </div>
+      </div>
+      <figure class="bh-photo b-hero-cover"><?= blog_cover($p, 'eager') ?><figcaption>Sample screen, dummy data</figcaption></figure>
+    </div>
+  </header>
+  <?php else: ?>
+  <header class="b-hero2">
+    <div class="container">
+      <div class="b-h2-panel<?= $short ? ' has-short' : '' ?>">
+        <div class="b-h2-copy">
+          <nav class="b-h2-crumb" aria-label="Breadcrumb"><a href="<?= url('home') ?>">Home</a><span aria-hidden="true">/</span><a href="<?= url('blog') ?>">Blog &amp; guides</a></nav>
+          <p class="b-h2-kicker"><a class="eyebrow" href="<?= BASE ?>blog/index.php?topic=<?= e($p['cat']) ?>">Guide · <?= e(BLOG_CATS[$p['cat']][0]) ?></a><span><?= (int) $p['mins'] ?> min read</span></p>
+          <h1><?= e($p['title']) ?></h1>
+          <?php if (!empty($p['dek'])): ?><p class="b-h2-dek"><?= e($p['dek']) ?></p><?php endif; ?>
+          <div class="b-h2-by">
+            <span class="b-h2-av" aria-hidden="true"><img src="<?= asset('img/favicon-32.png') ?>" width="26" height="26" alt=""></span>
+            <p><b><?= e(blog_author()) ?></b><small>Matches the app as of <?= e($asof) ?></small></p>
+            <span class="b-h2-tools"><button type="button" class="b-copy" data-copy="<?= e($u) ?>"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg><span>Copy link</span></button><button type="button" class="b-copy" data-print><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg><span>Print</span></button></span>
+          </div>
+        </div>
+        <?php if ($short): ?>
+        <aside class="b-h2-slip" aria-label="The short version">
+          <p class="b-h2-slip-h"><b>The short version</b><span>20 seconds</span></p>
+          <ol><?php foreach ($short as $t) echo '<li>' . $t . '</li>'; ?></ol>
+          <p class="b-h2-slip-f"><span><?= (int) $p['mins'] ?> min for the full guide</span><a href="#guide-start">Read it <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        </aside>
+        <?php endif; ?>
+      </div>
+      <figure class="bh-photo b-hero-cover" style="max-width:none"><?= blog_cover($p, 'eager') ?><figcaption>Sample screen, dummy data</figcaption></figure>
+    </div>
+  </header>
+  <?php endif; ?>
   <div class="container b-layout">
     <aside class="b-aside">
       <details class="b-toc" open>
         <summary>On this page</summary>
         <ol><?= $tocHtml ?></ol>
       </details>
+      <?php if ($GLOBALS['blog_ui'] === 'v3'): ?>
       <div class="b-aside-cta">
         <p><b>See it with your own stock</b>A 30-minute demo using items from your shelf.</p>
         <a class="btn btn-primary btn-sm" href="<?= url('demo') ?>" data-cta="demo">Book a free demo</a>
       </div>
+      <?php endif; ?>
     </aside>
-    <article class="b-article">
+    <article class="b-article" id="guide-start">
+      <?php if ($short && (($GLOBALS['blog_ui'] ?? 'v5') === 'v4')): ?>
+      <aside class="b-short" aria-label="The short version">
+        <p class="b-short-h">The short version<span><?= (int) $p['mins'] ?> min for the full guide</span></p>
+        <ol><?php foreach ($short as $t) echo '<li><span>' . $t . '</span></li>'; ?></ol>
+      </aside>
+      <?php endif; ?>
+      <?php if ($short && $GLOBALS['blog_ui'] === 'v5'): ?>
+      <aside class="b-h2-slip" aria-label="The short version">
+        <p class="b-h2-slip-h"><b>The short version</b><span>20 seconds</span></p>
+        <ol><?php foreach ($short as $t) echo '<li>' . $t . '</li>'; ?></ol>
+        <p class="b-h2-slip-f"><span><?= (int) $p['mins'] ?> min for the full guide</span><a href="#guide-start">Read it <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+      </aside>
+      <?php endif; ?>
       <?= $body ?>
       <footer class="b-byline">
         <span class="b-byline-mark" aria-hidden="true"><img class="brand-logo" src="<?= asset('img/favicon-32.png') ?>" width="32" height="32" alt=""></span>
