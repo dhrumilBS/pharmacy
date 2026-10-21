@@ -5,6 +5,7 @@
  *
  * $args (from get_footer( null, $args )):
  * - hide_cta bool Skip the CTA band (home and demo pass true).
+ * - cta      array Optional title and text for the band (the solution pages pass their own).
  *
  * - CTA band: parts/cta-band (Site_Settings `cta_title` and `cta_text`).
  * - Brand column: logo, Site_Settings `footer_blurb`, the sales and support
@@ -81,7 +82,7 @@ foreach ( is_array( $rx_ft_social ) ? $rx_ft_social : array() as $rx_ft_row ) {
 }
 
 if ( empty( $rx_ft_args['hide_cta'] ) ) {
-	get_template_part( 'parts/cta-band' );
+	get_template_part( 'parts/cta-band', null, isset( $rx_ft_args['cta'] ) && is_array( $rx_ft_args['cta'] ) ? $rx_ft_args['cta'] : array() );
 }
 ?>
 
