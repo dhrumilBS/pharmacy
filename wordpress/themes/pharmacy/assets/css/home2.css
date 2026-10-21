@@ -1,0 +1,102 @@
+/* Home v2 (templates/home-v2.php): calm and light like the blog and the solution pages. Plain type, spacing instead of boxes,
+   one soft tint behind the hero and one under the last section. Tokens only. */
+
+.h2 .section { padding: 84px 0; }
+.h2-head { max-width: 640px; margin-bottom: 40px; }
+.h2-head h2 { font-size: clamp(28px, 3.2vw, 40px); line-height: 1.12; letter-spacing: -.024em; }
+.h2-head p { margin-top: 14px; font-size: 18px; color: var(--text-2); }
+.h2-ic { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--blue-50); color: var(--blue-600); }
+.h2-ic .icon { width: 24px; height: 24px; }
+
+/* Hero */
+.h2-hero { padding: 56px 0 44px; background: linear-gradient(180deg, #F3F7FF 0%, #fff 100%); }
+.h2-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: 56px; align-items: center; }
+.h2-hero h1 { max-width: 600px; font-size: clamp(36px, 4.8vw, 58px); line-height: 1.06; letter-spacing: -.03em; }
+.h2-lead { max-width: 540px; margin-top: 22px; font-size: 19px; line-height: 1.6; color: var(--text-2); }
+.h2-points { display: grid; gap: 10px; margin: 26px 0 0; padding: 0; list-style: none; }
+.h2-points li { display: flex; align-items: flex-start; gap: 10px; font-size: 16.5px; color: var(--navy-900); }
+.h2-points .icon { flex: none; width: 22px; height: 22px; margin-top: 1px; color: var(--teal-600); }
+.h2-ctas { margin-top: 32px; }
+.h2-shot { margin: 0; }
+.h2-shot img { display: block; width: 100%; height: auto; border-radius: 16px; box-shadow: 0 40px 70px -40px rgba(8, 28, 44, .5), 0 0 0 1px var(--border); }
+.h2-shot .sample-tag { margin-top: 12px; }
+
+/* Who it is for: four lines of text, each a link; no boxes */
+.h2-aud-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 36px; margin: 0; padding: 0; list-style: none; }
+.h2-aud-list a { display: grid; align-content: start; gap: 10px; height: 100%; color: inherit; text-decoration: none; }
+.h2-aud-list b { font-size: 20px; line-height: 1.25; color: var(--navy-950); }
+.h2-aud-t { color: var(--text-2); }
+.h2-more { display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; font-weight: 600; color: var(--blue-700); }
+.h2-more .icon { width: 16px; height: 16px; transition: transform .15s; }
+.h2-aud-list a:hover b { color: var(--blue-700); }
+.h2-aud-list a:hover .h2-more .icon { transform: translateX(4px); }
+
+/* Twelve things */
+.h2-feat { background: var(--bg); }
+.h2-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 40px; margin: 0; padding: 0; list-style: none; }
+.h2-grid h3 { margin-top: 16px; font-size: 19px; line-height: 1.3; }
+.h2-grid h3 a { color: var(--navy-950); text-decoration: none; }
+.h2-grid h3 a:hover { color: var(--blue-700); text-decoration: underline; text-underline-offset: 4px; }
+.h2-grid p { margin-top: 8px; color: var(--text-2); }
+.h2-grid .h2-plan { margin-top: 10px; font-size: 14.5px; font-weight: 600; color: var(--teal-700); }
+.h2-feat .h2-ic { background: #fff; }
+
+/* Which setup is yours */
+.h2-table { overflow-x: auto; }
+.h2-table table { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 16px; }
+.h2-table th, .h2-table td { padding: 20px 20px 20px 0; text-align: left; vertical-align: top; border-top: 1px solid var(--border); }
+.h2-table thead th { padding-top: 0; padding-bottom: 14px; border-top: 0; border-bottom: 2px solid var(--navy-950); font-size: 17px; }
+.h2-table thead a { color: var(--navy-950); text-decoration: none; }
+.h2-table thead a:hover { color: var(--blue-700); text-decoration: underline; text-underline-offset: 4px; }
+.h2-table tbody th { width: 17%; font-weight: 600; color: var(--muted); }
+.h2-table td { width: 27.6%; color: var(--text); }
+
+/* Steps */
+.h2-start { background: var(--bg); }
+.h2-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; margin: 0; padding: 0; list-style: none; }
+.h2-n { display: block; margin-bottom: 14px; font: 700 44px/1 var(--font-head); letter-spacing: -.03em; color: var(--blue-600); }
+.h2-steps h3 { font-size: 18px; line-height: 1.3; }
+.h2-steps p { margin-top: 8px; font-size: 15.5px; color: var(--text-2); }
+.h2-links { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 40px; }
+.h2-links a, .h2-or a { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: var(--blue-700); text-decoration: none; }
+.h2-links a:hover, .h2-or a:hover { text-decoration: underline; }
+.h2-links .icon { width: 16px; height: 16px; }
+
+/* Delivered and looked after */
+.h2-cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 36px; }
+.h2-cols h3 { font-size: 18px; }
+.h2-cols ul { display: grid; gap: 10px; margin: 14px 0 0; padding: 0; list-style: none; }
+.h2-cols li { position: relative; padding-left: 20px; font-size: 15.5px; color: var(--text-2); }
+.h2-cols li::before { content: ""; position: absolute; left: 0; top: .6em; width: 8px; height: 8px; border-radius: 50%; background: var(--teal-500); }
+
+/* The calculator link */
+.h2-calc { padding: 8px 0 24px; }
+.h2-calc-box { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px; padding-top: 36px; padding-bottom: 36px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.h2-calc-box h2 { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.2; }
+.h2-calc-box p { margin-top: 8px; max-width: 560px; color: var(--text-2); }
+
+/* Blog, questions, closing form */
+.h2-blog .b-sec-head { margin-bottom: 28px; }
+.h2-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 0 72px; align-items: start; }
+.h2-split .h2-head { margin-bottom: 0; }
+.h2-close { background: linear-gradient(180deg, #fff 0%, #F3F7FF 100%); }
+.h2-or { margin-top: 20px; font-size: 16px; color: var(--text-2); }
+.h2-form { padding: 28px 30px; border-radius: 16px; background: #fff; box-shadow: 0 30px 60px -40px rgba(8, 28, 44, .35), 0 0 0 1px var(--border); }
+.h2-form .rx-form .fld { margin-bottom: 14px; }
+
+@media (max-width: 1100px) {
+  .h2-aud-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .h2-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .h2-steps, .h2-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 28px; }
+}
+@media (max-width: 900px) {
+  .h2 .section { padding: 60px 0; }
+  .h2-hero { padding: 36px 0 32px; }
+  .h2-hero-grid, .h2-split { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .h2-split .h2-head { margin-bottom: 8px; }
+}
+@media (max-width: 600px) {
+  .h2-aud-list, .h2-grid, .h2-steps, .h2-cols { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .h2-lead { font-size: 17.5px; }
+  .h2-form { padding: 20px 18px; }
+}
