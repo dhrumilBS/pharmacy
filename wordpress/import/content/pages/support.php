@@ -21,7 +21,7 @@ return array(
 	'slug'     => 'support',
 	'template' => 'templates/support.php',
 	'seo'      => array(
-		'desc'    => 'Get help with our pharmacy software: phone support, the help centre, in-app walkthroughs and a getting-started guide for new stores.',
+		'desc'    => 'Get help with our pharmacy software: phone support, the help centre, in-app walkthroughs for new stores.',
 		'noindex' => false,
 	),
 	'fields'   => array(
@@ -30,7 +30,7 @@ return array(
 			'parent'  => 'Company',
 			'eyebrow' => 'Support',
 			'h1'      => 'Help when the counter is busy',
-			'lead'    => 'Call us, open a ticket, or follow the step-by-step guides built into the app.',
+			'lead'    => 'Call us, open a ticket, or follow the step-by-step walkthroughs built into the app.',
 		),
 
 		// Support channels.
@@ -48,7 +48,7 @@ return array(
 			array(
 				'icon'  => 'i-play',
 				'title' => 'In-app walkthroughs',
-				'html'  => 'Step-by-step guides for sales, purchase, item master and account master, inside the app.',
+				'html'  => 'Step-by-step walkthroughs for sales, purchase, item master and account master, inside the app.',
 			),
 			array(
 				'icon'  => 'i-screen',

@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Hospital pharmacy: two flows, one stock (1200x520, rendered at 2x)</title>
+<style>
+@font-face{font-family:C;font-weight:700;src:url("../../../themes/pharmacy/assets/fonts/campton/campton-700.woff2")}
+@font-face{font-family:C;font-weight:600;src:url("../../../themes/pharmacy/assets/fonts/campton/campton-600.woff2")}
+@font-face{font-family:C;font-weight:400;src:url("../../../themes/pharmacy/assets/fonts/campton/campton-400.woff2")}
+*{box-sizing:border-box;margin:0}
+body{width:1200px;height:520px;overflow:hidden;background:#F6F8FB;font-family:C,sans-serif;color:#081C2C;padding:36px 48px}
+.top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
+.top b{font:700 22px C;letter-spacing:-.01em}
+.top span{font:600 12px C;letter-spacing:.1em;text-transform:uppercase;color:#64748B}
+.lane{background:#fff;border-radius:18px;box-shadow:inset 0 0 0 1px #E2E8F0;padding:16px 22px 18px}
+.lane h2{font:700 12px C;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+.lane.i h2{color:#1D4ED8}.lane.o h2{color:#0F766E}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.s{position:relative;padding:12px 16px;border-radius:12px;background:#F6F8FB}
+.s:not(:last-child)::after{content:"";position:absolute;right:-24px;top:50%;width:18px;height:2px;background:#CBD5E1}
+.s:not(:last-child)::before{content:"";position:absolute;right:-26px;top:calc(50% - 4px);border-left:7px solid #CBD5E1;border-top:5px solid transparent;border-bottom:5px solid transparent}
+.s em{display:block;font:700 12px C;font-style:normal;color:#64748B;margin-bottom:5px;font-variant-numeric:tabular-nums}
+.s b{display:block;font:700 16.5px/1.25 C}
+.s p{margin-top:3px;font:400 13.5px/1.4 C;color:#475569}
+.stock{margin:12px 0;display:flex;align-items:center;gap:16px;padding:13px 22px;border-radius:16px;background:linear-gradient(160deg,#2563EB,#1D4ED8);color:#fff}
+.stock b{font:700 19px C}
+.stock span{font:400 14px C;color:#DBEAFE}
+.stock i{margin-left:auto;font:600 12px C;font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:#BFDBFE}
+.stock svg{flex:none}
+.tag{position:absolute;right:48px;bottom:12px;font:400 12px C;color:#94A3B8}
+</style></head><body>
+<div class="top"><b>Two flows, one stock</b><span>Illustrative workflow</span></div>
+<div class="lane i"><h2>In-patient: ward orders</h2><div class="steps">
+<div class="s"><em>01</em><b>Ward order</b><p>Per patient, per dose time</p></div>
+<div class="s"><em>02</em><b>Pharmacist checks</b><p>The order against the chart</p></div>
+<div class="s"><em>03</em><b>Dose-wise issue</b><p>Batch picked by nearest expiry</p></div>
+<div class="s"><em>04</em><b>Charged to the bill</b><p>At the time of issue</p></div></div></div>
+<div class="stock"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg><b>One stock list</b><span>Ward and counter draw from the same batches</span><i>Shared</i></div>
+<div class="lane o"><h2>Out-patient: counter prescriptions</h2><div class="steps">
+<div class="s"><em>01</em><b>Prescription in</b><p>From the OPD, with the patient</p></div>
+<div class="s"><em>02</em><b>Token and queue</b><p>One line, one number</p></div>
+<div class="s"><em>03</em><b>Dispense</b><p>Batch picked by nearest expiry</p></div>
+<div class="s"><em>04</em><b>Bill and pay</b><p>Cash, card, UPI or credit</p></div></div></div>
+<div class="tag">Illustration, not a screen of the software</div>
+</body></html>

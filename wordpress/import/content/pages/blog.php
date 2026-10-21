@@ -13,7 +13,7 @@
  *   /blog/{topic}/ (the rewrite rule in inc/blog.php hard-codes /blog/).
  * - start_here lists posts by slug, in reading order; the import writes it
  *   after the posts exist.
- * - The hero crumb is the page title ("Blog & guides"), as on the PHP hub.
+ * - The hero crumb is the page title ("Blog"), as on the PHP hub.
  *
  * @package pharmacy
  */
@@ -24,19 +24,19 @@ PHP_SAPI === 'cli' || exit;
 return array(
 	'source' => 'blog/index.php',
 	'key'    => 'blog',
-	'title'  => 'Blog & guides',
+	'title'  => 'Blog',
 	'slug'   => 'blog',
 	'status' => 'publish',
 	'group'  => 'blog',
 	'seo'    => array(
-		'title'   => 'Blog & guides for running a medical store %%sep%% %%sitename%%',
-		'desc'    => 'Practical guides for pharmacy owners: cutting expiry loss, setting stock levels, checking distributor bills, switching safely and staff logins.',
+		'title'   => 'Blog for running a medical store %%sep%% %%sitename%%',
+		'desc'    => 'Practical articles for pharmacy owners: cutting expiry loss, setting stock levels, checking distributor bills, switching safely and staff logins.',
 		'noindex' => false,
 	),
 	'fields' => array(
 		'hero'             => array(
-			'eyebrow' => 'Blog & guides',
-			'h1'      => 'Practical guides for running a medical store',
+			'eyebrow' => 'Blog',
+			'h1'      => 'Practical articles for running a medical store',
 			'lead'    => 'Written for owners and pharmacists at the counter: what to check, what to count and what to change, with worked numbers. No hype, and no tax or legal advice dressed up as a blog post.',
 		),
 		'start_title'      => 'Thinking of switching? Read these in order',
@@ -45,10 +45,10 @@ return array(
 			'switch-pharmacy-software',
 			'staff-logins-roles',
 		),
-		'start_link_label' => 'The full switching guide',
+		'start_link_label' => 'Everything about switching',
 		'tools_head'       => array(
 			'eyebrow' => '',
-			'title'   => 'Tools that go with the guides',
+			'title'   => 'Tools to go with these articles',
 			'intro'   => '',
 		),
 		'tools'            => array(

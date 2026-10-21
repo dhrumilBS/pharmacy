@@ -173,10 +173,10 @@ return array(
 						'description' => '8 questions to ask any vendor',
 					),
 					array(
-						'title'       => 'Blog & guides',
+						'title'       => 'Blog',
 						'page'        => 'blog',
 						'icon'        => 'i-register',
-						'description' => 'Practical guides for the counter',
+						'description' => 'Practical reading for the counter',
 					),
 					array(
 						'title'       => 'FAQ',
@@ -188,7 +188,7 @@ return array(
 						'title'       => 'Help & support',
 						'page'        => 'support',
 						'icon'        => 'i-headset',
-						'description' => 'Phone, help centre, guides',
+						'description' => 'Phone, help centre, walkthroughs',
 					),
 				),
 			),
@@ -294,7 +294,7 @@ return array(
 				'url'   => '#rx:checklist',
 			),
 			array(
-				'title' => 'Blog & guides',
+				'title' => 'Blog',
 				'page'  => 'blog',
 			),
 			array(

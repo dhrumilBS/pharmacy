@@ -486,7 +486,7 @@ return array(
 			array(
 				'icon'  => 'i-play',
 				'title' => 'In-app walkthroughs',
-				'html'  => 'Step-by-step guides for sales, purchase, items and accounts, inside the app.',
+				'html'  => 'Step-by-step walkthroughs for sales, purchase, items and accounts, inside the app.',
 			),
 			array(
 				'icon'  => 'i-screen',
