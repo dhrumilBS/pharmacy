@@ -269,3 +269,21 @@ SCENES['run-a-good-demo'] = (
     + g(380, 340, '<rect x="0" y="0" width="80" height="80" rx="16" fill="#fff" %s/>' % ST + dots(((24, 26), (24, 54)), TEAL, 8) + '<rect x="40" y="20" width="26" height="10" rx="5" fill="#CBD5E1"/><rect x="40" y="48" width="26" height="10" rx="5" fill="#CBD5E1"/>')
     + star(440, 80, 14) + dots(((40, 70), (250, 440))))
 BG['run-a-good-demo'] = '#DDD3FF'
+
+
+# ---- a chain of stores around one dashboard ----
+def shop(c=BLUE):
+    return ('<rect x="0" y="46" width="120" height="96" rx="10" fill="#fff" %s/>' % ST
+            + '<path d="M-8 46 L8 6 H112 L128 46 Z" fill="%s" %s/>' % (c, ST)
+            + ''.join('<path d="M%d 46 q10 22 20 0" fill="#fff" %s/>' % (x, ST) for x in (0, 40, 80))
+            + '<rect x="46" y="86" width="28" height="56" rx="6" fill="%s" %s/>' % (SUN, ST)
+            + '<rect x="12" y="84" width="24" height="24" rx="6" fill="#CCFBF1" %s/><rect x="84" y="84" width="24" height="24" rx="6" fill="#CCFBF1" %s/>' % (ST, ST))
+
+
+SCENES['multi-branch-pharmacy-chains'] = (
+    '<path d="M240 190 L90 300 M240 190 L240 300 M240 190 L390 300" fill="none" stroke="%s" stroke-width="5" stroke-dasharray="3 11" stroke-linecap="round"/>' % N
+    + g(150, 40, monitor(180, 110))
+    + '<rect x="176" y="92" width="22" height="40" rx="5" fill="%s"/><rect x="206" y="72" width="22" height="60" rx="5" fill="%s"/><rect x="236" y="104" width="22" height="28" rx="5" fill="%s"/><rect x="266" y="82" width="22" height="50" rx="5" fill="%s"/>' % (BLUE, TEAL, AMBER, PINK)
+    + g(30, 290, shop(BLUE), 0, .9) + g(180, 300, shop(RED), 0, .9) + g(330, 290, shop(TEAL), 0, .9)
+    + star(60, 90, 15) + star(430, 80, 14) + dots(((450, 240), (30, 440), (250, 450))))
+BG['multi-branch-pharmacy-chains'] = '#E3DAFF'

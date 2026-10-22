@@ -108,7 +108,7 @@ TOPICS = {
     'purchase': ('Purchase', '#C9DBFF'),
     'switching': ('Switching', '#FFD9D2'),
     'staff': ('Counter & staff', '#FFE8B8'),
-    'buying': ('Buying guides', '#E4DAFF'),
+    'buying': ('Buying', '#E4DAFF'),
 }
 
 POSTS = [
@@ -133,6 +133,7 @@ POSTS = [
     ('from-excel-to-software', 'switching', 'From registers to software'),
     ('questions-for-vendors', 'buying', 'Eight questions for any vendor'),
     ('run-a-good-demo', 'buying', 'Get more out of a demo'),
+    ('multi-branch-pharmacy-chains', 'buying', 'Many stores, one set of rules'),
 ]
 
 CSS = """
