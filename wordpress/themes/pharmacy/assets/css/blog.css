@@ -935,3 +935,6 @@ a.b-page:focus-visible { outline: 3px solid var(--blue-600); outline-offset: 2px
   .bk-cta-panel .bk-cta-btns { gap: 4px 24px; }
   .bk-cta-panel .bk-cta-btns .btn { width: 100%; justify-content: center; margin-bottom: 10px; }
 }
+
+/* Pictures inside an article: a hairline border and 12px corners, as on healthray.com's blog */
+.b-article .wp-block-image img { border: 1px solid var(--border); border-radius: 12px; box-shadow: none; }
