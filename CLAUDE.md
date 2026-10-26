@@ -43,9 +43,9 @@ The design-variant review is finished and the switcher, `variants.js`, `variants
 | `assets/img/` | Web JPGs exported from `screenshots/v2/` by `scripts/export-images.ps1`. Don't edit by hand |
 | `archive/` | Old versions: `index-2026-10-13.html` (previous single-file page) and `v1/`. Reference only |
 | `PHARMACY-ICP-AND-UX-STRATEGY.md` | **Read first for any copy or section change.** §0 lists the verified product facts and plans. Also covers ICP, pains, psychology, selection criteria, objections, section order, nav/footer and tone |
-| `PHARMACY-DESIGN-SYSTEM.md` | Color tokens, typography, spacing, components, accessibility bar |
+| `PHARMACY-DESIGN-SYSTEM.md` | **Current design system (v3), read before any UI change.** Colour tokens, Campton type scale, spacing, radius, components, article tables, do/don't rules, accessibility bar |
 | `PHARMACY-SOFTWARE-PAGES-AND-DEVELOPMENT.md` | Product areas, India regulatory notes (Drugs Rules / H1, GST, DPDP), trust rules, open questions |
-| `pharmacy-design-system-editable-fixed.svg`, `pharmacy-design-system-crisp-2x.png` | Design-system poster (vector + 2× PNG). Not used by the page |
+| `design-system/` | Design-system poster: `healthray-design-system.png` (2×) and `.svg` (fonts and logos embedded). Source `design-system.html`; rebuild with `node design-system/build.mjs` after changing a token. Not used by the page. Replaces the old `pharmacy-design-system-*` files |
 | `org-dashboard/*.png` | Screenshots of the real app (sale screen, menus). Reference only, not published |
 | `screenshots/` | Website-ready product screens: HTML recreations of the app with dummy data. See `screenshots/README.md`. Edit `src/*.html`, then re-render with `screenshots/render.ps1`. Keep numbers consistent across screens and with the page samples. `dummy-data/` holds CSVs for loading a demo account |
 | `PHARMACY-SITE-STRUCTURE.md` | Multi-page sitemap, navigation, page blueprints, image map, SEO keyword map, build phases. Read before adding pages |
