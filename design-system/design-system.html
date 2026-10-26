@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Healthray design system</title>
+<style>
+/*FONTFACE*/
+:root{--navy-950:#081C2C;--navy-900:#0D2A40;--navy-800:#123B5D;--navy-700:#174C75;--navy-600:#1D6090;--blue-700:#1D4ED8;--blue-600:#2563EB;--blue-500:#3B82F6;--blue-100:#DBEAFE;--blue-50:#EFF6FF;--teal-700:#0F766E;--teal-600:#0F9F9A;--teal-500:#14B8A6;--teal-100:#CCFBF1;--teal-50:#F0FDFA;--text:#172033;--text-2:#475569;--muted:#64748B;--border:#E2E8F0;--border-2:#CBD5E1;--bg:#F8FAFC;--success:#15803D;--warning:#B45309;--danger:#DC2626;--f:"Campton",system-ui,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1600px;font-family:var(--f);color:var(--text);background:#fff;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{padding:0 80px}
+header.top{background:var(--navy-900);color:#fff;padding:64px 80px 56px;display:flex;justify-content:space-between;align-items:flex-end}
+header.top h1{font-size:56px;line-height:1.05;letter-spacing:-.025em;font-weight:700;color:#fff;margin-top:18px}
+header.top p{color:#BFD3E6;font-size:18px;margin-top:12px;max-width:640px}
+header.top .meta{font-size:13px;color:#8FB0CF;text-align:right;line-height:1.7}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font:600 12px/1.3 var(--f);letter-spacing:.08em;text-transform:uppercase;color:var(--navy-800)}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--blue-600)}
+header.top .eyebrow{color:#BFDBFE}
+section{padding:56px 0 8px}
+section>.wrap>h2{font-size:34px;letter-spacing:-.02em;color:var(--navy-950);margin:10px 0 6px;font-weight:700}
+.lead{color:var(--text-2);max-width:760px;margin-bottom:28px}
+.grid{display:grid;gap:20px}
+.c2{grid-template-columns:repeat(2,1fr)}.c3{grid-template-columns:repeat(3,1fr)}.c4{grid-template-columns:repeat(4,1fr)}.c6{grid-template-columns:repeat(6,1fr)}
+.rule{height:1px;background:var(--border);margin:48px 80px 0}
+/* colour */
+.sw{border-radius:12px;overflow:hidden;box-shadow:inset 0 0 0 1px var(--border);background:#fff}
+.sw i{display:block;height:84px}
+.sw div{padding:10px 12px 12px;font-size:13px;line-height:1.4}
+.sw b{display:block;font-size:14px;color:var(--navy-950)}
+.sw code{color:var(--muted);font:500 12.5px var(--f)}
+.sw span{display:block;color:var(--text-2);font-size:12px;margin-top:3px}
+.sub{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:30px 0 12px}
+/* type */
+.type{display:grid;grid-template-columns:200px 1fr 220px;gap:24px;align-items:baseline;padding:16px 0;border-top:1px solid var(--border)}
+.type small{font-size:13px;color:var(--muted)}
+.type .tag{font-size:13px;font-weight:600;color:var(--navy-800)}
+.weights{display:flex;gap:28px;font-size:34px;color:var(--navy-950);flex-wrap:wrap}
+.weights span small{display:block;font-size:12px;color:var(--muted);font-weight:500}
+.alpha{font-size:22px;letter-spacing:.02em;color:var(--navy-800);word-break:break-all;line-height:1.5}
+/* spacing */
+.sp{display:flex;align-items:flex-end;gap:18px}
+.sp div{background:var(--blue-100);box-shadow:inset 0 0 0 1px var(--blue-500);font-size:12px;text-align:center;color:var(--navy-800);padding-top:4px}
+.rad{display:flex;gap:20px}
+.rad div{flex:1;height:96px;background:var(--blue-50);box-shadow:inset 0 0 0 1.5px var(--blue-500);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--navy-800)}
+.sh{display:flex;gap:24px}
+.sh div{flex:1;height:96px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--navy-800)}
+/* components */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border-radius:8px;font:600 16px var(--f);border:1.5px solid transparent}
+.b1{background:var(--blue-600);color:#fff}.b2{background:#fff;color:var(--navy-800);border-color:var(--border-2)}.b3{background:var(--navy-900);color:#fff}.b4{background:transparent;color:var(--blue-700);padding-left:0}.b5{background:var(--blue-600);color:#fff;opacity:.45}
+.bsm{min-height:40px;padding:8px 16px;font-size:15px}
+.row{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.card{background:var(--bg);border-radius:16px;padding:22px}
+.card h3{font-size:19px;color:var(--navy-950);letter-spacing:-.01em;margin-bottom:6px}
+.card p{font-size:15px;color:var(--text-2)}
+.panel{background:var(--blue-50);border-radius:32px;padding:32px}
+.field label{display:block;font-size:14px;font-weight:600;color:var(--navy-900);margin-bottom:6px}
+.field .in{height:48px;border:1.5px solid var(--border-2);border-radius:8px;padding:0 14px;display:flex;align-items:center;color:var(--muted);font-size:16px;background:#fff}
+.field .in.f{border-color:var(--blue-600);box-shadow:0 0 0 3px rgba(37,99,235,.25);color:var(--text)}
+.field .in.e{border-color:var(--danger)}
+.field small{display:block;margin-top:6px;font-size:13px;color:var(--text-2)}.field small.e{color:var(--danger);font-weight:600}
+.note{padding:18px 20px;border-radius:16px;background:var(--blue-50);box-shadow:inset 0 0 0 1px var(--blue-100)}
+.note b{display:block;color:var(--navy-950);font-size:16.5px;margin-bottom:4px}.note p{font-size:15.5px;color:var(--navy-900)}
+.tkw{padding:22px 24px;border-radius:16px;background:var(--bg)}
+.tkw h4{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-800);margin-bottom:8px}
+.tkw li{margin:0 0 6px 18px;font-size:15.5px}
+.state{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600}
+.state::before{content:"";width:9px;height:9px;border-radius:50%}
+.s-ok{color:var(--success)}.s-ok::before{background:var(--success)}.s-wn{color:var(--warning)}.s-wn::before{background:var(--warning);border-radius:2px}.s-er{color:var(--danger)}.s-er::before{background:var(--danger);transform:rotate(45deg);border-radius:1px}
+.sample{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.04em}
+table.t{width:100%;border-collapse:collapse;font-size:15px;box-shadow:inset 0 0 0 1px var(--l);border-radius:12px;overflow:hidden}
+table.t th{background:var(--h);text-align:left;padding:11px 14px;font-weight:600;color:var(--navy-950);border-bottom:1px solid var(--l)}
+table.t td{padding:11px 14px;border-top:1px solid var(--l)}
+table.t tr:nth-child(even) td{background:var(--z)}
+table.t td.hl,table.t th.hl{background:var(--hl);color:#1D4ED8;font-weight:600}
+table.t th.hl{background:var(--hh)}
+.tbl-n{font-size:12px;color:var(--muted);margin-bottom:6px;font-weight:600}
+/* do dont */
+.dd{padding:20px 22px;border-radius:16px}
+.dd h4{font-size:15px;margin-bottom:8px}.dd li{margin:0 0 6px 18px;font-size:14.5px}
+.do{background:var(--teal-50);box-shadow:inset 0 0 0 1px var(--teal-100)}.do h4{color:var(--teal-700)}
+.dont{background:#FEF2F2;box-shadow:inset 0 0 0 1px #FECACA}.dont h4{color:var(--danger)}
+.bp{display:flex;gap:0;font-size:13px}
+.bp div{flex:1;padding:12px;border-left:1px solid var(--border-2);color:var(--navy-800);font-weight:600}.bp div small{display:block;color:var(--muted);font-weight:500}
+footer{margin-top:64px;background:var(--navy-950);color:#8FB0CF;padding:28px 80px;font-size:13px;display:flex;justify-content:space-between}
+</style></head><body>
+
+<header class="top">
+  <div><span class="eyebrow">Design system · v3</span>
+    <h1>Healthray pharmacy</h1>
+    <p>Colour, type, spacing, components and rules for the marketing site (PHP and WordPress). One typeface, one action colour, calm surfaces.</p></div>
+  <div class="meta"><img src="LOGO_DARK" height="52" alt="Healthray" style="margin-left:auto;margin-bottom:14px"><br>Updated 26 Oct 2026<br>Source: assets/css/site.css · fonts.css · blog.css</div>
+</header>
+
+<section><div class="wrap"><span class="eyebrow">01 · Brand</span><h2>Logo and voice</h2>
+<p class="lead">The Healthray logo (red heart, blue wordmark) is used as supplied: shown 52px tall, the white version on dark surfaces. Name comes from config, never typed into pages.</p>
+<div class="grid c3">
+ <div class="card" style="background:#fff;box-shadow:inset 0 0 0 1px var(--border);display:flex;align-items:center;justify-content:center;height:150px"><img src="LOGO" height="52" alt=""></div>
+ <div class="card" style="background:var(--navy-900);display:flex;align-items:center;justify-content:center;height:150px"><img src="LOGO_DARK" height="52" alt=""></div>
+ <div class="card"><h3>Tone</h3><p>Write for a sceptical owner-pharmacist. Counter words: strip, batch, scheme, udhaar. Value as loss avoided. Sentence case. No hype, no fake numbers.</p></div>
+</div></div></section>
+
+<div class="rule"></div>
+<section><div class="wrap"><span class="eyebrow">02 · Colour</span><h2>Colour tokens</h2>
+<p class="lead">Blue is the action colour. Navy carries text and the dark footer. Teal marks positive and check states only. Never add one-off hex values.</p>
+<div class="sub">Navy · text and dark surfaces</div>
+<div class="grid c6">
+ <div class="sw"><i style="background:#081C2C"></i><div><b>Navy 950</b><code>#081C2C</code><span>Headings</span></div></div>
+ <div class="sw"><i style="background:#0D2A40"></i><div><b>Navy 900</b><code>#0D2A40</code><span>Footer, dark CTA</span></div></div>
+ <div class="sw"><i style="background:#123B5D"></i><div><b>Navy 800</b><code>#123B5D</code><span>Brand text</span></div></div>
+ <div class="sw"><i style="background:#174C75"></i><div><b>Navy 700</b><code>#174C75</code><span>Secondary dark</span></div></div>
+ <div class="sw"><i style="background:#1D6090"></i><div><b>Navy 600</b><code>#1D6090</code><span>Supporting</span></div></div>
+ <div class="sw"><i style="background:#172033"></i><div><b>Text</b><code>#172033</code><span>Body copy</span></div></div>
+</div>
+<div class="sub">Blue · action</div>
+<div class="grid c6">
+ <div class="sw"><i style="background:#1D4ED8"></i><div><b>Blue 700</b><code>#1D4ED8</code><span>Links, hover</span></div></div>
+ <div class="sw"><i style="background:#2563EB"></i><div><b>Blue 600</b><code>#2563EB</code><span>Primary action</span></div></div>
+ <div class="sw"><i style="background:#3B82F6"></i><div><b>Blue 500</b><code>#3B82F6</code><span>Charts, highlights</span></div></div>
+ <div class="sw"><i style="background:#DBEAFE"></i><div><b>Blue 100</b><code>#DBEAFE</code><span>Soft emphasis</span></div></div>
+ <div class="sw"><i style="background:#EFF6FF"></i><div><b>Blue 50</b><code>#EFF6FF</code><span>Notes, panels</span></div></div>
+ <div class="sw"><i style="background:#475569"></i><div><b>Text 2</b><code>#475569</code><span>Secondary copy</span></div></div>
+</div>
+<div class="sub">Teal · positive · neutrals · status</div>
+<div class="grid c6">
+ <div class="sw"><i style="background:#0F766E"></i><div><b>Teal 700</b><code>#0F766E</code><span>Check, positive</span></div></div>
+ <div class="sw"><i style="background:#14B8A6"></i><div><b>Teal 500</b><code>#14B8A6</code><span>Chart accent</span></div></div>
+ <div class="sw"><i style="background:#F0FDFA"></i><div><b>Teal 50</b><code>#F0FDFA</code><span>Soft teal fill</span></div></div>
+ <div class="sw"><i style="background:#64748B"></i><div><b>Muted</b><code>#64748B</code><span>Labels</span></div></div>
+ <div class="sw"><i style="background:#CBD5E1"></i><div><b>Border 2</b><code>#CBD5E1</code><span>Control edges</span></div></div>
+ <div class="sw"><i style="background:#E2E8F0"></i><div><b>Border</b><code>#E2E8F0</code><span>Dividers</span></div></div>
+</div>
+<div class="grid c6" style="margin-top:20px">
+ <div class="sw"><i style="background:#F8FAFC"></i><div><b>Background</b><code>#F8FAFC</code><span>Soft sections</span></div></div>
+ <div class="sw"><i style="background:#fff"></i><div><b>Surface</b><code>#FFFFFF</code><span>Canvas, hero</span></div></div>
+ <div class="sw"><i style="background:#15803D"></i><div><b>Success</b><code>#15803D</code><span>With label</span></div></div>
+ <div class="sw"><i style="background:#B45309"></i><div><b>Warning</b><code>#B45309</code><span>With label</span></div></div>
+ <div class="sw"><i style="background:#DC2626"></i><div><b>Danger</b><code>#DC2626</code><span>With label</span></div></div>
+ <div class="sw"><i style="background:linear-gradient(90deg,#2563EB 50%,#fff 50%)"></i><div><b>Focus ring</b><code>3px #2563EB</code><span>2px offset</span></div></div>
+</div>
+</div></section>
+
+<div class="rule"></div>
+<section><div class="wrap"><span class="eyebrow">03 · Type</span><h2>Typography: Campton only</h2>
+<p class="lead">One self-hosted typeface for headings, body, labels and numbers (weights 300–800, plus 400 italic). No other webfonts. Use tabular numbers where figures line up.</p>
+<div class="weights" style="margin-bottom:24px">
+ <span style="font-weight:300">Aa<small>300 Light</small></span><span style="font-weight:400">Aa<small>400 Regular</small></span><span style="font-weight:400;font-style:italic">Aa<small>400 Italic</small></span><span style="font-weight:500">Aa<small>500 Medium</small></span><span style="font-weight:600">Aa<small>600 Semibold</small></span><span style="font-weight:700">Aa<small>700 Bold</small></span><span style="font-weight:800">Aa<small>800 Extrabold</small></span>
+</div>
+<div class="alpha">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 ₹ % / &amp; · , . ? !</div>
+<div style="margin-top:28px">
+ <div class="type"><span class="tag">Display h1<small><br>700 · clamp 36–60 · 1.06 · −0.025em</small></span><div style="font-size:56px;line-height:1.06;letter-spacing:-.025em;font-weight:700;color:var(--navy-950)">Stop expiry leaks</div><small>Home hero, page hero 32–48</small></div>
+ <div class="type"><span class="tag">Heading h2<small><br>700 · clamp 28–40 · 1.2 · −0.015em</small></span><div style="font-size:38px;line-height:1.2;letter-spacing:-.015em;font-weight:700;color:var(--navy-950)">Run the counter</div><small>Section titles; blog h2 24–30</small></div>
+ <div class="type"><span class="tag">Heading h3<small><br>600–700 · 19–22 · 1.25</small></span><div style="font-size:22px;line-height:1.25;font-weight:700;color:var(--navy-950)">Set a minimum and a maximum</div><small>Cards, article subheads</small></div>
+ <div class="type"><span class="tag">Body<small><br>400 · 16 / 1.62</small></span><div style="font-size:16px;line-height:1.62;max-width:620px">A short book builds itself from minimum levels, so anything below its minimum goes on the list and you order from each supplier once.</div><small>Article body 17–18 / 1.7</small></div>
+ <div class="type"><span class="tag">Small<small><br>400–500 · 14–15 · 1.5</small></span><div style="font-size:14.5px;color:var(--text-2)">Captions, table text, helper text under fields.</div><small>Minimum 12px, labels only</small></div>
+ <div class="type"><span class="tag">Eyebrow<small><br>600 · 12 · +0.08em · caps</small></span><div><span class="eyebrow">Switching made safe</span></div><small>Navy 800, blue square marker</small></div>
+</div>
+</div></section>
+
+<div class="rule"></div>
+<section><div class="wrap"><span class="eyebrow">04 · Space and shape</span><h2>Spacing, radius, elevation</h2>
+<p class="lead">8px rhythm. Sections are 72px (56 at ≤900, 44 at ≤600). Small radii, fills instead of borders, restrained shadow.</p>
+<div class="sub">Spacing scale (px)</div>
+<div class="sp"><div style="width:32px;height:8px"></div><div style="width:32px;height:12px"></div><div style="width:32px;height:16px"></div><div style="width:32px;height:24px"></div><div style="width:32px;height:32px"></div><div style="width:32px;height:48px"></div><div style="width:32px;height:64px"></div><div style="width:32px;height:72px"></div></div>
+<div class="sp" style="margin-top:6px;font-size:12px;color:var(--muted);gap:18px"><span style="width:32px">8</span><span style="width:32px">12</span><span style="width:32px">16</span><span style="width:32px">24</span><span style="width:32px">32</span><span style="width:32px">48</span><span style="width:32px">64</span><span style="width:32px">72</span></div>
+<div class="sub">Radius</div>
+<div class="rad"><div style="border-radius:8px">sm 8 · buttons, fields</div><div style="border-radius:12px">md 12 · tables, images</div><div style="border-radius:16px">lg 16 · cards, notes</div><div style="border-radius:24px">xl 24 · feature surfaces</div><div style="border-radius:32px">32 · home panels</div></div>
+<div class="sub">Elevation</div>
+<div class="sh"><div style="box-shadow:0 1px 2px rgba(8,28,44,.06),inset 0 0 0 1px var(--border)">sm · 0 1 2 / 6%</div><div style="box-shadow:0 10px 30px -12px rgba(8,28,44,.18)">md · 0 10 30 −12 / 18%</div><div style="box-shadow:0 30px 60px -24px rgba(8,28,44,.28)">lg · 0 30 60 −24 / 28%</div></div>
+<div class="sub">Layout and breakpoints</div>
+<div class="bp"><div>Container<small>max 1200px, 24px gutter</small></div><div>1100<small>price grid 4 → 2</small></div><div>900<small>sections 56px, one column</small></div><div>767<small>full-bleed panels, 12px pad</small></div><div>600<small>price grid 1 column</small></div><div>420<small>smallest checked: 360</small></div></div>
+</div></section>
+
+<div class="rule"></div>
+<section><div class="wrap"><span class="eyebrow">05 · Components</span><h2>Buttons, fields, states</h2>
+<p class="lead">Blue fill for the one main action per view; white outline for the next. 48px target in content, 40px small. Sentence-case labels.</p>
+<div class="row" style="margin-bottom:28px">
+ <span class="btn b1">Book a free demo</span><span class="btn b2">See pricing</span><span class="btn b3">Start free</span><span class="btn b4">Read the article →</span><span class="btn b1 bsm">Small</span><span class="btn b5">Disabled</span>
+</div>
+<div class="grid c3" style="margin-bottom:28px">
+ <div class="field"><label>Your name</label><div class="in">Priya Shah</div><small>As on your store licence.</small></div>
+ <div class="field"><label>Mobile number</label><div class="in f">98765 4</div><small>Focus: 3px blue ring, offset by the border.</small></div>
+ <div class="field"><label>Mobile number</label><div class="in e">98765</div><small class="e">Enter a 10-digit number.</small></div>
+</div>
+<div class="row" style="gap:36px;margin-bottom:8px"><span class="state s-ok">Stock healthy</span><span class="state s-wn">Expires in 30 days</span><span class="state s-er">Out of stock</span><span class="sample">SAMPLE DATA · plain caption, no pill</span></div>
+<p class="sample" style="margin-top:6px">Status always pairs colour with a shape and a word.</p>
+</div></section>
+
+<section style="padding-top:36px"><div class="wrap"><span class="eyebrow">06 · Surfaces</span><h2 style="font-size:28px">Cards, panels, notes</h2>
+<div class="grid c3" style="margin-top:18px">
+ <div class="card"><h3>Card on a fill</h3><p>Background #F8FAFC, 16px radius, no border. Use fills, not outlines.</p></div>
+ <div class="panel"><h3 style="font-size:19px;color:var(--navy-950);margin-bottom:6px">Home panel</h3><p style="font-size:15px;color:var(--text-2)">Blue 50, 32px radius, 64px padding on desktop, full-bleed with 12px at ≤767.</p></div>
+ <div class="note"><b>Note</b><p>Blue 50 fill with a 1px Blue 100 inset line. Tip, note, caution and example share it; no icon or label.</p></div>
+</div>
+<div class="grid c2" style="margin-top:20px">
+ <div class="tkw"><h4>The short version</h4><ul><li>Set a minimum and a maximum for every item.</li><li>Sell the earliest expiry first.</li><li>Check expiry every week.</li></ul></div>
+ <div class="card" style="background:var(--navy-900)"><h3 style="color:#fff">Dark band</h3><p style="color:#BFD3E6">Navy 900 is reserved for the footer and the closing CTA. Light text only, with a ghost button.</p></div>
+</div></div></section>
+
+<div class="rule"></div>
+<section><div class="wrap"><span class="eyebrow">07 · Article tables</span><h2>Table colour variants</h2>
+<p class="lead">Five palettes set through CSS variables on the post (<code>.tb-1…5</code>); 1–4 are blue-slate tints, 5 is plain grey. Highlighted column: Blue 600 text on a light blue fill, no border. Max four columns.</p>
+<div class="grid c2">
+ <div><div class="tbl-n">Default (slate blue)</div><table class="t" style="--h:#E4EAF2;--z:#F4F7FB;--l:#D7E0EC;--hl:#E1EBF7;--hh:#C9D9EE"><tr><th>Item</th><th>Minimum</th><th class="hl">Order</th></tr><tr><td>Paracetamol 650</td><td>18</td><td class="hl">30</td></tr><tr><td>Azithromycin 500</td><td>10</td><td class="hl">20</td></tr><tr><td>Pantoprazole 40</td><td>14</td><td class="hl">25</td></tr></table></div>
+ <div><div class="tbl-n">Plain grey (.tb-5)</div><table class="t" style="--h:#EBEDEF;--z:#F6F7F8;--l:#DEE1E4;--hl:#E7E9EC;--hh:#D3D7DB"><tr><th>Item</th><th>Minimum</th><th class="hl">Order</th></tr><tr><td>Paracetamol 650</td><td>18</td><td class="hl">30</td></tr><tr><td>Azithromycin 500</td><td>10</td><td class="hl">20</td></tr><tr><td>Pantoprazole 40</td><td>14</td><td class="hl">25</td></tr></table></div>
+</div>
+</div></section>
+
+<div class="rule"></div>
+<section><div class="wrap"><span class="eyebrow">08 · Rules</span><h2>Do and don't</h2>
+<div class="grid c3" style="margin-top:18px">
+ <div class="dd do"><h4>Do</h4><ul><li>Use tokens from :root only.</li><li>Use ruled lines, real tables and plain numbers.</li><li>Label every sample number and screen.</li><li>Name the plan when a feature is plan-gated.</li><li>Keep focus rings and 4.5:1 text contrast.</li><li>Respect reduced motion.</li></ul></div>
+ <div class="dd dont"><h4>Don't</h4><ul><li>Add pills or decorative capsules.</li><li>Load any second webfont.</li><li>Use emoji or icon fonts.</li><li>Rotate or tilt screenshots.</li><li>Show status by colour alone.</li><li>Invent counts, ratings or testimonials.</li></ul></div>
+ <div class="card"><h3>Icons and motion</h3><p>Inline SVG sprite only, one stroke weight, decorative icons hidden from assistive tech. Motion is brief and optional. The only playful details: the eyebrow marker and the estimator slider thumbs.</p></div>
+</div>
+</div></section>
+
+<footer><span>Healthray pharmacy design system · v3 · Campton, navy and blue, WCAG 2.2 AA</span><span>PHARMACY-DESIGN-SYSTEM.md has the written rules</span></footer>
+</body></html>
