@@ -134,6 +134,7 @@ POSTS = [
     ('questions-for-vendors', 'buying', 'Eight questions for any vendor'),
     ('run-a-good-demo', 'buying', 'Get more out of a demo'),
     ('multi-branch-pharmacy-chains', 'buying', 'Many stores, one set of rules'),
+    ('pharmacy-inventory-management-tips', 'expiry', '12 ways to manage pharmacy stock'),
 ]
 
 CSS = """

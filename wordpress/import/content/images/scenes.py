@@ -287,3 +287,25 @@ SCENES['multi-branch-pharmacy-chains'] = (
     + g(30, 290, shop(BLUE), 0, .9) + g(180, 300, shop(RED), 0, .9) + g(330, 290, shop(TEAL), 0, .9)
     + star(60, 90, 15) + star(430, 80, 14) + dots(((450, 240), (30, 440), (250, 450))))
 BG['multi-branch-pharmacy-chains'] = '#E3DAFF'
+
+# ---- a full, orderly shelf with a checklist and a clock: the pillar article on pharmacy inventory ----
+def _mini_shelf():
+    out = '<rect x="0" y="0" width="250" height="270" rx="14" fill="#fff" %s/>' % ST
+    out += '<path d="M14 92 H236 M14 180 H236" %s fill="none"/>' % ST
+    cols = (AMBER, PINK, BLUE, TEAL, SUN, PURPLE)
+    for r, y in enumerate((92, 180, 268)):
+        if r == 2:
+            break
+        for i in range(3):
+            c = cols[(r * 3 + i) % len(cols)]
+            out += '<rect x="%d" y="%d" width="52" height="%d" rx="8" fill="%s" %s/>' % (26 + i * 68, y - 64 - (i % 2) * 8, 64 + (i % 2) * 8, c, ST)
+    out += '<rect x="26" y="196" width="52" height="64" rx="8" fill="%s" %s/><rect x="94" y="204" width="52" height="56" rx="8" fill="%s" %s/>' % (TEAL, ST, AMBER, ST)
+    return out
+
+
+SCENES['pharmacy-inventory-management-tips'] = (
+    g(30, 100, _mini_shelf(), -2)
+    + g(250, 150, clipboard(170, 250, 4), 5)
+    + '<circle cx="400" cy="90" r="58" fill="%s" %s/><path d="M400 90 V56 M400 90 L424 104" stroke="%s" stroke-width="6" stroke-linecap="round" fill="none"/><circle cx="400" cy="90" r="6" fill="%s"/>' % (SUN, ST, N, N)
+    + star(40, 60, 15) + star(440, 300, 13) + dots(((250, 60), (450, 220), (40, 440), (240, 450))))
+BG['pharmacy-inventory-management-tips'] = '#C6F0DC'
